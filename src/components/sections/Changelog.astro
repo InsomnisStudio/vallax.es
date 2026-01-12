@@ -39,9 +39,9 @@ const changelogMap = changelogEntries.reduce(
     {} as Record<Locale, MarkdownInstance<ChangelogFrontmatter>>,
 );
 
-const changelog = changelogMap[lang];
+const changelog = changelogMap[lang] ?? changelogMap.en;
 if (!changelog) {
-    throw new Error(`Changelog entry not found for locale "${lang}"`);
+    throw new Error("Changelog markdown files missing for all locales");
 }
 
 const formattedDate = (() => {
