@@ -39,13 +39,11 @@ const changelogMap = changelogEntries.reduce(
     {} as Record<Locale, MarkdownInstance<ChangelogFrontmatter>>,
 );
 
-const changelog = changelogMap[lang] ?? changelogMap.en;
-if (!changelog) {
-    throw new Error("Changelog markdown files missing for all locales");
-}
+const changelog =
+    changelogMap[lang] ?? changelogMap.en ?? changelogEntries[0]?.module;
 
 const formattedDate = (() => {
-    if (!changelog.frontmatter.lastUpdated) return undefined;
+    if (!changelog?.frontmatter.lastUpdated) return undefined;
     const date = new Date(changelog.frontmatter.lastUpdated);
     if (Number.isNaN(date.valueOf())) return undefined;
 
@@ -55,6 +53,11 @@ const formattedDate = (() => {
         day: "numeric",
     }).format(date);
 })();
+
+const fallbackMessage =
+    lang === "es"
+        ? "Aún no hay notas de versión disponibles."
+        : "Release notes are not available yet.";
 ---
 
 <section id="changelog" class="scroll-mt-24">
@@ -83,12 +86,20 @@ const formattedDate = (() => {
         </header>
 
         <div class="changelog-content mt-10">
-            <article
-                class="changelog-article space-y-8"
-                style={`--current-label: '${t.currentLabel}';`}
-            >
-                <changelog.Content />
-            </article>
+            {
+                changelog ? (
+                    <article
+                        class="changelog-article space-y-8"
+                        style={`--current-label: '${t.currentLabel}';`}
+                    >
+                        <changelog.Content />
+                    </article>
+                ) : (
+                    <p class="text-base leading-7 text-white/70">
+                        {fallbackMessage}
+                    </p>
+                )
+            }
         </div>
     </div>
 </section>
