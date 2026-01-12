@@ -1,11 +1,11 @@
 ---
 lang: en
 title: "Release notes"
-lastUpdated: "2025-10-10"
+lastUpdated: "2026-01-12"
 ---
 
 ### v1.0 · Vallax launch
-**October 10, 2025**
+**January 12, 2026**
 - Final UI refresh with a more minimal style and clean navigation for the end of the beta.
 - Brand-new category system covering the complete catalogs for Wallapop, Milanuncios, and Todocoleccion (Vinted still can’t be categorized).
 - New inverse Regex: works just like a standard Regex filter but excludes the patterns you want to ignore.
