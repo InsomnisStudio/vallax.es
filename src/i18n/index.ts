@@ -14,6 +14,7 @@ export interface Translation {
       faq: string;
       pricing: string;
       community: string;
+      guides: string;
     };
     languageSwitcher: {
       label: string;
@@ -33,6 +34,13 @@ export interface Translation {
     title: string;
     description: string;
     features: { title: string; description: string }[];
+  };
+  changelog: {
+    title: string;
+    description: string;
+    eyebrow: string;
+    lastUpdatedLabel: string;
+    currentLabel: string;
   };
   pricing: {
     title: string;
@@ -65,6 +73,14 @@ export interface Translation {
     description: string;
     button: string;
   };
+  guides: {
+    title: string;
+    description: string;
+    eyebrow: string;
+    emptyMessage: string;
+    cardLabel: string;
+    viewGuide: string;
+  };
   footer: {
     legal: { label: string; href?: string }[];
     contactEmailLabel: string;
@@ -91,6 +107,7 @@ export const translations: Record<Locale, Translation> = {
         faq: "FAQ",
         community: "Comunidad",
         pricing: "Planes",
+        guides: "Guías",
       },
       languageSwitcher: {
         label: "English",
@@ -158,49 +175,58 @@ export const translations: Record<Locale, Translation> = {
         },
       ],
     },
+    changelog: {
+      title: "Notas de versión",
+      description: "Cambios recientes y notas rápidas de cada versión.",
+      eyebrow: "Release log",
+      lastUpdatedLabel: "Última actualización:",
+      currentLabel: "Actual",
+    },
     pricing: {
       title: "Planes y precios",
       description:
-        "Selecciona la capacidad que necesitas. Empieza gratis y sube a Premium cuando tus alertas crezcan.",
+        "Tres formas de usar Vallax: empieza gratis, desbloquea todo con Premium o cuéntanos qué necesitas a medida.",
       plans: [
         {
           name: "Gratuito",
           price: "0 €",
-          description: "Ideal para validar tus primeras búsquedas.",
+          description:
+            "Ideal si solo necesitas controlar una búsqueda puntual para uso personal.",
           features: [
             "Hasta 3 alertas creadas",
-            "1 alerta activa a la vez",
+            "1 alerta activa al mismo tiempo",
+            "Hasta 5 palabras clave por alerta",
             "1 plataforma por alerta",
-            "Hasta 3 palabras clave y exclusiones",
           ],
           ctaLabel: "Empieza gratis",
-          ctaHref: "https://t.me/vallaxbot?start=pricing_free",
+          ctaHref: "https://t.me/vallaxbot",
         },
         {
           name: "Premium",
-          price: "10 €/mes",
+          price: "8 €/mes",
           description:
-            "Para usuarios que necesitan velocidad y flexibilidad completa.",
+            "Pensado para revendedores, coleccionistas o usuarios que necesitan tener varias búsquedas activas con máxima precisión y más capacidad.",
           features: [
-            "Hasta 12 alertas creadas",
-            "6 alertas activas de forma simultánea",
-            "Todas las plataformas disponibles en paralelo",
-            "Asistente con IA para crear alertas",
-            "Filtros avanzados con Regex",
+            "Hasta 15 alertas creadas",
+            "15 alertas activas al mismo tiempo",
+            "Todas las plataformas disponibles por alerta",
+            "Hasta 24 palabras clave por alerta",
+            "Filtros avanzados: Regex y Regex inverso",
+            "Crea tu bot de Telegram para evitar rate limit",
           ],
           ctaLabel: "Hazte Premium",
-          ctaHref: "https://t.me/vallaxbot?start=pricing_premium",
+          ctaHref: "https://t.me/vallaxbot",
           badge: "Más popular",
         },
         {
           name: "Plan personalizado",
           price: "A medida",
           description:
-            "Consultoría para operaciones que requieren filtrados con modelos LLM y automatizaciones a medida.",
+            "Si necesitas más capacidad, integraciones o automatizaciones concretas, lo preparamos junto a ti.",
           features: [
-            "Modelos LLM adaptados a tus criterios",
-            "Integraciones con tus herramientas y automatizaciones avanzadas",
-            "Soporte prioritario con especialista",
+            "Capacidad y automatizaciones personalizadas",
+            "Integraciones con tus herramientas",
+            "Soporte dedicado y acuerdos a medida",
           ],
           ctaLabel: "Habla con nosotros",
           ctaHref:
@@ -213,6 +239,14 @@ export const translations: Record<Locale, Translation> = {
       description:
         "Entra para estar al día de las actualizaciones, proponer mejoras y compartir alertas con otros usuarios de Vallax.",
       button: "Unirme",
+    },
+    guides: {
+      title: "Guías de configuración",
+      description: "Recursos rápidos para sacar el máximo partido a Vallax.",
+      eyebrow: "Guías",
+      emptyMessage: "Muy pronto añadiremos tutoriales aquí.",
+      cardLabel: "Recurso",
+      viewGuide: "Ver guía",
     },
     faq: {
       title: "Preguntas frecuentes",
@@ -241,9 +275,19 @@ export const translations: Record<Locale, Translation> = {
     },
     footer: {
       legal: [
-        { label: "Términos de Servicio" },
-        { label: "Política de Privacidad" },
-        { label: "Política de Cookies" },
+        {
+          label: "Términos de Servicio",
+          href: "/docs/condiciones-generales-de-contratacion",
+        },
+        {
+          label: "Política de Privacidad",
+          href: "/docs/politica-de-privacidad",
+        },
+        {
+          label: "Política de Cookies",
+          href: "/docs/politica-de-cookies",
+        },
+        { label: "Aviso Legal", href: "/docs/aviso-legal" },
       ],
       contactEmailLabel: "vallaxdev@gmail.com",
       socials: [
@@ -268,6 +312,7 @@ export const translations: Record<Locale, Translation> = {
         faq: "FAQ",
         community: "Community",
         pricing: "Plans",
+        guides: "Guides",
       },
       languageSwitcher: {
         label: "Español",
@@ -334,48 +379,58 @@ export const translations: Record<Locale, Translation> = {
         },
       ],
     },
+    changelog: {
+      title: "Release notes",
+      description: "Quick look at the latest releases and what's new.",
+      eyebrow: "Product updates",
+      lastUpdatedLabel: "Last updated:",
+      currentLabel: "Current release",
+    },
     pricing: {
       title: "Plans & pricing",
       description:
-        "Pick the capacity you need today. Start free and upgrade to Premium as your alerts scale.",
+        "Pick the package that fits today: start free, upgrade to Premium, or reach out for a tailored setup.",
       plans: [
         {
           name: "Free",
           price: "€0",
-          description: "Perfect to validate your first searches.",
+          description:
+            "Great for monitoring a specific search for personal use when you only need Vallax occasionally.",
           features: [
             "Up to 3 alerts created",
             "1 active alert at a time",
+            "Up to 5 keywords per alert",
             "1 marketplace per alert",
-            "Up to 3 keywords and ignore terms",
           ],
           ctaLabel: "Start free",
-          ctaHref: "https://t.me/vallaxbot?start=pricing_free",
+          ctaHref: "https://t.me/vallaxbot",
         },
         {
           name: "Premium",
-          price: "€10 / month",
-          description: "For users who need full speed and flexibility.",
+          price: "€8 / month",
+          description:
+            "For users who need full speed, flexibility, and advanced filters.",
           features: [
-            "Up to 12 alerts created",
-            "6 simultaneous active alerts",
-            "All marketplaces at once",
-            "AI assistant for alert creation",
-            "Advanced Regex filtering",
+            "Up to 15 alerts created",
+            "15 simultaneous active alerts",
+            "All marketplaces available per alert",
+            "Up to 24 keywords per alert",
+            "Advanced filters: Regex and reverse Regex",
+            "Create your own Telegram bot to avoid rate limits",
           ],
           ctaLabel: "Upgrade to Premium",
-          ctaHref: "https://t.me/vallaxbot?start=pricing_premium",
+          ctaHref: "https://t.me/vallaxbot",
           badge: "Most popular",
         },
         {
           name: "Custom",
           price: "Tailored",
           description:
-            "Consulting for teams that need LLM-based filtering and advanced automation.",
+            "Need something beyond this table? Tell us what your operation requires.",
           features: [
-            "Custom LLM models tuned to your criteria",
-            "Integrations with your tooling and advanced automations",
-            "Priority support with a specialist",
+            "Custom capacity and automations",
+            "Integrations with your preferred tools",
+            "Dedicated support and bespoke agreements",
           ],
           ctaLabel: "Talk to us",
           ctaHref: "mailto:vallaxdev@gmail.com?subject=Vallax%20custom%20plan",
@@ -387,6 +442,14 @@ export const translations: Record<Locale, Translation> = {
       description:
         "Join to stay informed about updates, suggest improvements and share alerts with other Vallax users.",
       button: "Join",
+    },
+    guides: {
+      title: "Setup guides",
+      description: "Quick tutorials to get the most out of Vallax.",
+      eyebrow: "Guides",
+      emptyMessage: "We’ll share new tutorials here soon.",
+      cardLabel: "Resource",
+      viewGuide: "Open guide",
     },
     faq: {
       title: "Frequently asked questions",
@@ -415,9 +478,10 @@ export const translations: Record<Locale, Translation> = {
     },
     footer: {
       legal: [
-        { label: "Terms of Service" },
-        { label: "Privacy Policy" },
-        { label: "Cookie Policy" },
+        { label: "Terms of Service", href: "/docs/terms-of-service" },
+        { label: "Privacy Policy", href: "/docs/privacy-policy" },
+        { label: "Cookie Policy", href: "/docs/cookie-policy" },
+        { label: "Legal Notice", href: "/docs/legal-notice" },
       ],
       contactEmailLabel: "vallaxdev@gmail.com",
       socials: [

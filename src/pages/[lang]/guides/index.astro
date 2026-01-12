@@ -1,0 +1,112 @@
+---
+import LandingLayout from "../../../layouts/LandingLayout.astro";
+import { translations, isLocale, locales, type Locale } from "../../../i18n";
+import type { MarkdownInstance } from "astro";
+import path from "node:path";
+
+interface GuideFrontmatter {
+    lang: Locale;
+    slug?: string;
+    title: string;
+    description: string;
+}
+
+const guideFiles = import.meta.glob<MarkdownInstance<GuideFrontmatter>>(
+    "../../../../docs/guides/*.md",
+);
+
+export function getStaticPaths() {
+    return locales.map((locale) => ({ params: { lang: locale } }));
+}
+
+const paramLang = Astro.params.lang;
+const locale: Locale = isLocale(paramLang) ? paramLang : "es";
+const t = translations[locale];
+
+const resolvedGuides = await Promise.all(
+    Object.entries(guideFiles).map(async ([filePath, resolver]) => {
+        const mod = await resolver();
+        const slug =
+            mod.frontmatter.slug ??
+            path.basename(filePath, path.extname(filePath));
+
+        return {
+            slug,
+            lang: mod.frontmatter.lang,
+            title: mod.frontmatter.title,
+            description: mod.frontmatter.description,
+        };
+    }),
+);
+
+const guides = resolvedGuides.filter((guide) => guide.lang === locale);
+
+const pageSeo = {
+    title:
+        locale === "es"
+            ? "Vallax — Guías y recursos"
+            : "Vallax — Guides & resources",
+    description: t.guides.description,
+};
+---
+
+<LandingLayout lang={locale} seo={pageSeo} navbar={t.navbar} footer={t.footer}>
+    <section class="bg-background/80 px-4 pb-24 pt-36 text-white">
+        <div class="mx-auto max-w-5xl">
+            <header class="mb-10 text-center">
+                <p class="text-xs uppercase tracking-[0.25em] text-primary/80">
+                    {t.guides.eyebrow}
+                </p>
+                <h1 class="mt-3 text-4xl font-semibold tracking-tight">
+                    {t.guides.title}
+                </h1>
+                <p class="mt-4 text-white/70">{t.guides.description}</p>
+            </header>
+
+            {
+                guides.length === 0 ? (
+                    <p class="text-center text-white/60">
+                        {t.guides.emptyMessage}
+                    </p>
+                ) : (
+                    <div class="grid gap-6 md:grid-cols-2">
+                        {guides.map((guide) => (
+                            <a
+                                href={`/${locale}/guides/${guide.slug}/`}
+                                class="group flex flex-col rounded-2xl border border-white/10 bg-white/5 px-6 py-6 transition hover:border-primary/60 hover:bg-white/10"
+                            >
+                                <p class="text-xs uppercase tracking-[0.25em] text-white/50">
+                                    {t.guides.cardLabel}
+                                </p>
+                                <h2 class="mt-3 text-2xl font-semibold text-white">
+                                    {guide.title}
+                                </h2>
+                                <p class="mt-3 text-white/70">
+                                    {guide.description}
+                                </p>
+                                <span class="mt-6 inline-flex items-center gap-2 text-sm font-semibold text-primary">
+                                    {t.guides.viewGuide}
+                                    <svg
+                                        xmlns="http://www.w3.org/2000/svg"
+                                        viewBox="0 0 24 24"
+                                        class="h-4 w-4"
+                                        aria-hidden="true"
+                                    >
+                                        <path
+                                            d="M5 12h14m0 0-5-5m5 5-5 5"
+                                            stroke="currentColor"
+                                            stroke-width="1.5"
+                                            stroke-linecap="round"
+                                            stroke-linejoin="round"
+                                            fill="none"
+                                        />
+                                    </svg>
+                                </span>
+                            </a>
+                        ))}
+                    </div>
+                )
+            }
+        </div>
+    </section>
+</LandingLayout>

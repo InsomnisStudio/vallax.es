@@ -1,0 +1,50 @@
+---
+import GuideLayout from "../../../layouts/GuideLayout.astro";
+import type { Locale } from "../../../i18n";
+import type { MarkdownInstance } from "astro";
+import path from "node:path";
+
+interface GuideFrontmatter {
+    lang: Locale;
+    slug?: string;
+    title: string;
+    description: string;
+}
+
+export async function getStaticPaths() {
+    const guideFiles = import.meta.glob<MarkdownInstance<GuideFrontmatter>>(
+        "../../../../docs/guides/*.md",
+    );
+    const entries = await Promise.all(
+        Object.entries(guideFiles).map(async ([filePath, resolver]) => {
+            const mod = await resolver();
+            const slug =
+                mod.frontmatter.slug ??
+                path.basename(filePath, path.extname(filePath));
+
+            return {
+                params: { lang: mod.frontmatter.lang, slug },
+                props: { guide: mod },
+            };
+        }),
+    );
+
+    return entries;
+}
+
+interface Props {
+    guide: MarkdownInstance<GuideFrontmatter>;
+}
+
+const { guide } = Astro.props as Props;
+const GuideContent = guide.Content;
+const lang = guide.frontmatter.lang;
+---
+
+<GuideLayout
+    lang={lang}
+    title={guide.frontmatter.title}
+    description={guide.frontmatter.description}
+>
+    <GuideContent />
+</GuideLayout>
