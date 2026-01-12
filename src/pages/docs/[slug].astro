@@ -1,0 +1,46 @@
+---
+import DocLayout from "../../layouts/DocLayout.astro";
+import type { Locale } from "../../i18n";
+import type { MarkdownInstance } from "astro";
+import path from "node:path";
+
+type LegalFrontmatter = {
+    lang: Locale;
+    title: string;
+    description: string;
+    pdf: string;
+};
+
+export async function getStaticPaths() {
+    const legalFiles = import.meta.glob("../../../docs/legal/*.md");
+    const entries = await Promise.all(
+        Object.entries(legalFiles).map(async ([filePath, resolver]) => {
+            const mod =
+                (await resolver()) as MarkdownInstance<LegalFrontmatter>;
+            const slug = path.basename(filePath, path.extname(filePath));
+
+            return {
+                params: { slug },
+                props: { doc: mod },
+            };
+        }),
+    );
+
+    return entries;
+}
+
+interface Props {
+    doc: MarkdownInstance<LegalFrontmatter>;
+}
+
+const { doc } = Astro.props as Props;
+const DocContent = doc.Content;
+---
+
+<DocLayout
+    lang={doc.frontmatter.lang}
+    title={doc.frontmatter.title}
+    description={doc.frontmatter.description}
+>
+    <DocContent />
+</DocLayout>

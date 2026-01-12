@@ -1,0 +1,137 @@
+---
+import type { Locale, Translation } from "../../i18n";
+import type { MarkdownInstance } from "astro";
+import path from "node:path";
+
+interface Props {
+    lang: Locale;
+    t: Translation["changelog"];
+}
+
+type ChangelogFrontmatter = {
+    lang?: Locale;
+    lastUpdated?: string;
+};
+
+const { lang, t } = Astro.props as Props;
+
+const changelogFiles = import.meta.glob("../../../docs/updates/*.md");
+const changelogEntries = await Promise.all(
+    Object.entries(changelogFiles).map(async ([filePath, resolver]) => {
+        const mod =
+            (await resolver()) as MarkdownInstance<ChangelogFrontmatter>;
+        const detectedLang =
+            mod.frontmatter.lang ??
+            (path.basename(filePath).includes(".en.") ? "en" : "es");
+
+        return {
+            lang: detectedLang as Locale,
+            module: mod,
+        };
+    }),
+);
+
+const changelogMap = changelogEntries.reduce(
+    (acc, entry) => {
+        acc[entry.lang] = entry.module;
+        return acc;
+    },
+    {} as Record<Locale, MarkdownInstance<ChangelogFrontmatter>>,
+);
+
+const changelog = changelogMap[lang];
+if (!changelog) {
+    throw new Error(`Changelog entry not found for locale "${lang}"`);
+}
+
+const formattedDate = (() => {
+    if (!changelog.frontmatter.lastUpdated) return undefined;
+    const date = new Date(changelog.frontmatter.lastUpdated);
+    if (Number.isNaN(date.valueOf())) return undefined;
+
+    return new Intl.DateTimeFormat(lang === "es" ? "es-ES" : "en-US", {
+        year: "numeric",
+        month: "long",
+        day: "numeric",
+    }).format(date);
+})();
+---
+
+<section id="changelog" class="scroll-mt-24">
+    <div class="max-w-[860px] w-full mx-auto px-5 sm:px-6">
+        <header class="border-b border-white/10 pb-6">
+            <p class="text-xs tracking-[0.3em] text-primary/70">
+                {t.eyebrow}
+            </p>
+            <h1 class="mt-2 text-3xl font-semibold text-white md:text-4xl">
+                {t.title}
+            </h1>
+            <p class="mt-3 text-base leading-7 text-white/70">
+                {t.description}
+            </p>
+
+            {
+                formattedDate && (
+                    <p class="mt-3 text-sm text-white/60">
+                        {t.lastUpdatedLabel}{" "}
+                        <span class="font-semibold text-white">
+                            {formattedDate}
+                        </span>
+                    </p>
+                )
+            }
+        </header>
+
+        <div class="changelog-content mt-10">
+            <article
+                class="changelog-article space-y-8"
+                style={`--current-label: '${t.currentLabel}';`}
+            >
+                <changelog.Content />
+            </article>
+        </div>
+    </div>
+</section>
+
+<style>
+    .changelog-article :global(h3) {
+        margin: 0;
+        font-size: 1.3rem;
+        color: white;
+    }
+
+    .changelog-article :global(h3:first-of-type)::after {
+        content: var(--current-label, "");
+        margin-left: 0.75rem;
+        padding: 0.1rem 0.55rem;
+        border-radius: 9999px;
+        font-size: 0.7rem;
+        letter-spacing: 0.15em;
+        text-transform: uppercase;
+        background: rgba(7, 217, 196, 0.2);
+        color: #07d9c4;
+    }
+
+    .changelog-article :global(h3:not(:first-of-type)) {
+        margin-top: 2rem;
+        padding-top: 2rem;
+        border-top: 1px solid rgba(255, 255, 255, 0.08);
+    }
+
+    .changelog-article :global(h3 + p) {
+        margin: 0.35rem 0 0.75rem;
+        font-size: 0.95rem;
+        font-weight: 500;
+        color: rgba(255, 255, 255, 0.6);
+    }
+
+    .changelog-article :global(ul) {
+        list-style: disc;
+        padding-left: 1.2rem;
+        color: rgba(255, 255, 255, 0.78);
+    }
+
+    .changelog-article :global(li + li) {
+        margin-top: 0.5rem;
+    }
+</style>
