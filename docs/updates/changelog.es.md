@@ -1,11 +1,11 @@
 ---
 lang: es
 title: "Notas de versión"
-lastUpdated: "2026-01-12"
+lastUpdated: "2026-01-13"
 ---
 
 ### v1.0 · Lanzamiento oficial de Vallax
-**12 de enero de 2026**
+**13 de enero de 2026**
 - Interfaz final con estilo más minimalista y navegación limpia para acompañar la salida de la beta.
 - Sistema de categorías totalmente nuevo con el catálogo completo de Wallapop, Milanuncios y Todocoleccion (Vinted sigue sin permitir categorizar las alertas).
 - Nuevo Regex inverso: funciona como un filtro Regex normal pero para ignorar coincidencias complejas.
