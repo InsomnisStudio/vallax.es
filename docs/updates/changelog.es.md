@@ -1,8 +1,12 @@
 ---
 lang: es
 title: "Notas de versión"
-lastUpdated: "2026-01-13"
+lastUpdated: "2026-01-19"
 ---
+
+### v1.0.1 · Controla donde se aplican los filtros
+**19 de enero de 2026**
+- Ahora puedes elegir si las palabras clave, regex, regex inverso y palabras a ignorar se aplican al título o descripción de los anuncios al crear una alerta.
 
 ### v1.0 · Lanzamiento oficial de Vallax
 **13 de enero de 2026**

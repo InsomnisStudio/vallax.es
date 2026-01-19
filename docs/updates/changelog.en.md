@@ -1,8 +1,12 @@
 ---
 lang: en
 title: "Release notes"
-lastUpdated: "2026-01-13"
+lastUpdated: "2026-01-19"
 ---
+
+### v1.0.1 · Control where filters apply
+**January 19, 2026**
+- You can now choose whether keywords, regex, inverse regex, and ignored words apply to ad titles or descriptions when creating an alert.
 
 ### v1.0 · Vallax launch
 **January 13, 2026**
