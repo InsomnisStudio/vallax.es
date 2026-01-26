@@ -53,6 +53,16 @@ export interface Translation {
       ctaLabel: string;
       ctaHref: string;
       badge?: string;
+      promo?: {
+        label: string;
+        price: string;
+        originalPrice?: string;
+        startDate: string;
+        durationMonths?: number;
+        durationDays?: number;
+        countdownLabel: string;
+        endedLabel: string;
+      };
     }[];
   };
   faq: {
@@ -206,6 +216,15 @@ export const translations: Record<Locale, Translation> = {
           price: "8 €/mes",
           description:
             "Pensado para revendedores, coleccionistas o usuarios que necesitan tener varias búsquedas activas con máxima precisión y más capacidad.",
+          promo: {
+            label: "Por tiempo limitado",
+            price: "6 €/mes",
+            originalPrice: "8 €/mes",
+            startDate: "2026-01-26",
+            durationMonths: 1,
+            countdownLabel: "Termina en",
+            endedLabel: "Promo finalizada",
+          },
           features: [
             "Hasta 15 alertas creadas",
             "15 alertas activas al mismo tiempo",
@@ -410,6 +429,15 @@ export const translations: Record<Locale, Translation> = {
           price: "€8 / month",
           description:
             "For users who need full speed, flexibility, and advanced filters.",
+          promo: {
+            label: "Limited time",
+            price: "€6 / month",
+            originalPrice: "€8 / month",
+            startDate: "2026-01-26",
+            durationMonths: 1,
+            countdownLabel: "Ends in",
+            endedLabel: "Promotion ended",
+          },
           features: [
             "Up to 15 alerts created",
             "15 simultaneous active alerts",
