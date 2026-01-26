@@ -1,8 +1,12 @@
 ---
 lang: es
 title: "Notas de versión"
-lastUpdated: "2026-01-19"
+lastUpdated: "2026-01-26"
 ---
+
+### v1.0.2 · Importa y copia alertas
+**26 de enero de 2026**
+- Ahora puedes importar alertas y copiar una existente para crear nuevas en segundos.
 
 ### v1.0.1 · Controla donde se aplican los filtros
 **19 de enero de 2026**

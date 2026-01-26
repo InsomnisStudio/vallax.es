@@ -1,8 +1,12 @@
 ---
 lang: en
 title: "Release notes"
-lastUpdated: "2026-01-19"
+lastUpdated: "2026-01-26"
 ---
+
+### v1.0.2 · Import and copy alerts
+**January 26, 2026**
+- You can now import alerts and copy an existing one to create new alerts in seconds.
 
 ### v1.0.1 · Control where filters apply
 **January 19, 2026**
