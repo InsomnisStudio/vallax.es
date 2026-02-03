@@ -1,8 +1,12 @@
 ---
 lang: es
 title: "Notas de versión"
-lastUpdated: "2026-01-26"
+lastUpdated: "2026-02-03"
 ---
+
+### v1.0.3 · Crea alertas desde una búsqueda
+**3 de febrero de 2026**
+- Ahora puedes pegar el enlace de una búsqueda con filtros (Wallapop, Vinted y más) y generamos la plantilla de la alerta automáticamente.
 
 ### v1.0.2 · Importa y copia alertas
 **26 de enero de 2026**
