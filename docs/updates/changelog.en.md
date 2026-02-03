@@ -1,8 +1,12 @@
 ---
 lang: en
 title: "Release notes"
-lastUpdated: "2026-01-26"
+lastUpdated: "2026-02-03"
 ---
+
+### v1.0.3 · Create alerts from a search link
+**February 3, 2026**
+- Paste a filtered search link (Wallapop, Vinted, and more) and Vallax generates the alert template automatically.
 
 ### v1.0.2 · Import and copy alerts
 **January 26, 2026**
