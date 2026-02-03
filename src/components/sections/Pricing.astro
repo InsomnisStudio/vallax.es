@@ -77,21 +77,34 @@ const { t } = Astro.props as Props;
                             </ul>
 
                             <div class="pt-4 mt-auto">
-                                <a
-                                    href={plan.ctaHref}
-                                    target={
-                                        plan.ctaHref.startsWith("http")
-                                            ? "_blank"
-                                            : undefined
-                                    }
-                                    class={`inline-flex w-full items-center justify-center rounded-xl border px-4 py-3 text-sm font-semibold uppercase tracking-[0.24em] transition-colors ${
-                                        isFeatured
-                                            ? "border-primary bg-primary text-[#0B1116] hover:bg-primary/90"
-                                            : "border-white/20 text-white/80 hover:border-primary/60 hover:text-primary"
-                                    }`}
-                                >
-                                    {plan.ctaLabel}
-                                </a>
+                                {
+                                    (() => {
+                                        const isTelegramBotLink =
+                                            plan.ctaHref.includes("t.me/vallaxbot");
+                                        return (
+                                            <a
+                                                href={plan.ctaHref}
+                                                target={
+                                                    plan.ctaHref.startsWith("http")
+                                                        ? "_blank"
+                                                        : undefined
+                                                }
+                                                onclick={
+                                                    isTelegramBotLink
+                                                        ? `return gtag_report_conversion('${plan.ctaHref}')`
+                                                        : undefined
+                                                }
+                                                class={`inline-flex w-full items-center justify-center rounded-xl border px-4 py-3 text-sm font-semibold uppercase tracking-[0.24em] transition-colors ${
+                                                    isFeatured
+                                                        ? "border-primary bg-primary text-[#0B1116] hover:bg-primary/90"
+                                                        : "border-white/20 text-white/80 hover:border-primary/60 hover:text-primary"
+                                                }`}
+                                            >
+                                                {plan.ctaLabel}
+                                            </a>
+                                        );
+                                    })()
+                                }
                             </div>
                         </div>
                     );

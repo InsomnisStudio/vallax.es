@@ -58,6 +58,7 @@ const visibleLinks = links.filter((link) => link.href !== "#pricing");
                     href="https://t.me/vallaxbot"
                     target="_blank"
                     class="leading-none py-2"
+                    onclick="return gtag_report_conversion('https://t.me/vallaxbot')"
                 >
                     <span
                         class="hover:text-primary text-sm text-white/60 font-bold px-3 py-2 border-white/60"
@@ -110,7 +111,7 @@ const visibleLinks = links.filter((link) => link.href !== "#pricing");
             }
 
             <a
-                onclick="window.closeMobileMenu(); trackClick('nav-mobile-primary'); return gtag_report_conversion('https://t.me/VallaxBot')"
+                onclick="window.closeMobileMenu(); trackClick('nav-mobile-primary'); return gtag_report_conversion('https://t.me/vallaxbot?start=nav_cta')"
                 href="https://t.me/vallaxbot?start=nav_cta"
                 target="_blank"
                 class="px-[6%] py-4 border-t border-white/10 text-primary transition-colors hover:text-primary/80"
