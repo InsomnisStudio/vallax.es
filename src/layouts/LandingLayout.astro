@@ -5,11 +5,11 @@ import Footer from "../components/sections/Footer.astro";
 import type { Translation, Locale } from "../i18n";
 
 interface Props {
-  lang: Locale;
-  seo: Translation["seo"];
-  navbar: Translation["navbar"];
-  footer: Translation["footer"];
-  faq?: Translation["faq"];
+    lang: Locale;
+    seo: Translation["seo"];
+    navbar: Translation["navbar"];
+    footer: Translation["footer"];
+    faq?: Translation["faq"];
 }
 
 const { lang, seo, navbar, footer, faq } = Astro.props as Props;
@@ -17,67 +17,83 @@ const { lang, seo, navbar, footer, faq } = Astro.props as Props;
 
 <!doctype html>
 <html lang={lang}>
-  <head>
-      <!-- Google tag (gtag.js) -->
-      <script async src="https://www.googletagmanager.com/gtag/js?id=AW-17380125186"></script>
-      <script>
-        window.dataLayer = window.dataLayer || [];
-        function gtag(){dataLayer.push(arguments);}
-        gtag('js', new Date());
+    <head>
+        <!-- Google tag (gtag.js) -->
+        <script
+            async
+            src="https://www.googletagmanager.com/gtag/js?id=AW-17380125186"
+        ></script>
+        <script>
+            window.dataLayer = window.dataLayer || [];
+            function gtag() {
+                dataLayer.push(arguments);
+            }
+            gtag("js", new Date());
 
-        gtag('config', 'AW-17380125186');
-      </script>
+            gtag("config", "AW-17380125186");
+        </script>
 
-      <script>
-      function gtag_report_conversion(url) {
-        var callback = function () {
-          if (typeof(url) != 'undefined') {
-            window.location = url;
-          }
-        };
-        gtag('event', 'conversion', {
-            'send_to': 'AW-17380125186/T_ZvCMvu__EbEILUvt9A',
-            'event_callback': callback
-        });
-        return false;
-      }
-      </script>
+        <script>
+            function gtag_report_conversion(url) {
+                var callback = function () {
+                    if (typeof url != "undefined") {
+                        window.location = url;
+                    }
+                };
+                gtag("event", "conversion", {
+                    send_to: "AW-17380125186/RPLmCP3VwPIbEILUvt9A",
+                    value: 1.0,
+                    currency: "EUR",
+                    event_callback: callback,
+                });
+                return false;
+            }
+        </script>
 
+        <meta name="description" content={seo.description} /><meta
+            name="robots"
+            content="index,follow,max-image-preview:large"
+        /><meta name="googlebot" content="index,follow" /><link
+            rel="icon"
+            href="/favicon-light.svg"
+            media="(prefers-color-scheme: light)"
+        /><link
+            rel="icon"
+            href="/favicon-dark.svg"
+            media="(prefers-color-scheme: dark)"
+        /><meta name="theme-color" content="#07D9C4" /><link
+            rel="preconnect"
+            href="https://fonts.googleapis.com"
+        /><link
+            rel="preconnect"
+            href="https://fonts.gstatic.com"
+            crossorigin
+        /><link
+            href="https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&display=swap"
+            rel="stylesheet"
+        /></head
+    >
 
     <!-- Charset & Viewport -->
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>{seo.title}</title>
-    <meta name="description" content={seo.description} />
+    <title>
+        {seo.title}
 
-    <meta name="robots" content="index,follow,max-image-preview:large" />
-    <meta name="googlebot" content="index,follow" />
+        <!-- Light mode favicon -->
 
+        <!-- Dark mode favicon -->
 
-    <!-- Light mode favicon -->
-    <link rel="icon" href="/favicon-light.svg"  media="(prefers-color-scheme: light)">
-
-    <!-- Dark mode favicon -->
-    <link rel="icon" href="/favicon-dark.svg" media="(prefers-color-scheme: dark)">
-
-    <meta name="theme-color" content="#07D9C4" />
-
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&display=swap"
-      rel="stylesheet"
-    />
-  </head>
-  <body>
-    <header>
-      <Navbar t={navbar} lang={lang} />
-    </header>
-    <main>
-      <slot />
-    </main>
-    <Footer t={footer} />
-    <script src="../main.js"></script>
-  </body>
+        <body>
+            <header>
+                <Navbar t={navbar} lang={lang} />
+            </header>
+            <main>
+                <slot />
+            </main>
+            <Footer t={footer} />
+            <script src="../main.js"></script>
+        </body>
+    </title>
 </html>
