@@ -23,20 +23,23 @@ const { lang, seo, navbar, footer, faq } = Astro.props as Props;
             async
             src="https://www.googletagmanager.com/gtag/js?id=AW-17380125186"
         ></script>
-        <script>
-            window.dataLayer = window.dataLayer || [];
-            function gtag() {
-                dataLayer.push(arguments);
-            }
-            gtag("js", new Date());
 
-            gtag("config", "AW-17380125186");
+        <script is:inline>
+            window.dataLayer = window.dataLayer || [];
+
+            window.gtag = function () {
+                window.dataLayer.push(arguments);
+            };
+
+            window.gtag("js", new Date());
+            window.gtag("config", "AW-17380125186");
         </script>
 
-        <script>
-            function gtag_report_conversion(url) {
+        <script is:inline>
+            window.gtag_report_conversion = function (url) {
+                console.log("here");
                 var callback = function () {
-                    if (typeof url != "undefined") {
+                    if (typeof url !== "undefined") {
                         window.location = url;
                     }
                 };
@@ -47,7 +50,7 @@ const { lang, seo, navbar, footer, faq } = Astro.props as Props;
                     event_callback: callback,
                 });
                 return false;
-            }
+            };
         </script>
 
         <!-- Charset & Viewport -->
