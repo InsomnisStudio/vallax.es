@@ -50,50 +50,47 @@ const { lang, seo, navbar, footer, faq } = Astro.props as Props;
             }
         </script>
 
-        <meta name="description" content={seo.description} /><meta
-            name="robots"
-            content="index,follow,max-image-preview:large"
-        /><meta name="googlebot" content="index,follow" /><link
+        <!-- Charset & Viewport -->
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+        <title>{seo.title}</title>
+        <meta name="description" content={seo.description} />
+
+        <meta name="robots" content="index,follow,max-image-preview:large" />
+        <meta name="googlebot" content="index,follow" />
+
+        <!-- Light mode favicon -->
+        <link
             rel="icon"
             href="/favicon-light.svg"
             media="(prefers-color-scheme: light)"
-        /><link
+        />
+
+        <!-- Dark mode favicon -->
+        <link
             rel="icon"
             href="/favicon-dark.svg"
             media="(prefers-color-scheme: dark)"
-        /><meta name="theme-color" content="#07D9C4" /><link
-            rel="preconnect"
-            href="https://fonts.googleapis.com"
-        /><link
-            rel="preconnect"
-            href="https://fonts.gstatic.com"
-            crossorigin
-        /><link
+        />
+
+        <meta name="theme-color" content="#07D9C4" />
+
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link
             href="https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&display=swap"
             rel="stylesheet"
-        /></head
-    >
-
-    <!-- Charset & Viewport -->
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-
-    <title>
-        {seo.title}
-
-        <!-- Light mode favicon -->
-
-        <!-- Dark mode favicon -->
-
-        <body>
-            <header>
-                <Navbar t={navbar} lang={lang} />
-            </header>
-            <main>
-                <slot />
-            </main>
-            <Footer t={footer} />
-            <script src="../main.js"></script>
-        </body>
-    </title>
+        />
+    </head>
+    <body>
+        <header>
+            <Navbar t={navbar} lang={lang} />
+        </header>
+        <main>
+            <slot />
+        </main>
+        <Footer t={footer} />
+        <script src="../main.js"></script>
+    </body>
 </html>
