@@ -2,7 +2,7 @@
 import "/src/assets/css/styles.css";
 import Navbar from "../components/sections/Navbar.astro";
 import Footer from "../components/sections/Footer.astro";
-import type { Translation, Locale } from "../i18n";
+import { locales, type Translation, type Locale } from "../i18n";
 
 interface Props {
     lang: Locale;
@@ -13,6 +13,30 @@ interface Props {
 }
 
 const { lang, seo, navbar, footer, faq } = Astro.props as Props;
+const site = Astro.site ?? new URL("https://vallax.es");
+const hreflangByLocale: Record<Locale, string> = {
+    es: "es-ES",
+    en: "en",
+    fr: "fr-FR",
+    it: "it-IT",
+    pl: "pl-PL",
+};
+const pathname = Astro.url.pathname;
+const pathWithoutLocale =
+    pathname === `/${lang}` || pathname === `/${lang}/`
+        ? "/"
+        : pathname.startsWith(`/${lang}/`)
+          ? pathname.slice(`/${lang}`.length)
+          : "/";
+const localeAlternates = locales.map((locale) => {
+    const localizedPath = `/${locale}${pathWithoutLocale}`;
+    return {
+        locale,
+        hreflang: hreflangByLocale[locale],
+        url: new URL(localizedPath, site),
+    };
+});
+const canonical = new URL(`/${lang}${pathWithoutLocale}`, site);
 ---
 
 <!doctype html>
@@ -59,6 +83,21 @@ const { lang, seo, navbar, footer, faq } = Astro.props as Props;
 
         <title>{seo.title}</title>
         <meta name="description" content={seo.description} />
+        <link rel="canonical" href={canonical.toString()} />
+        {
+            localeAlternates.map((alternate) => (
+                <link
+                    rel="alternate"
+                    hreflang={alternate.hreflang}
+                    href={alternate.url.toString()}
+                />
+            ))
+        }
+        <link
+            rel="alternate"
+            hreflang="x-default"
+            href={new URL("/es/", site).toString()}
+        />
 
         <meta name="robots" content="index,follow,max-image-preview:large" />
         <meta name="googlebot" content="index,follow" />

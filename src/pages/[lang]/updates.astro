@@ -11,11 +11,16 @@ const paramLang = Astro.params.lang;
 const locale: Locale = isLocale(paramLang) ? paramLang : "es";
 const t = translations[locale];
 
+const updatesSeoTitle: Record<Locale, string> = {
+    es: "Vallax — Actualizaciones del producto",
+    en: "Vallax — Product updates",
+    fr: "Vallax — Mises a jour produit",
+    it: "Vallax — Aggiornamenti prodotto",
+    pl: "Vallax — Aktualizacje produktu",
+};
+
 const pageSeo = {
-    title:
-        locale === "es"
-            ? "Vallax — Actualizaciones del producto"
-            : "Vallax — Product updates",
+    title: updatesSeoTitle[locale],
     description: t.changelog.description,
 };
 ---
