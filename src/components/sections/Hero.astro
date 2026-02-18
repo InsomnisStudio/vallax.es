@@ -12,6 +12,13 @@ interface Props {
 }
 
 const { lang, t } = Astro.props as Props;
+const vintedByLocale: Record<Locale, string> = {
+    es: "https://www.vinted.es/",
+    en: "https://www.vinted.com/",
+    fr: "https://www.vinted.fr/",
+    it: "https://www.vinted.it/",
+    pl: "https://www.vinted.pl/",
+};
 
 const platformLogos: Record<string, { image: ImageMetadata; alt: string }> = {
     Vinted: { image: VintedImage, alt: "Vinted" },
@@ -28,7 +35,7 @@ const heroMarketplaces = [
     },
     {
         label: "Vinted",
-        href: "https://www.vinted.es/",
+        href: vintedByLocale[lang],
         logo: platformLogos["Vinted"],
     },
     {

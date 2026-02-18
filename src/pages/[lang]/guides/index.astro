@@ -41,11 +41,16 @@ const resolvedGuides = await Promise.all(
 
 const guides = resolvedGuides.filter((guide) => guide.lang === locale);
 
+const guidesSeoTitle: Record<Locale, string> = {
+    es: "Vallax — Guias y recursos",
+    en: "Vallax — Guides & resources",
+    fr: "Vallax — Guides et ressources",
+    it: "Vallax — Guide e risorse",
+    pl: "Vallax — Poradniki i zasoby",
+};
+
 const pageSeo = {
-    title:
-        locale === "es"
-            ? "Vallax — Guías y recursos"
-            : "Vallax — Guides & resources",
+    title: guidesSeoTitle[locale],
     description: t.guides.description,
 };
 ---

@@ -42,22 +42,34 @@ const changelogMap = changelogEntries.reduce(
 const changelog =
     changelogMap[lang] ?? changelogMap.en ?? changelogEntries[0]?.module;
 
+const intlLocales: Record<Locale, string> = {
+    es: "es-ES",
+    en: "en-US",
+    fr: "fr-FR",
+    it: "it-IT",
+    pl: "pl-PL",
+};
+
 const formattedDate = (() => {
     if (!changelog?.frontmatter.lastUpdated) return undefined;
     const date = new Date(changelog.frontmatter.lastUpdated);
     if (Number.isNaN(date.valueOf())) return undefined;
 
-    return new Intl.DateTimeFormat(lang === "es" ? "es-ES" : "en-US", {
+    return new Intl.DateTimeFormat(intlLocales[lang], {
         year: "numeric",
         month: "long",
         day: "numeric",
     }).format(date);
 })();
 
-const fallbackMessage =
-    lang === "es"
-        ? "Aún no hay notas de versión disponibles."
-        : "Release notes are not available yet.";
+const fallbackMessages: Record<Locale, string> = {
+    es: "Aun no hay notas de version disponibles.",
+    en: "Release notes are not available yet.",
+    fr: "Les notes de version ne sont pas encore disponibles.",
+    it: "Le note di rilascio non sono ancora disponibili.",
+    pl: "Notatki o wersjach nie sa jeszcze dostepne.",
+};
+const fallbackMessage = fallbackMessages[lang];
 ---
 
 <section id="changelog" class="scroll-mt-24">
