@@ -616,10 +616,64 @@ translations.fr = {
     currentLabel: "Actuelle",
   },
   pricing: {
-    ...translations.en.pricing,
     title: "Plans et tarifs",
     description:
       "Trois facons d'utiliser Vallax: gratuit, Premium ou un plan personnalise.",
+    plans: [
+      {
+        name: "Gratuit",
+        price: "0 €",
+        description:
+          "Ideal pour surveiller une recherche ponctuelle pour un usage personnel.",
+        features: [
+          "Jusqu'a 3 alertes creees",
+          "1 alerte active a la fois",
+          "Jusqu'a 5 mots-cles par alerte",
+          "1 plateforme par alerte",
+        ],
+        ctaLabel: "Commencer gratuitement",
+        ctaHref: "https://t.me/vallaxbot",
+      },
+      {
+        name: "Premium",
+        price: "8 € / mois",
+        description:
+          "Pour les utilisateurs qui ont besoin de vitesse, de flexibilite et de filtres avances.",
+        promo: {
+          label: "Offre limitee",
+          price: "6 € / mois",
+          originalPrice: "8 € / mois",
+          startDate: "2026-01-26",
+          durationMonths: 1,
+          countdownLabel: "Se termine dans",
+          endedLabel: "Promotion terminee",
+        },
+        features: [
+          "Jusqu'a 15 alertes creees",
+          "15 alertes actives simultanement",
+          "Toutes les plateformes disponibles par alerte",
+          "Jusqu'a 24 mots-cles par alerte",
+          "Filtres avances: regex et regex inversee",
+          "Creez votre propre bot Telegram pour eviter les limites",
+        ],
+        ctaLabel: "Passer a Premium",
+        ctaHref: "https://t.me/vallaxbot",
+        badge: "Le plus populaire",
+      },
+      {
+        name: "Sur mesure",
+        price: "Sur mesure",
+        description:
+          "Besoin de quelque chose en plus ? Dites-nous ce dont vous avez besoin.",
+        features: [
+          "Capacite et automatisations personnalisees",
+          "Integrations avec vos outils preferes",
+          "Support dedie et accords sur mesure",
+        ],
+        ctaLabel: "Parlons-en",
+        ctaHref: "mailto:vallaxdev@gmail.com?subject=Vallax%20custom%20plan",
+      },
+    ],
   },
   community: {
     title: "Communaute Telegram",
@@ -661,7 +715,17 @@ translations.fr = {
     ],
   },
   footer: {
-    ...translations.en.footer,
+    legal: [
+      { label: "Conditions d'utilisation", href: "/docs/terms-of-service" },
+      { label: "Politique de confidentialite", href: "/docs/privacy-policy" },
+      { label: "Politique de cookies", href: "/docs/cookie-policy" },
+      { label: "Mentions legales", href: "/docs/legal-notice" },
+    ],
+    contactEmailLabel: "vallaxdev@gmail.com",
+    socials: [
+      { label: "Instagram", href: "https://www.instagram.com/vallaxbot/" },
+      { label: "YouTube", href: "https://www.youtube.com/@vallax-app/" },
+    ],
     rights: "© 2025 Vallax. Tous droits reserves.",
   },
 };
@@ -755,10 +819,64 @@ translations.it = {
     currentLabel: "Attuale",
   },
   pricing: {
-    ...translations.en.pricing,
     title: "Piani e prezzi",
     description:
       "Tre modi per usare Vallax: gratis, Premium o piano personalizzato.",
+    plans: [
+      {
+        name: "Gratuito",
+        price: "0 €",
+        description:
+          "Ideale per monitorare una ricerca specifica per uso personale.",
+        features: [
+          "Fino a 3 avvisi creati",
+          "1 avviso attivo alla volta",
+          "Fino a 5 parole chiave per avviso",
+          "1 piattaforma per avviso",
+        ],
+        ctaLabel: "Inizia gratis",
+        ctaHref: "https://t.me/vallaxbot",
+      },
+      {
+        name: "Premium",
+        price: "8 € / mese",
+        description:
+          "Per chi ha bisogno di velocita, flessibilita e filtri avanzati.",
+        promo: {
+          label: "Tempo limitato",
+          price: "6 € / mese",
+          originalPrice: "8 € / mese",
+          startDate: "2026-01-26",
+          durationMonths: 1,
+          countdownLabel: "Scade tra",
+          endedLabel: "Promozione terminata",
+        },
+        features: [
+          "Fino a 15 avvisi creati",
+          "15 avvisi attivi simultanei",
+          "Tutte le piattaforme disponibili per avviso",
+          "Fino a 24 parole chiave per avviso",
+          "Filtri avanzati: regex e regex inversa",
+          "Crea il tuo bot Telegram per evitare i limiti",
+        ],
+        ctaLabel: "Passa a Premium",
+        ctaHref: "https://t.me/vallaxbot",
+        badge: "Il piu popolare",
+      },
+      {
+        name: "Personalizzato",
+        price: "Su misura",
+        description:
+          "Serve qualcosa oltre questa tabella? Raccontaci le tue esigenze.",
+        features: [
+          "Capacita e automazioni personalizzate",
+          "Integrazioni con i tuoi strumenti preferiti",
+          "Supporto dedicato e accordi su misura",
+        ],
+        ctaLabel: "Contattaci",
+        ctaHref: "mailto:vallaxdev@gmail.com?subject=Vallax%20custom%20plan",
+      },
+    ],
   },
   community: {
     title: "Comunita Telegram",
@@ -799,7 +917,17 @@ translations.it = {
     ],
   },
   footer: {
-    ...translations.en.footer,
+    legal: [
+      { label: "Termini di servizio", href: "/docs/terms-of-service" },
+      { label: "Informativa sulla privacy", href: "/docs/privacy-policy" },
+      { label: "Informativa sui cookie", href: "/docs/cookie-policy" },
+      { label: "Note legali", href: "/docs/legal-notice" },
+    ],
+    contactEmailLabel: "vallaxdev@gmail.com",
+    socials: [
+      { label: "Instagram", href: "https://www.instagram.com/vallaxbot/" },
+      { label: "YouTube", href: "https://www.youtube.com/@vallax-app/" },
+    ],
     rights: "© 2025 Vallax. Tutti i diritti riservati.",
   },
 };
@@ -891,10 +1019,64 @@ translations.pl = {
     currentLabel: "Biezaca",
   },
   pricing: {
-    ...translations.en.pricing,
     title: "Plany i ceny",
     description:
       "Trzy sposoby korzystania z Vallax: darmowy, Premium lub plan indywidualny.",
+    plans: [
+      {
+        name: "Darmowy",
+        price: "0 €",
+        description:
+          "Idealny do monitorowania pojedynczego wyszukiwania na uzytek prywatny.",
+        features: [
+          "Do 3 utworzonych alertow",
+          "1 aktywny alert jednoczesnie",
+          "Do 5 slow kluczowych na alert",
+          "1 platforma na alert",
+        ],
+        ctaLabel: "Zacznij za darmo",
+        ctaHref: "https://t.me/vallaxbot",
+      },
+      {
+        name: "Premium",
+        price: "8 € / mies.",
+        description:
+          "Dla tych, ktorzy potrzebuja pelnej szybkosci, elastycznosci i zaawansowanych filtrow.",
+        promo: {
+          label: "Oferta limitowana",
+          price: "6 € / mies.",
+          originalPrice: "8 € / mies.",
+          startDate: "2026-01-26",
+          durationMonths: 1,
+          countdownLabel: "Koniec za",
+          endedLabel: "Promocja zakonczona",
+        },
+        features: [
+          "Do 15 utworzonych alertow",
+          "15 aktywnych alertow jednoczesnie",
+          "Wszystkie platformy dostepne dla alertu",
+          "Do 24 slow kluczowych na alert",
+          "Zaawansowane filtry: regex i odwrotny regex",
+          "Stworz wlasnego bota Telegram, aby ominac limity",
+        ],
+        ctaLabel: "Przejdz na Premium",
+        ctaHref: "https://t.me/vallaxbot",
+        badge: "Najpopularniejszy",
+      },
+      {
+        name: "Indywidualny",
+        price: "Na zamowienie",
+        description:
+          "Potrzebujesz czegos wiecej niz w tabeli? Daj nam znac.",
+        features: [
+          "Indywidualna pojemnosc i automatyzacje",
+          "Integracje z Twoimi narzedziami",
+          "Dedykowane wsparcie i umowy na miare",
+        ],
+        ctaLabel: "Porozmawiajmy",
+        ctaHref: "mailto:vallaxdev@gmail.com?subject=Vallax%20custom%20plan",
+      },
+    ],
   },
   community: {
     title: "Spolecznosc Telegram",
@@ -935,7 +1117,17 @@ translations.pl = {
     ],
   },
   footer: {
-    ...translations.en.footer,
+    legal: [
+      { label: "Regulamin", href: "/docs/terms-of-service" },
+      { label: "Polityka prywatnosci", href: "/docs/privacy-policy" },
+      { label: "Polityka cookies", href: "/docs/cookie-policy" },
+      { label: "Nota prawna", href: "/docs/legal-notice" },
+    ],
+    contactEmailLabel: "vallaxdev@gmail.com",
+    socials: [
+      { label: "Instagram", href: "https://www.instagram.com/vallaxbot/" },
+      { label: "YouTube", href: "https://www.youtube.com/@vallax-app/" },
+    ],
     rights: "© 2025 Vallax. Wszelkie prawa zastrzezone.",
   },
 };
