@@ -1,5 +1,3 @@
-import type GettingStarted from "../components/sections/Getting-started.astro";
-
 export type Locale = "es" | "en" | "fr" | "it" | "pl";
 export interface Translation {
   locale: Locale;
@@ -9,7 +7,7 @@ export interface Translation {
   };
   navbar: {
     links: {
-      gettingStarted: string;
+      home: string;
       features: string;
       faq: string;
       pricing: string;
@@ -28,19 +26,13 @@ export interface Translation {
     title: string;
     description: string;
     primaryCta: string;
+    availability: string;
     platforms: { title: string };
   };
   features: {
     title: string;
     description: string;
     features: { title: string; description: string }[];
-  };
-  changelog: {
-    title: string;
-    description: string;
-    eyebrow: string;
-    lastUpdatedLabel: string;
-    currentLabel: string;
   };
   pricing: {
     title: string;
@@ -69,15 +61,6 @@ export interface Translation {
     title: string;
     items: { question: string; answer: string }[];
   };
-  gettingStarted: {
-    title: string;
-    description: string;
-    videoFallback: string;
-    steps: {
-      title: string;
-      description: string;
-    }[];
-  };
   community: {
     title: string;
     description: string;
@@ -92,6 +75,9 @@ export interface Translation {
     viewGuide: string;
   };
   footer: {
+    tagline: string;
+    productTitle: string;
+    legalTitle: string;
     legal: { label: string; href?: string }[];
     contactEmailLabel: string;
     socials: { label: string; href: string }[];
@@ -119,7 +105,7 @@ export const translations = {
     },
     navbar: {
       links: {
-        gettingStarted: "Cómo empezar",
+        home: "Inicio",
         features: "Beneficios",
         faq: "FAQ",
         community: "Comunidad",
@@ -137,33 +123,12 @@ export const translations = {
     hero: {
       title: "Descubre las nuevas ofertas de segunda mano antes que nadie",
       description:
-        "Vallax revisa cada nuevo anuncio en tiempo real y te avisa al instante. Ideal para cazar chollos o encontrar ese artículo único antes que nadie.",
+        "Vallax detecta nuevos anuncios en Wallapop, Vinted, Milanuncios y mas en cuanto aparecen. Ve las nuevas ofertas antes que nadie y llega primero.",
       primaryCta: "Crea tu primera alerta",
+      availability: "Ya disponible en iOS y Android",
       platforms: {
         title: "Plataformas soportadas",
       },
-    },
-    gettingStarted: {
-      title: "Cómo empezar",
-      description:
-        "Solo necesitas Telegram y un par de toques para poner a Vallax a trabajar.",
-      videoFallback: "Tu navegador no soporta el elemento de video.",
-      steps: [
-        {
-          title: "Lanza la app",
-          description: "Busca @vallaxbot en Telegram y pulsa Open.",
-        },
-        {
-          title: "Crea tu alerta",
-          description:
-            "Especifica los criterios de tu alerta: palabra clave, precio máximo, etc.",
-        },
-        {
-          title: "Recibe las alertas",
-          description:
-            "Recibirás una notificación cada vez que aparezca una nueva coincidencia.",
-        },
-      ],
     },
     features: {
       title: "Razones para usar Vallax",
@@ -178,7 +143,7 @@ export const translations = {
         {
           title: "Instantáneo",
           description:
-            "En cuanto se publica un anuncio nuevo, la alerta aparece en tu Telegram sin esperas.",
+            "En cuanto se publica un anuncio nuevo, la alerta aparece al instante sin esperas.",
         },
         {
           title: "Preciso",
@@ -186,18 +151,11 @@ export const translations = {
             "Usa palabras clave, exclusiones, precio y ubicación para encontrar solo los anuncios que te interesan.",
         },
         {
-          title: "Sencillo",
+          title: "Inteligencia artificial",
           description:
-            "Gestiona tus alertas con facilidad. Crea, edita o páusalas cuando quieras, sin complicaciones.",
+            "Analiza anuncios para ayudarte a detectar mejores oportunidades y filtrar resultados con mas criterio.",
         },
       ],
-    },
-    changelog: {
-      title: "Notas de versión",
-      description: "Cambios recientes y notas rápidas de cada versión.",
-      eyebrow: "Release log",
-      lastUpdatedLabel: "Última actualización:",
-      currentLabel: "Actual",
     },
     pricing: {
       title: "Planes y precios",
@@ -206,42 +164,33 @@ export const translations = {
       plans: [
         {
           name: "Gratuito",
-          price: "0 €",
+          price: "0€",
           description:
-            "Ideal si solo necesitas controlar una búsqueda puntual para uso personal.",
+            "Ideal si solo necesitas controlar una busqueda puntual para uso personal.",
           features: [
-            "Hasta 3 alertas creadas",
-            "1 alerta activa al mismo tiempo",
+            "1 alerta creada",
+            "1 alerta activa",
             "Hasta 5 palabras clave por alerta",
             "1 plataforma por alerta",
           ],
           ctaLabel: "Empieza gratis",
-          ctaHref: "https://t.me/vallaxbot",
+          ctaHref: "#download-app",
         },
         {
           name: "Premium",
-          price: "8 €/mes",
+          price: "9,99€",
           description:
-            "Pensado para revendedores, coleccionistas o usuarios que necesitan tener varias búsquedas activas con máxima precisión y más capacidad.",
-          promo: {
-            label: "Por tiempo limitado",
-            price: "6 €/mes",
-            originalPrice: "8 €/mes",
-            startDate: "2026-01-26",
-            durationMonths: 1,
-            countdownLabel: "Termina en",
-            endedLabel: "Promo finalizada",
-          },
+            "Pensado para revendedores, coleccionistas o usuarios que necesitan mas capacidad, analisis inteligente y filtros mas avanzados.",
           features: [
             "Hasta 15 alertas creadas",
             "15 alertas activas al mismo tiempo",
             "Todas las plataformas disponibles por alerta",
             "Hasta 24 palabras clave por alerta",
+            "Inteligencia artificial para analizar anuncios",
             "Filtros avanzados: Regex y Regex inverso",
-            "Crea tu bot de Telegram para evitar rate limit",
           ],
           ctaLabel: "Hazte Premium",
-          ctaHref: "https://t.me/vallaxbot",
+          ctaHref: "#download-app",
           badge: "Más popular",
         },
         {
@@ -261,7 +210,7 @@ export const translations = {
       ],
     },
     community: {
-      title: "Communidad de Telegram",
+      title: "Comunidad",
       description:
         "Entra para estar al día de las actualizaciones, proponer mejoras y compartir alertas con otros usuarios de Vallax.",
       button: "Unirme",
@@ -278,14 +227,14 @@ export const translations = {
       title: "Preguntas frecuentes",
       items: [
         {
-          question: "¿Puedo acceder al sistema de afiliados?",
+          question: "¿Qué hace Vallax Premium?",
           answer:
-            'Sí. Vallax usa el sistema de afiliados oficial de Telegram. Abre @vallaxbot, entra en la información del bot y usa el enlace de promoción que encontrarás allí. Puedes ver todos los detalles en <a class="faq-link" href="https://telegram.org/tour/affiliate-programs" target="_blank" rel="noreferrer">telegram.org/tour/affiliate-programs</a>.',
+            "Vallax Premium amplía la capacidad de alertas, habilita filtros avanzados y añade inteligencia artificial para analizar anuncios con más contexto.",
         },
         {
           question: "¿Por qué Vallax detiene algunas alertas?",
           answer:
-            "Si una alerta dispara demasiados anuncios en poco tiempo, la pausamos para respetar los límites de Telegram. Revísala, ajusta filtros si hace falta y vuelve a activarla desde el bot.",
+            "Si una alerta genera demasiados resultados en poco tiempo, puede pausarse para proteger la estabilidad del servicio. Revísala, ajusta filtros si hace falta y vuelve a activarla.",
         },
         {
           question: "¿Por qué recibo anuncios que no encajan?",
@@ -300,6 +249,10 @@ export const translations = {
       ],
     },
     footer: {
+      tagline:
+        "La herramienta definitiva para cazadores de chollos. La app mas rapida del mercado para profesionales.",
+      productTitle: "Producto",
+      legalTitle: "Legal",
       legal: [
         {
           label: "Términos de Servicio",
@@ -333,7 +286,7 @@ export const translations = {
     },
     navbar: {
       links: {
-        gettingStarted: "Getting Started",
+        home: "Home",
         features: "Benefits",
         faq: "FAQ",
         community: "Community",
@@ -351,33 +304,12 @@ export const translations = {
     hero: {
       title: "See new second-hand deals before anyone else",
       description:
-        "Vallax checks every new listing in real time and alerts you instantly. Ideal for hunting down bargains or finding that unique item before anyone else.",
+        "Vallax detects new listings on Wallapop, Vinted, Milanuncios and more as soon as they appear. See new deals before anyone else and get there first.",
       primaryCta: "Create Your First Alert",
+      availability: "Now available on iOS and Android",
       platforms: {
         title: "Supported platforms",
       },
-    },
-    gettingStarted: {
-      title: "Getting started",
-      description:
-        "All you need is Telegram and a couple of taps to put Vallax to work.",
-      videoFallback: "Your browser does not support the video element.",
-      steps: [
-        {
-          title: "Launch the app",
-          description: "Find @vallaxbot on Telegram and tap Open.",
-        },
-        {
-          title: "Create your alert",
-          description:
-            "Specify your alert's criteria: keyword, max price, etc.",
-        },
-        {
-          title: "Get the alerts",
-          description:
-            "You'll receive a notification every time a new match appears.",
-        },
-      ],
     },
     features: {
       title: "Benefits",
@@ -391,7 +323,7 @@ export const translations = {
         {
           title: "Instant",
           description:
-            "The moment a listing goes live, the alert lands in your Telegram with zero delay.",
+            "The moment a listing goes live, the alert appears instantly with no delay.",
         },
         {
           title: "Precise",
@@ -399,18 +331,11 @@ export const translations = {
             "Use keywords, exclusions, price, and location to find only the listings you're really interested in.",
         },
         {
-          title: "Effortless",
+          title: "Artificial intelligence",
           description:
-            "A straightforward interface to create, edit and pause alerts without complications.",
+            "Analyze listings to spot better opportunities and filter results with more context.",
         },
       ],
-    },
-    changelog: {
-      title: "Release notes",
-      description: "Quick look at the latest releases and what's new.",
-      eyebrow: "Product updates",
-      lastUpdatedLabel: "Last updated:",
-      currentLabel: "Current release",
     },
     pricing: {
       title: "Plans & pricing",
@@ -423,38 +348,29 @@ export const translations = {
           description:
             "Great for monitoring a specific search for personal use when you only need Vallax occasionally.",
           features: [
-            "Up to 3 alerts created",
-            "1 active alert at a time",
+            "1 alert created",
+            "1 active alert",
             "Up to 5 keywords per alert",
             "1 marketplace per alert",
           ],
           ctaLabel: "Start free",
-          ctaHref: "https://t.me/vallaxbot",
+          ctaHref: "#download-app",
         },
         {
           name: "Premium",
-          price: "€8 / month",
+          price: "€9.99",
           description:
-            "For users who need full speed, flexibility, and advanced filters.",
-          promo: {
-            label: "Limited time",
-            price: "€6 / month",
-            originalPrice: "€8 / month",
-            startDate: "2026-01-26",
-            durationMonths: 1,
-            countdownLabel: "Ends in",
-            endedLabel: "Promotion ended",
-          },
+            "For users who need more capacity, smart analysis and advanced filters.",
           features: [
             "Up to 15 alerts created",
             "15 simultaneous active alerts",
             "All marketplaces available per alert",
             "Up to 24 keywords per alert",
+            "Artificial intelligence to analyze listings",
             "Advanced filters: Regex and reverse Regex",
-            "Create your own Telegram bot to avoid rate limits",
           ],
           ctaLabel: "Upgrade to Premium",
-          ctaHref: "https://t.me/vallaxbot",
+          ctaHref: "#download-app",
           badge: "Most popular",
         },
         {
@@ -473,7 +389,7 @@ export const translations = {
       ],
     },
     community: {
-      title: "Telegram Community Channel",
+      title: "Community",
       description:
         "Join to stay informed about updates, suggest improvements and share alerts with other Vallax users.",
       button: "Join",
@@ -490,14 +406,14 @@ export const translations = {
       title: "Frequently asked questions",
       items: [
         {
-          question: "Can I access the affiliate program?",
+          question: "What does Vallax Premium include?",
           answer:
-            'Yes. Vallax uses Telegram’s native affiliate system. Open @vallaxbot, check the bot info and share the promotion link you’ll find there. You can see all the details at <a class="faq-link" href="https://telegram.org/tour/affiliate-programs" target="_blank" rel="noreferrer">telegram.org/tour/affiliate-programs</a>.',
+            "Vallax Premium increases your alert capacity, unlocks advanced filters and adds artificial intelligence to analyze listings with more context.",
         },
         {
           question: "Why does Vallax pause some alerts?",
           answer:
-            "If an alert fires too many listings in a short time, we pause it to respect Telegram’s limits. Review it, tweak the filters if needed and reactivate it from the bot.",
+            "If an alert produces too many matches in a short period, it may be paused to protect service stability. Review it, tighten the filters if needed and reactivate it.",
         },
         {
           question: "Why do I receive listings that don’t match?",
@@ -512,6 +428,10 @@ export const translations = {
       ],
     },
     footer: {
+      tagline:
+        "The definitive tool for bargain hunters. The fastest app on the market for professionals.",
+      productTitle: "Product",
+      legalTitle: "Legal",
       legal: [
         { label: "Terms of Service", href: "/docs/terms-of-service" },
         { label: "Privacy Policy", href: "/docs/privacy-policy" },
@@ -540,7 +460,7 @@ translations.fr = {
   navbar: {
     ...translations.en.navbar,
     links: {
-      gettingStarted: "Demarrage",
+      home: "Accueil",
       features: "Avantages",
       faq: "FAQ",
       pricing: "Tarifs",
@@ -558,8 +478,9 @@ translations.fr = {
   hero: {
     title: "Decouvrez les nouvelles offres d'occasion avant tout le monde",
     description:
-      "Vallax surveille chaque nouvelle annonce en temps reel et vous alerte instantanement.",
+      "Vallax detecte les nouvelles annonces sur Wallapop, Vinted, Milanuncios et plus des leur publication. Voyez les meilleures offres avant tout le monde.",
     primaryCta: "Creez votre premiere alerte",
+    availability: "Disponible sur iOS et Android",
     platforms: { title: "Plateformes compatibles" },
   },
   features: {
@@ -575,45 +496,18 @@ translations.fr = {
       {
         title: "Instantane",
         description:
-          "Quand une annonce est publiee, l'alerte arrive tout de suite sur Telegram.",
+          "Quand une annonce est publiee, l'alerte apparait tout de suite sans attente.",
       },
       {
         title: "Precis",
         description: "Filtrez par mots-cles, exclusions, prix et localisation.",
       },
       {
-        title: "Simple",
+        title: "Intelligence artificielle",
         description:
-          "Creez, modifiez ou mettez en pause vos alertes facilement.",
+          "Analyse les annonces pour identifier de meilleures opportunites et filtrer avec plus de contexte.",
       },
     ],
-  },
-  gettingStarted: {
-    title: "Comment commencer",
-    description: "Vous avez seulement besoin de Telegram et de quelques clics.",
-    videoFallback: "Votre navigateur ne prend pas en charge la video.",
-    steps: [
-      {
-        title: "Lancez l'app",
-        description: "Cherchez @vallaxbot sur Telegram et appuyez sur Open.",
-      },
-      {
-        title: "Creez votre alerte",
-        description: "Definissez vos criteres: mot-cle, prix maximum, etc.",
-      },
-      {
-        title: "Recevez les alertes",
-        description:
-          "Vous recevrez une notification pour chaque nouvelle correspondance.",
-      },
-    ],
-  },
-  changelog: {
-    title: "Notes de version",
-    description: "Dernieres modifications et evolutions du produit.",
-    eyebrow: "Mises a jour",
-    lastUpdatedLabel: "Derniere mise a jour:",
-    currentLabel: "Actuelle",
   },
   pricing: {
     title: "Plans et tarifs",
@@ -626,38 +520,29 @@ translations.fr = {
         description:
           "Ideal pour surveiller une recherche ponctuelle pour un usage personnel.",
         features: [
-          "Jusqu'a 3 alertes creees",
-          "1 alerte active a la fois",
+          "1 alerte creee",
+          "1 alerte active",
           "Jusqu'a 5 mots-cles par alerte",
           "1 plateforme par alerte",
         ],
         ctaLabel: "Commencer gratuitement",
-        ctaHref: "https://t.me/vallaxbot",
+        ctaHref: "#download-app",
       },
       {
         name: "Premium",
-        price: "8 € / mois",
+        price: "9,99 €",
         description:
-          "Pour les utilisateurs qui ont besoin de vitesse, de flexibilite et de filtres avances.",
-        promo: {
-          label: "Offre limitee",
-          price: "6 € / mois",
-          originalPrice: "8 € / mois",
-          startDate: "2026-01-26",
-          durationMonths: 1,
-          countdownLabel: "Se termine dans",
-          endedLabel: "Promotion terminee",
-        },
+          "Pour les utilisateurs qui ont besoin de plus de capacite, d'analyse intelligente et de filtres avances.",
         features: [
           "Jusqu'a 15 alertes creees",
           "15 alertes actives simultanement",
           "Toutes les plateformes disponibles par alerte",
           "Jusqu'a 24 mots-cles par alerte",
+          "Intelligence artificielle pour analyser les annonces",
           "Filtres avances: regex et regex inversee",
-          "Creez votre propre bot Telegram pour eviter les limites",
         ],
         ctaLabel: "Passer a Premium",
-        ctaHref: "https://t.me/vallaxbot",
+        ctaHref: "#download-app",
         badge: "Le plus populaire",
       },
       {
@@ -676,7 +561,7 @@ translations.fr = {
     ],
   },
   community: {
-    title: "Communaute Telegram",
+    title: "Communaute",
     description:
       "Rejoignez la communaute pour suivre les mises a jour et partager vos alertes.",
     button: "Rejoindre",
@@ -693,14 +578,14 @@ translations.fr = {
     title: "Questions frequentes",
     items: [
       {
-        question: "Puis-je acceder au programme d'affiliation ?",
+        question: "Que comprend Vallax Premium ?",
         answer:
-          'Oui. Vallax utilise le programme officiel de Telegram. Ouvrez @vallaxbot et utilisez le lien de promotion disponible dans le profil du bot. Details: <a class="faq-link" href="https://telegram.org/tour/affiliate-programs" target="_blank" rel="noreferrer">telegram.org/tour/affiliate-programs</a>.',
+          "Vallax Premium augmente le nombre d'alertes, active des filtres avances et ajoute de l'intelligence artificielle pour analyser les annonces avec plus de contexte.",
       },
       {
         question: "Pourquoi Vallax met certaines alertes en pause ?",
         answer:
-          "Si une alerte genere trop d'annonces en peu de temps, elle est mise en pause pour respecter les limites Telegram.",
+          "Si une alerte genere trop de resultats en peu de temps, elle peut etre mise en pause pour proteger la stabilite du service.",
       },
       {
         question: "Pourquoi je recois des annonces non pertinentes ?",
@@ -715,6 +600,10 @@ translations.fr = {
     ],
   },
   footer: {
+    tagline:
+      "L'outil ideal pour les chasseurs de bonnes affaires. Une app rapide pensee pour les utilisateurs exigeants.",
+    productTitle: "Produit",
+    legalTitle: "Legal",
     legal: [
       { label: "Conditions d'utilisation", href: "/docs/terms-of-service" },
       { label: "Politique de confidentialite", href: "/docs/privacy-policy" },
@@ -742,7 +631,7 @@ translations.it = {
   navbar: {
     ...translations.en.navbar,
     links: {
-      gettingStarted: "Come iniziare",
+      home: "Home",
       features: "Vantaggi",
       faq: "FAQ",
       pricing: "Prezzi",
@@ -760,8 +649,9 @@ translations.it = {
   hero: {
     title: "Scopri nuove offerte usato prima di tutti",
     description:
-      "Vallax controlla ogni nuovo annuncio in tempo reale e ti avvisa subito.",
+      "Vallax rileva nuovi annunci su Wallapop, Vinted, Milanuncios e altro non appena compaiono. Vedi le occasioni prima di tutti e arriva per primo.",
     primaryCta: "Crea il tuo primo avviso",
+    availability: "Ora disponibile su iOS e Android",
     platforms: { title: "Piattaforme supportate" },
   },
   features: {
@@ -777,7 +667,7 @@ translations.it = {
       {
         title: "Istantaneo",
         description:
-          "Quando esce un annuncio nuovo, la notifica arriva subito su Telegram.",
+          "Quando viene pubblicato un nuovo annuncio, l'avviso appare subito senza attese.",
       },
       {
         title: "Preciso",
@@ -785,38 +675,11 @@ translations.it = {
           "Filtra per parole chiave, esclusioni, prezzo e posizione.",
       },
       {
-        title: "Semplice",
+        title: "Intelligenza artificiale",
         description:
-          "Crea, modifica o metti in pausa gli avvisi senza complicazioni.",
+          "Analizza gli annunci per individuare occasioni migliori e filtrare i risultati con piu criterio.",
       },
     ],
-  },
-  gettingStarted: {
-    title: "Come iniziare",
-    description: "Ti basta Telegram e pochi tocchi per iniziare.",
-    videoFallback: "Il tuo browser non supporta il video.",
-    steps: [
-      {
-        title: "Apri l'app",
-        description: "Cerca @vallaxbot su Telegram e premi Open.",
-      },
-      {
-        title: "Crea un avviso",
-        description: "Imposta i criteri: parola chiave, prezzo massimo, ecc.",
-      },
-      {
-        title: "Ricevi gli avvisi",
-        description:
-          "Riceverai una notifica ogni volta che appare una nuova corrispondenza.",
-      },
-    ],
-  },
-  changelog: {
-    title: "Note di versione",
-    description: "Ultime modifiche e novita del prodotto.",
-    eyebrow: "Aggiornamenti",
-    lastUpdatedLabel: "Ultimo aggiornamento:",
-    currentLabel: "Attuale",
   },
   pricing: {
     title: "Piani e prezzi",
@@ -829,38 +692,29 @@ translations.it = {
         description:
           "Ideale per monitorare una ricerca specifica per uso personale.",
         features: [
-          "Fino a 3 avvisi creati",
-          "1 avviso attivo alla volta",
+          "1 avviso creato",
+          "1 avviso attivo",
           "Fino a 5 parole chiave per avviso",
           "1 piattaforma per avviso",
         ],
         ctaLabel: "Inizia gratis",
-        ctaHref: "https://t.me/vallaxbot",
+        ctaHref: "#download-app",
       },
       {
         name: "Premium",
-        price: "8 € / mese",
+        price: "9,99 €",
         description:
-          "Per chi ha bisogno di velocita, flessibilita e filtri avanzati.",
-        promo: {
-          label: "Tempo limitato",
-          price: "6 € / mese",
-          originalPrice: "8 € / mese",
-          startDate: "2026-01-26",
-          durationMonths: 1,
-          countdownLabel: "Scade tra",
-          endedLabel: "Promozione terminata",
-        },
+          "Per chi ha bisogno di piu capacita, analisi intelligente e filtri avanzati.",
         features: [
           "Fino a 15 avvisi creati",
           "15 avvisi attivi simultanei",
           "Tutte le piattaforme disponibili per avviso",
           "Fino a 24 parole chiave per avviso",
+          "Intelligenza artificiale per analizzare gli annunci",
           "Filtri avanzati: regex e regex inversa",
-          "Crea il tuo bot Telegram per evitare i limiti",
         ],
         ctaLabel: "Passa a Premium",
-        ctaHref: "https://t.me/vallaxbot",
+        ctaHref: "#download-app",
         badge: "Il piu popolare",
       },
       {
@@ -879,7 +733,7 @@ translations.it = {
     ],
   },
   community: {
-    title: "Comunita Telegram",
+    title: "Comunita",
     description: "Unisciti per seguire gli aggiornamenti e condividere avvisi.",
     button: "Unisciti",
   },
@@ -895,14 +749,14 @@ translations.it = {
     title: "Domande frequenti",
     items: [
       {
-        question: "Posso usare il programma affiliati?",
+        question: "Cosa include Vallax Premium?",
         answer:
-          'Si. Vallax usa il programma affiliati ufficiale di Telegram. Apri @vallaxbot e usa il link promozionale nel profilo del bot. Dettagli: <a class="faq-link" href="https://telegram.org/tour/affiliate-programs" target="_blank" rel="noreferrer">telegram.org/tour/affiliate-programs</a>.',
+          "Vallax Premium aumenta la capacita degli avvisi, sblocca filtri avanzati e aggiunge intelligenza artificiale per analizzare meglio gli annunci.",
       },
       {
         question: "Perche Vallax mette in pausa alcuni avvisi?",
         answer:
-          "Se un avviso genera troppi annunci in poco tempo, viene messo in pausa per rispettare i limiti di Telegram.",
+          "Se un avviso genera troppi risultati in poco tempo, puo essere messo in pausa per proteggere la stabilita del servizio.",
       },
       {
         question: "Perche ricevo annunci non pertinenti?",
@@ -917,6 +771,10 @@ translations.it = {
     ],
   },
   footer: {
+    tagline:
+      "Lo strumento definitivo per chi cerca occasioni. L'app piu veloce sul mercato per utenti esigenti.",
+    productTitle: "Prodotto",
+    legalTitle: "Legale",
     legal: [
       { label: "Termini di servizio", href: "/docs/terms-of-service" },
       { label: "Informativa sulla privacy", href: "/docs/privacy-policy" },
@@ -944,7 +802,7 @@ translations.pl = {
   navbar: {
     ...translations.en.navbar,
     links: {
-      gettingStarted: "Jak zaczac",
+      home: "Start",
       features: "Korzysci",
       faq: "FAQ",
       pricing: "Cennik",
@@ -962,8 +820,9 @@ translations.pl = {
   hero: {
     title: "Nowe oferty z drugiej reki zanim zobacza je inni",
     description:
-      "Vallax monitoruje nowe ogloszenia w czasie rzeczywistym i natychmiast wysyla alert.",
+      "Vallax wykrywa nowe ogloszenia na Wallapop, Vinted, Milanuncios i innych platformach zaraz po publikacji. Zobacz okazje przed innymi i badz pierwszy.",
     primaryCta: "Utworz pierwszy alert",
+    availability: "Dostepne na iOS i Android",
     platforms: { title: "Obslugiwane platformy" },
   },
   features: {
@@ -979,7 +838,7 @@ translations.pl = {
       {
         title: "Natychmiast",
         description:
-          "Gdy pojawia sie nowe ogloszenie, alert trafia od razu na Telegram.",
+          "Gdy pojawia sie nowe ogloszenie, alert wyswietla sie od razu bez opoznien.",
       },
       {
         title: "Precyzyjnie",
@@ -987,36 +846,11 @@ translations.pl = {
           "Filtruj po slowach kluczowych, wykluczeniach, cenie i lokalizacji.",
       },
       {
-        title: "Prosto",
-        description: "Tworz, edytuj i wstrzymuj alerty bez komplikacji.",
+        title: "Sztuczna inteligencja",
+        description:
+          "Analizuje ogloszenia, aby szybciej wylapywac lepsze okazje i lepiej filtrowac wyniki.",
       },
     ],
-  },
-  gettingStarted: {
-    title: "Jak zaczac",
-    description: "Wystarczy Telegram i kilka klikniec.",
-    videoFallback: "Twoja przegladarka nie obsluguje wideo.",
-    steps: [
-      {
-        title: "Uruchom aplikacje",
-        description: "Wyszukaj @vallaxbot w Telegramie i kliknij Open.",
-      },
-      {
-        title: "Utworz alert",
-        description: "Ustaw kryteria: slowo kluczowe, maksymalna cena itp.",
-      },
-      {
-        title: "Otrzymuj alerty",
-        description: "Dostaniesz powiadomienie przy kazdym nowym dopasowaniu.",
-      },
-    ],
-  },
-  changelog: {
-    title: "Historia zmian",
-    description: "Najnowsze zmiany i aktualizacje produktu.",
-    eyebrow: "Aktualizacje",
-    lastUpdatedLabel: "Ostatnia aktualizacja:",
-    currentLabel: "Biezaca",
   },
   pricing: {
     title: "Plany i ceny",
@@ -1029,38 +863,29 @@ translations.pl = {
         description:
           "Idealny do monitorowania pojedynczego wyszukiwania na uzytek prywatny.",
         features: [
-          "Do 3 utworzonych alertow",
-          "1 aktywny alert jednoczesnie",
+          "1 utworzony alert",
+          "1 aktywny alert",
           "Do 5 slow kluczowych na alert",
           "1 platforma na alert",
         ],
         ctaLabel: "Zacznij za darmo",
-        ctaHref: "https://t.me/vallaxbot",
+        ctaHref: "#download-app",
       },
       {
         name: "Premium",
-        price: "8 € / mies.",
+        price: "9,99 €",
         description:
-          "Dla tych, ktorzy potrzebuja pelnej szybkosci, elastycznosci i zaawansowanych filtrow.",
-        promo: {
-          label: "Oferta limitowana",
-          price: "6 € / mies.",
-          originalPrice: "8 € / mies.",
-          startDate: "2026-01-26",
-          durationMonths: 1,
-          countdownLabel: "Koniec za",
-          endedLabel: "Promocja zakonczona",
-        },
+          "Dla tych, ktorzy potrzebuja wiekszej pojemnosci, inteligentnej analizy i zaawansowanych filtrow.",
         features: [
           "Do 15 utworzonych alertow",
           "15 aktywnych alertow jednoczesnie",
           "Wszystkie platformy dostepne dla alertu",
           "Do 24 slow kluczowych na alert",
+          "Sztuczna inteligencja do analizy ogloszen",
           "Zaawansowane filtry: regex i odwrotny regex",
-          "Stworz wlasnego bota Telegram, aby ominac limity",
         ],
         ctaLabel: "Przejdz na Premium",
-        ctaHref: "https://t.me/vallaxbot",
+        ctaHref: "#download-app",
         badge: "Najpopularniejszy",
       },
       {
@@ -1079,7 +904,7 @@ translations.pl = {
     ],
   },
   community: {
-    title: "Spolecznosc Telegram",
+    title: "Spolecznosc",
     description: "Dolacz, aby sledzic aktualizacje i dzielic sie alertami.",
     button: "Dolacz",
   },
@@ -1095,14 +920,14 @@ translations.pl = {
     title: "Najczestsze pytania",
     items: [
       {
-        question: "Czy moge korzystac z programu afiliacyjnego?",
+        question: "Co obejmuje Vallax Premium?",
         answer:
-          'Tak. Vallax korzysta z oficjalnego programu afiliacyjnego Telegrama. Otworz @vallaxbot i uzyj linku promocyjnego z profilu bota. Szczegoly: <a class="faq-link" href="https://telegram.org/tour/affiliate-programs" target="_blank" rel="noreferrer">telegram.org/tour/affiliate-programs</a>.',
+          "Vallax Premium zwieksza limit alertow, odblokowuje zaawansowane filtry i dodaje sztuczna inteligencje do analizy ogloszen.",
       },
       {
         question: "Dlaczego Vallax wstrzymuje niektore alerty?",
         answer:
-          "Jesli alert generuje zbyt wiele ogloszen w krotkim czasie, jest wstrzymywany, aby zachowac limity Telegrama.",
+          "Jesli alert generuje zbyt wiele wynikow w krotkim czasie, moze zostac wstrzymany, aby chronic stabilnosc uslugi.",
       },
       {
         question: "Dlaczego dostaje niedopasowane ogloszenia?",
@@ -1117,6 +942,10 @@ translations.pl = {
     ],
   },
   footer: {
+    tagline:
+      "Najlepsze narzedzie dla lowcow okazji. Szybka aplikacja dla wymagajacych uzytkownikow.",
+    productTitle: "Produkt",
+    legalTitle: "Informacje prawne",
     legal: [
       { label: "Regulamin", href: "/docs/terms-of-service" },
       { label: "Polityka prywatnosci", href: "/docs/privacy-policy" },

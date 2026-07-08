@@ -25,7 +25,7 @@ Para contratar se debe completar el proceso indicando la modalidad elegida y ace
 ## 3. Servicio prestado
 
 - **Naturaleza del servicio:** VALLAX actúa como intermediario tecnológico que automatiza la búsqueda de anuncios públicos en plataformas de terceros según los filtros definidos por el usuario. No interviene en compraventas ni en transacciones entre usuarios.
-- **Funcionamiento:** El usuario puede crear búsquedas personalizadas. Cuando se detecta un anuncio que coincide, se envía una alerta en Telegram.
+- **Funcionamiento:** El usuario puede crear búsquedas personalizadas. Cuando se detecta un anuncio que coincide, se envía una alerta en la app.
 - **Dependencia de terceros:** El rendimiento depende de las plataformas externas y puede verse afectado por cambios o fallos en ellas. VALLAX actualiza su software para adaptarse lo antes posible.
 - **Fase beta:** Mientras dure la beta el servicio es gratuito, pero puede presentar errores o cambios sin previo aviso.
 - **Fin de la beta:** Tras finalizar, el acceso a ciertas funcionalidades podrá requerir una suscripción Premium. Se avisará con antelación sobre modalidades, precios y condiciones.

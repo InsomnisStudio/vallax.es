@@ -1,0 +1,716 @@
+---
+import WallapopLogo from "../../images/wallapop.png";
+import VintedLogo from "../../images/vinted.png";
+import MilanunciosLogo from "../../images/milanuncios.png";
+import TodocoleccionLogo from "../../images/todocoleccion.png";
+import TelegramLogo from "../../images/telegram-logo.png";
+import PlaystationImage from "../../images/hero/playstation.jpg";
+import SwitchImage from "../../images/hero/nintendo-switch.jpg";
+import XboxImage from "../../images/hero/xbox.jpg";
+import type { Locale, Translation } from "../../i18n";
+import { platformPages, solutionPages } from "../../data/seo-pages";
+
+interface Props {
+    lang: Locale;
+    t: Translation;
+}
+
+const { lang, t } = Astro.props as Props;
+const primaryCtaHref = "https://t.me/vallaxbot";
+const communityHref = "https://t.me/vallax_group";
+const featureIcons = ["layers", "bolt", "tune", "auto_awesome"];
+const heroTitleWords = t.hero.title.split(" ");
+const heroTitleLead = heroTitleWords.slice(0, -3).join(" ");
+const heroTitleAccent = heroTitleWords.slice(-3).join(" ");
+const localizedUi = {
+    es: {
+        appStoreOverline: "Descargalo en",
+        playStoreOverline: "Consiguelo en",
+        lockDate: "Mar 1 abr",
+        firstTime: "hace 2 min",
+        secondTime: "hace 1 min",
+        thirdTime: "ahora",
+    },
+    en: {
+        appStoreOverline: "Download on the",
+        playStoreOverline: "Get it on",
+        lockDate: "Tue Apr 1",
+        firstTime: "2m ago",
+        secondTime: "1m ago",
+        thirdTime: "now",
+    },
+    fr: {
+        appStoreOverline: "Telechargez sur",
+        playStoreOverline: "Disponible sur",
+        lockDate: "Mar 1 avr.",
+        firstTime: "il y a 2 min",
+        secondTime: "il y a 1 min",
+        thirdTime: "maintenant",
+    },
+    it: {
+        appStoreOverline: "Scarica su",
+        playStoreOverline: "Disponibile su",
+        lockDate: "Mar 1 apr",
+        firstTime: "2 min fa",
+        secondTime: "1 min fa",
+        thirdTime: "ora",
+    },
+    pl: {
+        appStoreOverline: "Pobierz w",
+        playStoreOverline: "Pobierz z",
+        lockDate: "Wt 1 kwi",
+        firstTime: "2 min temu",
+        secondTime: "1 min temu",
+        thirdTime: "teraz",
+    },
+}[lang];
+const platforms = [
+    {
+        name: "Wallapop",
+        logo: WallapopLogo.src,
+        href: "https://es.wallapop.com/",
+    },
+    {
+        name: "Vinted",
+        logo: VintedLogo.src,
+        href: "https://www.vinted.es/",
+    },
+    {
+        name: "Todocoleccion",
+        logo: TodocoleccionLogo.src,
+        href: "https://www.todocoleccion.net/",
+    },
+    {
+        name: "Milanuncios",
+        logo: MilanunciosLogo.src,
+        href: "https://www.milanuncios.com/",
+    },
+];
+const seoPlatformLinks = platformPages.slice(0, 4).map((page) => ({
+    href: `/${lang}/platforms/${page.slug}/`,
+    title: page.locale[lang].title,
+}));
+const seoSolutionLinks = solutionPages.slice(0, 3).map((page) => ({
+    href: `/${lang}/solutions/${page.slug}/`,
+    title: page.locale[lang].title,
+}));
+---
+
+<section
+    id="download-app"
+    class="relative overflow-hidden px-6 pb-20 pt-32 md:px-16 md:pb-40 md:pt-48"
+>
+    <div
+        class="hero-glow absolute left-1/2 top-0 -z-10 h-full w-full -translate-x-1/2"
+    ></div>
+    <div class="mx-auto grid max-w-7xl items-center gap-16 lg:grid-cols-12">
+        <div class="space-y-10 lg:col-span-7">
+            <div
+                class="inline-flex items-center gap-3 rounded-full border border-white/10 bg-white/5 px-4 py-1.5 text-xs font-bold uppercase tracking-wide text-primary"
+            >
+                <span class="relative flex h-2 w-2">
+                    <span
+                        class="absolute inline-flex h-full w-full animate-ping rounded-full bg-primary opacity-75"
+                    ></span>
+                    <span
+                        class="relative inline-flex h-2 w-2 rounded-full bg-primary"
+                    ></span>
+                </span>
+                {t.hero.availability}
+            </div>
+            <h1
+                class="text-5xl font-black leading-[1.05] tracking-tight text-white md:text-7xl"
+            >
+                {heroTitleLead}
+                <span class="gradient-text"> {heroTitleAccent}</span>.
+            </h1>
+            <p
+                class="max-w-2xl text-lg leading-relaxed text-on-surface-variant md:text-xl"
+            >
+                {t.hero.description}
+            </p>
+            <div
+                class="mt-6 flex flex-wrap items-center justify-center gap-x-8 gap-y-4 sm:justify-start"
+            >
+                <a
+                    class="inline-flex cursor-pointer items-center rounded-lg bg-black px-4 py-2 text-xl tracking-wider text-white hover:bg-[#111] focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500"
+                    href={primaryCtaHref}
+                    target="_blank"
+                    rel="noreferrer"
+                >
+                    <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        class="mr-2 inline h-9 w-9 fill-current"
+                        viewBox="0 0 22.773 22.773"
+                        aria-hidden="true"
+                    >
+                        <path
+                            d="M15.769 0h.162c.13 1.606-.483 2.806-1.228 3.675-.731.863-1.732 1.7-3.351 1.573-.108-1.583.506-2.694 1.25-3.561C13.292.879 14.557.16 15.769 0zm4.901 16.716v.045c-.455 1.378-1.104 2.559-1.896 3.655-.723.995-1.609 2.334-3.191 2.334-1.367 0-2.275-.879-3.676-.903-1.482-.024-2.297.735-3.652.926h-.462c-.995-.144-1.798-.932-2.383-1.642-1.725-2.098-3.058-4.808-3.306-8.276v-1.019c.105-2.482 1.311-4.5 2.914-5.478.846-.52 2.009-.963 3.304-.765.555.086 1.122.276 1.619.464.471.181 1.06.502 1.618.485.378-.011.754-.208 1.135-.347 1.116-.403 2.21-.865 3.652-.648 1.733.262 2.963 1.032 3.723 2.22-1.466.933-2.625 2.339-2.427 4.74.176 2.181 1.444 3.457 3.028 4.209z"
+                        ></path>
+                    </svg>
+                    <div class="text-left">
+                        <p class="text-left text-[10px] leading-none text-white font-medium">
+                            {localizedUi.appStoreOverline}
+                        </p>
+                        App Store
+                    </div>
+                </a>
+                <a
+                    class="inline-flex cursor-pointer items-center rounded-lg bg-black px-4 py-2 text-xl tracking-wider text-white hover:bg-[#111] focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500"
+                    href={primaryCtaHref}
+                    target="_blank"
+                    rel="noreferrer"
+                >
+                    <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        class="mr-2 inline h-9 w-9"
+                        viewBox="0 0 64 64"
+                        aria-hidden="true"
+                    >
+                        <path fill="#57cef3" d="M7 3v58l33-29z"></path>
+                        <path fill="#fff200" d="m36 32 8-10 15 10-15 10z"></path>
+                        <path fill="#48ff48" d="M36 32 7 3h4l34 20z"></path>
+                        <path fill="#ff6c58" d="M36 32 7 61h4l34-20z"></path>
+                        <path
+                            fill="#f33"
+                            d="M9.1 64c-1.9 0-3.6-1-4.5-2.6L8 58.2v.7c0 .3.1.6.3.8L24 44c7.4 0 14.1-1.2 18.3-3.1l5.8-3.4v4.6L11.7 63.3c-.7.5-1.6.7-2.6.7z"
+                        ></path>
+                        <path
+                            fill="#0779e4"
+                            d="M9.1 4C8.5 4 8 4.5 8 5.1V36c0 4.4 7.2 8 16 8L5.5 62.5c-.9-.9-1.5-2.2-1.5-3.6V5.1C4 2.3 6.3 0 9.1 0z"
+                        ></path>
+                        <path
+                            fill="#314a52"
+                            d="M8.3 4.3c.2-.2.5-.3.8-.3.2 0 .4.1.6.2l45.5 26.6c.5.2.8.7.8 1.2s-.3 1-.7 1.3l-11.4 6.6 2.9 2.9 10.4-6.1c1.7-1 2.7-2.8 2.7-4.7s-1-3.8-2.7-4.7L11.7.7C11 .2 10.1 0 9.1 0 7.7 0 6.4.6 5.5 1.5z"
+                        ></path>
+                    </svg>
+                    <div class="text-left">
+                        <p class="text-left text-[10px] leading-none text-white font-medium">
+                            {localizedUi.playStoreOverline}
+                        </p>
+                        Google Play
+                    </div>
+                </a>
+            </div>
+        </div>
+        <div class="relative mt-10 lg:col-span-5 lg:mt-0">
+            <div class="relative flex min-h-[560px] w-full items-center justify-center">
+                <div class="absolute inset-x-[14%] top-[7%] h-[72%] rounded-full bg-primary/10 blur-3xl"></div>
+                <div class="phone-shell relative z-10 w-[76%] max-w-[340px]">
+                    <div class="screen-shadow overflow-hidden rounded-[2.8rem] border-[7px] border-[#1C2127] bg-[#0C1014] p-2">
+                        <div class="relative aspect-[9/19] overflow-hidden rounded-[2.15rem] bg-[radial-gradient(circle_at_top,#314f8b_0%,#16233f_36%,#0d1320_72%,#091019_100%)]">
+                            <div class="absolute left-1/2 top-3 h-7 w-[42%] -translate-x-1/2 rounded-full bg-black/80"></div>
+                            <div class="absolute inset-0 bg-[linear-gradient(145deg,rgba(255,255,255,0.18),transparent_28%,transparent_70%,rgba(255,255,255,0.08))]"></div>
+                            <div class="relative flex h-full flex-col px-5 pb-6 pt-12">
+                                <div class="text-center text-white/80">
+                                    <p class="text-sm font-semibold">{localizedUi.lockDate}</p>
+                                    <p class="mt-2 text-7xl font-black tracking-tighter text-white/85">
+                                        9:41
+                                    </p>
+                                </div>
+
+                                <div class="notification-stack mt-10">
+                                    <div class="notification-card notification-card-third rounded-[1.45rem] border border-white/10 bg-white/8 p-2.5 backdrop-blur-xl">
+                                        <div class="flex items-start gap-2.5">
+                                            <div class="flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-[#0C1014] ring-1 ring-white/10">
+                                                <img
+                                                    src="/favicon-d.svg"
+                                                    alt=""
+                                                    class="h-4 w-4 object-contain"
+                                                />
+                                            </div>
+                                            <div class="min-w-0 flex-1">
+                                                <div class="flex items-center justify-between gap-2">
+                                                    <p class="text-[11px] font-semibold text-white/78">
+                                                        Vallax
+                                                    </p>
+                                                    <p class="text-[10px] text-white/50">
+                                                        {localizedUi.thirdTime}
+                                                    </p>
+                                                </div>
+                                                <div class="mt-1 flex items-start gap-2.5">
+                                                    <div class="min-w-0 flex-1">
+                                                        <p class="truncate text-[13px] font-semibold leading-4.5 text-white">
+                                                            Xbox Series X
+                                                        </p>
+                                                        <p class="mt-0.5 text-[12px] font-medium leading-4 text-white/74">
+                                                            280 €
+                                                        </p>
+                                                    </div>
+                                                    <div class="h-11 w-11 shrink-0 overflow-hidden rounded-[0.85rem]">
+                                                        <img
+                                                            src={XboxImage.src}
+                                                            alt="Xbox Series X en una notificacion de Vallax"
+                                                            class="h-full w-full object-cover"
+                                                        />
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="notification-card notification-card-first rounded-[1.45rem] border border-white/15 bg-white/14 p-2.5 backdrop-blur-xl">
+                                        <div class="flex items-start gap-2.5">
+                                            <div class="flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-[#0C1014] ring-1 ring-white/10">
+                                                <img
+                                                    src="/favicon-d.svg"
+                                                    alt=""
+                                                    class="h-4 w-4 object-contain"
+                                                />
+                                            </div>
+                                            <div class="min-w-0 flex-1">
+                                                <div class="flex items-center justify-between gap-2">
+                                                    <p class="text-[11px] font-semibold text-white/78">
+                                                        Vallax
+                                                    </p>
+                                                    <p class="text-[10px] text-white/50">
+                                                        {localizedUi.firstTime}
+                                                    </p>
+                                                </div>
+                                                <div class="mt-1 flex items-start gap-2.5">
+                                                    <div class="min-w-0 flex-1">
+                                                        <p class="truncate text-[13px] font-semibold leading-4.5 text-white">
+                                                            Playstation 5
+                                                        </p>
+                                                        <p class="mt-0.5 text-[12px] font-medium leading-4 text-white/74">
+                                                            350 €
+                                                        </p>
+                                                    </div>
+                                                    <div class="h-11 w-11 shrink-0 overflow-hidden rounded-[0.85rem]">
+                                                        <img
+                                                            src={PlaystationImage.src}
+                                                            alt="Playstation 5 en una notificacion de Vallax"
+                                                            class="h-full w-full object-cover"
+                                                        />
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="notification-card notification-card-second rounded-[1.45rem] border border-white/12 bg-white/10 p-2.5 backdrop-blur-xl">
+                                        <div class="flex items-start gap-2.5">
+                                            <div class="flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-[#0C1014] ring-1 ring-white/10">
+                                                <img
+                                                    src="/favicon-d.svg"
+                                                    alt=""
+                                                    class="h-4 w-4 object-contain"
+                                                />
+                                            </div>
+                                            <div class="min-w-0 flex-1">
+                                                <div class="flex items-center justify-between gap-2">
+                                                    <p class="text-[11px] font-semibold text-white/78">
+                                                        Vallax
+                                                    </p>
+                                                    <p class="text-[10px] text-white/50">
+                                                        {localizedUi.secondTime}
+                                                    </p>
+                                                </div>
+                                                <div class="mt-1 flex items-start gap-2.5">
+                                                    <div class="min-w-0 flex-1">
+                                                        <p class="truncate text-[13px] font-semibold leading-4.5 text-white">
+                                                            Nintendo Switch
+                                                        </p>
+                                                        <p class="mt-0.5 text-[12px] font-medium leading-4 text-white/74">
+                                                            100 €
+                                                        </p>
+                                                    </div>
+                                                    <div class="h-11 w-11 shrink-0 overflow-hidden rounded-[0.85rem]">
+                                                        <img
+                                                            src={SwitchImage.src}
+                                                            alt="Nintendo Switch en una notificacion de Vallax"
+                                                            class="h-full w-full object-cover"
+                                                        />
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<style>
+    .phone-shell {
+        animation: phone-buzz 5000ms ease-in-out 1 forwards;
+        animation-delay: 2000ms;
+        transform-origin: center center;
+        will-change: transform;
+    }
+
+    .notification-stack {
+        position: relative;
+        height: 300px;
+    }
+
+    .notification-card {
+        position: absolute;
+        inset-inline: 0;
+        top: 0;
+        opacity: 0;
+        transform: translateY(0);
+        will-change: transform, opacity;
+    }
+
+    .notification-card-first {
+        animation: ios-notification-first 5000ms cubic-bezier(0.2, 0.9, 0.2, 1)
+            forwards;
+        animation-delay: 2000ms;
+    }
+
+    .notification-card-second {
+        animation: ios-notification-second 5000ms cubic-bezier(0.2, 0.9, 0.2, 1)
+            forwards;
+        animation-delay: 2000ms;
+    }
+
+    .notification-card-third {
+        animation: ios-notification-third 5000ms cubic-bezier(0.2, 0.9, 0.2, 1)
+            forwards;
+        animation-delay: 2000ms;
+    }
+
+    @keyframes ios-notification-first {
+        0% {
+            opacity: 0;
+            transform: translateY(0);
+        }
+
+        14% {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        34% {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        50% {
+            opacity: 1;
+            transform: translateY(94px);
+        }
+
+        84% {
+            opacity: 1;
+            transform: translateY(94px);
+        }
+
+        100% {
+            opacity: 1;
+            transform: translateY(188px);
+        }
+    }
+
+    @keyframes ios-notification-second {
+        0% {
+            opacity: 0;
+            transform: translateY(0);
+        }
+
+        46% {
+            opacity: 0;
+            transform: translateY(0);
+        }
+
+        62% {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        84% {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        100% {
+            opacity: 1;
+            transform: translateY(94px);
+        }
+    }
+
+    @keyframes ios-notification-third {
+        0% {
+            opacity: 0;
+            transform: translateY(0);
+        }
+
+        84% {
+            opacity: 0;
+            transform: translateY(0);
+        }
+
+        100% {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
+    @keyframes phone-buzz {
+        0%,
+        4.2%,
+        41.4%,
+        84.2%,
+        100% {
+            transform: translate3d(0, 0, 0) rotate(0deg);
+        }
+
+        0.8% {
+            transform: translate3d(-1px, 0, 0) rotate(-0.35deg);
+        }
+
+        1.6% {
+            transform: translate3d(1.5px, 0, 0) rotate(0.35deg);
+        }
+
+        2.4% {
+            transform: translate3d(-1px, 0, 0) rotate(-0.2deg);
+        }
+
+        3.2% {
+            transform: translate3d(0, 0, 0) rotate(0deg);
+        }
+
+        38% {
+            transform: translate3d(-1px, 0, 0) rotate(-0.35deg);
+        }
+
+        38.8% {
+            transform: translate3d(1.5px, 0, 0) rotate(0.35deg);
+        }
+
+        39.6% {
+            transform: translate3d(-1px, 0, 0) rotate(-0.2deg);
+        }
+
+        40.4% {
+            transform: translate3d(0, 0, 0) rotate(0deg);
+        }
+
+        80.8% {
+            transform: translate3d(-1px, 0, 0) rotate(-0.35deg);
+        }
+
+        81.6% {
+            transform: translate3d(1.5px, 0, 0) rotate(0.35deg);
+        }
+
+        82.4% {
+            transform: translate3d(-1px, 0, 0) rotate(-0.2deg);
+        }
+
+        83.2% {
+            transform: translate3d(0, 0, 0) rotate(0deg);
+        }
+    }
+</style>
+
+<section class="border-y border-white/5 bg-black/20 py-16">
+    <div class="mx-auto max-w-7xl px-6 text-center md:px-16">
+        <p
+            class="mb-12 text-[10px] font-bold uppercase tracking-[0.2em] text-on-surface-variant opacity-60"
+        >
+            {t.hero.platforms.title}
+        </p>
+        <div
+            class="flex flex-wrap items-center justify-center gap-x-12 gap-y-8 md:gap-x-24"
+        >
+            {
+                platforms.map((platform) => (
+                    <a
+                        href={platform.href}
+                        target="_blank"
+                        rel="noreferrer"
+                        aria-label={platform.name}
+                    >
+                        <img
+                            alt={platform.name}
+                            class="h-8 opacity-70 transition-opacity hover:opacity-100 md:h-10"
+                            src={platform.logo}
+                        />
+                    </a>
+                ))
+            }
+        </div>
+        <div class="mt-8 flex flex-wrap items-center justify-center gap-x-5 gap-y-2 text-[11px] font-medium text-white/38">
+            {
+                seoPlatformLinks.map((item) => (
+                    <a
+                        href={item.href}
+                        class="transition-colors hover:text-primary"
+                    >
+                        {item.title}
+                    </a>
+                ))
+            }
+        </div>
+    </div>
+</section>
+
+<section class="mx-auto max-w-7xl px-6 py-32 md:px-16" id="features">
+    <div class="mb-20 space-y-4 text-center">
+        <h2 class="text-4xl font-black tracking-tight text-white md:text-5xl">
+            {t.features.title}
+        </h2>
+        <p class="mx-auto max-w-2xl text-lg text-on-surface-variant">
+            {t.features.description}
+        </p>
+    </div>
+    <div class="mx-auto grid max-w-5xl gap-8 md:grid-cols-2">
+        {
+            t.features.features.map((feature, index) => (
+                <div class="glass-card group rounded-3xl p-10 transition-all hover:premium-border md:min-h-[260px]">
+                    <div class="mb-8 flex h-14 w-14 items-center justify-center rounded-2xl bg-primary/10 transition-transform group-hover:scale-110">
+                        <span class="material-symbols-outlined text-3xl text-primary">
+                            {featureIcons[index] ?? "star"}
+                        </span>
+                    </div>
+                    <h3 class="mb-4 text-2xl font-bold text-white">{feature.title}</h3>
+                    <p class="leading-relaxed text-on-surface-variant">
+                        {feature.description}
+                    </p>
+                </div>
+            ))
+        }
+    </div>
+</section>
+
+<section class="mx-auto max-w-7xl px-6 py-32 md:px-16" id="pricing">
+    <div class="mb-20 space-y-4 text-center">
+        <h2 class="text-4xl font-black tracking-tight text-white md:text-5xl">
+            {t.pricing.title}
+        </h2>
+        <p class="text-lg text-on-surface-variant">
+            {t.pricing.description}
+        </p>
+    </div>
+    <div class="grid items-stretch gap-8 md:grid-cols-3">
+        {
+            t.pricing.plans.map((plan, index) => {
+                const isFeatured = index === 1;
+                const isStorePlan = index < 2;
+                const ctaHref = isStorePlan ? "#download-app" : plan.ctaHref;
+                return (
+                    <div
+                        class:list={[
+                            "glass-card flex flex-col rounded-[2rem] p-10",
+                            isFeatured
+                                ? "relative border-2 border-primary shadow-[0_0_40px_-10px_rgba(7,217,196,0.3)]"
+                                : "border border-white/5",
+                        ]}
+                    >
+                        {isFeatured && plan.badge && (
+                            <div class="absolute -top-4 left-1/2 -translate-x-1/2 rounded-full bg-primary px-4 py-1.5 text-[10px] font-black uppercase tracking-widest text-on-primary">
+                                {plan.badge}
+                            </div>
+                        )}
+                        <div class="mb-8">
+                            <h3 class:list={[
+                                "mb-2 text-xl font-bold",
+                                isFeatured ? "text-primary" : "text-white",
+                            ]}>
+                                {plan.name}
+                            </h3>
+                            <div class="flex items-baseline gap-1">
+                                <span class:list={[
+                                    "font-black text-white",
+                                    index === 2 ? "text-4xl" : "text-5xl",
+                                ]}>
+                                    {plan.price}
+                                </span>
+                            </div>
+                        </div>
+                        <p class="mb-8 text-sm leading-6 text-on-surface-variant md:text-base md:leading-7">
+                            {plan.description}
+                        </p>
+                        <ul class="mb-10 flex-grow space-y-5">
+                            {plan.features.map((feature) => (
+                                <li class:list={[
+                                    "flex items-center gap-3 text-sm",
+                                    isFeatured
+                                        ? "font-semibold text-white"
+                                        : "text-on-surface-variant",
+                                ]}>
+                                    <span class:list={[
+                                        "material-symbols-outlined text-xl",
+                                        isFeatured
+                                            ? "font-bold text-primary"
+                                            : "text-primary",
+                                    ]}>
+                                        check
+                                    </span>
+                                    {feature}
+                                </li>
+                            ))}
+                        </ul>
+                        <a
+                            class:list={[
+                                "w-full rounded-2xl py-4 text-center font-bold transition-all",
+                                isFeatured
+                                    ? "bg-primary text-on-primary hover:brightness-110"
+                                    : "border border-white/10 bg-white/5 text-white hover:bg-white/10",
+                            ]}
+                            href={ctaHref}
+                            target={plan.ctaHref.startsWith("mailto:") ? undefined : undefined}
+                            rel={plan.ctaHref.startsWith("mailto:") ? undefined : undefined}
+                        >
+                            {plan.ctaLabel}
+                        </a>
+                    </div>
+                );
+            })
+        }
+    </div>
+</section>
+
+<section class="px-6 py-32 md:px-16" id="community">
+    <div class="mx-auto max-w-7xl">
+        <div
+            class="glass-card flex flex-col items-center justify-between gap-8 rounded-3xl border border-white/10 p-8 md:flex-row md:p-12"
+        >
+            <div class="space-y-2 text-left">
+                <h2 class="text-3xl font-black tracking-tight text-white">
+                    {t.community.title}
+                </h2>
+                <p class="max-w-md text-sm text-on-surface-variant">
+                    {t.community.description}
+                </p>
+                <div class="mt-4 flex flex-wrap gap-x-4 gap-y-2 text-xs text-white/38">
+                    {
+                        seoSolutionLinks.map((item) => (
+                            <a
+                                href={item.href}
+                                class="transition-colors hover:text-primary"
+                            >
+                                {item.title}
+                            </a>
+                        ))
+                    }
+                </div>
+            </div>
+            <a
+                class="flex items-center justify-center gap-3 whitespace-nowrap rounded-xl bg-[#26A5E4] px-8 py-4 text-md font-bold text-white transition-all hover:shadow-xl hover:shadow-[#26A5E4]/20 active:scale-95"
+                href={communityHref}
+                target="_blank"
+                rel="noreferrer"
+            >
+                <span
+                    class="flex h-10 w-10 items-center justify-center rounded-full bg-white/12 ring-1 ring-white/15"
+                >
+                    <img
+                        src={TelegramLogo.src}
+                        alt=""
+                        class="h-5.5 w-5.5 object-contain"
+                    />
+                </span>
+                {t.community.button}
+            </a>
+        </div>
+    </div>
+</section>

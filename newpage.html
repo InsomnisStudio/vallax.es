@@ -1,0 +1,864 @@
+<!doctype html>
+<html class="dark" lang="es">
+    <head>
+        <meta charset="utf-8" />
+        <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+        <title>Vallax | Chollos de segunda mano en tiempo real</title>
+        <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+        <link
+            href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&amp;display=swap"
+            rel="stylesheet"
+        />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+            rel="stylesheet"
+        />
+        <script id="tailwind-config">
+            tailwind.config = {
+                darkMode: "class",
+                theme: {
+                    extend: {
+                        colors: {
+                            "secondary-container": "#e4ae00",
+                            "on-tertiary-fixed-variant": "#92002a",
+                            "on-primary": "#003731",
+                            "surface-container-highest": "#2d3449",
+                            "tertiary-fixed-dim": "#ffb2b7",
+                            "on-secondary": "#3f2e00",
+                            "outline-variant": "#3c4947",
+                            "on-secondary-fixed": "#251a00",
+                            error: "#ffb4ab",
+                            background: "#0C1014",
+                            "surface-bright": "#31394d",
+                            "primary-fixed": "#71f8e4",
+                            "on-error-container": "#ffdad6",
+                            "tertiary-fixed-dim": "#ffb2b7",
+                            "on-surface": "#FFFFFF",
+                            "primary-fixed-dim": "#4fdbc8",
+                            "on-primary-fixed": "#00201c",
+                            "surface-container-high": "#222a3d",
+                            surface: "#0C1014",
+                            "on-error": "#690005",
+                            "error-container": "#93000a",
+                            "inverse-on-surface": "#283044",
+                            outline: "#859490",
+                            "inverse-primary": "#006b5f",
+                            "surface-dim": "#0C1014",
+                            "on-tertiary": "#67001b",
+                            "on-tertiary-container": "#7a0022",
+                            "on-primary-fixed-variant": "#005048",
+                            "surface-tint": "#07D9C4",
+                            "surface-container-low": "#131b2e",
+                            "on-tertiary-fixed": "#40000d",
+                            "tertiary-fixed": "#ffdadb",
+                            tertiary: "#ffb2b7",
+                            "on-secondary-container": "#5b4400",
+                            "on-surface-variant": "#bbcac6",
+                            "surface-container-lowest": "#060e20",
+                            "on-primary-container": "#00423b",
+                            primary: "#07D9C4",
+                            "inverse-surface": "#dae2fd",
+                            "primary-container": "#14b8a6",
+                            "secondary-fixed-dim": "#E0E938",
+                            "secondary-fixed": "#E0E938",
+                            "surface-container": "#171f33",
+                            secondary: "#E0E938",
+                            "on-secondary-fixed-variant": "#5a4300",
+                            "on-background": "#FFFFFF",
+                            "surface-variant": "#2d3449",
+                        },
+                        borderRadius: {
+                            DEFAULT: "0.25rem",
+                            lg: "0.5rem",
+                            xl: "0.75rem",
+                            full: "9999px",
+                        },
+                        spacing: {
+                            base: "4px",
+                            lg: "24px",
+                            "margin-mobile": "16px",
+                            xl: "32px",
+                            xs: "4px",
+                            md: "16px",
+                            sm: "8px",
+                            "margin-desktop": "64px",
+                            gutter: "16px",
+                        },
+                        fontFamily: {
+                            display: ["Inter", "sans-serif"],
+                            body: ["Inter", "sans-serif"],
+                        },
+                        fontSize: {
+                            "label-md": [
+                                "12px",
+                                {
+                                    lineHeight: "16px",
+                                    letterSpacing: "0.05em",
+                                    fontWeight: "600",
+                                },
+                            ],
+                            "headline-md": [
+                                "24px",
+                                { lineHeight: "32px", fontWeight: "700" },
+                            ],
+                            "headline-lg": [
+                                "32px",
+                                {
+                                    lineHeight: "40px",
+                                    letterSpacing: "-0.01em",
+                                    fontWeight: "700",
+                                },
+                            ],
+                            "body-sm": [
+                                "14px",
+                                { lineHeight: "20px", fontWeight: "400" },
+                            ],
+                            "headline-sm": [
+                                "20px",
+                                { lineHeight: "28px", fontWeight: "600" },
+                            ],
+                            "body-lg": [
+                                "18px",
+                                { lineHeight: "28px", fontWeight: "400" },
+                            ],
+                            "display-lg": [
+                                "48px",
+                                {
+                                    lineHeight: "56px",
+                                    letterSpacing: "-0.02em",
+                                    fontWeight: "800",
+                                },
+                            ],
+                            "body-md": [
+                                "16px",
+                                { lineHeight: "24px", fontWeight: "400" },
+                            ],
+                            "price-display": [
+                                "28px",
+                                { lineHeight: "34px", fontWeight: "700" },
+                            ],
+                        },
+                    },
+                },
+            };
+        </script>
+        <style>
+            body {
+                background-color: #0c1014;
+                color: #ffffff;
+                font-family: "Inter", sans-serif;
+                overflow-x: hidden;
+            }
+            .material-symbols-outlined {
+                font-variation-settings:
+                    "FILL" 0,
+                    "wght" 400,
+                    "GRAD" 0,
+                    "opsz" 24;
+                vertical-align: middle;
+            }
+            .glass-card {
+                background: rgba(255, 255, 255, 0.03);
+                backdrop-filter: blur(20px);
+                border: 1px solid rgba(255, 255, 255, 0.05);
+            }
+            .premium-border {
+                border: 1px solid rgba(7, 217, 196, 0.2);
+            }
+            .gradient-text {
+                background: linear-gradient(to right, #07d9c4, #e0e938);
+                -webkit-background-clip: text;
+                -webkit-text-fill-color: transparent;
+            }
+            .hero-glow {
+                background: radial-gradient(
+                    circle at center,
+                    rgba(7, 217, 196, 0.08) 0%,
+                    transparent 70%
+                );
+            }
+            .screen-shadow {
+                box-shadow: 0 40px 80px -20px rgba(0, 0, 0, 0.8);
+            }
+            .app-store-btn {
+                background: #000000;
+                border: 1px solid rgba(255, 255, 255, 0.1);
+                transition: all 0.2s ease;
+            }
+            .app-store-btn:hover {
+                border-color: rgba(255, 255, 255, 0.3);
+                transform: translateY(-2px);
+            }
+        </style>
+    </head>
+    <body class="dark selection:bg-primary/30">
+        <!-- Navigation -->
+        <nav
+            class="fixed top-0 w-full z-50 border-b border-white/5 bg-background/80 backdrop-blur-xl"
+        >
+            <div
+                class="flex justify-between items-center w-full px-6 md:px-16 max-w-7xl mx-auto h-20"
+            >
+                <div class="h-8 md:h-10">
+                    <img
+                        alt="Vallax Logo"
+                        class="h-full w-auto object-contain"
+                        src="https://lh3.googleusercontent.com/aida-public/AB6AXuDKX3VKFkowjvRf7vNh6p-BVPhlv8DpoifTUxkZhYnrEvduouQz7XbhC9YGnmvP5fgVHwsls_X9MyRstFG28BGMjCBfCM5HpCAfuqXP1Pz-RSjGrcpRhi9uLWeG9p3WJ_pK2MZMvyr12fGJhzcX3e6a0coITK1nXA6Zd1W1PXcg8w7leEu3DQlrfFTtf5wkMHk-PhkevuUODiMFudoFgOg5Tnzc2jQYacAyP_JmQLSCMMD-e6fB4Ejs8EtgSKoFutPIMw"
+                    />
+                </div>
+                <div class="hidden md:flex gap-10 items-center">
+                    <a
+                        class="text-sm font-semibold text-on-surface-variant hover:text-primary transition-colors"
+                        href="#"
+                        >App</a
+                    >
+                    <a
+                        class="text-sm font-semibold text-on-surface-variant hover:text-primary transition-colors"
+                        href="#features"
+                        >Beneficios</a
+                    >
+                    <a
+                        class="text-sm font-semibold text-on-surface-variant hover:text-primary transition-colors"
+                        href="#pricing"
+                        >Precios</a
+                    >
+                    <a
+                        class="text-sm font-semibold text-on-surface-variant hover:text-primary transition-colors"
+                        href="#community"
+                        >Comunidad</a
+                    >
+                </div>
+                <button
+                    class="bg-primary text-on-primary px-6 py-2.5 rounded-full font-bold text-sm hover:brightness-110 active:scale-95 transition-all"
+                >
+                    Descargar App
+                </button>
+            </div>
+        </nav>
+        <main>
+            <!-- Hero Section -->
+            <section
+                class="relative pt-32 pb-20 md:pt-48 md:pb-40 overflow-hidden px-6 md:px-16"
+            >
+                <div
+                    class="absolute top-0 left-1/2 -translate-x-1/2 w-full h-full hero-glow -z-10 transition-all duration-1000 opacity-100 translate-y-0"
+                ></div>
+                <div
+                    class="max-w-7xl mx-auto grid lg:grid-cols-12 gap-16 items-center transition-all duration-1000 opacity-100 translate-y-0"
+                >
+                    <div class="lg:col-span-7 space-y-10">
+                        <div
+                            class="inline-flex items-center gap-3 px-4 py-1.5 rounded-full bg-white/5 border border-white/10 text-primary text-xs font-bold tracking-wide uppercase"
+                        >
+                            <span class="relative flex h-2 w-2">
+                                <span
+                                    class="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary opacity-75"
+                                ></span>
+                                <span
+                                    class="relative inline-flex rounded-full h-2 w-2 bg-primary"
+                                ></span>
+                            </span>
+                            Ya disponible en iOS y Android
+                        </div>
+                        <h1
+                            class="text-5xl md:text-7xl font-black leading-[1.05] tracking-tight text-white"
+                        >
+                            Caza chollos en
+                            <span class="gradient-text">tiempo real</span> sin
+                            esfuerzo.
+                        </h1>
+                        <p
+                            class="text-lg md:text-xl text-on-surface-variant max-w-2xl leading-relaxed"
+                        >
+                            Monitoriza Wallapop, Vinted y más en milisegundos.
+                            Nuestros servidores escanean las plataformas 24/7
+                            para que tú solo tengas que recibir el aviso y
+                            comprar.
+                        </p>
+                        <div class="flex flex-col sm:flex-row gap-4">
+                            <!-- App Store -->
+                            <a
+                                class="app-store-btn flex items-center gap-3 px-6 py-3 rounded-xl"
+                                href="#"
+                            >
+                                <svg
+                                    class="w-8 h-8 fill-white"
+                                    viewBox="0 0 384 512"
+                                >
+                                    <path
+                                        d="M318.7 268.7c-.2-36.7 16.4-64.4 50-84.8-18.8-26.9-47.2-41.7-84.7-44.6-35.5-2.8-74.3 21.8-88.5 21.8-11.4 0-51.1-20.8-82-20.8C73.1 140.3 0 206.5 0 321.4c0 102.8 54.9 220.5 116.8 220.5 32.7 0 63.8-20.8 100.8-20.8 34.6 0 62.4 19.3 98.7 19.3 64.9 0 114.7-106.6 114.7-106.6-1.5-.7-82.6-32.3-83.3-125.1zm-83.4-188.1c32.7-38.3 29.5-74.7 29.5-74.7s-35.1 1.7-65.7 37.1c-29.2 33.7-25.5 70.4-25.5 70.4s32.6 3.6 61.7-32.8z"
+                                    ></path>
+                                </svg>
+                                <div class="text-left">
+                                    <p
+                                        class="text-[10px] uppercase font-bold opacity-60 leading-none"
+                                    >
+                                        Descargar en
+                                    </p>
+                                    <p class="text-lg font-bold leading-tight">
+                                        App Store
+                                    </p>
+                                </div>
+                            </a>
+                            <!-- Play Store -->
+                            <a
+                                class="app-store-btn flex items-center gap-3 px-6 py-3 rounded-xl"
+                                href="#"
+                            >
+                                <svg
+                                    class="w-8 h-8 fill-white"
+                                    viewBox="0 0 512 512"
+                                >
+                                    <path
+                                        d="M325.3 234.3L104.6 13l280.8 161.2-60.1 60.1zM47 0C34 6.8 25.3 19.2 25.3 35.3v441.3c0 16.1 8.7 28.5 21.7 35.3l256.6-256L47 0zm425.2 225.6l-58.9-34.1-65.7 64.5 65.7 64.5 60.1-34.1c18-14.3 18-46.5-1.2-60.8zM104.6 499l220.7-121.2-60.7-60.7L104.6 499z"
+                                    ></path>
+                                </svg>
+                                <div class="text-left">
+                                    <p
+                                        class="text-[10px] uppercase font-bold opacity-60 leading-none"
+                                    >
+                                        Disponible en
+                                    </p>
+                                    <p class="text-lg font-bold leading-tight">
+                                        Google Play
+                                    </p>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                    <!-- High-fidelity Composition with App Screenshots -->
+                    <div class="lg:col-span-5 relative">
+                        <div
+                            class="relative w-full aspect-[4/5] flex items-center justify-center"
+                        >
+                            <!-- Main Phone (Avisos) -->
+                            <div
+                                class="absolute z-20 w-[65%] left-0 bottom-4 rotate-[-4deg] hover:rotate-0 transition-transform duration-500"
+                            >
+                                <div
+                                    class="rounded-[2.5rem] p-2 bg-[#0C1014] border-[6px] border-[#1C2127] screen-shadow overflow-hidden aspect-[9/19]"
+                                >
+                                    <img
+                                        alt="Vallax Avisos"
+                                        class="w-full rounded-[1.8rem]"
+                                        src="https://lh3.googleusercontent.com/aida-public/AB6AXuAJfRvDRBMDZSoULU-WhFAI-XuIyuPOn7DJOAVJIv7e59Nloxt1AQDzjRqxAUmlhGWGKb0V0i3JCEUjnRKsXfethJTWASJ5mGsvjNBNlGpylE9lEpX4piVeO1whiPtYJ_RAEihuN0pE0NY5a2JRBMH-sr_gVbZkM-J905ZkOBoZJMou-TK-B3CZ2_NA_xg-wevbvM6KdIQ9Y01mu_C9F5nsET4LVv07gq77UrmR2zX2hzcW4dsPs-RxZmuykxtWcxMkIA"
+                                        style="
+                                            object-fit: cover;
+                                            object-position: center 8%;
+                                            height: 100%;
+                                        "
+                                    />
+                                </div>
+                            </div>
+                            <!-- Secondary Phone (Favoritos) -->
+                            <div
+                                class="absolute z-10 w-[60%] right-0 top-4 rotate-[6deg] hover:rotate-0 transition-transform duration-500"
+                            >
+                                <div
+                                    class="rounded-[2.5rem] p-2 bg-[#0C1014] border-[6px] border-[#1C2127] screen-shadow overflow-hidden aspect-[9/19]"
+                                >
+                                    <img
+                                        alt="Vallax Favoritos"
+                                        class="w-full rounded-[1.8rem]"
+                                        src="https://lh3.googleusercontent.com/aida-public/AB6AXuAa5WZdG2-2WSR3M-c_x2VR9XipvZ5pc-c7Fnf-1PMSjTFeioGBAr6-qyCtD5PRGIKX8F7Yo6mP41TtQQKPAfKA66Su0mk7S1v6RCraIWW2FrNpOi0EgAGmWDt-16aaEAxhW53fqTJFUiqXgBRe1eNI3ZeB8OBh5i6fu72GCKmryzxOVa3QEO40k6fH71uQ1eHK3Noa4JPVSHaB4oYA5ZgL7zwTpI2zRMuJMXac17dNDXvfpW-7VMbGu-R3-GJyloRl4w"
+                                        style="
+                                            object-fit: cover;
+                                            object-position: center 8%;
+                                            height: 100%;
+                                        "
+                                    />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <!-- Platforms Section -->
+            <section class="py-16 border-y border-white/5 bg-black/20">
+                <div
+                    class="max-w-7xl mx-auto px-6 md:px-16 text-center transition-all duration-1000 opacity-100 translate-y-0"
+                >
+                    <p
+                        class="text-[10px] text-on-surface-variant font-bold uppercase tracking-[0.2em] mb-12 opacity-60"
+                    >
+                        Plataformas soportadas
+                    </p>
+                    <div
+                        class="flex flex-wrap justify-center items-center gap-x-12 gap-y-8 md:gap-x-24"
+                    >
+                        <img
+                            alt="Wallapop"
+                            class="h-8 md:h-10 opacity-70 hover:opacity-100 transition-opacity"
+                            src="https://lh3.googleusercontent.com/aida-public/AB6AXuDjnKQ-g7rHnzBBURhblgdf-QL0o6HvxGM4vukddO00hwB6s2Z3KemNh7wnm-gmmpheLRLVmhrwV1pMnbK2qK0q6Y-KCpTg4YlRmlCS9-eiHTDjSmtG34LPVc_uOipuhjudVSfJydzPrBplcF4DsAQecn5a0u3AM1YO_bz3AXn7pspPKUxLR__uXwbxSi9mjlPuQZsjAEmSh7MY31be4T2wKDiRPhJzGbjBxOdrdUXQUmrNgHeC_2INtZxtqfH8RnnZqw"
+                        />
+                        <img
+                            alt="Vinted"
+                            class="h-8 md:h-10 opacity-70 hover:opacity-100 transition-opacity"
+                            src="https://lh3.googleusercontent.com/aida-public/AB6AXuAb4-AgAUzjf3rdTTqWkldBYCebouevd7zInN-gTnLTdUrAlcbr7pZf31ya_hv2mltlEzL69rGoYNJBHi2mpyqW9gfuZP_EthMQBD0K66PiEKaX-TfCrEyhO6k9JEXksp1WP0ZRizWIXGDSbWovqNUt67nKpTvkTzza8k7NcjBP_Ij-1SAkSf1GfVT3lsFkGc_MI8OOVhcYGf4CC96PpjYOppNBdbNKtYVezWQb1yQOwUoXekgooAfY9KW1RlgATnvwYQ"
+                        />
+                        <img
+                            alt="Todocoleccion"
+                            class="h-8 md:h-10 opacity-70 hover:opacity-100 transition-opacity"
+                            src="https://lh3.googleusercontent.com/aida-public/AB6AXuB_qoEcnPN_OwTpf3pK4z-V3M5TaRgZUGdGNM3b4gWC9gC2YYJkR0cCl4wyRtcvMxDRLzlI42Ngmnit7JTzeEOMmpbkd33i-VlLy-vkEXxUkUkF735SMpzaPxCdauPlK0T4ca1Tm_YbHKH5cVXSqvwb328T_1p0eQ0SvIS_-yNh_OgI9KJRHUh-WpK7o4CGuou4Jqif0BxWFHRDBx0xfbzkBytM7u8g8m3FHl1YJoDDiSrfECXtnvNMadYXs6zM3QCVCQ"
+                        />
+                        <img
+                            alt="Milanuncios"
+                            class="h-8 md:h-10 opacity-70 hover:opacity-100 transition-opacity"
+                            src="https://lh3.googleusercontent.com/aida-public/AB6AXuAdopja5TqPirFFDNIA3IHrKvGIEohdECF2hzBxZYsS6CaKAYOWIga-L0pZPw83DXiF5FXl93C7xnrCn04bx_9A16OOREHP2X-k-CeJwNWLLyt9bKvP1wna-zfO7egAN6XtQYMfxnSaape6IAXk4_OnX96Rtov-ijSuVwsWguGrh2hX9n3gBs02O8xFtfZcN_wyZHFo4ggByk3OyH6z1YzaJA2viyh3-kH7CEzDkytkDC4h4s8c4JlqeeEDcYnHXfUSPw"
+                        />
+                    </div>
+                </div>
+            </section>
+            <!-- Features Section -->
+            <section
+                class="py-32 px-6 md:px-16 max-w-7xl mx-auto"
+                id="features"
+            >
+                <div
+                    class="text-center mb-20 space-y-4 transition-all duration-1000 opacity-100 translate-y-0"
+                >
+                    <h2
+                        class="text-4xl md:text-5xl font-black tracking-tight text-white"
+                    >
+                        Diseñado para profesionales.
+                    </h2>
+                    <p
+                        class="text-on-surface-variant text-lg max-w-2xl mx-auto"
+                    >
+                        Toda la potencia de búsqueda avanzada, simplificada en
+                        una experiencia móvil excepcional.
+                    </p>
+                </div>
+                <div
+                    class="grid md:grid-cols-3 gap-8 transition-all duration-1000 opacity-100 translate-y-0"
+                >
+                    <!-- Alertas Multiplataforma -->
+                    <div
+                        class="glass-card p-10 rounded-3xl hover:premium-border transition-all group"
+                    >
+                        <div
+                            class="w-14 h-14 rounded-2xl bg-primary/10 flex items-center justify-center mb-8 group-hover:scale-110 transition-transform"
+                        >
+                            <span
+                                class="material-symbols-outlined text-primary text-3xl"
+                                >layers</span
+                            >
+                        </div>
+                        <h3 class="text-2xl font-bold mb-4">
+                            Alertas Multiplataforma
+                        </h3>
+                        <p class="text-on-surface-variant leading-relaxed">
+                            Crea alertas que rastrean Wallapop, Vinted,
+                            Milanuncios y Todocoleccion simultáneamente. Un solo
+                            lugar para controlarlo todo.
+                        </p>
+                    </div>
+                    <!-- Tiempo Real -->
+                    <div
+                        class="glass-card p-10 rounded-3xl hover:premium-border transition-all group"
+                    >
+                        <div
+                            class="w-14 h-14 rounded-2xl bg-primary/10 flex items-center justify-center mb-8 group-hover:scale-110 transition-transform"
+                        >
+                            <span
+                                class="material-symbols-outlined text-primary text-3xl"
+                                >bolt</span
+                            >
+                        </div>
+                        <h3 class="text-2xl font-bold mb-4 text-white">
+                            Tiempo Real
+                        </h3>
+                        <p class="text-on-surface-variant leading-relaxed">
+                            Recibe una notificación push en el segundo exacto en
+                            que un vendedor publica su anuncio. La velocidad es
+                            la clave.
+                        </p>
+                    </div>
+                    <!-- Simplicidad -->
+                    <div
+                        class="glass-card p-10 rounded-3xl hover:premium-border transition-all group"
+                    >
+                        <div
+                            class="w-14 h-14 rounded-2xl bg-primary/10 flex items-center justify-center mb-8 group-hover:scale-110 transition-transform"
+                        >
+                            <span
+                                class="material-symbols-outlined text-primary text-3xl"
+                                >touch_app</span
+                            >
+                        </div>
+                        <h3 class="text-2xl font-bold mb-4">Simplicidad</h3>
+                        <p class="text-on-surface-variant leading-relaxed">
+                            Gestiona tus alertas y favoritos desde una interfaz
+                            móvil limpia e intuitiva diseñada para la máxima
+                            eficiencia.
+                        </p>
+                    </div>
+                </div>
+            </section>
+            <!-- Pricing Section -->
+            <section class="py-32 px-6 md:px-16 max-w-7xl mx-auto" id="pricing">
+                <div
+                    class="text-center mb-20 space-y-4 transition-all duration-1000 opacity-100 translate-y-0"
+                >
+                    <h2
+                        class="text-4xl md:text-5xl font-black tracking-tight text-white"
+                    >
+                        Planes de potencia
+                    </h2>
+                    <p class="text-on-surface-variant text-lg">
+                        Empieza gratis y escala a medida que tu pasión por los
+                        chollos crezca.
+                    </p>
+                </div>
+                <div
+                    class="grid md:grid-cols-3 gap-8 items-stretch transition-all duration-1000 opacity-100 translate-y-0"
+                >
+                    <!-- Free Plan -->
+                    <div
+                        class="glass-card p-10 rounded-[2rem] flex flex-col border border-white/5"
+                    >
+                        <div class="mb-8">
+                            <h3 class="text-xl font-bold mb-2">Gratuito</h3>
+                            <div class="flex items-baseline gap-1">
+                                <span class="text-5xl font-black text-white"
+                                    >0€</span
+                                >
+                                <span class="text-on-surface-variant font-bold"
+                                    >/mes</span
+                                >
+                            </div>
+                        </div>
+                        <ul class="space-y-5 mb-10 flex-grow">
+                            <li
+                                class="flex items-center gap-3 text-sm text-on-surface-variant"
+                            >
+                                <span
+                                    class="material-symbols-outlined text-primary text-xl"
+                                    >check</span
+                                >
+                                3 alertas guardadas
+                            </li>
+                            <li
+                                class="flex items-center gap-3 text-sm text-on-surface-variant"
+                            >
+                                <span
+                                    class="material-symbols-outlined text-primary text-xl"
+                                    >check</span
+                                >
+                                1 alerta activa
+                            </li>
+                            <li
+                                class="flex items-center gap-3 text-sm text-on-surface-variant"
+                            >
+                                <span
+                                    class="material-symbols-outlined text-primary text-xl"
+                                    >check</span
+                                >
+                                5 palabras clave
+                            </li>
+                        </ul>
+                        <button
+                            class="w-full bg-white/5 border border-white/10 text-white py-4 rounded-2xl font-bold hover:bg-white/10 transition-all"
+                        >
+                            Empezar gratis
+                        </button>
+                    </div>
+                    <!-- Premium Plan -->
+                    <div
+                        class="relative glass-card p-10 rounded-[2rem] flex flex-col border-2 border-primary shadow-[0_0_40px_-10px_rgba(7,217,196,0.3)]"
+                    >
+                        <div
+                            class="absolute -top-4 left-1/2 -translate-x-1/2 bg-primary text-on-primary px-4 py-1.5 rounded-full text-[10px] font-black uppercase tracking-widest"
+                        >
+                            Recomendado
+                        </div>
+                        <div class="mb-8">
+                            <h3 class="text-xl font-bold mb-2 text-primary">
+                                Premium
+                            </h3>
+                            <div class="flex items-baseline gap-1">
+                                <span class="text-5xl font-black text-white"
+                                    >9.99€</span
+                                >
+                                <span class="text-on-surface-variant font-bold"
+                                    >/mes</span
+                                >
+                            </div>
+                        </div>
+                        <ul class="space-y-5 mb-10 flex-grow">
+                            <li
+                                class="flex items-center gap-3 text-sm text-white font-semibold"
+                            >
+                                <span
+                                    class="material-symbols-outlined text-primary text-xl font-bold"
+                                    >check</span
+                                >
+                                15 alertas activas
+                            </li>
+                            <li
+                                class="flex items-center gap-3 text-sm text-white font-semibold"
+                            >
+                                <span
+                                    class="material-symbols-outlined text-primary text-xl font-bold"
+                                    >check</span
+                                >
+                                Todas las plataformas
+                            </li>
+                            <li
+                                class="flex items-center gap-3 text-sm text-white font-semibold"
+                            >
+                                <span
+                                    class="material-symbols-outlined text-primary text-xl font-bold"
+                                    >check</span
+                                >
+                                Filtros avanzados
+                            </li>
+                            <li
+                                class="flex items-center gap-3 text-sm text-white font-semibold"
+                            >
+                                <span
+                                    class="material-symbols-outlined text-primary text-xl font-bold"
+                                    >check</span
+                                >
+                                Notificaciones prioritarias
+                            </li>
+                            <li
+                                class="flex items-center gap-3 text-sm text-secondary font-bold uppercase tracking-wide"
+                            >
+                                <span
+                                    class="material-symbols-outlined text-secondary text-xl font-bold"
+                                    >bolt</span
+                                >
+                                Speed boost activado
+                            </li>
+                        </ul>
+                        <button
+                            class="w-full bg-primary text-on-primary py-4 rounded-2xl font-bold hover:brightness-110 transition-all"
+                        >
+                            Activar Premium
+                        </button>
+                    </div>
+                    <!-- Custom Plan -->
+                    <div
+                        class="glass-card p-10 rounded-[2rem] flex flex-col border border-white/5"
+                    >
+                        <div class="mb-8">
+                            <h3 class="text-xl font-bold mb-2">Tailored</h3>
+                            <div class="flex items-baseline gap-1">
+                                <span class="text-4xl font-black text-white"
+                                    >A medida</span
+                                >
+                            </div>
+                        </div>
+                        <ul class="space-y-5 mb-10 flex-grow">
+                            <li
+                                class="flex items-center gap-3 text-sm text-on-surface-variant"
+                            >
+                                <span
+                                    class="material-symbols-outlined text-primary text-xl"
+                                    >check</span
+                                >
+                                Automatización vía API
+                            </li>
+                            <li
+                                class="flex items-center gap-3 text-sm text-on-surface-variant"
+                            >
+                                <span
+                                    class="material-symbols-outlined text-primary text-xl"
+                                    >check</span
+                                >
+                                Soporte prioritario 24/7
+                            </li>
+                        </ul>
+                        <button
+                            class="w-full bg-white/5 border border-white/10 text-white py-4 rounded-2xl font-bold hover:bg-white/10 transition-all"
+                        >
+                            Contactar
+                        </button>
+                    </div>
+                </div>
+            </section>
+            <!-- Community Section -->
+            <section class="py-32 px-6 md:px-16" id="community">
+                <div
+                    class="max-w-7xl mx-auto transition-all duration-1000 opacity-100 translate-y-0"
+                >
+                    <div
+                        class="glass-card rounded-3xl p-8 md:p-12 flex flex-col md:flex-row items-center justify-between gap-8 border border-white/10"
+                    >
+                        <div class="text-left space-y-2">
+                            <h2
+                                class="text-3xl font-black tracking-tight text-white"
+                            >
+                                Communidad de Telegram
+                            </h2>
+                            <p class="text-on-surface-variant text-sm max-w-md">
+                                Entra para estar al día de las actualizaciones,
+                                proponer mejoras y compartir alertas con otros
+                                usuarios de Vallax.
+                            </p>
+                        </div>
+                        <button
+                            class="bg-[#26A5E4] text-white px-8 py-4 rounded-xl font-bold text-md flex items-center justify-center gap-3 hover:shadow-xl hover:shadow-[#26A5E4]/20 transition-all active:scale-95 whitespace-nowrap"
+                        >
+                            <svg
+                                class="w-5 h-5 fill-current"
+                                viewBox="0 0 24 24"
+                            >
+                                <path
+                                    d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.894 8.221l-1.97 9.28c-.145.658-.537.818-1.084.508l-3-2.21-1.446 1.394c-.14.14-.26.26-.53.26l.195-2.934 5.432-4.909c.236-.21-.054-.327-.368-.118L6.421 12.83l-2.85-.892c-.61-.19-.623-.61.127-.905l11.134-4.292c.515-.19.965.115.762.98z"
+                                ></path>
+                            </svg>
+                            Unirme
+                        </button>
+                    </div>
+                </div>
+            </section>
+        </main>
+        <!-- Footer -->
+        <footer class="w-full py-20 border-t border-white/5 bg-black/40">
+            <div class="max-w-7xl mx-auto px-6 md:px-16">
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-12 mb-16">
+                    <div class="col-span-2 space-y-6">
+                        <div class="h-8 md:h-10 mb-6">
+                            <img
+                                alt="Vallax Logo"
+                                class="h-full w-auto object-contain"
+                                src="https://lh3.googleusercontent.com/aida-public/AB6AXuCAYdeMblOVNiHChFPC2qOW-PCkzGZEhws9oxnJN-pM6-hNh2JANWMpd2VADwCq8LuSpmso9VRNZtX-ZNhpKTEd93GrXXAnHA6vCPgpJgQrCy_uteZuQO0RBAT9C4I3N0w5eiN2fGCQy6EKlzLrImu3vixnVZEi2jWexbsTGVwWrDyqpkEg06CkW_X32sYi9wZp_4WqWBUHyaYOsc_6U24eNUCdMW1iPx2KatHA15M7XnOZS54afD8xVYpUTTCjIj5igQ"
+                            />
+                        </div>
+                        <p class="text-on-surface-variant text-sm max-w-xs">
+                            La herramienta definitiva para cazadores de chollos.
+                            La app más rápida del mercado para profesionales.
+                        </p>
+                        <div class="flex gap-4">
+                            <a
+                                class="w-10 h-10 rounded-xl bg-white/5 flex items-center justify-center hover:bg-primary/20 hover:text-primary transition-all"
+                                href="#"
+                            >
+                                <span class="material-symbols-outlined"
+                                    >public</span
+                                >
+                            </a>
+                            <a
+                                class="w-10 h-10 rounded-xl bg-white/5 flex items-center justify-center hover:bg-primary/20 hover:text-primary transition-all"
+                                href="#"
+                            >
+                                <span class="material-symbols-outlined"
+                                    >alternate_email</span
+                                >
+                            </a>
+                        </div>
+                    </div>
+                    <div class="space-y-6">
+                        <h4
+                            class="text-xs font-black uppercase tracking-widest text-white"
+                        >
+                            Producto
+                        </h4>
+                        <ul class="space-y-4">
+                            <li class="">
+                                <a
+                                    class="text-sm text-on-surface-variant hover:text-primary transition-colors"
+                                    href="#"
+                                    >Descargar</a
+                                >
+                            </li>
+                            <li class="">
+                                <a
+                                    class="text-sm text-on-surface-variant hover:text-primary transition-colors"
+                                    href="#features"
+                                    >Beneficios</a
+                                >
+                            </li>
+                            <li class="">
+                                <a
+                                    class="text-sm text-on-surface-variant hover:text-primary transition-colors"
+                                    href="#pricing"
+                                    >Planes</a
+                                >
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="space-y-6">
+                        <h4
+                            class="text-xs font-black uppercase tracking-widest text-white"
+                        >
+                            Legal
+                        </h4>
+                        <ul class="space-y-4">
+                            <li class="">
+                                <a
+                                    class="text-sm text-on-surface-variant hover:text-primary transition-colors"
+                                    href="#"
+                                    >Privacidad</a
+                                >
+                            </li>
+                            <li class="">
+                                <a
+                                    class="text-sm text-on-surface-variant hover:text-primary transition-colors"
+                                    href="#"
+                                    >Términos</a
+                                >
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div
+                    class="pt-10 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-6"
+                >
+                    <p class="text-xs text-on-surface-variant font-medium">
+                        © 2024 Vallax. Potencia tus compras.
+                    </p>
+                    <div class="flex gap-8">
+                        <span
+                            class="text-[10px] text-secondary font-black uppercase tracking-tighter"
+                            >Hecho con ❤️ para cazadores</span
+                        >
+                    </div>
+                </div>
+            </div>
+        </footer>
+        <script>
+            // Smooth scroll
+            document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+                anchor.addEventListener("click", function (e) {
+                    e.preventDefault();
+                    const target = document.querySelector(
+                        this.getAttribute("href"),
+                    );
+                    if (target) {
+                        target.scrollIntoView({ behavior: "smooth" });
+                    }
+                });
+            });
+
+            // Simple Fade-in animation on scroll
+            const observerOptions = { threshold: 0.1 };
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach((entry) => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add(
+                            "opacity-100",
+                            "translate-y-0",
+                        );
+                        entry.target.classList.remove(
+                            "opacity-0",
+                            "translate-y-10",
+                        );
+                    }
+                });
+            }, observerOptions);
+
+            document.querySelectorAll("section > div").forEach((el) => {
+                el.classList.add(
+                    "transition-all",
+                    "duration-1000",
+                    "opacity-0",
+                    "translate-y-10",
+                );
+                observer.observe(el);
+            });
+        </script>
+    </body>
+</html>
