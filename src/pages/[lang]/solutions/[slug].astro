@@ -1,0 +1,107 @@
+---
+import LandingLayout from "../../../layouts/LandingLayout.astro";
+import { translations, isLocale, locales, type Locale } from "../../../i18n";
+import { solutionPages, seoUi } from "../../../data/seo-pages";
+
+export function getStaticPaths() {
+    return locales.flatMap((locale) =>
+        solutionPages.map((page) => ({
+            params: { lang: locale, slug: page.slug },
+        })),
+    );
+}
+
+const paramLang = Astro.params.lang;
+const locale: Locale = isLocale(paramLang) ? paramLang : "es";
+const t = translations[locale];
+const ui = seoUi[locale];
+const slug = Astro.params.slug ?? "";
+const currentPage = solutionPages.find((page) => page.slug === slug);
+
+if (!currentPage) {
+    throw new Error(`Unknown solution page: ${slug}`);
+}
+
+const copy = currentPage.locale[locale];
+const relatedPages = solutionPages.filter((page) => page.slug !== slug).slice(0, 2);
+const homeHref = `/${locale}/`;
+const pageSeo = {
+    title: `Vallax - ${copy.title}`,
+    description: copy.description,
+};
+---
+
+<LandingLayout lang={locale} seo={pageSeo} navbar={t.navbar} footer={t.footer}>
+    <section class="bg-background/80 px-6 pb-24 pt-36 text-white md:px-16">
+        <div class="mx-auto max-w-5xl">
+            <p class="text-xs uppercase tracking-[0.25em] text-primary/80">
+                {ui.solutionGroupTitle}
+            </p>
+            <h1 class="mt-3 text-4xl font-semibold tracking-tight md:text-5xl">
+                {copy.title}
+            </h1>
+            <p class="mt-5 max-w-3xl text-lg text-white/70">
+                {copy.description}
+            </p>
+
+            <div class="mt-12 grid gap-8 lg:grid-cols-[1.5fr_0.9fr]">
+                <article class="rounded-3xl border border-white/10 bg-white/5 p-8">
+                    <p class="text-white/80">{copy.intro}</p>
+                    <h2 class="mt-8 text-2xl font-semibold text-white">
+                        {ui.keyPointsTitle}
+                    </h2>
+                    <ul class="mt-5 space-y-4 text-white/75">
+                        {
+                            copy.bullets.map((bullet) => (
+                                <li class="flex gap-3">
+                                    <span class="material-symbols-outlined text-primary">
+                                        check_circle
+                                    </span>
+                                    <span>{bullet}</span>
+                                </li>
+                            ))
+                        }
+                    </ul>
+                    <a
+                        href={homeHref}
+                        class="mt-8 inline-flex items-center gap-2 rounded-2xl bg-primary px-6 py-3 font-semibold text-on-primary transition hover:brightness-110"
+                    >
+                        {copy.cta}
+                    </a>
+                </article>
+
+                <aside class="rounded-3xl border border-white/10 bg-white/5 p-8">
+                    <h2 class="text-xl font-semibold text-white">
+                        {ui.relatedTitle}
+                    </h2>
+                    <div class="mt-5 space-y-4">
+                        {
+                            relatedPages.map((page) => (
+                                <a
+                                    href={`/${locale}/solutions/${page.slug}/`}
+                                    class="block rounded-2xl border border-white/8 bg-white/5 p-4 transition hover:border-primary/40 hover:bg-white/10"
+                                >
+                                    <p class="font-medium text-white">
+                                        {page.locale[locale].title}
+                                    </p>
+                                    <p class="mt-2 text-sm text-white/60">
+                                        {page.locale[locale].description}
+                                    </p>
+                                </a>
+                            ))
+                        }
+                        <a
+                            href={`/${locale}/platforms/`}
+                            class="inline-flex items-center gap-2 pt-2 text-sm font-semibold text-primary"
+                        >
+                            {ui.openGroup} {ui.platformGroupTitle.toLowerCase()}
+                            <span class="material-symbols-outlined text-base">
+                                arrow_forward
+                            </span>
+                        </a>
+                    </div>
+                </aside>
+            </div>
+        </div>
+    </section>
+</LandingLayout>

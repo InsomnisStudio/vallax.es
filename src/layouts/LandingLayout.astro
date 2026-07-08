@@ -1,7 +1,6 @@
 ---
 import "/src/assets/css/styles.css";
-import Navbar from "../components/sections/Navbar.astro";
-import Footer from "../components/sections/Footer.astro";
+import Logo from "../images/logo_vertical.svg";
 import { locales, type Translation, type Locale } from "../i18n";
 
 interface Props {
@@ -9,10 +8,9 @@ interface Props {
     seo: Translation["seo"];
     navbar: Translation["navbar"];
     footer: Translation["footer"];
-    faq?: Translation["faq"];
 }
 
-const { lang, seo, navbar, footer, faq } = Astro.props as Props;
+const { lang, seo, navbar, footer } = Astro.props as Props;
 const site = Astro.site ?? new URL("https://vallax.es");
 const hreflangByLocale: Record<Locale, string> = {
     es: "es-ES",
@@ -37,12 +35,19 @@ const localeAlternates = locales.map((locale) => {
     };
 });
 const canonical = new URL(`/${lang}${pathWithoutLocale}`, site);
+const homeHref = `/${lang}/`;
+const languageLinks = localeAlternates.map((alternate) => ({
+    href: alternate.url.pathname,
+    hreflang: alternate.hreflang,
+    locale: alternate.locale,
+    isCurrent: alternate.locale === lang,
+}));
+const currentLanguage = languageLinks.find((link) => link.isCurrent) ?? languageLinks[0];
 ---
 
 <!doctype html>
 <html lang={lang}>
     <head>
-        <!-- Google tag (gtag.js) -->
         <script
             async
             src="https://www.googletagmanager.com/gtag/js?id=AW-17380125186"
@@ -50,18 +55,15 @@ const canonical = new URL(`/${lang}${pathWithoutLocale}`, site);
 
         <script is:inline>
             window.dataLayer = window.dataLayer || [];
-
             window.gtag = function () {
                 window.dataLayer.push(arguments);
             };
-
             window.gtag("js", new Date());
             window.gtag("config", "AW-17380125186");
         </script>
 
         <script is:inline>
             window.gtag_report_conversion = function (url) {
-                console.log("here");
                 var callback = function () {
                     if (typeof url !== "undefined") {
                         window.location = url;
@@ -77,7 +79,6 @@ const canonical = new URL(`/${lang}${pathWithoutLocale}`, site);
             };
         </script>
 
-        <!-- Charset & Viewport -->
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
 
@@ -101,36 +102,277 @@ const canonical = new URL(`/${lang}${pathWithoutLocale}`, site);
 
         <meta name="robots" content="index,follow,max-image-preview:large" />
         <meta name="googlebot" content="index,follow" />
-
-        <!-- Light mode favicon -->
-        <link
-            rel="icon"
-            href="/favicon-l.svg"
-        />
-        <!-- Dark mode favicon -->
+        <link rel="icon" href="/favicon-l.svg" />
         <link
             rel="icon"
             href="/favicon-d.svg"
             media="(prefers-color-scheme: dark)"
         />
-
         <meta name="theme-color" content="#07D9C4" />
-
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
         <link
-            href="https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&display=swap"
+            href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap"
             rel="stylesheet"
         />
     </head>
-    <body>
-        <header>
-            <Navbar t={navbar} lang={lang} />
-        </header>
+    <body class="dark selection:bg-primary/30">
+        <nav
+            class="fixed top-0 z-50 w-full border-b border-white/5 bg-background/80 backdrop-blur-xl"
+        >
+            <div
+                class="mx-auto flex h-20 w-full max-w-7xl items-center justify-between px-6 md:px-16"
+            >
+                <a href={homeHref} class="flex h-8 items-center md:h-10">
+                    <Logo class="site-logo" />
+                </a>
+                <div class="hidden items-center gap-10 md:flex">
+                    <a
+                        class="text-sm font-semibold text-on-surface-variant transition-colors hover:text-primary"
+                        href={homeHref}
+                    >
+                        {navbar.links.home}
+                    </a>
+                    <a
+                        class="text-sm font-semibold text-on-surface-variant transition-colors hover:text-primary"
+                        href={`${homeHref}#features`}
+                    >
+                        {navbar.links.features}
+                    </a>
+                    <a
+                        class="text-sm font-semibold text-on-surface-variant transition-colors hover:text-primary"
+                        href={`${homeHref}#pricing`}
+                    >
+                        {navbar.links.pricing}
+                    </a>
+                    <a
+                        class="text-sm font-semibold text-on-surface-variant transition-colors hover:text-primary"
+                        href={`${homeHref}#community`}
+                    >
+                        {navbar.links.community}
+                    </a>
+                </div>
+                <div class="flex items-center">
+                    <details class="language-dropdown hidden lg:block">
+                        <summary
+                            class="flex cursor-pointer items-center gap-2 rounded-full border border-white/10 bg-white/5 px-3 py-2 text-xs font-bold text-white/70 transition-colors hover:border-white/30 hover:text-white"
+                        >
+                            {currentLanguage.locale.toUpperCase()}
+                            <span class="material-symbols-outlined text-[16px]">
+                                keyboard_arrow_down
+                            </span>
+                        </summary>
+                        <div
+                            class="absolute right-0 top-[calc(100%+0.75rem)] min-w-[140px] rounded-2xl border border-white/10 bg-[#11161d] p-2 shadow-2xl"
+                        >
+                            {
+                                languageLinks.map((link) => (
+                                    <a
+                                        href={link.href}
+                                        hreflang={link.hreflang}
+                                        class:list={[
+                                            "block rounded-xl px-3 py-2 text-xs font-bold transition-colors",
+                                            link.isCurrent
+                                                ? "bg-primary/10 text-primary"
+                                                : "text-white/70 hover:bg-white/5 hover:text-white",
+                                        ]}
+                                    >
+                                        {link.locale.toUpperCase()}
+                                    </a>
+                                ))
+                            }
+                        </div>
+                    </details>
+                </div>
+            </div>
+        </nav>
+
         <main>
             <slot />
         </main>
-        <Footer t={footer} />
-        <script src="../main.js"></script>
+
+        <footer class="w-full border-t border-white/5 bg-black/40 py-14">
+            <div class="mx-auto max-w-7xl px-6 md:px-16">
+                <div class="mb-10 grid grid-cols-2 gap-10 md:grid-cols-4">
+                    <div class="col-span-2 space-y-6">
+                        <div class="mb-6 flex h-8 items-center md:h-10">
+                            <Logo class="site-logo" />
+                        </div>
+                        <p class="max-w-xs text-sm text-on-surface-variant">
+                            {footer.tagline}
+                        </p>
+                        <div class="space-y-4 text-sm text-on-surface-variant">
+                            <div class="flex items-center gap-4">
+                            <a
+                                class="inline-flex h-10 w-10 items-center justify-center rounded-full border border-white/10 bg-white/5 transition-colors hover:text-primary"
+                                href={footer.socials[0]?.href ?? "#"}
+                                target="_blank"
+                                rel="noreferrer"
+                                aria-label={footer.socials[0]?.label ?? "Instagram"}
+                            >
+                                <svg
+                                    xmlns="http://www.w3.org/2000/svg"
+                                    viewBox="0 0 24 24"
+                                    class="h-5 w-5 fill-current"
+                                    aria-hidden="true"
+                                >
+                                    <path
+                                        d="M7.75 2h8.5A5.75 5.75 0 0 1 22 7.75v8.5A5.75 5.75 0 0 1 16.25 22h-8.5A5.75 5.75 0 0 1 2 16.25v-8.5A5.75 5.75 0 0 1 7.75 2zm0 1.5A4.25 4.25 0 0 0 3.5 7.75v8.5a4.25 4.25 0 0 0 4.25 4.25h8.5a4.25 4.25 0 0 0 4.25-4.25v-8.5a4.25 4.25 0 0 0-4.25-4.25h-8.5zm8.75 2.25a1 1 0 1 1 0 2 1 1 0 0 1 0-2zM12 7a5 5 0 1 1 0 10 5 5 0 0 1 0-10zm0 1.5A3.5 3.5 0 1 0 12 15.5 3.5 3.5 0 0 0 12 8.5z"
+                                    ></path>
+                                </svg>
+                            </a>
+                            <a
+                                class="inline-flex h-10 w-10 items-center justify-center rounded-full border border-white/10 bg-white/5 transition-colors hover:text-primary"
+                                href={footer.socials[1]?.href ?? "#"}
+                                target="_blank"
+                                rel="noreferrer"
+                                aria-label={footer.socials[1]?.label ?? "YouTube"}
+                            >
+                                <svg
+                                    xmlns="http://www.w3.org/2000/svg"
+                                    viewBox="0 0 24 24"
+                                    class="h-5 w-5 fill-current"
+                                    aria-hidden="true"
+                                >
+                                    <path
+                                        d="M23.5 6.2a3 3 0 0 0-2.1-2.1C19.4 3.5 12 3.5 12 3.5s-7.4 0-9.4.6A3 3 0 0 0 .5 6.2 31.7 31.7 0 0 0 0 12a31.7 31.7 0 0 0 .5 5.8 3 3 0 0 0 2.1 2.1c2 .6 9.4.6 9.4.6s7.4 0 9.4-.6a3 3 0 0 0 2.1-2.1A31.7 31.7 0 0 0 24 12a31.7 31.7 0 0 0-.5-5.8zM9.6 15.6V8.4l6.2 3.6-6.2 3.6z"
+                                    ></path>
+                                </svg>
+                            </a>
+                            </div>
+                            <a
+                                class="inline-flex items-center gap-2 transition-colors hover:text-primary"
+                                href={`mailto:${footer.contactEmailLabel}`}
+                            >
+                                <span class="material-symbols-outlined text-[18px]">
+                                    mail
+                                </span>
+                                {footer.contactEmailLabel}
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="space-y-6">
+                        <h4
+                            class="text-xs font-black uppercase tracking-widest text-white"
+                        >
+                            {footer.productTitle}
+                        </h4>
+                        <ul class="space-y-2.5">
+                            <li>
+                                <a
+                                    class="text-sm text-on-surface-variant transition-colors hover:text-primary"
+                                    href={homeHref}
+                                >
+                                    {navbar.links.home}
+                                </a>
+                            </li>
+                            <li>
+                                <a
+                                    class="text-sm text-on-surface-variant transition-colors hover:text-primary"
+                                    href={`${homeHref}#features`}
+                                >
+                                    {navbar.links.features}
+                                </a>
+                            </li>
+                            <li>
+                                <a
+                                    class="text-sm text-on-surface-variant transition-colors hover:text-primary"
+                                    href={`${homeHref}#pricing`}
+                                >
+                                    {navbar.links.pricing}
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div class="space-y-6">
+                        <h4
+                            class="text-xs font-black uppercase tracking-widest text-white"
+                        >
+                            {footer.legalTitle}
+                        </h4>
+                        <ul class="space-y-2.5">
+                            {
+                                footer.legal.map((item) => (
+                                    <li>
+                                        <a
+                                            class="text-sm text-on-surface-variant transition-colors hover:text-primary"
+                                            href={item.href ?? "#"}
+                                        >
+                                            {item.label}
+                                        </a>
+                                    </li>
+                                ))
+                            }
+                        </ul>
+                    </div>
+                </div>
+
+                <div
+                    class="flex items-center justify-center border-t border-white/5 pt-6 md:justify-start"
+                >
+                    <p class="text-xs font-medium text-on-surface-variant">
+                        {footer.rights}
+                    </p>
+                </div>
+            </div>
+        </footer>
+
+        <script is:inline>
+            document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+                anchor.addEventListener("click", function (e) {
+                    const href = this.getAttribute("href");
+                    if (!href || href === "#") {
+                        return;
+                    }
+
+                    e.preventDefault();
+                    const target = document.querySelector(href);
+                    if (target) {
+                        target.scrollIntoView({ behavior: "smooth" });
+                    }
+                });
+            });
+
+            const observerOptions = { threshold: 0.1 };
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach((entry) => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add("opacity-100", "translate-y-0");
+                        entry.target.classList.remove("opacity-0", "translate-y-10");
+                    }
+                });
+            }, observerOptions);
+
+            document.querySelectorAll("section > div").forEach((el) => {
+                el.classList.add(
+                    "transition-all",
+                    "duration-1000",
+                    "opacity-0",
+                    "translate-y-10",
+                );
+                observer.observe(el);
+            });
+        </script>
     </body>
 </html>
+
+<style>
+    .site-logo {
+        width: auto;
+        height: 100%;
+    }
+
+    .language-dropdown {
+        position: relative;
+        display: flex;
+        align-items: center;
+    }
+
+    .language-dropdown summary {
+        list-style: none;
+    }
+
+    .language-dropdown summary::-webkit-details-marker {
+        display: none;
+    }
+</style>

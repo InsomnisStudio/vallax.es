@@ -1,5 +1,5 @@
 ---
-import Wrapper from "../../components/Wrapper.astro";
+import HomePage from "../../components/landing/HomePage.astro";
 import LandingLayout from "../../layouts/LandingLayout.astro";
 import { translations, isLocale, locales, type Locale } from "../../i18n";
 export function getStaticPaths() {
@@ -16,7 +16,6 @@ const t = translations[locale];
   seo={t.seo}
   navbar={t.navbar}
   footer={t.footer}
-  faq={t.faq}
 >
-  <Wrapper lang={locale} t={t} />
+  <HomePage lang={locale} t={t} />
 </LandingLayout>

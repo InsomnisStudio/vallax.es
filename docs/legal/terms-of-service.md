@@ -25,7 +25,7 @@ To subscribe, users must complete the process by selecting the desired plan and 
 ## 3. Service description
 
 - **Nature of the service:** VALLAX is a technological intermediary that automates the search for public listings across third-party platforms based on the filters defined by the user. It does not participate in any sale or transaction between users.
-- **Operation:** Users can create customized searches. Whenever a matching listing is detected, Vallax sends an alert through Telegram.
+- **Operation:** Users can create customized searches. Whenever a matching listing is detected, Vallax sends an alert in the app.
 - **Dependency on third parties:** Performance depends on the external platforms and may be affected by their changes or outages. VALLAX updates its software as quickly as possible to adapt to them.
 - **Beta phase:** While the beta lasts, the service is free of charge but may include errors or changes without notice.
 - **End of beta:** Once the beta is over, certain features may require a Premium subscription. Pricing, plans, and conditions will be announced in advance.
