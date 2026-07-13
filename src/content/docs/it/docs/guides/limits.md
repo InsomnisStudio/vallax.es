@@ -5,15 +5,17 @@ sidebar:
   order: 3
 ---
 
-C'e un punto importante da conoscere per evitare sorprese: Vallax applica alcuni limiti di sicurezza per impedire che un avviso generi troppe notifiche in troppo poco tempo.
+C'e un punto importante da conoscere per evitare sorprese: Vallax applica alcuni limiti di sicurezza per impedire che il tuo account generi troppe notifiche in troppo poco tempo.
 
 Non e un bug. E una protezione per mantenere stabile il sistema.
 
-## Limite per le notifiche normali
+## Limite globale di notifiche
 
-Un avviso standard ha un limite di **240 notifiche al minuto**.
+Il tuo account ha un limite globale di **240 notifiche al minuto**.
 
-Se uno dei tuoi avvisi supera questo ritmo, Vallax **fermera temporaneamente tutti i tuoi avvisi**.
+Questo significa che, sommando tutti i tuoi avvisi, con o senza IA, non puoi superare questo ritmo.
+
+Se insieme superano questo limite, Vallax **fermera temporaneamente tutti i tuoi avvisi**.
 
 Durante quel periodo:
 
@@ -22,9 +24,11 @@ Durante quel periodo:
 
 ## Limite per gli avvisi con IA
 
-Gli avvisi che usano l'IA hanno un limite piu rigido: **6 analisi al minuto**.
+Gli avvisi che usano l'IA hanno un limite globale piu rigido: **6 analisi al minuto**.
 
-Se l'analisi con IA supera 6 esecuzioni in un minuto, Vallax **disattivera tutti i tuoi avvisi con IA**.
+Questo significa che, sommando tutti i tuoi avvisi con IA, non puoi superare quel tetto.
+
+Se l'analisi con IA supera 6 esecuzioni in un minuto tra tutti questi avvisi, Vallax **disattivera tutti i tuoi avvisi con IA**.
 
 In quel caso:
 

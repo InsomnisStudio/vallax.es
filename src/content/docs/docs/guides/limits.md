@@ -5,15 +5,17 @@ sidebar:
   order: 3
 ---
 
-Hay un punto importante que conviene conocer para evitar sustos: Vallax tiene algunos limites de seguridad para impedir que una alerta genere demasiadas notificaciones en muy poco tiempo.
+Hay un punto importante que conviene tener claro: Vallax tiene algunos limites de seguridad para impedir que tu cuenta genere demasiadas notificaciones en muy poco tiempo.
 
 No es un fallo. Es una proteccion para evitar comportamientos fuera de lo normal y mantener el sistema estable.
 
-## Limite de notificaciones normales
+## Limite global de notificaciones
 
-Una alerta normal tiene un limite de **240 notificaciones por minuto**.
+Tu cuenta tiene un limite global de **240 notificaciones por minuto**.
 
-Si una de tus alertas supera ese ritmo, Vallax **parara todas tus alertas** de forma temporal.
+Eso significa que, entre todas tus alertas, usen IA o no, no puedes superar ese ritmo.
+
+Si en conjunto superan ese limite, Vallax **parara todas tus alertas** de forma temporal.
 
 Durante ese tiempo:
 
@@ -22,9 +24,11 @@ Durante ese tiempo:
 
 ## Limite de alertas con IA
 
-Las alertas que usan IA tienen un limite mas estricto: **6 analisis por minuto**.
+Las alertas que usan IA tienen un limite global mas estricto: **6 analisis por minuto**.
 
-Si el analisis por IA se dispara mas de 6 veces en un minuto, Vallax **desactivara todas tus alertas que usan IA**.
+Eso significa que, entre todas tus alertas con IA, no puedes superar ese tope.
+
+Si el analisis por IA se dispara mas de 6 veces en un minuto entre todas ellas, Vallax **desactivara todas tus alertas que usan IA**.
 
 En ese caso:
 
