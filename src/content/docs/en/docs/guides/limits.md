@@ -5,15 +5,17 @@ sidebar:
   order: 3
 ---
 
-There is one important thing worth knowing to avoid surprises: Vallax has safety limits to prevent an alert from generating too many notifications in a very short time.
+There is one important thing worth knowing to avoid surprises: Vallax has safety limits to prevent your account from generating too many notifications in a very short time.
 
 It is not a bug. It is a protection mechanism to keep the system stable.
 
-## Limit for normal notifications
+## Global notification limit
 
-A standard alert has a limit of **240 notifications per minute**.
+Your account has a global limit of **240 notifications per minute**.
 
-If one of your alerts goes beyond that rate, Vallax will **temporarily stop all your alerts**.
+That means all your alerts combined, whether they use AI or not, cannot go beyond that rate.
+
+If they exceed that limit together, Vallax will **temporarily stop all your alerts**.
 
 During that time:
 
@@ -22,9 +24,11 @@ During that time:
 
 ## Limit for AI alerts
 
-Alerts using AI have a stricter limit: **6 analyses per minute**.
+Alerts using AI have a stricter global limit: **6 analyses per minute**.
 
-If AI analysis runs more than 6 times in one minute, Vallax will **disable all your AI alerts**.
+That means all your AI alerts combined cannot go beyond that cap.
+
+If AI analysis runs more than 6 times in one minute across all of them, Vallax will **disable all your AI alerts**.
 
 In that case:
 

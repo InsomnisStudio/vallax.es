@@ -5,15 +5,17 @@ sidebar:
   order: 3
 ---
 
-Jest jedna wazna rzecz, o ktorej warto wiedziec, zeby uniknac niespodzianek: Vallax ma limity bezpieczenstwa, aby alert nie generowal zbyt wielu powiadomien w bardzo krotkim czasie.
+Jest jedna wazna rzecz, o ktorej warto wiedziec, zeby uniknac niespodzianek: Vallax ma limity bezpieczenstwa, aby Twoje konto nie generowalo zbyt wielu powiadomien w bardzo krotkim czasie.
 
 To nie jest blad. To zabezpieczenie, ktore ma utrzymac stabilnosc systemu.
 
-## Limit zwyklych powiadomien
+## Globalny limit powiadomien
 
-Standardowy alert ma limit **240 powiadomien na minute**.
+Twoje konto ma globalny limit **240 powiadomien na minute**.
 
-Jesli jeden z twoich alertow przekroczy to tempo, Vallax **tymczasowo zatrzyma wszystkie twoje alerty**.
+To znaczy, ze wszystkie Twoje alerty lacznie, z AI lub bez AI, nie moga przekroczyc tego tempa.
+
+Jesli razem przekrocza ten limit, Vallax **tymczasowo zatrzyma wszystkie twoje alerty**.
 
 W tym czasie:
 
@@ -22,9 +24,11 @@ W tym czasie:
 
 ## Limit alertow z AI
 
-Alerty korzystajace z AI maja ostrzejszy limit: **6 analiz na minute**.
+Alerty korzystajace z AI maja ostrzejszy globalny limit: **6 analiz na minute**.
 
-Jesli analiza AI uruchomi sie wiecej niz 6 razy w ciagu minuty, Vallax **wylaczy wszystkie twoje alerty z AI**.
+To znaczy, ze wszystkie Twoje alerty z AI lacznie nie moga przekroczyc tego progu.
+
+Jesli analiza AI uruchomi sie wiecej niz 6 razy w ciagu minuty we wszystkich tych alertach, Vallax **wylaczy wszystkie twoje alerty z AI**.
 
 W takim przypadku:
 
