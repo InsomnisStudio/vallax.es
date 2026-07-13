@@ -1,0 +1,40 @@
+---
+title: Bienvenue sur Vallax
+description: Une documentation simple pour comprendre Vallax et creer de meilleures alertes.
+template: splash
+hero:
+  title: Vallax
+  tagline: Apprenez a utiliser Vallax sans detours
+  image:
+    html: '<div><img class="light:sl-hidden print:hidden" src="/vallax-logo.svg" alt="Logo Vallax" width="400" height="400" /><img class="dark:sl-hidden print:block" src="/vallax-logo-light.svg" alt="Logo Vallax" width="400" height="400" /></div>'
+  actions:
+    - text: Commencer
+      link: /fr/docs/guides/start
+      icon: right-arrow
+    - text: Communaute Telegram
+      link: https://t.me/vallax_group
+      variant: secondary
+      icon: telegram
+---
+
+import { Card, CardGrid } from '@astrojs/starlight/components';
+
+## Commencez ici
+
+<CardGrid stagger>
+	<Card title="Qu'est-ce que Vallax" icon="open-book">
+		Comprenez ce que fait l'application, sur quelles plateformes elle fonctionne et pourquoi elle fait gagner du temps.
+	</Card>
+	<Card title="Votre premiere alerte" icon="add-document">
+		Apprenez a utiliser les mots-cles, la localisation, les filtres utilisateurs, les regex et l'IA.
+	</Card>
+	<Card title="Concu pour aller a l'essentiel" icon="pencil">
+		Cette documentation explique l'important sans complexite inutile.
+	</Card>
+	<Card title="Canaux Vallax" icon="comment">
+		Suivez les nouveautes sur Telegram, Instagram et YouTube depuis l'en-tete de la documentation.
+	</Card>
+	<Card title="Limites importantes" icon="warning">
+		Verifiez ce qui se passe si une alerte genere trop de notifications ou trop d'utilisation de l'IA en peu de temps.
+	</Card>
+</CardGrid>

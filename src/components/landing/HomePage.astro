@@ -18,6 +18,7 @@ interface Props {
 const { lang, t } = Astro.props as Props;
 const primaryCtaHref = "https://t.me/vallaxbot";
 const communityHref = "https://t.me/vallax_group";
+const docsHref = lang === "es" ? "/docs/" : `/${lang}/docs/`;
 const featureIcons = ["layers", "bolt", "tune", "auto_awesome"];
 const heroTitleWords = t.hero.title.split(" ");
 const heroTitleLead = heroTitleWords.slice(0, -3).join(" ");
@@ -26,6 +27,8 @@ const localizedUi = {
     es: {
         appStoreOverline: "Descargalo en",
         playStoreOverline: "Consiguelo en",
+        comingSoon: "Proximamente",
+        docsCta: "Ver documentacion",
         lockDate: "Mar 1 abr",
         firstTime: "hace 2 min",
         secondTime: "hace 1 min",
@@ -34,6 +37,8 @@ const localizedUi = {
     en: {
         appStoreOverline: "Download on the",
         playStoreOverline: "Get it on",
+        comingSoon: "Coming soon",
+        docsCta: "View documentation",
         lockDate: "Tue Apr 1",
         firstTime: "2m ago",
         secondTime: "1m ago",
@@ -42,6 +47,8 @@ const localizedUi = {
     fr: {
         appStoreOverline: "Telechargez sur",
         playStoreOverline: "Disponible sur",
+        comingSoon: "Bientot",
+        docsCta: "Voir la documentation",
         lockDate: "Mar 1 avr.",
         firstTime: "il y a 2 min",
         secondTime: "il y a 1 min",
@@ -50,6 +57,8 @@ const localizedUi = {
     it: {
         appStoreOverline: "Scarica su",
         playStoreOverline: "Disponibile su",
+        comingSoon: "Prossimamente",
+        docsCta: "Apri la documentazione",
         lockDate: "Mar 1 apr",
         firstTime: "2 min fa",
         secondTime: "1 min fa",
@@ -58,6 +67,8 @@ const localizedUi = {
     pl: {
         appStoreOverline: "Pobierz w",
         playStoreOverline: "Pobierz z",
+        comingSoon: "Wkrotce",
+        docsCta: "Zobacz dokumentacje",
         lockDate: "Wt 1 kwi",
         firstTime: "2 min temu",
         secondTime: "1 min temu",
@@ -132,11 +143,9 @@ const seoSolutionLinks = solutionPages.slice(0, 3).map((page) => ({
             <div
                 class="mt-6 flex flex-wrap items-center justify-center gap-x-8 gap-y-4 sm:justify-start"
             >
-                <a
-                    class="inline-flex cursor-pointer items-center rounded-lg bg-black px-4 py-2 text-xl tracking-wider text-white hover:bg-[#111] focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500"
-                    href={primaryCtaHref}
-                    target="_blank"
-                    rel="noreferrer"
+                <div
+                    class="inline-flex items-center rounded-lg border border-white/10 bg-[#161616] px-4 py-2 text-xl tracking-wider text-white/75 opacity-80"
+                    aria-label={`iOS ${localizedUi.comingSoon}`}
                 >
                     <svg
                         xmlns="http://www.w3.org/2000/svg"
@@ -152,14 +161,12 @@ const seoSolutionLinks = solutionPages.slice(0, 3).map((page) => ({
                         <p class="text-left text-[10px] leading-none text-white font-medium">
                             {localizedUi.appStoreOverline}
                         </p>
-                        App Store
+                        {localizedUi.comingSoon}
                     </div>
-                </a>
-                <a
-                    class="inline-flex cursor-pointer items-center rounded-lg bg-black px-4 py-2 text-xl tracking-wider text-white hover:bg-[#111] focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500"
-                    href={primaryCtaHref}
-                    target="_blank"
-                    rel="noreferrer"
+                </div>
+                <div
+                    class="inline-flex items-center rounded-lg border border-white/10 bg-[#161616] px-4 py-2 text-xl tracking-wider text-white/75 opacity-80"
+                    aria-label={`Android ${localizedUi.comingSoon}`}
                 >
                     <svg
                         xmlns="http://www.w3.org/2000/svg"
@@ -188,8 +195,26 @@ const seoSolutionLinks = solutionPages.slice(0, 3).map((page) => ({
                         <p class="text-left text-[10px] leading-none text-white font-medium">
                             {localizedUi.playStoreOverline}
                         </p>
-                        Google Play
+                        {localizedUi.comingSoon}
                     </div>
+                </div>
+            </div>
+            <div class="flex flex-wrap justify-center gap-4 sm:justify-start">
+                <a
+                    class="inline-flex items-center rounded-full bg-primary px-5 py-3 text-sm font-semibold text-[#071217] transition hover:bg-[#1ce6d2] focus:outline-none focus-visible:ring-2 focus-visible:ring-primary"
+                    href={primaryCtaHref}
+                    target="_blank"
+                    rel="noreferrer"
+                >
+                    <span>{t.hero.primaryCta}</span>
+                    <span class="ml-2 text-base" aria-hidden="true">→</span>
+                </a>
+                <a
+                    class="inline-flex items-center rounded-full border border-white/15 bg-white/5 px-5 py-3 text-sm font-semibold text-white transition hover:border-white/30 hover:bg-white/10 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500"
+                    href={docsHref}
+                >
+                    <span>{localizedUi.docsCta}</span>
+                    <span class="ml-2 text-base" aria-hidden="true">→</span>
                 </a>
             </div>
         </div>

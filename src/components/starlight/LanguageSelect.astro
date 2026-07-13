@@ -1,0 +1,105 @@
+---
+import config from 'virtual:starlight/user-config';
+import Select from '@astrojs/starlight/components/Select.astro';
+import { locales as siteLocales } from '../../i18n';
+
+const localeCodes = Object.keys(config.locales);
+const defaultLocale = siteLocales[0];
+
+function normalizeLocaleCode(code: string): string {
+	return code === 'root' ? defaultLocale : code;
+}
+
+function getBasePathname(pathname: string): string {
+	for (const code of localeCodes) {
+		const normalizedCode = normalizeLocaleCode(code);
+		if (normalizedCode === defaultLocale) continue;
+		if (pathname === `/${normalizedCode}`) return '/';
+		if (pathname.startsWith(`/${normalizedCode}/`)) {
+			return pathname.slice(normalizedCode.length + 1) || '/';
+		}
+	}
+
+	return pathname;
+}
+
+function getCurrentLocale(pathname: string): string {
+	for (const code of localeCodes) {
+		const normalizedCode = normalizeLocaleCode(code);
+		if (normalizedCode === defaultLocale) continue;
+		if (pathname === `/${normalizedCode}` || pathname.startsWith(`/${normalizedCode}/`)) {
+			return normalizedCode;
+		}
+	}
+
+	return defaultLocale;
+}
+
+function localizedPathname(locale: string): string {
+	locale = normalizeLocaleCode(locale);
+	const basePathname = getBasePathname(Astro.url.pathname);
+	if (locale === defaultLocale) return basePathname;
+	return basePathname === '/' ? `/${locale}/` : `/${locale}${basePathname}`;
+}
+
+const currentLocale = Astro.locals.starlightRoute.locale || getCurrentLocale(Astro.url.pathname);
+---
+
+{
+	config.isMultilingual && (
+		<starlight-lang-select>
+			<Select
+				icon="translate"
+				label={Astro.locals.t('languageSelect.accessibleLabel')}
+				options={Object.entries(config.locales).map(([code, locale]) => ({
+					value: localizedPathname(code),
+					selected: normalizeLocaleCode(code) === currentLocale,
+					label: locale!.label,
+				}))}
+				width="7em"
+			/>
+		</starlight-lang-select>
+	)
+}
+
+<script>
+	class StarlightLanguageSelect extends HTMLElement {
+		constructor() {
+			super();
+			const select = this.querySelector('select');
+			if (!select) return;
+
+			const syncSelectedOption = () => {
+				const currentPath = window.location.pathname.replace(/\/+$/, '') || '/';
+				const options = Array.from(select.options);
+				const exactMatch = options.findIndex((option) => {
+					const optionPath = option.value.replace(/\/+$/, '') || '/';
+					return optionPath === currentPath;
+				});
+
+				if (exactMatch >= 0) {
+					select.selectedIndex = exactMatch;
+					return;
+				}
+
+				const markupSelectedIndex =
+					select.querySelector('option[selected]')?.index ?? 0;
+				select.selectedIndex = markupSelectedIndex;
+			};
+
+			syncSelectedOption();
+
+			select.addEventListener('change', (e) => {
+				if (e.currentTarget instanceof HTMLSelectElement) {
+					window.location.pathname = e.currentTarget.value;
+				}
+			});
+
+			window.addEventListener('pageshow', () => {
+				syncSelectedOption();
+			});
+		}
+	}
+
+	customElements.define('starlight-lang-select', StarlightLanguageSelect);
+</script>

@@ -1,0 +1,40 @@
+---
+title: Welcome to Vallax
+description: Straightforward documentation to understand Vallax and build better alerts.
+template: splash
+hero:
+  title: Vallax
+  tagline: Learn how to use Vallax without the fluff
+  image:
+    html: '<div><img class="light:sl-hidden print:hidden" src="/vallax-logo.svg" alt="Vallax logo" width="400" height="400" /><img class="dark:sl-hidden print:block" src="/vallax-logo-light.svg" alt="Vallax logo" width="400" height="400" /></div>'
+  actions:
+    - text: Get started
+      link: /en/docs/guides/start
+      icon: right-arrow
+    - text: Telegram community
+      link: https://t.me/vallax_group
+      variant: secondary
+      icon: telegram
+---
+
+import { Card, CardGrid } from '@astrojs/starlight/components';
+
+## Start here
+
+<CardGrid stagger>
+	<Card title="What Vallax is" icon="open-book">
+		Learn what the app does, which marketplaces it supports, and why it saves so much time.
+	</Card>
+	<Card title="Your first alert" icon="add-document">
+		Learn how to use keywords, location, user filters, regex, and AI.
+	</Card>
+	<Card title="Built to stay practical" icon="pencil">
+		This documentation focuses on what matters without unnecessary technical noise.
+	</Card>
+	<Card title="Vallax channels" icon="comment">
+		Follow updates on Telegram, Instagram, and YouTube from the docs header.
+	</Card>
+	<Card title="Important limits" icon="warning">
+		Check what happens if an alert generates too many notifications or too much AI usage in a short time.
+	</Card>
+</CardGrid>
