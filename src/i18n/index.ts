@@ -125,7 +125,7 @@ export const translations = {
       description:
         "Vallax detecta nuevos anuncios en Wallapop, Vinted, Milanuncios y mas en cuanto aparecen. Ve las nuevas ofertas antes que nadie y llega primero.",
       primaryCta: "Crea tu primera alerta",
-      availability: "Ya disponible en iOS y Android",
+      availability: "Disponible en Telegram, Android e iOS proximamente",
       platforms: {
         title: "Plataformas soportadas",
       },
@@ -306,7 +306,7 @@ export const translations = {
       description:
         "Vallax detects new listings on Wallapop, Vinted, Milanuncios and more as soon as they appear. See new deals before anyone else and get there first.",
       primaryCta: "Create Your First Alert",
-      availability: "Now available on iOS and Android",
+      availability: "Available on Telegram, Android and iOS coming soon",
       platforms: {
         title: "Supported platforms",
       },
@@ -480,7 +480,7 @@ translations.fr = {
     description:
       "Vallax detecte les nouvelles annonces sur Wallapop, Vinted, Milanuncios et plus des leur publication. Voyez les meilleures offres avant tout le monde.",
     primaryCta: "Creez votre premiere alerte",
-    availability: "Disponible sur iOS et Android",
+    availability: "Disponible via Telegram, Android et iOS bientot",
     platforms: { title: "Plateformes compatibles" },
   },
   features: {
@@ -651,7 +651,7 @@ translations.it = {
     description:
       "Vallax rileva nuovi annunci su Wallapop, Vinted, Milanuncios e altro non appena compaiono. Vedi le occasioni prima di tutti e arriva per primo.",
     primaryCta: "Crea il tuo primo avviso",
-    availability: "Ora disponibile su iOS e Android",
+    availability: "Disponibile su Telegram, Android e iOS prossimamente",
     platforms: { title: "Piattaforme supportate" },
   },
   features: {
@@ -822,7 +822,7 @@ translations.pl = {
     description:
       "Vallax wykrywa nowe ogloszenia na Wallapop, Vinted, Milanuncios i innych platformach zaraz po publikacji. Zobacz okazje przed innymi i badz pierwszy.",
     primaryCta: "Utworz pierwszy alert",
-    availability: "Dostepne na iOS i Android",
+    availability: "Dostepne na Telegramie, Android i iOS wkrotce",
     platforms: { title: "Obslugiwane platformy" },
   },
   features: {

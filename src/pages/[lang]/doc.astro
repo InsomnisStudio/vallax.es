@@ -1,0 +1,23 @@
+---
+import { isLocale, locales, type Locale } from "../../i18n";
+
+export function getStaticPaths() {
+    return locales.map((locale) => ({ params: { lang: locale } }));
+}
+
+const paramLang = Astro.params.lang;
+const locale: Locale = isLocale(paramLang) ? paramLang : "es";
+const target = locale === "es" ? "/docs/" : `/${locale}/docs/`;
+---
+
+<html lang={locale}>
+    <head>
+        <meta charset="utf-8" />
+        <meta http-equiv="refresh" content={`0; url=${target}`} />
+        <title>Redirecting…</title>
+        <script define:vars={{ target }}>
+            window.location.replace(target);
+        </script>
+    </head>
+    <body></body>
+</html>
