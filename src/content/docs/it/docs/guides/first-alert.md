@@ -19,13 +19,26 @@ Le parole chiave indicano a Vallax quale tipo di annuncio vuoi trovare. Puoi cre
 
 Ogni opzione viene controllata separatamente. Se anche una sola opzione corrisponde, l'annuncio viene considerato valido.
 
+Dentro ogni opzione, le parole si scrivono nello stesso campo separate da virgole.
+
 Per esempio:
 
-- Opzione 1: `Nintendo` + `Switch`
+- Opzione 1: `Nintendo, Switch`
 - Opzione 2: `PlayStation 4`
 - Opzione 3: `PS4`
 
+In un'opzione come `Nintendo, Switch`, quello che stai dicendo a Vallax e semplicemente: voglio annunci in cui compaiano queste due parole.
+
 Se un annuncio soddisfa una di queste opzioni, supera questo filtro.
+
+### Importante su come viene fatta la corrispondenza
+
+- Le parole chiave **non distinguono tra maiuscole e minuscole**.
+- La corrispondenza **non e rigida sulla parola intera**.
+
+Per esempio, se cerchi `tractor`, anche un testo come `extractor` puo essere considerato valido.
+
+Se ti serve qualcosa di piu rigoroso, e qui che una **regex** puo avere senso.
 
 ### Dove vengono controllate
 

@@ -19,13 +19,26 @@ Les mots-cles indiquent a Vallax le type d'annonce que vous voulez trouver. Vous
 
 Chaque option est verifiee separement. Si une seule option correspond, l'annonce est consideree comme valide.
 
+Dans chaque option, les mots sont ecrits dans le meme champ et separes par des virgules.
+
 Par exemple :
 
-- Option 1 : `Nintendo` + `Switch`
+- Option 1 : `Nintendo, Switch`
 - Option 2 : `PlayStation 4`
 - Option 3 : `PS4`
 
+Dans une option comme `Nintendo, Switch`, vous dites simplement a Vallax : je veux des annonces ou ces deux mots correspondent.
+
 Si une annonce correspond a l'une de ces options, elle passe ce filtre.
+
+### Important sur la facon dont le texte est verifie
+
+- Les mots-cles **ne tiennent pas compte des majuscules et minuscules**.
+- La correspondance **n'est pas stricte mot complet par mot complet**.
+
+Par exemple, si vous cherchez `tractor`, un texte comme `extractor` peut aussi etre considere comme valide.
+
+Si vous avez besoin d'un comportement plus strict, c'est la que les **regex** peuvent etre utiles.
 
 ### Ou ils sont verifiees
 

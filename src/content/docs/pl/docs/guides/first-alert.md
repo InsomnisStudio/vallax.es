@@ -19,13 +19,26 @@ Slowa kluczowe mowia Vallax, jakiego typu ogloszenia szukasz. W ramach jednego a
 
 Kazda opcja jest sprawdzana osobno. Jesli dopasuje sie choc jedna, ogloszenie jest uznawane za poprawne.
 
+W kazdej opcji slowa wpisuje sie w tym samym polu, oddzielajac je przecinkami.
+
 Na przyklad:
 
-- Opcja 1: `Nintendo` + `Switch`
+- Opcja 1: `Nintendo, Switch`
 - Opcja 2: `PlayStation 4`
 - Opcja 3: `PS4`
 
+W opcji takiej jak `Nintendo, Switch` mowisz po prostu Vallaxowi: chce ogloszenia, w ktorych pojawiaja sie te dwa slowa.
+
 Jesli ogloszenie pasuje do ktorejkolwiek z tych opcji, przechodzi ten filtr.
+
+### Wazne o tym, jak dziala dopasowanie tekstu
+
+- Slowa kluczowe **nie rozrozniaja wielkich i malych liter**.
+- Dopasowanie **nie jest scisle ograniczone do calego slowa**.
+
+Na przyklad, jesli szukasz `tractor`, tekst taki jak `extractor` tez moze zostac uznany za poprawny.
+
+Jesli potrzebujesz bardziej scislego zachowania, wtedy warto rozwazyc **regex**.
 
 ### Gdzie sa sprawdzane
 

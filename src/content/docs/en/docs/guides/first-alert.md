@@ -19,13 +19,26 @@ Keywords tell Vallax what type of listing you want to find. You can create sever
 
 Each option is checked separately. If just one option matches, the listing is considered valid.
 
+Inside each option, the words are written in the same input separated by commas.
+
 For example:
 
-- Option 1: `Nintendo` + `Switch`
+- Option 1: `Nintendo, Switch`
 - Option 2: `PlayStation 4`
 - Option 3: `PS4`
 
+In an option like `Nintendo, Switch`, what you are telling Vallax is simply: I want listings where those two words match.
+
 If a listing matches any of those options, it passes this filter.
+
+### Important about text matching
+
+- Keywords are **not case-sensitive**.
+- Matching is **not strict by full word**.
+
+For example, if you search for `tractor`, a text like `extractor` may also be considered valid.
+
+If you need stricter behavior, that is where **regex** can make sense.
 
 ### Where keywords are checked
 

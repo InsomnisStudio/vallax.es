@@ -19,13 +19,26 @@ Las palabras clave le dicen a Vallax que tipo de anuncio quieres encontrar. Pued
 
 Cada opcion se comprueba por separado. Si se cumple una sola opcion, el anuncio se considera valido.
 
+Dentro de cada opcion, las palabras se escriben en el mismo input separadas por comas.
+
 Por ejemplo:
 
-- Opcion 1: `Nintendo` + `Switch`
+- Opcion 1: `Nintendo, Switch`
 - Opcion 2: `PlayStation 4`
 - Opcion 3: `PS4`
 
+En una opcion como `Nintendo, Switch`, lo que le estas diciendo a Vallax es simplemente: quiero anuncios donde coincidan esas dos palabras.
+
 Si un anuncio cumple cualquiera de esas opciones, pasa este filtro.
+
+### Importante sobre como coincide el texto
+
+- Las palabras clave **no distinguen entre mayusculas y minusculas**.
+- La coincidencia **no es estricta por palabra completa**.
+
+Por ejemplo, si buscas `tractor`, tambien puede considerarse valido un texto como `extractor`.
+
+Si necesitas algo mas estricto, ahi es donde puede tener sentido usar **regex**.
 
 ### Donde se comprueban
 
