@@ -1,0 +1,69 @@
+---
+const title = "Redirecting...";
+const description = "Tracking QR entry and redirecting to the homepage.";
+const measurementId = import.meta.env.PUBLIC_GA_MEASUREMENT_ID ?? "";
+---
+
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta name="robots" content="noindex,nofollow" />
+        <meta name="description" content={description} />
+        <meta http-equiv="refresh" content="3;url=/" />
+        <title>{title}</title>
+    </head>
+    <body>
+        <p>Redirecting...</p>
+
+        <script define:vars={{ measurementId }}>
+            const params = new URLSearchParams(window.location.search);
+            const from = (params.get("from") || "unknown")
+                .trim()
+                .toLowerCase()
+                .replace(/[^a-z0-9_-]/g, "")
+                .slice(0, 64) || "unknown";
+            const redirectTarget = params.get("to") || "/";
+            const redirectTo = redirectTarget.startsWith("/")
+                ? redirectTarget
+                : "/";
+
+            function finishRedirect() {
+                window.location.replace(redirectTo);
+            }
+
+            if (!measurementId) {
+                finishRedirect();
+            } else {
+                window.dataLayer = window.dataLayer || [];
+                window.gtag = window.gtag || function () {
+                    window.dataLayer.push(arguments);
+                };
+
+                const script = document.createElement("script");
+                script.async = true;
+                script.src =
+                    `https://www.googletagmanager.com/gtag/js?id=${measurementId}`;
+
+                script.addEventListener("load", () => {
+                    window.gtag("js", new Date());
+                    window.gtag("config", measurementId, {
+                        send_page_view: true,
+                    });
+                    window.gtag("event", "qr-visit", {
+                        entry_from: from,
+                        redirect_to: redirectTo,
+                    });
+
+                    setTimeout(finishRedirect, 250);
+                });
+
+                script.addEventListener("error", finishRedirect);
+                document.head.appendChild(script);
+
+                setTimeout(finishRedirect, 1500);
+            }
+        </script>
+    </body>
+</html>
