@@ -51,12 +51,12 @@ const measurementId = import.meta.env.PUBLIC_GA_MEASUREMENT_ID ?? "";
                     window.gtag("config", measurementId, {
                         send_page_view: true,
                     });
-                    window.gtag("event", "qr-visit", {
+                    window.gtag("event", "qr_visit", {
                         entry_from: from,
                         redirect_to: redirectTo,
                     });
 
-                    setTimeout(finishRedirect, 250);
+                    // setTimeout(finishRedirect, 250);
                 });
 
                 script.addEventListener("error", finishRedirect);
