@@ -48,37 +48,6 @@ const currentLanguage = languageLinks.find((link) => link.isCurrent) ?? language
 <!doctype html>
 <html lang={lang}>
     <head>
-        <script
-            async
-            src="https://www.googletagmanager.com/gtag/js?id=AW-17380125186"
-        ></script>
-
-        <script is:inline>
-            window.dataLayer = window.dataLayer || [];
-            window.gtag = function () {
-                window.dataLayer.push(arguments);
-            };
-            window.gtag("js", new Date());
-            window.gtag("config", "AW-17380125186");
-        </script>
-
-        <script is:inline>
-            window.gtag_report_conversion = function (url) {
-                var callback = function () {
-                    if (typeof url !== "undefined") {
-                        window.location = url;
-                    }
-                };
-                gtag("event", "conversion", {
-                    send_to: "AW-17380125186/RPLmCP3VwPIbEILUvt9A",
-                    value: 1.0,
-                    currency: "EUR",
-                    event_callback: callback,
-                });
-                return false;
-            };
-        </script>
-
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
 
