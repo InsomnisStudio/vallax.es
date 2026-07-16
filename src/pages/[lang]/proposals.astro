@@ -210,7 +210,7 @@ const originLabels: Record<Locale, { team: string; community: string }> = {
     .proposal-row[hidden] { display: none; }
     .form-field { display: flex; flex-direction: column; gap: 0.55rem; color: rgba(255,255,255,.72); font-size: .8rem; font-weight: 700; }
     .form-field :is(input, textarea) { width: 100%; border: 1px solid rgba(255,255,255,.1); border-radius: 1rem; background: rgba(0,0,0,.22); padding: .9rem 1rem; color: white; font: inherit; font-weight: 400; outline: none; transition: border-color 160ms, box-shadow 160ms; }
-    .form-field textarea { resize: vertical; min-height: 10rem; line-height: 1.6; }
+    .form-field textarea { resize: vertical; min-height: 10rem; max-height: 24rem; line-height: 1.6; }
     .form-field :is(input, textarea)::placeholder { color: rgba(255,255,255,.3); }
     .form-field :is(input, textarea):focus { border-color: rgba(7,217,196,.7); box-shadow: 0 0 0 3px rgba(7,217,196,.1); }
     @keyframes proposal-in { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: translateY(0); } }
