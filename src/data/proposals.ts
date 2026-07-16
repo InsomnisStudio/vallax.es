@@ -70,6 +70,26 @@ export const proposals: Proposal[] = [
             pl: "Inteligentne filtrowanie ulatwiajace znajdowanie trafniejszych ogloszen i ograniczanie niepozadanych wynikow.",
         },
     },
+    {
+        id: "alert-list-views",
+        status: "completed",
+        origin: "community",
+        author: "José Ramón",
+        title: {
+            es: "Vistas compactas para los avisos",
+            en: "Compact views for alerts",
+            fr: "Vues compactes pour les alertes",
+            it: "Viste compatte per gli avvisi",
+            pl: "Kompaktowe widoki alertow",
+        },
+        description: {
+            es: "Permite alternar entre la vista detallada y diseños compactos de dos o tres columnas para ver más avisos sin hacer tanto scroll.",
+            en: "Switch between the detailed view and compact two- or three-column layouts to see more alerts with less scrolling.",
+            fr: "Permet de passer de la vue détaillée à des vues compactes sur deux ou trois colonnes pour voir plus d'alertes sans autant faire défiler.",
+            it: "Permette di alternare la vista dettagliata con layout compatti a due o tre colonne per vedere più avvisi scorrendo meno.",
+            pl: "Pozwala przelaczac miedzy widokiem szczegolowym a kompaktowym ukladem dwu- lub trzykolumnowym, aby widziec wiecej alertow bez przewijania.",
+        },
+    },
 ];
 
 export const proposalsUi: Record<Locale, {
