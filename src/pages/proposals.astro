@@ -1,0 +1,22 @@
+---
+const supported = ["es", "en", "fr", "it", "pl"];
+---
+
+<!doctype html>
+<html lang="es">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width" />
+        <meta name="robots" content="noindex" />
+        <meta http-equiv="refresh" content="0;url=/es/proposals/" />
+        <title>Vallax - Propuestas</title>
+        <script is:inline define:vars={{ supported }}>
+            const browserLanguages = navigator.languages ?? [navigator.language];
+            const locale = browserLanguages
+                .map((language) => language.split("-")[0].toLowerCase())
+                .find((language) => supported.includes(language)) ?? "es";
+            location.replace(`/${locale}/proposals/`);
+        </script>
+    </head>
+    <body></body>
+</html>
