@@ -28,6 +28,13 @@ const originLabels: Record<Locale, { team: string; community: string }> = {
     it: { team: "Team Vallax", community: "Community" },
     pl: { team: "Zespol Vallax", community: "Spolecznosc" },
 };
+const sendStateLabels: Record<Locale, { idle: string; sending: string; success: string; error: string }> = {
+    es: { idle: "Enviar propuesta", sending: "Enviando...", success: "Propuesta enviada correctamente. Gracias por compartirla.", error: "No se ha podido enviar. Inténtalo de nuevo en unos minutos." },
+    en: { idle: "Send idea", sending: "Sending...", success: "Your idea was sent successfully. Thank you for sharing it.", error: "It could not be sent. Please try again in a few minutes." },
+    fr: { idle: "Envoyer la proposition", sending: "Envoi...", success: "Votre proposition a bien été envoyée. Merci de l'avoir partagée.", error: "L'envoi a échoué. Veuillez réessayer dans quelques minutes." },
+    it: { idle: "Invia proposta", sending: "Invio...", success: "La proposta è stata inviata correttamente. Grazie per averla condivisa.", error: "Invio non riuscito. Riprova tra qualche minuto." },
+    pl: { idle: "Wyslij pomysl", sending: "Wysylanie...", success: "Pomysl zostal wyslany. Dziekujemy za jego udostepnienie.", error: "Nie udalo sie wyslac pomyslu. Sprobuj ponownie za kilka minut." },
+};
 ---
 
 <LandingLayout
@@ -113,11 +120,24 @@ const originLabels: Record<Locale, { team: string; community: string }> = {
                 </div>
             </header>
 
-            <form id="proposal-form" class="rounded-[2rem] border border-white/10 bg-white/[0.035] p-6 shadow-2xl shadow-black/20 md:p-9" data-email-subject={ui.emailSubject} data-name-label={ui.nameLabel}>
-                <label class="form-field">
-                    <span>{ui.nameLabel}</span>
-                    <input name="name" type="text" autocomplete="name" required maxlength="80" placeholder={ui.namePlaceholder} />
-                </label>
+            <form
+                id="proposal-form"
+                class="rounded-[2rem] border border-white/10 bg-white/[0.035] p-6 shadow-2xl shadow-black/20 md:p-9"
+                data-idle={sendStateLabels[locale].idle}
+                data-sending={sendStateLabels[locale].sending}
+                data-success={sendStateLabels[locale].success}
+                data-error={sendStateLabels[locale].error}
+            >
+                <div class="grid gap-6 sm:grid-cols-2">
+                    <label class="form-field">
+                        <span>{ui.nameLabel}</span>
+                        <input name="name" type="text" autocomplete="name" required maxlength="80" placeholder={ui.namePlaceholder} />
+                    </label>
+                    <label class="form-field">
+                        <span>{ui.emailLabel}</span>
+                        <input name="email" type="email" autocomplete="email" required maxlength="254" placeholder={ui.emailPlaceholder} />
+                    </label>
+                </div>
                 <label class="form-field mt-6">
                     <span>{ui.subjectLabel}</span>
                     <input name="subject" type="text" required maxlength="100" placeholder={ui.subjectPlaceholder} />
@@ -126,18 +146,23 @@ const originLabels: Record<Locale, { team: string; community: string }> = {
                     <span>{ui.proposalLabel}</span>
                     <textarea name="proposal" required minlength="20" maxlength="3000" rows="7" placeholder={ui.proposalPlaceholder}></textarea>
                 </label>
-                <button type="submit" class="mt-7 inline-flex w-full items-center justify-center gap-2 rounded-2xl bg-primary px-6 py-4 text-sm font-extrabold text-on-primary transition hover:-translate-y-0.5 hover:bg-[#22ead5] focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-primary sm:w-auto">
-                    {ui.submit}
+                <button id="proposal-submit" type="submit" class="mt-7 inline-flex w-full items-center justify-center gap-2 rounded-2xl bg-primary px-6 py-4 text-sm font-extrabold text-on-primary transition hover:-translate-y-0.5 hover:bg-[#22ead5] focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-primary disabled:cursor-wait disabled:opacity-60 sm:w-auto">
+                    <span id="proposal-submit-label">{sendStateLabels[locale].idle}</span>
                     <span class="material-symbols-outlined text-[19px]">arrow_outward</span>
                 </button>
-                <p class="mt-5 text-xs leading-5 text-white/40">{ui.mailNotice}</p>
+                <p id="proposal-result" class="mt-5 hidden text-sm leading-6" role="status" aria-live="polite"></p>
             </form>
         </div>
     </section>
 </LandingLayout>
 
 <script>
+    import { sendEmail } from "../../data/api";
+
     const form = document.querySelector<HTMLFormElement>("#proposal-form");
+    const submitButton = document.querySelector<HTMLButtonElement>("#proposal-submit");
+    const submitLabel = document.querySelector<HTMLElement>("#proposal-submit-label");
+    const resultMessage = document.querySelector<HTMLElement>("#proposal-result");
     const proposalRows = Array.from(document.querySelectorAll<HTMLElement>(".proposal-row"));
     const filterButtons = Array.from(document.querySelectorAll<HTMLButtonElement>(".proposal-filter"));
     const showMoreButton = document.querySelector<HTMLButtonElement>("#show-more-proposals");
@@ -179,21 +204,37 @@ const originLabels: Record<Locale, { team: string; community: string }> = {
 
     updateProposalList();
 
-    form?.addEventListener("submit", (event) => {
+    form?.addEventListener("submit", async (event) => {
         event.preventDefault();
         if (!form.reportValidity()) return;
 
         const data = new FormData(form);
+        const email = String(data.get("email") ?? "").trim();
+        const name = String(data.get("name") ?? "").trim();
         const title = String(data.get("subject") ?? "").trim();
-        const subjectPrefix = form.dataset.emailSubject ?? "Vallax proposal";
-        const nameLabel = form.dataset.nameLabel ?? "Name";
-        const body = [
-            `${nameLabel}: ${String(data.get("name") ?? "").trim()}`,
-            "",
-            String(data.get("proposal") ?? "").trim(),
-        ].join("\n");
+        const content = String(data.get("proposal") ?? "").trim();
 
-        window.location.href = `mailto:vallaxdev@gmail.com?subject=${encodeURIComponent(`${subjectPrefix}: ${title}`)}&body=${encodeURIComponent(body)}`;
+        submitButton?.setAttribute("disabled", "");
+        if (submitLabel) submitLabel.textContent = form.dataset.sending ?? "Sending...";
+        resultMessage?.classList.add("hidden");
+
+        try {
+            await sendEmail(email, name, title, content);
+            form.reset();
+            if (resultMessage) {
+                resultMessage.textContent = form.dataset.success ?? "Sent";
+                resultMessage.className = "mt-5 text-sm leading-6 text-primary";
+            }
+        } catch (error) {
+            console.error("Unable to send proposal", error);
+            if (resultMessage) {
+                resultMessage.textContent = form.dataset.error ?? "Unable to send";
+                resultMessage.className = "mt-5 text-sm leading-6 text-red-300";
+            }
+        } finally {
+            submitButton?.removeAttribute("disabled");
+            if (submitLabel) submitLabel.textContent = form.dataset.idle ?? "Send";
+        }
     });
 </script>
 
