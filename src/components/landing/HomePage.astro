@@ -16,7 +16,8 @@ interface Props {
 }
 
 const { lang, t } = Astro.props as Props;
-const primaryCtaHref = "https://t.me/vallaxbot";
+const androidAppHref = "https://play.google.com/store/apps/details?id=com.insomnis.vallax";
+const primaryCtaHref = androidAppHref;
 const communityHref = "https://t.me/vallax_group";
 const docsHref = lang === "es" ? "/docs/" : `/${lang}/docs/`;
 const featureIcons = ["layers", "bolt", "tune", "auto_awesome"];
@@ -164,9 +165,12 @@ const seoSolutionLinks = solutionPages.slice(0, 3).map((page) => ({
                         {localizedUi.comingSoon}
                     </div>
                 </div>
-                <div
-                    class="inline-flex items-center rounded-lg border border-white/10 bg-[#161616] px-4 py-2 text-xl tracking-wider text-white/75 opacity-80"
-                    aria-label={`Android ${localizedUi.comingSoon}`}
+                <a
+                    class="inline-flex items-center rounded-lg border border-white/10 bg-[#161616] px-4 py-2 text-xl tracking-wider text-white transition hover:border-primary/40 hover:bg-[#1d1d1d] focus:outline-none focus-visible:ring-2 focus-visible:ring-primary"
+                    href={androidAppHref}
+                    target="_blank"
+                    rel="noreferrer"
+                    aria-label={`Android - ${localizedUi.playStoreOverline} Google Play`}
                 >
                     <svg
                         xmlns="http://www.w3.org/2000/svg"
@@ -195,9 +199,9 @@ const seoSolutionLinks = solutionPages.slice(0, 3).map((page) => ({
                         <p class="text-left text-[10px] leading-none text-white font-medium">
                             {localizedUi.playStoreOverline}
                         </p>
-                        {localizedUi.comingSoon}
+                        Google Play
                     </div>
-                </div>
+                </a>
             </div>
             <div class="flex flex-wrap justify-center gap-4 sm:justify-start">
                 <a
