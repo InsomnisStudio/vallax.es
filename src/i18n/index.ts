@@ -178,7 +178,7 @@ export const translations = {
         },
         {
           name: "Premium",
-          price: "9,99€",
+          price: "11,99€",
           description:
             "Pensado para revendedores, coleccionistas o usuarios que necesitan mas capacidad, analisis inteligente y filtros mas avanzados.",
           features: [
@@ -358,7 +358,7 @@ export const translations = {
         },
         {
           name: "Premium",
-          price: "€9.99",
+          price: "€11.99",
           description:
             "For users who need more capacity, smart analysis and advanced filters.",
           features: [
@@ -530,7 +530,7 @@ translations.fr = {
       },
       {
         name: "Premium",
-        price: "9,99 €",
+        price: "11,99 €",
         description:
           "Pour les utilisateurs qui ont besoin de plus de capacite, d'analyse intelligente et de filtres avances.",
         features: [
@@ -702,7 +702,7 @@ translations.it = {
       },
       {
         name: "Premium",
-        price: "9,99 €",
+        price: "11,99 €",
         description:
           "Per chi ha bisogno di piu capacita, analisi intelligente e filtri avanzati.",
         features: [
@@ -873,7 +873,7 @@ translations.pl = {
       },
       {
         name: "Premium",
-        price: "9,99 €",
+        price: "11,99 €",
         description:
           "Dla tych, ktorzy potrzebuja wiekszej pojemnosci, inteligentnej analizy i zaawansowanych filtrow.",
         features: [
