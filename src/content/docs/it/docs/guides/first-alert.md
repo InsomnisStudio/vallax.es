@@ -106,6 +106,14 @@ L'IA **non viene applicata a tutti gli annunci**. Prima passano i filtri normali
 
 Questo e importante, perche l'IA non sostituisce i filtri di base. Funziona come un livello aggiuntivo.
 
+### Token IA
+
+I **token IA** sono i crediti che Vallax utilizza per i suoi strumenti di intelligenza artificiale. Attualmente vengono utilizzati dal filtro IA degli avvisi: descrivi con un prompt cosa vuoi trovare e l'IA verifica piu nel dettaglio se ogni annuncio corrisponde.
+
+Con Premium ricevi **25.000 token IA ogni mese**. Il saldo diminuisce man mano che utilizzi queste funzioni.
+
+Per attivare un avviso con IA devi avere un saldo minimo di token. Se non ne hai abbastanza, **non potrai attivare quell'avviso IA anche se il tuo abbonamento Premium e ancora attivo**. Gli avvisi senza IA non richiedono questi token.
+
 ### Cosa analizza
 
 L'IA puo analizzare:

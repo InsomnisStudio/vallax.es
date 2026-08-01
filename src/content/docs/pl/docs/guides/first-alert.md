@@ -106,6 +106,14 @@ AI **nie jest uruchamiane dla wszystkich ogloszen**. Najpierw dzialaja zwykle fi
 
 To wazne, bo AI nie zastepuje podstawowych filtrow. Dziala jako dodatkowa warstwa.
 
+### Tokeny AI
+
+**Tokeny AI** to kredyty wykorzystywane przez Vallax do narzedzi sztucznej inteligencji. Obecnie korzysta z nich filtr AI w alertach: opisujesz w poleceniu, czego szukasz, a AI dokladniej sprawdza, czy dane ogloszenie pasuje.
+
+Premium zapewnia **25 000 tokenow AI co miesiac**. Saldo zmniejsza sie podczas korzystania z tych funkcji.
+
+Aby aktywowac alert z AI, musisz miec minimalne saldo tokenow. Jesli tokenow jest za malo, **nie bedzie mozna aktywowac alertu AI, nawet gdy subskrypcja Premium pozostaje aktywna**. Alerty bez AI nie wymagaja tych tokenow.
+
 ### Co analizuje
 
 AI moze analizowac:

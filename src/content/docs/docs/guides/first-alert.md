@@ -106,6 +106,14 @@ La IA **no se aplica a todos los anuncios**. Primero se pasan los filtros normal
 
 Esto es importante porque la IA no sustituye a los filtros basicos. Va un paso mas alla.
 
+### Tokens de IA
+
+Los **tokens de IA** son los creditos que Vallax utiliza para sus herramientas de inteligencia artificial. Actualmente, la herramienta que los utiliza es el filtro de IA de las alertas: escribes mediante un prompt que quieres encontrar y la IA comprueba con mas detalle si cada anuncio encaja.
+
+Con Premium recibes **25.000 tokens de IA cada mes**. El saldo disminuye a medida que utilizas estas funciones.
+
+Para activar una alerta con IA necesitas disponer de un saldo minimo de tokens. Si no tienes suficientes, **no podras activar esa alerta con IA aunque tu suscripcion Premium siga activa**. Las alertas que no utilizan IA no necesitan estos tokens.
+
 ### Que analiza
 
 La IA puede revisar:

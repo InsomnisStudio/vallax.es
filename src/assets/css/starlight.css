@@ -1,0 +1,21 @@
+:root {
+  --sl-text-h2: 1.875rem;
+  --sl-text-h3: 1.125rem;
+  --sl-text-h4: 1rem;
+}
+
+.sl-markdown-content h2:not(:where(.not-content *)) {
+  letter-spacing: -0.025em;
+}
+
+.sl-markdown-content h3:not(:where(.not-content *)) {
+  color: var(--sl-color-gray-2);
+  letter-spacing: -0.01em;
+}
+
+@media (min-width: 50rem) {
+  :root {
+    --sl-text-h2: 2.125rem;
+    --sl-text-h3: 1.25rem;
+  }
+}

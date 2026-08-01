@@ -106,6 +106,14 @@ AI is **not applied to every listing**. First, the normal filters of the alert r
 
 That is important because AI does not replace your basic filters. It works as an extra layer.
 
+### AI tokens
+
+**AI tokens** are the credits Vallax uses for its artificial intelligence tools. Currently, they are used by the AI alert filter: you describe what you want to find in a prompt, and AI checks in more detail whether each listing matches.
+
+Premium gives you **25,000 AI tokens every month**. Your balance decreases as you use these features.
+
+You need a minimum token balance to activate an AI alert. If you do not have enough, **you cannot activate that AI alert even if your Premium subscription is still active**. Alerts that do not use AI do not require these tokens.
+
 ### What it analyzes
 
 AI can review:
