@@ -124,8 +124,8 @@ export const translations = {
       title: "Descubre las nuevas ofertas de segunda mano antes que nadie",
       description:
         "Vallax detecta nuevos anuncios en Wallapop, Vinted, Milanuncios y mas en cuanto aparecen. Ve las nuevas ofertas antes que nadie y llega primero.",
-      primaryCta: "Crea tu primera alerta",
-      availability: "Disponible en Telegram, Android e iOS proximamente",
+      primaryCta: "Descargar para Android",
+      availability: "Disponible en Android. Próximamente en iOS",
       platforms: {
         title: "Plataformas soportadas",
       },
@@ -305,8 +305,8 @@ export const translations = {
       title: "See new second-hand deals before anyone else",
       description:
         "Vallax detects new listings on Wallapop, Vinted, Milanuncios and more as soon as they appear. See new deals before anyone else and get there first.",
-      primaryCta: "Create Your First Alert",
-      availability: "Available on Telegram, Android and iOS coming soon",
+      primaryCta: "Download for Android",
+      availability: "Available on Android. Coming soon to iOS",
       platforms: {
         title: "Supported platforms",
       },
@@ -479,8 +479,8 @@ translations.fr = {
     title: "Decouvrez les nouvelles offres d'occasion avant tout le monde",
     description:
       "Vallax detecte les nouvelles annonces sur Wallapop, Vinted, Milanuncios et plus des leur publication. Voyez les meilleures offres avant tout le monde.",
-    primaryCta: "Creez votre premiere alerte",
-    availability: "Disponible via Telegram, Android et iOS bientot",
+    primaryCta: "Télécharger pour Android",
+    availability: "Disponible sur Android. Bientôt sur iOS",
     platforms: { title: "Plateformes compatibles" },
   },
   features: {
@@ -650,8 +650,8 @@ translations.it = {
     title: "Scopri nuove offerte usato prima di tutti",
     description:
       "Vallax rileva nuovi annunci su Wallapop, Vinted, Milanuncios e altro non appena compaiono. Vedi le occasioni prima di tutti e arriva per primo.",
-    primaryCta: "Crea il tuo primo avviso",
-    availability: "Disponibile su Telegram, Android e iOS prossimamente",
+    primaryCta: "Scarica per Android",
+    availability: "Disponibile su Android. Prossimamente su iOS",
     platforms: { title: "Piattaforme supportate" },
   },
   features: {
@@ -821,8 +821,8 @@ translations.pl = {
     title: "Nowe oferty z drugiej reki zanim zobacza je inni",
     description:
       "Vallax wykrywa nowe ogloszenia na Wallapop, Vinted, Milanuncios i innych platformach zaraz po publikacji. Zobacz okazje przed innymi i badz pierwszy.",
-    primaryCta: "Utworz pierwszy alert",
-    availability: "Dostepne na Telegramie, Android i iOS wkrotce",
+    primaryCta: "Pobierz na Androida",
+    availability: "Dostepne na Androidzie. Wkrotce na iOS",
     platforms: { title: "Obslugiwane platformy" },
   },
   features: {
