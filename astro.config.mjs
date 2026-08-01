@@ -26,6 +26,7 @@ export default defineConfig({
   integrations: [
     starlight({
       title: "Vallax",
+      customCss: ["./src/assets/css/starlight.css"],
       logo: {
         dark: "./src/assets/vallax-logo.svg",
         light: "./src/assets/vallax-logo-light.svg",
