@@ -17,7 +17,6 @@ interface Props {
 
 const { lang, t } = Astro.props as Props;
 const androidAppHref = "https://play.google.com/store/apps/details?id=com.insomnis.vallax";
-const primaryCtaHref = androidAppHref;
 const communityHref = "https://t.me/vallax_group";
 const docsHref = lang === "es" ? "/docs/" : `/${lang}/docs/`;
 const featureIcons = ["layers", "bolt", "tune", "auto_awesome"];
@@ -204,15 +203,6 @@ const seoSolutionLinks = solutionPages.slice(0, 3).map((page) => ({
                 </a>
             </div>
             <div class="flex flex-wrap justify-center gap-4 sm:justify-start">
-                <a
-                    class="inline-flex items-center rounded-full bg-primary px-5 py-3 text-sm font-semibold text-[#071217] transition hover:bg-[#1ce6d2] focus:outline-none focus-visible:ring-2 focus-visible:ring-primary"
-                    href={primaryCtaHref}
-                    target="_blank"
-                    rel="noreferrer"
-                >
-                    <span>{t.hero.primaryCta}</span>
-                    <span class="ml-2 text-base" aria-hidden="true">→</span>
-                </a>
                 <a
                     class="inline-flex items-center rounded-full border border-white/15 bg-white/5 px-5 py-3 text-sm font-semibold text-white transition hover:border-white/30 hover:bg-white/10 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500"
                     href={docsHref}
