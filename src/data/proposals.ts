@@ -15,7 +15,7 @@ export interface Proposal {
 export const proposals: Proposal[] = [
     {
         id: "ios-app",
-        status: "accepted",
+        status: "completed",
         origin: "team",
         title: {
             es: "Aplicación para iOS",
@@ -25,11 +25,11 @@ export const proposals: Proposal[] = [
             pl: "Aplikacja na iOS",
         },
         description: {
-            es: "Llevar la experiencia de Vallax a iPhone y iPad.",
-            en: "Bring the Vallax experience to iPhone and iPad.",
-            fr: "Proposer l'expérience Vallax sur iPhone et iPad.",
-            it: "Portare l'esperienza Vallax su iPhone e iPad.",
-            pl: "Udostepnienie Vallax na iPhone i iPad.",
+            es: "Vallax ya está disponible para descargar y utilizar en iPhone y iPad.",
+            en: "Vallax is now available to download and use on iPhone and iPad.",
+            fr: "Vallax est maintenant disponible au téléchargement sur iPhone et iPad.",
+            it: "Vallax è ora disponibile per il download su iPhone e iPad.",
+            pl: "Vallax jest juz dostepny do pobrania na iPhone'a i iPada.",
         },
     },
     {
