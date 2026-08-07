@@ -125,7 +125,7 @@ export const translations = {
       description:
         "Vallax detecta nuevos anuncios en Wallapop, Vinted, Milanuncios y mas en cuanto aparecen. Ve las nuevas ofertas antes que nadie y llega primero.",
       primaryCta: "Descargar para Android",
-      availability: "Disponible en Android. Próximamente en iOS",
+      availability: "Disponible en Android e iOS",
       platforms: {
         title: "Plataformas soportadas",
       },
@@ -306,7 +306,7 @@ export const translations = {
       description:
         "Vallax detects new listings on Wallapop, Vinted, Milanuncios and more as soon as they appear. See new deals before anyone else and get there first.",
       primaryCta: "Download for Android",
-      availability: "Available on Android. Coming soon to iOS",
+      availability: "Available on Android and iOS",
       platforms: {
         title: "Supported platforms",
       },
@@ -480,7 +480,7 @@ translations.fr = {
     description:
       "Vallax detecte les nouvelles annonces sur Wallapop, Vinted, Milanuncios et plus des leur publication. Voyez les meilleures offres avant tout le monde.",
     primaryCta: "Télécharger pour Android",
-    availability: "Disponible sur Android. Bientôt sur iOS",
+    availability: "Disponible sur Android et iOS",
     platforms: { title: "Plateformes compatibles" },
   },
   features: {
@@ -651,7 +651,7 @@ translations.it = {
     description:
       "Vallax rileva nuovi annunci su Wallapop, Vinted, Milanuncios e altro non appena compaiono. Vedi le occasioni prima di tutti e arriva per primo.",
     primaryCta: "Scarica per Android",
-    availability: "Disponibile su Android. Prossimamente su iOS",
+    availability: "Disponibile su Android e iOS",
     platforms: { title: "Piattaforme supportate" },
   },
   features: {
@@ -822,7 +822,7 @@ translations.pl = {
     description:
       "Vallax wykrywa nowe ogloszenia na Wallapop, Vinted, Milanuncios i innych platformach zaraz po publikacji. Zobacz okazje przed innymi i badz pierwszy.",
     primaryCta: "Pobierz na Androida",
-    availability: "Dostepne na Androidzie. Wkrotce na iOS",
+    availability: "Dostepne na Androidzie i iOS",
     platforms: { title: "Obslugiwane platformy" },
   },
   features: {
