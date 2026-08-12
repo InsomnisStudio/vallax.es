@@ -26,8 +26,22 @@ const copy = currentPage.locale[locale];
 const relatedPages = platformPages.filter((page) => page.slug !== slug).slice(0, 3);
 const homeHref = `/${locale}/`;
 const pageSeo = {
-    title: `Vallax - ${copy.title}`,
+    title: copy.title,
     description: copy.description,
+};
+const platformNameBySlug: Record<string, string> = {
+    "wallapop-alerts": "Wallapop",
+    "vinted-alerts": "Vinted",
+    "milanuncios-alerts": "Milanuncios",
+    "todocoleccion-alerts": "Todocolección",
+};
+const platformName = platformNameBySlug[currentPage.slug] ?? currentPage.slug;
+const nonAffiliation: Record<Locale, string> = {
+    es: `Vallax es una aplicación independiente. Esta página no está afiliada ni respaldada por ${platformName}.`,
+    en: `Vallax is an independent application. This page is not affiliated with or endorsed by ${platformName}.`,
+    fr: `Vallax est une application indépendante. Cette page n'est ni affiliée ni approuvée par ${platformName}.`,
+    it: `Vallax è un'applicazione indipendente. Questa pagina non è affiliata né approvata da ${platformName}.`,
+    pl: `Vallax jest niezależną aplikacją. Ta strona nie jest powiązana ani wspierana przez ${platformName}.`,
 };
 ---
 
@@ -42,6 +56,9 @@ const pageSeo = {
             </h1>
             <p class="mt-5 max-w-3xl text-lg text-white/70">
                 {copy.description}
+            </p>
+            <p class="mt-4 max-w-3xl text-sm text-white/50">
+                {nonAffiliation[locale]}
             </p>
 
             <div class="mt-12 grid gap-8 lg:grid-cols-[1.5fr_0.9fr]">

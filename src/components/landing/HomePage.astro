@@ -9,6 +9,7 @@ import SwitchImage from "../../images/hero/nintendo-switch.jpg";
 import XboxImage from "../../images/hero/xbox.jpg";
 import type { Locale, Translation } from "../../i18n";
 import { platformPages, solutionPages } from "../../data/seo-pages";
+import { featuredReviews, googlePlayUrl, reviewsUi } from "../../data/reviews";
 
 interface Props {
     lang: Locale;
@@ -71,6 +72,13 @@ const localizedUi = {
         thirdTime: "teraz",
     },
 }[lang];
+const reviewCopy = reviewsUi[lang];
+const reviewDateFormatter = new Intl.DateTimeFormat(lang, {
+    day: "numeric",
+    month: "long",
+    year: "numeric",
+    timeZone: "UTC",
+});
 const platforms = [
     {
         name: "Wallapop",
@@ -142,6 +150,7 @@ const seoSolutionLinks = solutionPages.slice(0, 3).map((page) => ({
                 <a
                     class="store-badge store-badge-ios inline-flex items-center rounded-lg border border-white/10 bg-[#161616] px-4 py-2 text-xl tracking-wider text-white transition hover:border-primary/40 hover:bg-[#1d1d1d] focus:outline-none focus-visible:ring-2 focus-visible:ring-primary"
                     href={iosAppHref}
+                    data-app-store="ios"
                     target="_blank"
                     rel="noreferrer"
                     aria-label={`iOS - ${localizedUi.appStoreOverline} App Store`}
@@ -166,6 +175,7 @@ const seoSolutionLinks = solutionPages.slice(0, 3).map((page) => ({
                 <a
                     class="store-badge inline-flex items-center rounded-lg border border-white/10 bg-[#161616] px-4 py-2 text-xl tracking-wider text-white transition hover:border-primary/40 hover:bg-[#1d1d1d] focus:outline-none focus-visible:ring-2 focus-visible:ring-primary"
                     href={androidAppHref}
+                    data-app-store="android"
                     target="_blank"
                     rel="noreferrer"
                     aria-label={`Android - ${localizedUi.playStoreOverline} Google Play`}
@@ -606,6 +616,9 @@ const seoSolutionLinks = solutionPages.slice(0, 3).map((page) => ({
                             alt={platform.name}
                             class="h-8 opacity-70 transition-opacity hover:opacity-100 md:h-10"
                             src={platform.logo}
+                            width="160"
+                            height="40"
+                            loading="lazy"
                         />
                     </a>
                 ))
@@ -739,6 +752,67 @@ const seoSolutionLinks = solutionPages.slice(0, 3).map((page) => ({
                 );
             })
         }
+    </div>
+</section>
+
+<section class="relative overflow-hidden border-y border-white/5 bg-black/20 px-6 py-24 md:px-16 md:py-32" id="reviews">
+    <div class="absolute left-1/2 top-0 h-72 w-72 -translate-x-1/2 rounded-full bg-primary/8 blur-3xl" aria-hidden="true"></div>
+    <div class="relative mx-auto max-w-7xl">
+        <header class="mx-auto max-w-2xl text-center">
+            <p class="text-xs font-black uppercase tracking-[0.24em] text-primary">
+                {reviewCopy.eyebrow}
+            </p>
+            <h2 class="mt-4 text-4xl font-black tracking-tight text-white md:text-5xl">
+                {reviewCopy.title}
+            </h2>
+            <p class="mt-5 text-lg text-on-surface-variant">
+                {reviewCopy.description}
+            </p>
+        </header>
+
+        <div class="mt-14 grid gap-6 lg:grid-cols-3">
+            {
+                featuredReviews.map((review) => (
+                    <figure class="glass-card flex min-h-64 flex-col rounded-3xl p-8">
+                        <div
+                            class="flex gap-1 text-secondary"
+                            role="img"
+                            aria-label={`${review.rating} / 5`}
+                        >
+                            {Array.from({ length: review.rating }, () => (
+                                <span class="review-star material-symbols-outlined text-xl" aria-hidden="true">
+                                    star
+                                </span>
+                            ))}
+                        </div>
+                        <blockquote class="mt-7 flex-1 text-xl font-semibold leading-relaxed text-white">
+                            <p lang={review.language}>“{review.body}”</p>
+                        </blockquote>
+                        <figcaption class="mt-8 border-t border-white/8 pt-5">
+                            <p class="font-bold text-white">{review.author}</p>
+                            <time
+                                class="mt-1 block text-sm text-on-surface-variant"
+                                datetime={review.datePublished}
+                            >
+                                {reviewDateFormatter.format(new Date(`${review.datePublished}T00:00:00Z`))}
+                            </time>
+                        </figcaption>
+                    </figure>
+                ))
+            }
+        </div>
+
+        <div class="mt-10 text-center">
+            <a
+                href={googlePlayUrl}
+                target="_blank"
+                rel="noreferrer"
+                class="inline-flex items-center gap-2 text-sm font-bold text-primary transition hover:text-secondary"
+            >
+                {reviewCopy.source}
+                <span class="material-symbols-outlined text-lg" aria-hidden="true">open_in_new</span>
+            </a>
+        </div>
     </div>
 </section>
 
