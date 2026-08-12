@@ -9,10 +9,12 @@ interface Props {
     seo: Translation["seo"];
     navbar: Translation["navbar"];
     footer: Translation["footer"];
+    structuredData?: Record<string, unknown>[];
 }
 
-const { lang, seo, navbar, footer } = Astro.props as Props;
+const { lang, seo, navbar, footer, structuredData = [] } = Astro.props as Props;
 const site = Astro.site ?? new URL("https://vallax.es");
+const gaMeasurementId = import.meta.env.PUBLIC_GA_MEASUREMENT_ID;
 const hreflangByLocale: Record<Locale, string> = {
     es: "es-ES",
     en: "en",
@@ -21,29 +23,53 @@ const hreflangByLocale: Record<Locale, string> = {
     pl: "pl-PL",
 };
 const pathname = Astro.url.pathname;
+const isLocalizedPath =
+    pathname === `/${lang}` || pathname === `/${lang}/` || pathname.startsWith(`/${lang}/`);
 const pathWithoutLocale =
     pathname === `/${lang}` || pathname === `/${lang}/`
         ? "/"
         : pathname.startsWith(`/${lang}/`)
           ? pathname.slice(`/${lang}`.length)
-          : "/";
-const localeAlternates = locales.map((locale) => {
+          : pathname;
+const localeAlternates = isLocalizedPath ? locales.map((locale) => {
     const localizedPath = `/${locale}${pathWithoutLocale}`;
     return {
         locale,
         hreflang: hreflangByLocale[locale],
         url: new URL(localizedPath, site),
     };
-});
-const canonical = new URL(`/${lang}${pathWithoutLocale}`, site);
+}) : [];
+const canonical = new URL(
+    isLocalizedPath ? `/${lang}${pathWithoutLocale}` : pathname,
+    site,
+);
+const xDefault = isLocalizedPath
+    ? new URL(`/es${pathWithoutLocale}`, site)
+    : canonical;
 const homeHref = `/${lang}/`;
-const languageLinks = localeAlternates.map((alternate) => ({
-    href: alternate.url.pathname,
-    hreflang: alternate.hreflang,
-    locale: alternate.locale,
-    isCurrent: alternate.locale === lang,
-}));
+const languageLinks = isLocalizedPath
+    ? localeAlternates.map((alternate) => ({
+          href: alternate.url.pathname,
+          hreflang: alternate.hreflang,
+          locale: alternate.locale,
+          isCurrent: alternate.locale === lang,
+      }))
+    : locales.map((locale) => ({
+          href: `/${locale}/`,
+          hreflang: hreflangByLocale[locale],
+          locale,
+          isCurrent: locale === lang,
+      }));
 const currentLanguage = languageLinks.find((link) => link.isCurrent) ?? languageLinks[0];
+const nonAffiliationByLocale: Record<Locale, string> = {
+    es: "Vallax no está afiliado ni respaldado por Wallapop, Vinted, Milanuncios ni Todocolección. Son marcas registradas de sus respectivos titulares.",
+    en: "Vallax is not affiliated with or endorsed by Wallapop, Vinted, Milanuncios or Todocoleccion. They are trademarks of their respective owners.",
+    fr: "Vallax n'est ni affilié ni approuvé par Wallapop, Vinted, Milanuncios ou Todocoleccion. Ces marques appartiennent à leurs propriétaires respectifs.",
+    it: "Vallax non è affiliata né approvata da Wallapop, Vinted, Milanuncios o Todocoleccion. I marchi appartengono ai rispettivi titolari.",
+    pl: "Vallax nie jest powiązany ani wspierany przez Wallapop, Vinted, Milanuncios lub Todocoleccion. Znaki należą do ich właścicieli.",
+};
+const currentYear = new Date().getFullYear();
+const rights = footer.rights.replace(/©\s*\d{4}/, `© ${currentYear}`);
 ---
 
 <!doctype html>
@@ -64,11 +90,15 @@ const currentLanguage = languageLinks.find((link) => link.isCurrent) ?? language
                 />
             ))
         }
-        <link
-            rel="alternate"
-            hreflang="x-default"
-            href={new URL("/es/", site).toString()}
-        />
+        {
+            isLocalizedPath && (
+                <link
+                    rel="alternate"
+                    hreflang="x-default"
+                    href={xDefault.toString()}
+                />
+            )
+        }
 
         <meta name="robots" content="index,follow,max-image-preview:large" />
         <meta name="googlebot" content="index,follow" />
@@ -79,6 +109,24 @@ const currentLanguage = languageLinks.find((link) => link.isCurrent) ?? language
             media="(prefers-color-scheme: dark)"
         />
         <meta name="theme-color" content="#07D9C4" />
+        {
+            structuredData.map((data) => (
+                <script is:inline type="application/ld+json" set:html={JSON.stringify(data)} />
+            ))
+        }
+        {
+            gaMeasurementId && (
+                <>
+                    <script is:inline async src={`https://www.googletagmanager.com/gtag/js?id=${gaMeasurementId}`} />
+                    <script is:inline define:vars={{ gaMeasurementId }}>
+                        window.dataLayer = window.dataLayer || [];
+                        function gtag(){dataLayer.push(arguments);}
+                        gtag('js', new Date());
+                        gtag('config', gaMeasurementId);
+                    </script>
+                </>
+            )
+        }
         <link
             href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap"
             rel="stylesheet"
@@ -227,11 +275,11 @@ const currentLanguage = languageLinks.find((link) => link.isCurrent) ?? language
                     </div>
 
                     <div class="space-y-6">
-                        <h4
+                        <p
                             class="text-xs font-black uppercase tracking-widest text-white"
                         >
                             {footer.productTitle}
-                        </h4>
+                        </p>
                         <ul class="space-y-2.5">
                             <li>
                                 <a
@@ -269,11 +317,11 @@ const currentLanguage = languageLinks.find((link) => link.isCurrent) ?? language
                     </div>
 
                     <div class="space-y-6">
-                        <h4
+                        <p
                             class="text-xs font-black uppercase tracking-widest text-white"
                         >
                             {footer.legalTitle}
-                        </h4>
+                        </p>
                         <ul class="space-y-2.5">
                             {
                                 footer.legal.map((item) => (
@@ -291,17 +339,29 @@ const currentLanguage = languageLinks.find((link) => link.isCurrent) ?? language
                     </div>
                 </div>
 
-                <div
-                    class="flex items-center justify-center border-t border-white/5 pt-6 md:justify-start"
-                >
-                    <p class="text-xs font-medium text-on-surface-variant">
-                        {footer.rights}
+                <div class="border-t border-white/5 pt-6 text-center md:text-left">
+                    <p class="text-xs leading-relaxed text-on-surface-variant">
+                        {nonAffiliationByLocale[lang]}
+                    </p>
+                    <p class="mt-2 text-xs font-medium text-on-surface-variant">
+                        {rights}
                     </p>
                 </div>
             </div>
         </footer>
 
         <script is:inline>
+            document.querySelectorAll('[data-app-store]').forEach((link) => {
+                link.addEventListener('click', () => {
+                    if (typeof window.gtag === 'function') {
+                        window.gtag('event', 'app_download_click', {
+                            app_store: link.getAttribute('data-app-store'),
+                            link_url: link.href,
+                        });
+                    }
+                });
+            });
+
             document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
                 anchor.addEventListener("click", function (e) {
                     const href = this.getAttribute("href");

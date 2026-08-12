@@ -1,7 +1,7 @@
 ---
 import LandingLayout from "../../../layouts/LandingLayout.astro";
 import { translations, isLocale, locales, type Locale } from "../../../i18n";
-import { solutionPages, seoUi } from "../../../data/seo-pages";
+import { platformPages, solutionPages, seoUi } from "../../../data/seo-pages";
 
 export function getStaticPaths() {
     return locales.flatMap((locale) =>
@@ -26,9 +26,17 @@ const copy = currentPage.locale[locale];
 const relatedPages = solutionPages.filter((page) => page.slug !== slug).slice(0, 2);
 const homeHref = `/${locale}/`;
 const pageSeo = {
-    title: `Vallax - ${copy.title}`,
+    title: copy.title,
     description: copy.description,
 };
+const relevantPlatformSlug: Record<string, string> = {
+    "for-resellers": "wallapop-alerts",
+    "for-collectors": "todocoleccion-alerts",
+    "for-bargain-hunters": "vinted-alerts",
+};
+const relevantPlatform = platformPages.find(
+    (page) => page.slug === relevantPlatformSlug[currentPage.slug],
+);
 ---
 
 <LandingLayout lang={locale} seo={pageSeo} navbar={t.navbar} footer={t.footer}>
@@ -99,6 +107,16 @@ const pageSeo = {
                                 arrow_forward
                             </span>
                         </a>
+                        {
+                            relevantPlatform && (
+                                <a
+                                    href={`/${locale}/platforms/${relevantPlatform.slug}/`}
+                                    class="block text-sm font-semibold text-primary"
+                                >
+                                    {relevantPlatform.locale[locale].title}
+                                </a>
+                            )
+                        }
                     </div>
                 </aside>
             </div>

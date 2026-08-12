@@ -3,7 +3,8 @@ import config from 'virtual:starlight/user-config';
 import Select from '@astrojs/starlight/components/Select.astro';
 import { locales as siteLocales } from '../../i18n';
 
-const localeCodes = Object.keys(config.locales);
+const configuredLocales = config.locales ?? {};
+const localeCodes = Object.keys(configuredLocales);
 const defaultLocale = siteLocales[0];
 
 function normalizeLocaleCode(code: string): string {
@@ -51,7 +52,7 @@ const currentLocale = Astro.locals.starlightRoute.locale || getCurrentLocale(Ast
 			<Select
 				icon="translate"
 				label={Astro.locals.t('languageSelect.accessibleLabel')}
-				options={Object.entries(config.locales).map(([code, locale]) => ({
+				options={Object.entries(configuredLocales).map(([code, locale]) => ({
 					value: localizedPathname(code),
 					selected: normalizeLocaleCode(code) === currentLocale,
 					label: locale!.label,
@@ -83,7 +84,7 @@ const currentLocale = Astro.locals.starlightRoute.locale || getCurrentLocale(Ast
 				}
 
 				const markupSelectedIndex =
-					select.querySelector('option[selected]')?.index ?? 0;
+					select.querySelector<HTMLOptionElement>('option[selected]')?.index ?? 0;
 				select.selectedIndex = markupSelectedIndex;
 			};
 

@@ -2,6 +2,7 @@
 import { defineConfig } from "astro/config";
 import tailwindcss from "@tailwindcss/vite";
 import starlight from "@astrojs/starlight";
+import sitemap from "@astrojs/sitemap";
 // https://astro.build/config
 export default defineConfig({
   site: "https://vallax.es",
@@ -24,6 +25,7 @@ export default defineConfig({
   },
 
   integrations: [
+    sitemap(),
     starlight({
       title: "Vallax",
       customCss: ["./src/assets/css/starlight.css"],

@@ -99,9 +99,9 @@ export const translations = {
     locale: "es",
     seo: {
       title:
-        "Vallax — Bot de alertas para plataformas de segunda mano (Wallapop, Vinted, Milanuncios...)",
+        "Vallax — Alertas de Wallapop, Vinted, Milanuncios y Todocolección",
       description:
-        "Vallax es un bot que envía alertas instantáneas de nuevos anuncios de segunda mano en Wallapop, Vinted, Milanuncios y más. Ve las nuevas ofertas antes que nadie.",
+        "App para iOS y Android que te avisa al instante cuando aparece un anuncio nuevo en Wallapop, Vinted, Milanuncios o Todocolección. Descárgala gratis.",
     },
     navbar: {
       links: {
@@ -273,16 +273,16 @@ export const translations = {
         { label: "Instagram", href: "https://www.instagram.com/vallaxbot/" },
         { label: "YouTube", href: "https://www.youtube.com/@vallax-app/" },
       ],
-      rights: "© 2025 Vallax. Todos los derechos reservados.",
+      rights: "© 2026 Vallax. Todos los derechos reservados.",
     },
   },
   en: {
     locale: "en",
     seo: {
       title:
-        "Vallax — Alert Bot for Second-Hand Marketplaces (Wallapop, Vinted, Milanuncios...)",
+        "Vallax — Wallapop, Vinted and Milanuncios Alerts",
       description:
-        "Vallax is a bot that sends instant alerts for new second-hand listings on Wallapop, Vinted, Milanuncios and more. See new deals before anyone else.",
+        "The iOS and Android app that alerts you as soon as a new listing appears on Wallapop, Vinted, Milanuncios or Todocoleccion. Download it free.",
     },
     navbar: {
       links: {
@@ -443,7 +443,7 @@ export const translations = {
         { label: "Instagram", href: "https://www.instagram.com/vallaxbot/" },
         { label: "YouTube", href: "https://www.youtube.com/@vallax-app/" },
       ],
-      rights: "© 2025 Vallax. All rights reserved.",
+      rights: "© 2026 Vallax. All rights reserved.",
     },
   },
 } as Record<Locale, Translation>;
@@ -453,9 +453,9 @@ translations.fr = {
   locale: "fr",
   seo: {
     title:
-      "Vallax — Bot d'alertes Vinted et annonces d'occasion (Wallapop, Vinted, Milanuncios...)",
+      "Vallax — Alertes Wallapop, Vinted et Milanuncios",
     description:
-      "Vallax envoie des alertes instantanees pour les nouvelles annonces sur Vinted, Wallapop, Milanuncios et plus.",
+      "L'app iOS et Android vous avertit dès qu'une annonce paraît sur Wallapop, Vinted, Milanuncios ou Todocoleccion. Téléchargez-la gratuitement.",
   },
   navbar: {
     ...translations.en.navbar,
@@ -615,7 +615,7 @@ translations.fr = {
       { label: "Instagram", href: "https://www.instagram.com/vallaxbot/" },
       { label: "YouTube", href: "https://www.youtube.com/@vallax-app/" },
     ],
-    rights: "© 2025 Vallax. Tous droits reserves.",
+    rights: "© 2026 Vallax. Tous droits reserves.",
   },
 };
 
@@ -624,9 +624,9 @@ translations.it = {
   locale: "it",
   seo: {
     title:
-      "Vallax — Bot alert Vinted e annunci usato (Wallapop, Vinted, Milanuncios...)",
+      "Vallax — Alert Wallapop, Vinted e Milanuncios",
     description:
-      "Vallax invia avvisi istantanei per nuovi annunci su Vinted, Wallapop, Milanuncios e altro.",
+      "L'app iOS e Android ti avvisa appena appare un nuovo annuncio su Wallapop, Vinted, Milanuncios o Todocoleccion. Scaricala gratuitamente.",
   },
   navbar: {
     ...translations.en.navbar,
@@ -786,7 +786,7 @@ translations.it = {
       { label: "Instagram", href: "https://www.instagram.com/vallaxbot/" },
       { label: "YouTube", href: "https://www.youtube.com/@vallax-app/" },
     ],
-    rights: "© 2025 Vallax. Tutti i diritti riservati.",
+    rights: "© 2026 Vallax. Tutti i diritti riservati.",
   },
 };
 
@@ -795,9 +795,9 @@ translations.pl = {
   locale: "pl",
   seo: {
     title:
-      "Vallax — Bot alertow Vinted i ofert z drugiej reki (Wallapop, Vinted, Milanuncios...)",
+      "Vallax — Alerty Wallapop, Vinted i Milanuncios",
     description:
-      "Vallax wysyla natychmiastowe alerty o nowych ogloszeniach na Vinted, Wallapop, Milanuncios i innych platformach.",
+      "Aplikacja na iOS i Android powiadamia o nowych ofertach na Wallapop, Vinted, Milanuncios i Todocoleccion. Pobierz ją bezpłatnie.",
   },
   navbar: {
     ...translations.en.navbar,
@@ -957,7 +957,7 @@ translations.pl = {
       { label: "Instagram", href: "https://www.instagram.com/vallaxbot/" },
       { label: "YouTube", href: "https://www.youtube.com/@vallax-app/" },
     ],
-    rights: "© 2025 Vallax. Wszelkie prawa zastrzezone.",
+    rights: "© 2026 Vallax. Wszelkie prawa zastrzezone.",
   },
 };
 
