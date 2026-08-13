@@ -1,0 +1,107 @@
+---
+import { getCollection, render } from "astro:content";
+import LandingLayout from "../../../layouts/LandingLayout.astro";
+import { translations } from "../../../i18n";
+
+export async function getStaticPaths() {
+    const posts = await getCollection("blog");
+    return posts.map((post) => ({
+        params: { slug: post.id.replace(/\.md$/, "") },
+        props: { post },
+    }));
+}
+
+const { post } = Astro.props;
+const { Content } = await render(post);
+const allPosts = (await getCollection("blog"))
+    .filter((candidate) => candidate.id !== post.id)
+    .sort((a, b) => b.data.publishedAt.valueOf() - a.data.publishedAt.valueOf())
+    .slice(0, 3);
+const t = translations.es;
+const slug = post.id.replace(/\.md$/, "");
+const canonical = `https://vallax.es/es/blog/${slug}/`;
+const publishedAt = post.data.publishedAt.toISOString();
+const modifiedAt = post.data.modifiedAt.toISOString();
+const formatDate = (date: Date) =>
+    new Intl.DateTimeFormat("es-ES", {
+        day: "numeric",
+        month: "long",
+        year: "numeric",
+        timeZone: "Europe/Madrid",
+    }).format(date);
+const structuredData = [{
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    headline: post.data.title,
+    description: post.data.description,
+    author: { "@type": "Organization", name: "Vallax" },
+    publisher: { "@type": "Organization", name: "Vallax", url: "https://vallax.es/es/" },
+    datePublished: publishedAt,
+    dateModified: modifiedAt,
+    image: new URL(post.data.image, "https://vallax.es").toString(),
+    mainEntityOfPage: canonical,
+}];
+const postHref = (id: string) => `/es/blog/${id.replace(/\.md$/, "")}/`;
+---
+
+<LandingLayout
+    lang="es"
+    seo={{ title: post.data.title, description: post.data.description }}
+    navbar={t.navbar}
+    footer={t.footer}
+    structuredData={structuredData}
+    ogImage={post.data.image}
+    ogType="article"
+    publishedAt={publishedAt}
+    modifiedAt={modifiedAt}
+    onlyCurrentLocale
+>
+    <article class="blog-article text-white">
+        <header class="px-6 pb-14 pt-36 md:px-16 md:pb-20 md:pt-44">
+            <div class="mx-auto max-w-5xl">
+                <a href="/es/blog/" class="text-xs font-black uppercase tracking-[0.2em] text-primary">Blog de Vallax</a>
+                <h1 class="mt-7 max-w-5xl text-4xl font-black leading-[1.02] tracking-[-0.045em] md:text-6xl lg:text-7xl">{post.data.title}</h1>
+                <p class="mt-7 max-w-3xl text-xl leading-8 text-white/60">{post.data.excerpt}</p>
+                <div class="mt-8 flex flex-wrap gap-x-5 gap-y-2 text-sm text-white/40">
+                    <time datetime={publishedAt}>Publicado el {formatDate(post.data.publishedAt)}</time>
+                    {modifiedAt !== publishedAt && <time datetime={modifiedAt}>Actualizado el {formatDate(post.data.modifiedAt)}</time>}
+                    <span>Por Vallax</span>
+                </div>
+            </div>
+        </header>
+
+        <div class="mx-auto max-w-7xl px-6 md:px-16">
+            <img src={post.data.image} width="1200" height="630" alt={post.data.imageAlt} fetchpriority="high" decoding="async" class="aspect-[1200/630] w-full object-cover" />
+            {post.data.imageCredit && post.data.imageCreditUrl && (
+                <p class="mt-3 text-right text-xs text-white/35">
+                    Foto: <a href={post.data.imageCreditUrl} target="_blank" rel="noreferrer" class="transition hover:text-primary">{post.data.imageCredit}</a>
+                </p>
+            )}
+        </div>
+
+        <div class="mx-auto grid max-w-7xl gap-14 px-6 py-16 md:px-16 md:py-24 lg:grid-cols-[minmax(0,760px)_220px] lg:justify-between">
+            <div class="blog-prose"><Content /></div>
+            <aside class="lg:sticky lg:top-28 lg:self-start">
+                <p class="text-xs font-black uppercase tracking-[0.2em] text-white/35">Pasa a la acción</p>
+                <a href={post.data.ctaHref} class="mt-5 block border-l-2 border-primary pl-5 text-lg font-black leading-7 text-white transition hover:text-primary">{post.data.ctaLabel}</a>
+                <p class="mt-10 text-xs leading-5 text-white/35">
+                    Vallax es un servicio independiente. No está afiliado, patrocinado ni avalado por Wallapop, Vinted, Milanuncios ni Todocolección. Son marcas registradas de sus respectivos titulares y se citan únicamente con fines descriptivos.
+                </p>
+            </aside>
+        </div>
+    </article>
+
+    <section class="border-t border-white/10 px-6 py-20 text-white md:px-16 md:py-28">
+        <div class="mx-auto max-w-7xl">
+            <h2 class="text-3xl font-black tracking-tight md:text-5xl">Sigue afinando la búsqueda</h2>
+            <div class="mt-10 border-t border-white/10">
+                {allPosts.map((related) => (
+                    <a href={postHref(related.id)} class="group grid gap-3 border-b border-white/10 py-7 md:grid-cols-[1fr_auto] md:items-center">
+                        <span class="text-xl font-bold transition group-hover:text-primary md:text-2xl">{related.data.title}</span>
+                        <span class="material-symbols-outlined text-primary">north_east</span>
+                    </a>
+                ))}
+            </div>
+        </div>
+    </section>
+</LandingLayout>

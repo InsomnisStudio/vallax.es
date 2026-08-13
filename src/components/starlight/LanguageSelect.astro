@@ -4,56 +4,29 @@ import Select from '@astrojs/starlight/components/Select.astro';
 import { locales as siteLocales } from '../../i18n';
 
 const configuredLocales = config.locales ?? {};
-const localeCodes = Object.keys(configuredLocales);
 const defaultLocale = siteLocales[0];
 
 function normalizeLocaleCode(code: string): string {
 	return code === 'root' ? defaultLocale : code;
 }
 
-function getBasePathname(pathname: string): string {
-	for (const code of localeCodes) {
-		const normalizedCode = normalizeLocaleCode(code);
-		if (normalizedCode === defaultLocale) continue;
-		if (pathname === `/${normalizedCode}`) return '/';
-		if (pathname.startsWith(`/${normalizedCode}/`)) {
-			return pathname.slice(normalizedCode.length + 1) || '/';
-		}
-	}
-
-	return pathname;
-}
-
 function getCurrentLocale(pathname: string): string {
-	for (const code of localeCodes) {
-		const normalizedCode = normalizeLocaleCode(code);
-		if (normalizedCode === defaultLocale) continue;
-		if (pathname === `/${normalizedCode}` || pathname.startsWith(`/${normalizedCode}/`)) {
-			return normalizedCode;
-		}
-	}
-
-	return defaultLocale;
+	const firstSegment = pathname.split('/').filter(Boolean)[0];
+	return firstSegment && siteLocales.includes(firstSegment as typeof siteLocales[number])
+		? firstSegment
+		: defaultLocale;
 }
-
-function localizedPathname(locale: string): string {
-	locale = normalizeLocaleCode(locale);
-	const basePathname = getBasePathname(Astro.url.pathname);
-	if (locale === defaultLocale) return basePathname;
-	return basePathname === '/' ? `/${locale}/` : `/${locale}${basePathname}`;
-}
-
 const currentLocale = Astro.locals.starlightRoute.locale || getCurrentLocale(Astro.url.pathname);
 ---
 
 {
 	config.isMultilingual && (
-		<starlight-lang-select>
+		<starlight-lang-select data-locales={JSON.stringify(siteLocales)}>
 			<Select
 				icon="translate"
 				label={Astro.locals.t('languageSelect.accessibleLabel')}
 				options={Object.entries(configuredLocales).map(([code, locale]) => ({
-					value: localizedPathname(code),
+					value: normalizeLocaleCode(code),
 					selected: normalizeLocaleCode(code) === currentLocale,
 					label: locale!.label,
 				}))}
@@ -69,30 +42,27 @@ const currentLocale = Astro.locals.starlightRoute.locale || getCurrentLocale(Ast
 			super();
 			const select = this.querySelector('select');
 			if (!select) return;
+			const supportedLocales = JSON.parse(this.dataset.locales ?? '[]') as string[];
 
 			const syncSelectedOption = () => {
-				const currentPath = window.location.pathname.replace(/\/+$/, '') || '/';
-				const options = Array.from(select.options);
-				const exactMatch = options.findIndex((option) => {
-					const optionPath = option.value.replace(/\/+$/, '') || '/';
-					return optionPath === currentPath;
-				});
-
-				if (exactMatch >= 0) {
-					select.selectedIndex = exactMatch;
-					return;
-				}
-
-				const markupSelectedIndex =
-					select.querySelector<HTMLOptionElement>('option[selected]')?.index ?? 0;
-				select.selectedIndex = markupSelectedIndex;
+				const currentLocale = window.location.pathname.split('/').filter(Boolean)[0];
+				const exactMatch = Array.from(select.options).findIndex(
+					(option) => option.value === currentLocale,
+				);
+				select.selectedIndex = exactMatch >= 0 ? exactMatch : 0;
 			};
 
 			syncSelectedOption();
 
 			select.addEventListener('change', (e) => {
 				if (e.currentTarget instanceof HTMLSelectElement) {
-					window.location.pathname = e.currentTarget.value;
+					const locale = e.currentTarget.value;
+					const segments = window.location.pathname.split('/').filter(Boolean);
+					while (segments[0] && supportedLocales.includes(segments[0])) {
+						segments.shift();
+					}
+					const suffix = segments.length > 0 ? `/${segments.join('/')}/` : '/';
+					window.location.assign(`/${locale}${suffix}`);
 				}
 			});
 
@@ -102,5 +72,7 @@ const currentLocale = Astro.locals.starlightRoute.locale || getCurrentLocale(Ast
 		}
 	}
 
-	customElements.define('starlight-lang-select', StarlightLanguageSelect);
+	if (!customElements.get('starlight-lang-select')) {
+		customElements.define('starlight-lang-select', StarlightLanguageSelect);
+	}
 </script>

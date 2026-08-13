@@ -20,7 +20,7 @@ export default defineConfig({
     locales: ["en", "es", "fr", "it", "pl"],
     defaultLocale: "es",
     routing: {
-      prefixDefaultLocale: false,
+      prefixDefaultLocale: true,
     },
   },
 
@@ -28,6 +28,7 @@ export default defineConfig({
     sitemap(),
     starlight({
       title: "Vallax",
+      favicon: "/favicon-l.svg",
       customCss: ["./src/assets/css/starlight.css"],
       logo: {
         dark: "./src/assets/vallax-logo.svg",

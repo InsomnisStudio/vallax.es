@@ -10,9 +10,25 @@ interface Props {
     navbar: Translation["navbar"];
     footer: Translation["footer"];
     structuredData?: Record<string, unknown>[];
+    ogImage?: string;
+    ogType?: "website" | "article";
+    publishedAt?: string;
+    modifiedAt?: string;
+    onlyCurrentLocale?: boolean;
 }
 
-const { lang, seo, navbar, footer, structuredData = [] } = Astro.props as Props;
+const {
+    lang,
+    seo,
+    navbar,
+    footer,
+    structuredData = [],
+    ogImage,
+    ogType = "website",
+    publishedAt,
+    modifiedAt,
+    onlyCurrentLocale = false,
+} = Astro.props as Props;
 const site = Astro.site ?? new URL("https://vallax.es");
 const gaMeasurementId = import.meta.env.PUBLIC_GA_MEASUREMENT_ID;
 const hreflangByLocale: Record<Locale, string> = {
@@ -31,7 +47,8 @@ const pathWithoutLocale =
         : pathname.startsWith(`/${lang}/`)
           ? pathname.slice(`/${lang}`.length)
           : pathname;
-const localeAlternates = isLocalizedPath ? locales.map((locale) => {
+const alternateLocales = onlyCurrentLocale ? [lang] : locales;
+const localeAlternates = isLocalizedPath ? alternateLocales.map((locale) => {
     const localizedPath = `/${locale}${pathWithoutLocale}`;
     return {
         locale,
@@ -81,6 +98,19 @@ const rights = footer.rights.replace(/©\s*\d{4}/, `© ${currentYear}`);
         <title>{seo.title}</title>
         <meta name="description" content={seo.description} />
         <link rel="canonical" href={canonical.toString()} />
+        <meta property="og:type" content={ogType} />
+        <meta property="og:title" content={seo.title} />
+        <meta property="og:description" content={seo.description} />
+        <meta property="og:url" content={canonical.toString()} />
+        <meta property="og:site_name" content="Vallax" />
+        <meta property="og:locale" content={hreflangByLocale[lang].replace("-", "_")} />
+        <meta name="twitter:card" content={ogImage ? "summary_large_image" : "summary"} />
+        {ogImage && <meta property="og:image" content={new URL(ogImage, site).toString()} />}
+        {ogImage && <meta property="og:image:width" content="1200" />}
+        {ogImage && <meta property="og:image:height" content="630" />}
+        {ogImage && <meta name="twitter:image" content={new URL(ogImage, site).toString()} />}
+        {publishedAt && <meta property="article:published_time" content={publishedAt} />}
+        {modifiedAt && <meta property="article:modified_time" content={modifiedAt} />}
         {
             localeAlternates.map((alternate) => (
                 <link
@@ -173,6 +203,14 @@ const rights = footer.rights.replace(/©\s*\d{4}/, `© ${currentYear}`);
                     >
                         {proposalsUi[lang].navLabel}
                     </a>
+                    {lang === "es" && (
+                        <a
+                            class="text-sm font-semibold text-on-surface-variant transition-colors hover:text-primary"
+                            href="/es/blog/"
+                        >
+                            Blog
+                        </a>
+                    )}
                 </div>
                 <div class="flex items-center">
                     <details class="language-dropdown hidden lg:block">
@@ -313,6 +351,16 @@ const rights = footer.rights.replace(/©\s*\d{4}/, `© ${currentYear}`);
                                     {proposalsUi[lang].navLabel}
                                 </a>
                             </li>
+                            {lang === "es" && (
+                                <li>
+                                    <a
+                                        class="text-sm text-on-surface-variant transition-colors hover:text-primary"
+                                        href="/es/blog/"
+                                    >
+                                        Blog
+                                    </a>
+                                </li>
+                            )}
                         </ul>
                     </div>
 
