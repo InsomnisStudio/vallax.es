@@ -46,4 +46,4 @@ Cuando ya tienes claro que quieres buscar, lo importante es crear bien la alerta
 
 La siguiente guia explica los campos que de verdad marcan la diferencia:
 
-- [Como crear tu primera alerta](/docs/guides/first-alert)
+- [Como crear tu primera alerta](/es/docs/guides/first-alert)

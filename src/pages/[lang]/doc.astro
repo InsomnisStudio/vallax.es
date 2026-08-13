@@ -7,7 +7,7 @@ export function getStaticPaths() {
 
 const paramLang = Astro.params.lang;
 const locale: Locale = isLocale(paramLang) ? paramLang : "es";
-const target = locale === "es" ? "/docs/" : `/${locale}/docs/`;
+const target = `/${locale}/docs/`;
 ---
 
 <html lang={locale}>

@@ -1,0 +1,17 @@
+---
+const target = "/es/docs/";
+---
+
+<html lang="es">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="robots" content="noindex,follow" />
+        <meta http-equiv="refresh" content={`0; url=${target}`} />
+        <link rel="canonical" href="https://vallax.es/es/docs/" />
+        <title>Redirigiendo a la documentación de Vallax</title>
+        <script is:inline define:vars={{ target }}>
+            window.location.replace(target);
+        </script>
+    </head>
+    <body></body>
+</html>

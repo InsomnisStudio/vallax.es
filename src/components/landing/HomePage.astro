@@ -20,7 +20,7 @@ const { lang, t } = Astro.props as Props;
 const androidAppHref = "https://play.google.com/store/apps/details?id=com.insomnis.vallax";
 const iosAppHref = "https://apps.apple.com/es/app/vallax/id6793169829";
 const communityHref = "https://t.me/vallax_group";
-const docsHref = lang === "es" ? "/docs/" : `/${lang}/docs/`;
+const docsHref = `/${lang}/docs/`;
 const featureIcons = ["layers", "bolt", "tune", "auto_awesome"];
 const heroTitleWords = t.hero.title.split(" ");
 const heroTitleLead = heroTitleWords.slice(0, -3).join(" ");
@@ -82,22 +82,22 @@ const reviewDateFormatter = new Intl.DateTimeFormat(lang, {
 const platforms = [
     {
         name: "Wallapop",
-        logo: WallapopLogo.src,
+        logo: WallapopLogo,
         href: "https://es.wallapop.com/",
     },
     {
         name: "Vinted",
-        logo: VintedLogo.src,
+        logo: VintedLogo,
         href: "https://www.vinted.es/",
     },
     {
         name: "Todocoleccion",
-        logo: TodocoleccionLogo.src,
+        logo: TodocoleccionLogo,
         href: "https://www.todocoleccion.net/",
     },
     {
         name: "Milanuncios",
-        logo: MilanunciosLogo.src,
+        logo: MilanunciosLogo,
         href: "https://www.milanuncios.com/",
     },
 ];
@@ -614,10 +614,10 @@ const seoSolutionLinks = solutionPages.slice(0, 3).map((page) => ({
                     >
                         <img
                             alt={platform.name}
-                            class="h-8 opacity-70 transition-opacity hover:opacity-100 md:h-10"
-                            src={platform.logo}
-                            width="160"
-                            height="40"
+                            class="h-8 w-auto object-contain opacity-70 transition-opacity hover:opacity-100 md:h-10"
+                            src={platform.logo.src}
+                            width={platform.logo.width}
+                            height={platform.logo.height}
                             loading="lazy"
                         />
                     </a>
