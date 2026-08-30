@@ -24,11 +24,11 @@ Pendant ce temps :
 
 ## Limite des alertes avec IA
 
-Les alertes utilisant l'IA ont une limite globale plus stricte : **6 analyses par minute**.
+Les alertes utilisant l'IA ont une limite globale plus stricte : **20 analyses par minute**.
 
 Cela signifie que, toutes vos alertes avec IA confondues, vous ne pouvez pas depasser ce plafond.
 
-Si l'analyse par IA se declenche plus de 6 fois dans une minute sur l'ensemble de ces alertes, Vallax **desactivera toutes vos alertes avec IA**.
+Si l'analyse par IA se declenche plus de 20 fois dans une minute sur l'ensemble de ces alertes, Vallax **desactivera toutes vos alertes avec IA**.
 
 Dans ce cas :
 

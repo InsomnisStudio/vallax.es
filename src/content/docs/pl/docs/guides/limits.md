@@ -24,11 +24,11 @@ W tym czasie:
 
 ## Limit alertow z AI
 
-Alerty korzystajace z AI maja ostrzejszy globalny limit: **6 analiz na minute**.
+Alerty korzystajace z AI maja ostrzejszy globalny limit: **20 analiz na minute**.
 
 To znaczy, ze wszystkie Twoje alerty z AI lacznie nie moga przekroczyc tego progu.
 
-Jesli analiza AI uruchomi sie wiecej niz 6 razy w ciagu minuty we wszystkich tych alertach, Vallax **wylaczy wszystkie twoje alerty z AI**.
+Jesli analiza AI uruchomi sie wiecej niz 20 razy w ciagu minuty we wszystkich tych alertach, Vallax **wylaczy wszystkie twoje alerty z AI**.
 
 W takim przypadku:
 

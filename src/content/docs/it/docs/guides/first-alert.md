@@ -110,20 +110,21 @@ Questo e importante, perche l'IA non sostituisce i filtri di base. Funziona come
 
 I **token IA** sono i crediti che Vallax utilizza per i suoi strumenti di intelligenza artificiale. Attualmente vengono utilizzati dal filtro IA degli avvisi: descrivi con un prompt cosa vuoi trovare e l'IA verifica piu nel dettaglio se ogni annuncio corrisponde.
 
-Con Premium ricevi **25.000 token IA ogni mese**. Il saldo diminuisce man mano che utilizzi queste funzioni.
+Con Premium ricevi **25.000 token IA ogni mese**, ma non serve Premium per usare l'IA. Puoi anche acquistare token nel negozio e utilizzarli senza un abbonamento Premium.
 
-Per attivare un avviso con IA devi avere un saldo minimo di token. Se non ne hai abbastanza, **non potrai attivare quell'avviso IA anche se il tuo abbonamento Premium e ancora attivo**. Gli avvisi senza IA non richiedono questi token.
+Per attivare un avviso con IA devi avere un saldo minimo di token. Se non ne hai abbastanza, **non potrai attivare quell'avviso IA** finche non ne ricevi o acquisti altri. Gli avvisi senza IA non richiedono questi token.
 
 ### Cosa analizza
 
 L'IA puo analizzare:
 
-- Fino alle **prime 3 foto** dell'annuncio.
+- Le foto che scegli, fino a un massimo di **10**.
 - Il **titolo**.
 - La **descrizione**, quando la piattaforma la fornisce.
+- Il **prezzo**.
 - Su **Vinted**, anche il **brand**.
 
-In base alla piattaforma, Vallax ha accesso a campi diversi.
+In base alla piattaforma, Vallax ha accesso a campi diversi. Piu foto chiedi di analizzare, maggiore sara il consumo di token, quindi seleziona solo quelle che possono fornire informazioni utili.
 
 ### A cosa serve
 
@@ -137,11 +138,15 @@ In quel caso puoi aggiungere un'istruzione come questa:
 
 In questo modo l'IA usa testo e immagini per capire se l'annuncio e davvero quello che stai cercando.
 
-### Cosa non ha senso chiedere all'IA
+### Usare il prezzo con il suo contesto
 
-Di solito non ha senso chiedere all'IA di ripetere filtri che Vallax gestisce gia da solo, come il prezzo minimo o massimo.
+L'IA puo anche controllare il prezzo e metterlo in relazione con cio che include l'annuncio. In questo modo puoi definire condizioni che un singolo prezzo minimo o massimo non puo rappresentare.
 
-L'IA funziona meglio come livello aggiuntivo di interpretazione, non come sostituto di regole gia esistenti.
+Per esempio:
+
+`Accetta annunci fino a 40 € se includono giochi; se non includono giochi, accetta solo fino a 20 €.`
+
+L'IA puo verificare se i giochi compaiono nel testo o nelle foto e applicare il limite di prezzo corrispondente.
 
 ## Configurazione consigliata per iniziare
 
@@ -150,6 +155,6 @@ Se e il tuo primo avviso, l'approccio piu pratico e questo:
 1. Definisci bene le **parole chiave**.
 2. Usa le **parole da escludere** per eliminare il rumore.
 3. Aggiungi la **posizione** se vuoi annunci vicini.
-4. Usa l'**IA** solo quando hai bisogno di confermare dettagli che il solo testo non chiarisce abbastanza.
+4. Usa l'**IA** quando devi mettere in relazione testo, foto e prezzo o applicare condizioni che i filtri di base non possono esprimere.
 
 Con questa base puoi gia creare avvisi molto precisi senza complicarli inutilmente.

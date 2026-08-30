@@ -24,11 +24,11 @@ Durante quel periodo:
 
 ## Limite per gli avvisi con IA
 
-Gli avvisi che usano l'IA hanno un limite globale piu rigido: **6 analisi al minuto**.
+Gli avvisi che usano l'IA hanno un limite globale piu rigido: **20 analisi al minuto**.
 
 Questo significa che, sommando tutti i tuoi avvisi con IA, non puoi superare quel tetto.
 
-Se l'analisi con IA supera 6 esecuzioni in un minuto tra tutti questi avvisi, Vallax **disattivera tutti i tuoi avvisi con IA**.
+Se l'analisi con IA supera 20 esecuzioni in un minuto tra tutti questi avvisi, Vallax **disattivera tutti i tuoi avvisi con IA**.
 
 In quel caso:
 
