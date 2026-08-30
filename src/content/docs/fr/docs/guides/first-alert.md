@@ -110,20 +110,21 @@ C'est important, car l'IA ne remplace pas les filtres de base. Elle agit comme u
 
 Les **tokens IA** sont les credits utilises par Vallax pour ses outils d'intelligence artificielle. Actuellement, ils sont utilises par le filtre IA des alertes : vous decrivez dans un prompt ce que vous recherchez et l'IA verifie plus precisement si chaque annonce correspond.
 
-Avec Premium, vous recevez **25 000 tokens IA chaque mois**. Votre solde diminue a mesure que vous utilisez ces fonctions.
+Avec Premium, vous recevez **25 000 tokens IA chaque mois**, mais Premium n'est pas obligatoire pour utiliser l'IA. Vous pouvez aussi acheter des tokens dans la boutique et les utiliser sans abonnement Premium.
 
-Un solde minimum de tokens est necessaire pour activer une alerte avec IA. Si votre solde est insuffisant, **vous ne pourrez pas activer cette alerte IA meme si votre abonnement Premium est toujours actif**. Les alertes sans IA n'utilisent pas ces tokens.
+Un solde minimum de tokens est necessaire pour activer une alerte avec IA. Si votre solde est insuffisant, **vous ne pourrez pas activer cette alerte IA** avant de recevoir ou d'acheter davantage de tokens. Les alertes sans IA n'utilisent pas ces tokens.
 
 ### Ce qu'elle analyse
 
 L'IA peut analyser :
 
-- Jusqu'aux **3 premieres photos** de l'annonce.
+- Les photos que vous choisissez, jusqu'a un maximum de **10**.
 - Le **titre**.
 - La **description**, lorsque la plateforme la fournit.
+- Le **prix**.
 - Sur **Vinted**, egalement la **marque**.
 
-Selon la plateforme, Vallax a acces a des champs differents.
+Selon la plateforme, Vallax a acces a des champs differents. Plus vous demandez a l'IA d'analyser de photos, plus elle consomme de tokens. Selectionnez donc uniquement les images susceptibles d'apporter des informations utiles.
 
 ### A quoi cela sert
 
@@ -137,11 +138,15 @@ Dans ce cas, vous pouvez ajouter une instruction comme celle-ci :
 
 Ainsi, l'IA utilise le texte et les images pour verifier si l'annonce correspond vraiment a ce que vous cherchez.
 
-### Ce qu'il ne faut pas lui demander
+### Utiliser le prix avec son contexte
 
-Il n'est generalement pas utile de demander a l'IA de refaire des filtres que Vallax gere deja seul, comme le prix minimum ou maximum.
+L'IA peut aussi examiner le prix et le mettre en relation avec le contenu de l'annonce. Vous pouvez ainsi definir des conditions qu'un seul prix minimum ou maximum ne permet pas d'exprimer.
 
-L'IA fonctionne mieux comme couche d'interpretation supplementaire, pas comme remplacement de regles deja existantes.
+Par exemple :
+
+`Accepte les annonces jusqu'a 40 € si elles incluent des jeux ; sans jeux, accepte seulement jusqu'a 20 €.`
+
+L'IA peut verifier si des jeux apparaissent dans le texte ou les photos et appliquer la limite de prix correspondante.
 
 ## Recommandation pour commencer
 
@@ -150,6 +155,6 @@ Si c'est votre premiere alerte, la meilleure approche est la suivante :
 1. Definissez correctement vos **mots-cles**.
 2. Utilisez les **mots a exclure** pour eliminer le bruit.
 3. Ajoutez une **localisation** si vous voulez des annonces proches.
-4. Utilisez l'**IA** seulement lorsque vous avez besoin de confirmer des details que le texte seul ne suffit pas a verifier.
+4. Utilisez l'**IA** pour relier le texte, les photos et le prix ou appliquer des conditions que les filtres de base ne peuvent pas exprimer.
 
 Avec cela, vous pouvez deja creer des alertes tres precises sans les rendre inutilement complexes.

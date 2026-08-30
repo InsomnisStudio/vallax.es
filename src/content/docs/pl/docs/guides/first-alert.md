@@ -110,20 +110,21 @@ To wazne, bo AI nie zastepuje podstawowych filtrow. Dziala jako dodatkowa warstw
 
 **Tokeny AI** to kredyty wykorzystywane przez Vallax do narzedzi sztucznej inteligencji. Obecnie korzysta z nich filtr AI w alertach: opisujesz w poleceniu, czego szukasz, a AI dokladniej sprawdza, czy dane ogloszenie pasuje.
 
-Premium zapewnia **25 000 tokenow AI co miesiac**. Saldo zmniejsza sie podczas korzystania z tych funkcji.
+Premium zapewnia **25 000 tokenow AI co miesiac**, ale korzystanie z AI nie wymaga Premium. Tokeny mozna rowniez kupic w sklepie i uzywac ich bez subskrypcji Premium.
 
-Aby aktywowac alert z AI, musisz miec minimalne saldo tokenow. Jesli tokenow jest za malo, **nie bedzie mozna aktywowac alertu AI, nawet gdy subskrypcja Premium pozostaje aktywna**. Alerty bez AI nie wymagaja tych tokenow.
+Aby aktywowac alert z AI, musisz miec minimalne saldo tokenow. Jesli tokenow jest za malo, **nie bedzie mozna aktywowac alertu AI**, dopoki nie otrzymasz lub nie kupisz kolejnych. Alerty bez AI nie wymagaja tych tokenow.
 
 ### Co analizuje
 
 AI moze analizowac:
 
-- Do **3 pierwszych zdjec** ogloszenia.
+- Wybrane przez ciebie zdjecia, maksymalnie **10**.
 - **Tytul**.
 - **Opis**, jesli platforma go udostepnia.
+- **Cene**.
 - Na **Vinted** takze **marke**.
 
-W zaleznosci od platformy Vallax ma dostep do roznych pol.
+W zaleznosci od platformy Vallax ma dostep do roznych pol. Im wiecej zdjec zlecisz do analizy, tym wiecej tokenow zostanie zuzytych, dlatego wybieraj tylko te, ktore moga dostarczyc przydatnych informacji.
 
 ### Do czego sie przydaje
 
@@ -137,11 +138,15 @@ W takim przypadku mozesz dodac instrukcje taka jak:
 
 Dzieki temu AI wykorzysta tekst i zdjecia, aby sprawdzic, czy ogloszenie rzeczywiscie odpowiada temu, czego szukasz.
 
-### O co nie trzeba prosic AI
+### Cena z uwzglednieniem kontekstu
 
-Zwykle nie ma sensu prosic AI o powtarzanie filtrow, ktore Vallax juz obsluguje samodzielnie, takich jak cena minimalna lub maksymalna.
+AI moze rowniez sprawdzic cene i powiazac ja z zawartoscia ogloszenia. Pozwala to ustawic warunki, ktorych nie da sie wyrazic jedna cena minimalna lub maksymalna.
 
-AI dziala najlepiej jako dodatkowa warstwa interpretacji, a nie zamiennik istniejacych regu.
+Na przyklad:
+
+`Akceptuj ogloszenia do 40 €, jesli zawieraja gry; bez gier akceptuj tylko oferty do 20 €.`
+
+AI moze sprawdzic, czy gry sa widoczne w tekscie lub na zdjeciach, i zastosowac odpowiedni limit ceny.
 
 ## Polecana konfiguracja na start
 
@@ -150,6 +155,6 @@ Jesli to twoj pierwszy alert, najbardziej praktyczne podejscie jest takie:
 1. Dobrze ustaw **slowa kluczowe**.
 2. Uzyj **slow do wykluczenia**, aby usunac szum.
 3. Dodaj **lokalizacje**, jesli chcesz ogloszenia blisko siebie.
-4. Uzywaj **AI** tylko wtedy, gdy musisz potwierdzic szczegoly, ktorych sam tekst nie wyjasnia wystarczajaco dobrze.
+4. Uzywaj **AI**, gdy trzeba powiazac tekst, zdjecia i cene albo zastosowac warunki, ktorych nie da sie wyrazic podstawowymi filtrami.
 
 Taki zestaw pozwala juz budowac bardzo precyzyjne alerty bez niepotrzebnego komplikowania.

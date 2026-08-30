@@ -180,13 +180,13 @@ export const translations = {
           name: "Premium",
           price: "11,99€",
           description:
-            "Pensado para revendedores, coleccionistas o usuarios que necesitan mas capacidad, analisis inteligente y filtros mas avanzados.",
+            "Pensado para revendedores, coleccionistas o usuarios que necesitan mas capacidad, filtros avanzados y tokens de IA incluidos.",
           features: [
             "Hasta 15 alertas creadas",
             "15 alertas activas al mismo tiempo",
             "Todas las plataformas disponibles por alerta",
             "Hasta 24 palabras clave por alerta",
-            "Inteligencia artificial para analizar anuncios",
+            "25.000 tokens de IA al mes",
             "Filtros avanzados: Regex y Regex inverso",
           ],
           ctaLabel: "Hazte Premium",
@@ -229,7 +229,7 @@ export const translations = {
         {
           question: "¿Qué hace Vallax Premium?",
           answer:
-            "Vallax Premium amplía la capacidad de alertas, habilita filtros avanzados y añade inteligencia artificial para analizar anuncios con más contexto.",
+            "Vallax Premium amplía la capacidad de alertas, habilita filtros avanzados e incluye 25.000 tokens de IA cada mes. También puedes usar la IA sin Premium comprando tokens en la tienda.",
         },
         {
           question: "¿Por qué Vallax detiene algunas alertas?",
@@ -360,13 +360,13 @@ export const translations = {
           name: "Premium",
           price: "€11.99",
           description:
-            "For users who need more capacity, smart analysis and advanced filters.",
+            "For users who need more alert capacity, advanced filters, and included AI tokens.",
           features: [
             "Up to 15 alerts created",
             "15 simultaneous active alerts",
             "All marketplaces available per alert",
             "Up to 24 keywords per alert",
-            "Artificial intelligence to analyze listings",
+            "25,000 AI tokens per month",
             "Advanced filters: Regex and reverse Regex",
           ],
           ctaLabel: "Upgrade to Premium",
@@ -408,7 +408,7 @@ export const translations = {
         {
           question: "What does Vallax Premium include?",
           answer:
-            "Vallax Premium increases your alert capacity, unlocks advanced filters and adds artificial intelligence to analyze listings with more context.",
+            "Vallax Premium increases your alert capacity, unlocks advanced filters, and includes 25,000 AI tokens each month. You can also use AI without Premium by purchasing tokens in the store.",
         },
         {
           question: "Why does Vallax pause some alerts?",
@@ -532,13 +532,13 @@ translations.fr = {
         name: "Premium",
         price: "11,99 €",
         description:
-          "Pour les utilisateurs qui ont besoin de plus de capacite, d'analyse intelligente et de filtres avances.",
+          "Pour les utilisateurs qui ont besoin de plus de capacite, de filtres avances et de tokens IA inclus.",
         features: [
           "Jusqu'a 15 alertes creees",
           "15 alertes actives simultanement",
           "Toutes les plateformes disponibles par alerte",
           "Jusqu'a 24 mots-cles par alerte",
-          "Intelligence artificielle pour analyser les annonces",
+          "25 000 tokens IA par mois",
           "Filtres avances: regex et regex inversee",
         ],
         ctaLabel: "Passer a Premium",
@@ -580,7 +580,7 @@ translations.fr = {
       {
         question: "Que comprend Vallax Premium ?",
         answer:
-          "Vallax Premium augmente le nombre d'alertes, active des filtres avances et ajoute de l'intelligence artificielle pour analyser les annonces avec plus de contexte.",
+          "Vallax Premium augmente le nombre d'alertes, active des filtres avances et inclut 25 000 tokens IA chaque mois. Vous pouvez aussi utiliser l'IA sans Premium en achetant des tokens dans la boutique.",
       },
       {
         question: "Pourquoi Vallax met certaines alertes en pause ?",
@@ -704,13 +704,13 @@ translations.it = {
         name: "Premium",
         price: "11,99 €",
         description:
-          "Per chi ha bisogno di piu capacita, analisi intelligente e filtri avanzati.",
+          "Per chi ha bisogno di piu capacita, filtri avanzati e token IA inclusi.",
         features: [
           "Fino a 15 avvisi creati",
           "15 avvisi attivi simultanei",
           "Tutte le piattaforme disponibili per avviso",
           "Fino a 24 parole chiave per avviso",
-          "Intelligenza artificiale per analizzare gli annunci",
+          "25.000 token IA al mese",
           "Filtri avanzati: regex e regex inversa",
         ],
         ctaLabel: "Passa a Premium",
@@ -751,7 +751,7 @@ translations.it = {
       {
         question: "Cosa include Vallax Premium?",
         answer:
-          "Vallax Premium aumenta la capacita degli avvisi, sblocca filtri avanzati e aggiunge intelligenza artificiale per analizzare meglio gli annunci.",
+          "Vallax Premium aumenta la capacita degli avvisi, sblocca filtri avanzati e include 25.000 token IA ogni mese. Puoi usare l'IA anche senza Premium acquistando token nel negozio.",
       },
       {
         question: "Perche Vallax mette in pausa alcuni avvisi?",
@@ -875,13 +875,13 @@ translations.pl = {
         name: "Premium",
         price: "11,99 €",
         description:
-          "Dla tych, ktorzy potrzebuja wiekszej pojemnosci, inteligentnej analizy i zaawansowanych filtrow.",
+          "Dla tych, ktorzy potrzebuja wiekszych limitow alertow, zaawansowanych filtrow i tokenow AI w pakiecie.",
         features: [
           "Do 15 utworzonych alertow",
           "15 aktywnych alertow jednoczesnie",
           "Wszystkie platformy dostepne dla alertu",
           "Do 24 slow kluczowych na alert",
-          "Sztuczna inteligencja do analizy ogloszen",
+          "25 000 tokenow AI miesiecznie",
           "Zaawansowane filtry: regex i odwrotny regex",
         ],
         ctaLabel: "Przejdz na Premium",
@@ -922,7 +922,7 @@ translations.pl = {
       {
         question: "Co obejmuje Vallax Premium?",
         answer:
-          "Vallax Premium zwieksza limit alertow, odblokowuje zaawansowane filtry i dodaje sztuczna inteligencje do analizy ogloszen.",
+          "Vallax Premium zwieksza limit alertow, odblokowuje zaawansowane filtry i zapewnia 25 000 tokenow AI co miesiac. Z AI mozna tez korzystac bez Premium, kupujac tokeny w sklepie.",
       },
       {
         question: "Dlaczego Vallax wstrzymuje niektore alerty?",

@@ -110,20 +110,21 @@ That is important because AI does not replace your basic filters. It works as an
 
 **AI tokens** are the credits Vallax uses for its artificial intelligence tools. Currently, they are used by the AI alert filter: you describe what you want to find in a prompt, and AI checks in more detail whether each listing matches.
 
-Premium gives you **25,000 AI tokens every month**. Your balance decreases as you use these features.
+Premium gives you **25,000 AI tokens every month**, but you do not need Premium to use AI. You can also buy tokens in the store and use them without a Premium subscription.
 
-You need a minimum token balance to activate an AI alert. If you do not have enough, **you cannot activate that AI alert even if your Premium subscription is still active**. Alerts that do not use AI do not require these tokens.
+You need a minimum token balance to activate an AI alert. If you do not have enough, **you cannot activate that AI alert** until you receive or buy more. Alerts that do not use AI do not require these tokens.
 
 ### What it analyzes
 
 AI can review:
 
-- Up to the **first 3 photos** of the listing.
+- The photos you choose, up to a maximum of **10**.
 - The **title**.
 - The **description**, when the marketplace provides it.
+- The **price**.
 - On **Vinted**, also the **brand**.
 
-Depending on the marketplace, Vallax has access to different fields.
+Depending on the marketplace, Vallax has access to different fields. Asking AI to analyze more photos uses more tokens, so select only the images that may provide useful information.
 
 ### What it is useful for
 
@@ -137,11 +138,15 @@ In that case, you can add an instruction like this:
 
 That way, AI uses both the text and the images to decide whether the listing is really what you want.
 
-### What you do not need to ask AI for
+### Using price with context
 
-It usually does not make sense to ask AI to repeat filters that Vallax already handles on its own, such as minimum or maximum price.
+AI can also review the price and relate it to what the listing includes. This lets you define conditions that a single minimum or maximum price cannot represent.
 
-AI works better as an extra interpretation layer, not as a replacement for rules that already exist.
+For example:
+
+`Accept listings up to €40 if they include games; if they do not include games, accept only up to €20.`
+
+AI can check whether games appear in the text or photos and apply the corresponding price limit.
 
 ## Recommended setup for your first alert
 
@@ -150,6 +155,6 @@ If this is your first alert, the most practical approach is:
 1. Define your **keywords** properly.
 2. Use **excluded words** to remove noisy listings.
 3. Add **location** if you want listings near you.
-4. Use **AI** only when you need to confirm details that text alone cannot make clear.
+4. Use **AI** when you need to relate text, photos, and price or apply conditions that basic filters cannot express.
 
 With that setup, you can already build very precise alerts without making them unnecessarily complex.
