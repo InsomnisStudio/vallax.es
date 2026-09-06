@@ -1,5 +1,6 @@
 ---
 import "/src/assets/css/styles.css";
+import MetaPixel from "../components/analytics/MetaPixel.astro";
 import Logo from "../images/logo_vertical.svg";
 import { locales, type Translation, type Locale } from "../i18n";
 import { proposalsUi } from "../data/proposals";
@@ -157,6 +158,7 @@ const rights = footer.rights.replace(/©\s*\d{4}/, `© ${currentYear}`);
                 </>
             )
         }
+        <MetaPixel />
         <link
             href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap"
             rel="stylesheet"
@@ -399,12 +401,26 @@ const rights = footer.rights.replace(/©\s*\d{4}/, `© ${currentYear}`);
         </footer>
 
         <script is:inline>
+            const metaDestinationByStore = {
+                ios: 'app_store',
+                android: 'google_play',
+            };
+
             document.querySelectorAll('[data-app-store]').forEach((link) => {
                 link.addEventListener('click', () => {
+                    const appStore = link.getAttribute('data-app-store');
+
                     if (typeof window.gtag === 'function') {
                         window.gtag('event', 'app_download_click', {
-                            app_store: link.getAttribute('data-app-store'),
+                            app_store: appStore,
                             link_url: link.href,
+                        });
+                    }
+
+                    const metaDestination = metaDestinationByStore[appStore];
+                    if (metaDestination && typeof window.fbq === 'function') {
+                        window.fbq('trackCustom', 'ClickTiendaApp', {
+                            destino: metaDestination,
                         });
                     }
                 });

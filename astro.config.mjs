@@ -36,6 +36,7 @@ export default defineConfig({
         alt: "Vallax",
       },
       components: {
+        Head: "./src/components/starlight/Head.astro",
         LanguageSelect: "./src/components/starlight/LanguageSelect.astro",
       },
       social: [
