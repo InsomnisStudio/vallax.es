@@ -1,4 +1,6 @@
 ---
+import MetaPixel from "../components/analytics/MetaPixel.astro";
+
 const title = "Redirecting...";
 const description = "Tracking QR entry and redirecting to the homepage.";
 const measurementId = import.meta.env.PUBLIC_GA_MEASUREMENT_ID ?? "";
@@ -13,6 +15,7 @@ const measurementId = import.meta.env.PUBLIC_GA_MEASUREMENT_ID ?? "";
         <meta name="description" content={description} />
         <meta http-equiv="refresh" content="3;url=/" />
         <title>{title}</title>
+        <MetaPixel />
     </head>
     <body>
         <p>Redirecting...</p>
