@@ -1,160 +1,169 @@
 ---
-title: Come creare il tuo primo avviso
-description: Impara a configurare un avviso utile senza complicarlo inutilmente.
+title: Come creare la tua prima ricerca
+description: Impara a configurare una ricerca utile senza complicarti.
 sidebar:
   order: 2
 ---
 
-Creare un avviso in Vallax e semplice, ma alcuni campi meritano di essere capiti bene per fare in modo che le notifiche siano davvero utili.
+Creare una ricerca in Vallax è semplice, ma alcuni campi vanno capiti bene perché le notifiche siano davvero utili.
 
-Non serve complicare tutto dall'inizio. La cosa importante e capire a cosa serve ogni campo e usare solo cio di cui hai bisogno.
+Non serve usare tutto fin dall'inizio. L'importante è sapere a cosa serve ogni parte e usare solo il necessario. Il modulo segue questo stesso ordine.
 
-## Parole chiave
+## Nome
 
-Questo e il campo piu importante.
+Serve solo a riconoscere la ricerca nella tua lista. Non influisce sui risultati.
 
-Le parole chiave indicano a Vallax quale tipo di annuncio vuoi trovare. Puoi creare piu opzioni diverse all'interno dello stesso avviso.
+## Parole chiave («Cosa cerchi?»)
 
-### Come funzionano le opzioni
+È il campo più importante. Dice a Vallax che tipo di annuncio vuoi trovare.
 
-Ogni opzione viene controllata separatamente. Se anche una sola opzione corrisponde, l'annuncio viene considerato valido.
+Scrivi le parole come in un motore di ricerca. Ogni parola diventa un'etichetta e **l'annuncio deve contenerle tutte, in qualsiasi ordine**.
 
-Dentro ogni opzione, le parole si scrivono nello stesso campo separate da virgole.
+Se ti serve una frase esatta, scrivila **tra virgolette**: `"play station 2"`.
+
+### Opzioni: alternative nella stessa ricerca
+
+Puoi aggiungere più **opzioni**. Ogni opzione viene controllata separatamente e basta che ne venga soddisfatta **una** perché l'annuncio superi il filtro.
 
 Per esempio:
 
-- Opzione 1: `Nintendo, Switch`
-- Opzione 2: `PlayStation 4`
-- Opzione 3: `PS4`
+- Opzione 1: `nintendo switch` → l'annuncio deve contenere *nintendo* **e** *switch*.
+- Opzione 2: `console nintendo`
+- Opzione 3: `"switch oled"`
 
-In un'opzione come `Nintendo, Switch`, quello che stai dicendo a Vallax e semplicemente: voglio annunci in cui compaiano queste due parole.
+Le opzioni servono per i sinonimi e per i diversi modi di scrivere la stessa cosa (`PS4`, `PlayStation 4`…).
 
-Se un annuncio soddisfa una di queste opzioni, supera questo filtro.
+Più parole metti in una stessa opzione, meno annunci corrisponderanno.
 
-### Importante su come viene fatta la corrispondenza
+### Come viene confrontato il testo
 
 - Le parole chiave **non distinguono tra maiuscole e minuscole**.
-- La corrispondenza **non e rigida sulla parola intera**.
+- La corrispondenza **non è rigida sulla parola intera**. Se cerchi `tractor`, può corrispondere anche `extractor`.
 
-Per esempio, se cerchi `tractor`, anche un testo come `extractor` puo essere considerato valido.
+Se ti serve qualcosa di più rigoroso, usa le virgolette o, con Pro, una **regex**.
 
-Se ti serve qualcosa di piu rigoroso, e qui che una **regex** puo avere senso.
+### Limite di parole chiave
 
-### Dove vengono controllate
+Il numero totale di parole chiave per ricerca dipende dal piano: **5 con Gratis, 15 con Plus e 50 con Pro**.
 
-Le parole chiave non vengono controllate nello stesso modo su tutte le piattaforme:
+## Piattaforme e categorie
 
-- Su **Wallapop**, **Milanuncios** e **Todocoleccion** vengono controllate nel **titolo** e nella **descrizione**.
-- Su **Vinted** non abbiamo il campo descrizione, quindi vengono controllate nel **titolo** e nel **brand**.
+Scegli dove deve cercare Vallax: Wallapop, Vinted, Milanuncios e Todocoleccion. Con il piano **Gratis** puoi scegliere **1 piattaforma** per ricerca; con **Plus** e **Pro**, tutte.
 
-## Posizione
+La **categoria** è facoltativa. Ogni piattaforma ha il suo albero di categorie. Usala solo se la ricerca ti porta risultati di un altro tipo di prodotto.
 
-Questo campo ti permette di scegliere un'area e una distanza massima.
+## Prezzo e posizione
 
-Per esempio, puoi chiedere annunci ad Alicante entro 50 km.
+Entrambi sono facoltativi. Lasciali vuoti per non scartare nulla.
 
-Questo ha senso quando vuoi comprare qualcosa vicino a te, vederla di persona o evitare spostamenti lunghi.
+- **Prezzo:** indica un massimo o un intervallo minimo–massimo.
+- **Posizione:** scegli una zona e un raggio massimo, per esempio Alicante entro 50 km. Ha senso quando vuoi comprare vicino, vedere l'articolo di persona o evitare lunghi spostamenti.
+
+Un prezzo massimo o un raggio molto stretti significano meno notifiche.
 
 ### Importante: Vinted
 
-Su **Vinted** questo filtro non funziona allo stesso modo, perche la piattaforma non fornisce dati di posizione abbastanza precisi per un filtro affidabile sulla distanza.
+Su **Vinted** la posizione non si applica, perché la piattaforma non offre una localizzazione abbastanza precisa per lavorare con le distanze. Riceverai annunci fuori dalla tua zona anche se la configuri.
 
-Se scegli una distanza specifica, l'aspettativa normale e trovare annunci vicini. Per questo motivo questa opzione ha un valore limitato su Vinted.
+## Altri filtri
 
-## Categoria
+### Senza queste parole
 
-La categoria puo aiutare a restringere la ricerca, anche se non e sempre il campo piu importante.
+Fa il contrario delle parole chiave: scarta gli annunci che contengono certe parole.
 
-Il punto chiave qui e questo: **le categorie di Vinted non sono supportate al momento**. Per questo non le vedrai nel modulo per quel marketplace.
+Un caso tipico è cercare una console senza annunci che dicono `controller`, `rotta`, `per ricambi` o `scatola vuota`. È un modo molto utile per eliminare il rumore senza toccare il resto della ricerca.
 
-Non e un errore. Semplicemente questa opzione non e ancora disponibile su Vinted.
+### Venditori
 
-## Parole da escludere
+- **Solo da questi venditori:** la ricerca si concentra su quegli utenti.
+- **Mai da questi venditori:** i loro annunci vengono scartati.
 
-Questo campo fa l'opposto delle parole chiave.
+Utile se conosci già venditori interessanti o, al contrario, vuoi evitare account specifici. Per trovare l'identificativo di un venditore, consulta [questa guida](/it/guides/get-seller-identifier).
 
-Serve a dire a Vallax di scartare gli annunci che contengono certe parole che non ti interessano.
+### Dove guardare nell'annuncio
 
-Un caso tipico potrebbe essere cercare una console ma non volere annunci con parole come `controller`, `rotto`, `leggi` o `solo scatola`.
+Per ogni filtro di testo (parole, parole da ignorare, regex e regex da ignorare) puoi scegliere se controlla il **titolo**, la **descrizione** o **entrambi**.
 
-E un modo molto efficace per ridurre il rumore senza cambiare troppo il resto dell'avviso.
+**Vinted** non ha descrizione, quindi i filtri si applicano al **titolo** e al **marchio**.
 
-## Seguire utenti e ignorare utenti
+## Regex (solo Pro)
 
-Questi campi permettono di filtrare gli annunci in base al venditore.
+Una **regex** permette di cercare schemi di testo più precisi. Non serve per le ricerche normali, ma può aiutare quando le parole chiave non bastano: varianti di nomi, modelli o formati di testo.
 
-- Se aggiungi utenti in **seguire utenti**, l'avviso si concentra su quei venditori.
-- Se aggiungi utenti in **ignorare utenti**, i loro annunci vengono scartati.
+- **Regex personalizzata:** l'annuncio deve corrispondere allo schema. Esempio: `^(Leica|Hasselblad).*(M[0-9]).*`
+- **Regex da ignorare:** scarta gli annunci che corrispondono allo schema anche se soddisfano il resto. Esempio: `(?i)(replica|copia|ispirat[oa])`
 
-E utile se conosci gia venditori che ti interessano o, al contrario, vuoi evitare account specifici.
+Per fare prove, **regex101** è un sito utile. Usa il motore **Rust**.
 
-## Regex
+Le regex sono una funzione del piano **Pro**. Se passi a un piano inferiore, le ricerche con regex vengono messe in pausa finché non le modifichi (vedi [Piani](/it/docs/guides/plans#se-passi-a-un-piano-inferiore)).
 
-Una **regex** e un modo per cercare schemi di testo piu precisi.
+## Filtro IA
 
-Non serve per avvisi normali, ma puo aiutare quando le parole chiave non bastano.
+Questo campo serve a dare un'istruzione in più all'intelligenza artificiale di Vallax.
 
-Per esempio, puo essere utile per individuare varianti di modelli, schemi di nomi o formati di testo particolari.
-
-Se vuoi provare le regex, **regex101** e un buon strumento. Se fai test li, usa il motore **Rust**.
-
-## Campo IA
-
-Questo campo serve a dare un'istruzione extra all'intelligenza artificiale di Vallax.
-
-L'IA **non viene applicata a tutti gli annunci**. Prima passano i filtri normali dell'avviso. Solo dopo l'IA analizza gli annunci che hanno gia superato quei filtri.
-
-Questo e importante, perche l'IA non sostituisce i filtri di base. Funziona come un livello aggiuntivo.
-
-### Token IA
-
-I **token IA** sono i crediti che Vallax utilizza per i suoi strumenti di intelligenza artificiale. Attualmente vengono utilizzati dal filtro IA degli avvisi: descrivi con un prompt cosa vuoi trovare e l'IA verifica piu nel dettaglio se ogni annuncio corrisponde.
-
-Con Premium ricevi **25.000 token IA ogni mese**, ma non serve Premium per usare l'IA. Puoi anche acquistare token nel negozio e utilizzarli senza un abbonamento Premium.
-
-Per attivare un avviso con IA devi avere un saldo minimo di token. Se non ne hai abbastanza, **non potrai attivare quell'avviso IA** finche non ne ricevi o acquisti altri. Gli avvisi senza IA non richiedono questi token.
+L'IA è un **secondo filtro**: non si applica a tutti gli annunci. Prima passano le tue parole, prezzo, zona e gli altri filtri e, solo dopo, l'IA controlla gli annunci che hanno già corrisposto e scarta quelli che non rispettano la tua istruzione. **Non aggiunge mai annunci** che i tuoi filtri non avrebbero trovato.
 
 ### Cosa analizza
 
-L'IA puo analizzare:
+L'IA può controllare:
 
-- Le foto che scegli, fino a un massimo di **10**.
+- Le **foto** dell'annuncio: scegli tu quante, da **0 a 10**. Con 0 legge solo il testo.
 - Il **titolo**.
 - La **descrizione**, quando la piattaforma la fornisce.
 - Il **prezzo**.
-- Su **Vinted**, anche il **brand**.
-
-In base alla piattaforma, Vallax ha accesso a campi diversi. Piu foto chiedi di analizzare, maggiore sara il consumo di token, quindi seleziona solo quelle che possono fornire informazioni utili.
+- Su **Vinted**, anche il **marchio**.
 
 ### A cosa serve
 
-L'IA e utile quando vuoi confermare qualcosa che non e sempre chiaro dalle sole parole chiave.
+L'IA è utile quando vuoi confermare qualcosa che le parole chiave da sole non chiariscono.
 
-Esempio: il tuo avviso puo rilevare `PS4`, ma questo non garantisce che l'annuncio riguardi davvero una console. Potrebbe essere un controller, una scatola vuota o un accessorio.
+Esempio: la tua ricerca può rilevare `PS4`, ma non significa che l'annuncio sia una console. Potrebbe essere un controller, una scatola vuota o un accessorio. In quel caso puoi aggiungere un'istruzione come questa:
 
-In quel caso puoi aggiungere un'istruzione come questa:
+`Voglio una console PlayStation 4 completa, non un controller né un accessorio.`
 
-`Voglio che sia una console PlayStation 4 completa, non un controller ne un accessorio.`
+Così l'IA usa testo e immagini per verificare se l'annuncio è davvero ciò che cerchi.
 
-In questo modo l'IA usa testo e immagini per capire se l'annuncio e davvero quello che stai cercando.
+### Usare il prezzo con il contesto
 
-### Usare il prezzo con il suo contesto
-
-L'IA puo anche controllare il prezzo e metterlo in relazione con cio che include l'annuncio. In questo modo puoi definire condizioni che un singolo prezzo minimo o massimo non puo rappresentare.
-
-Per esempio:
+L'IA può anche mettere in relazione il prezzo con ciò che include l'annuncio, cosa che un prezzo minimo o massimo non può esprimere:
 
 `Accetta annunci fino a 40 € se includono giochi; se non includono giochi, accetta solo fino a 20 €.`
 
-L'IA puo verificare se i giochi compaiono nel testo o nelle foto e applicare il limite di prezzo corrispondente.
+### Token IA
 
-## Configurazione consigliata per iniziare
+Ogni annuncio controllato dall'IA consuma **token IA**, che corrisponda o no. Il consumo dipende soprattutto dal numero di foto analizzate e dalla lunghezza dell'annuncio.
 
-Se e il tuo primo avviso, l'approccio piu pratico e questo:
+- Qualsiasi piano, anche **Gratis**, può usare il filtro IA se ha token.
+- Servono **almeno 3 token** per attivare l'analisi IA in una ricerca.
+- Se il saldo arriva a 0, il filtro IA si disattiva, ma la ricerca continua a funzionare senza.
 
-1. Definisci bene le **parole chiave**.
-2. Usa le **parole da escludere** per eliminare il rumore.
-3. Aggiungi la **posizione** se vuoi annunci vicini.
-4. Usa l'**IA** quando devi mettere in relazione testo, foto e prezzo o applicare condizioni che i filtri di base non possono esprimere.
+Per consumare meno, usa parole chiave precise, parole da ignorare e un intervallo di prezzo: così l'IA controlla solo gli annunci che possono davvero interessarti.
 
-Con questa base puoi gia creare avvisi molto precisi senza complicarli inutilmente.
+Come ottenere token (Pro, pacchetti e negozio punti): [Piani e token IA](/it/docs/guides/plans#token-ia).
+
+## Prova la ricerca prima di salvarla
+
+Con **Vedi ultime corrispondenze** Vallax confronta il filtro con gli annunci pubblicati nelle **ultime 24 ore** e ti dice:
+
+- Quante corrispondenze ci sarebbero state e quante notifiche al giorno riceveresti, più o meno.
+- Alcuni annunci di esempio (sono annunci già pubblicati, non notifiche: non compariranno nella tua lista).
+
+Se sono troppi, metti un prezzo massimo o aggiungi un'altra parola. Se non ce n'è nessuno, di solito il problema è una parola chiave, oppure prezzo, zona o categoria troppo restrittivi.
+
+## Condividere e importare ricerche
+
+Dalle azioni di una ricerca puoi **Condividere la ricerca**: Vallax genera un codice e lo copia negli appunti. Chi lo riceve può usare **Importa ricerca**, controllarla e salvarla.
+
+Se la ricerca importata usa opzioni Pro (come le regex) e non hai Pro, dovrai rimuoverle per salvarla.
+
+## Consiglio per iniziare
+
+Se è la tua prima ricerca, la cosa più pratica è:
+
+1. Definire bene le **parole chiave** e aggiungere opzioni per i sinonimi.
+2. Usare **senza queste parole** per togliere gli annunci fastidiosi.
+3. Aggiungere **prezzo** e **posizione** se vuoi restringere.
+4. **Provare la ricerca** per vedere quante notifiche riceveresti.
+5. Usare l'**IA** quando devi mettere in relazione testo, foto e prezzo o applicare condizioni che i filtri base non possono esprimere.
+
+Con questo puoi già creare ricerche molto precise senza complicarti troppo.

@@ -1,40 +1,31 @@
 ---
 title: Bienvenue sur Vallax
-description: Une documentation simple pour comprendre Vallax et creer de meilleures alertes.
+description: Une documentation simple pour comprendre Vallax, ses plans et créer de meilleures recherches.
 template: splash
 hero:
   title: Vallax
-  tagline: Apprenez a utiliser Vallax sans detours
+  tagline: Apprenez à utiliser Vallax sans détours
   image:
     html: '<div><img class="light:sl-hidden print:hidden" src="/vallax-logo.svg" alt="Logo Vallax" width="400" height="400" /><img class="dark:sl-hidden print:block" src="/vallax-logo-light.svg" alt="Logo Vallax" width="400" height="400" /></div>'
   actions:
     - text: Commencer
       link: /fr/docs/guides/start
       icon: right-arrow
-    - text: Communaute Telegram
+    - text: Communauté Telegram
       link: https://t.me/vallax_group
       variant: secondary
       icon: telegram
 ---
 
-import { Card, CardGrid } from '@astrojs/starlight/components';
+import { CardGrid, LinkCard } from '@astrojs/starlight/components';
 
 ## Commencez ici
 
-<CardGrid stagger>
-	<Card title="Qu'est-ce que Vallax" icon="open-book">
-		Comprenez ce que fait l'application, sur quelles plateformes elle fonctionne et pourquoi elle fait gagner du temps.
-	</Card>
-	<Card title="Votre premiere alerte" icon="add-document">
-		Apprenez a utiliser les mots-cles, la localisation, les filtres utilisateurs, les regex et l'IA.
-	</Card>
-	<Card title="Concu pour aller a l'essentiel" icon="pencil">
-		Cette documentation explique l'important sans complexite inutile.
-	</Card>
-	<Card title="Canaux Vallax" icon="comment">
-		Suivez les nouveautes sur Telegram, Instagram et YouTube depuis l'en-tete de la documentation.
-	</Card>
-	<Card title="Limites importantes" icon="warning">
-		Verifiez ce qui se passe si une alerte genere trop de notifications ou trop d'utilisation de l'IA en peu de temps.
-	</Card>
+<CardGrid>
+	<LinkCard title="Qu'est-ce que Vallax" href="/fr/docs/guides/start/" description="Ce que fait l'application, sur quelles plateformes et pourquoi elle fait gagner autant de temps." />
+	<LinkCard title="Votre première recherche" href="/fr/docs/guides/first-alert/" description="Mots-clés, options, plateformes, filtres, regex et IA, champ par champ." />
+	<LinkCard title="Plans et tokens IA" href="/fr/docs/guides/plans/" description="Gratuit, Plus et Pro : ce que comprend chacun, prix, essai gratuit et tokens." />
+	<LinkCard title="Combien ça coûte ?" href="/fr/docs/guides/price-check/" description="Estimez à quel prix se vend un article à partir de la photo d'une notification." />
+	<LinkCard title="Points et invitations" href="/fr/docs/guides/points/" description="Invitez vos amis et échangez vos points contre des jours de Plus, de Pro ou des tokens." />
+	<LinkCard title="Limites importantes" href="/fr/docs/guides/limits/" description="Ce qui se passe si une recherche génère trop de notifications ou est en pause à cause de votre plan." />
 </CardGrid>

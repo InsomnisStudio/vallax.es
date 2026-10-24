@@ -1,160 +1,169 @@
 ---
-title: How to create your first alert
-description: Learn how to configure a useful alert without overcomplicating it.
+title: How to create your first search
+description: Learn how to set up a useful search without overcomplicating it.
 sidebar:
   order: 2
 ---
 
-Creating an alert in Vallax is simple, but there are a few fields worth understanding so that the notifications are actually useful.
+Creating a search in Vallax is simple, but a few fields are worth understanding so your notifications are actually useful.
 
-You do not need to make everything complex from the start. The important part is understanding what each field does and using only what you need.
+You do not need to use everything from the start. What matters is knowing what each part does and using only what you need. The form follows this same order.
 
-## Keywords
+## Name
 
-This is the most important field.
+It only helps you recognise the search in your list. It does not affect results.
 
-Keywords tell Vallax what type of listing you want to find. You can create several different options inside the same alert.
+## Keywords ("What are you looking for?")
 
-### How options work
+This is the most important field. It tells Vallax what kind of listing you want to find.
 
-Each option is checked separately. If just one option matches, the listing is considered valid.
+Type the words as you would in a search engine. Each word becomes a tag and **the listing must contain all of them, in any order**.
 
-Inside each option, the words are written in the same input separated by commas.
+If you need an exact phrase, put it **in quotes**: `"play station 2"`.
+
+### Options: alternatives within the same search
+
+You can add several **options**. Each option is checked separately, and a listing only needs to match **one** of them to pass.
 
 For example:
 
-- Option 1: `Nintendo, Switch`
-- Option 2: `PlayStation 4`
-- Option 3: `PS4`
+- Option 1: `nintendo switch` → the listing must contain *nintendo* **and** *switch*.
+- Option 2: `nintendo console`
+- Option 3: `"switch oled"`
 
-In an option like `Nintendo, Switch`, what you are telling Vallax is simply: I want listings where those two words match.
+Options are useful for synonyms and different ways of writing the same thing (`PS4`, `PlayStation 4`…).
 
-If a listing matches any of those options, it passes this filter.
+The more words you put in a single option, the fewer listings will match.
 
-### Important about text matching
+### How text matching works
 
 - Keywords are **not case-sensitive**.
-- Matching is **not strict by full word**.
+- Matching is **not strict by whole word**. If you search for `tractor`, `extractor` may also match.
 
-For example, if you search for `tractor`, a text like `extractor` may also be considered valid.
+If you need something stricter, use quotes or, on Pro, a **regex**.
 
-If you need stricter behavior, that is where **regex** can make sense.
+### Keyword limit
 
-### Where keywords are checked
+The total number of keywords per search depends on your plan: **5 on Free, 15 on Plus and 50 on Pro**.
 
-Keywords are not checked exactly the same way on every marketplace:
+## Platforms and categories
 
-- On **Wallapop**, **Milanuncios**, and **Todocoleccion**, they are checked in the **title** and **description**.
-- On **Vinted**, we do not have the description field, so they are checked in the **title** and **brand**.
+Choose where Vallax should search: Wallapop, Vinted, Milanuncios and Todocoleccion. On the **Free** plan you can pick **1 platform** per search; on **Plus** and **Pro**, all of them.
 
-## Location
+The **category** is optional. Each platform has its own category tree. Use it only if the search brings you results for a different type of product.
 
-This field lets you choose an area and a maximum distance.
+## Price and location
 
-For example, you can say you want listings in Alicante within 50 km.
+Both are optional. Leave them empty to discard nothing.
 
-This makes sense when you want something close to you, want to inspect it in person, or want to avoid long travel.
+- **Price:** set a maximum or a minimum–maximum range.
+- **Location:** choose an area and a maximum radius, for example Alicante within 50 km. Useful when you want to buy nearby, see the item in person or avoid long trips.
+
+A very tight maximum price or radius means fewer notifications.
 
 ### Important: Vinted
 
-On **Vinted**, this filter does not work the same way because that platform does not expose precise enough location data for reliable distance filtering.
+On **Vinted** location is not applied, because the platform does not provide a precise enough location to work with distances. You will still get listings outside your area even if you set it.
 
-If you choose a specific distance, the usual expectation is to find nearby listings. That is why this setting has limited value on Vinted.
+## More filters
 
-## Category
+### Without these words
 
-Category can help narrow your search, although it is not always the most important field.
+It does the opposite of keywords: it discards listings that contain certain words.
 
-The key point here is this: **Vinted categories are not supported right now**. That is why you will not see categories for that marketplace in the form.
+A typical case is searching for a console without listings that say `controller`, `broken`, `for parts` or `empty box`. It is a very useful way to remove noise without touching the rest of the search.
 
-That is not an error. It is simply not available on Vinted at the moment.
+### Sellers
 
-## Excluded words
+- **Only from these sellers:** the search focuses on those users.
+- **Never from these sellers:** their listings are discarded.
 
-This field does the opposite of keywords.
+Useful if you already know sellers you like or, on the contrary, want to avoid specific accounts. If you do not know how to find a seller's identifier, see [this guide](/en/guides/get-seller-identifier).
 
-It tells Vallax to discard listings that contain words you do not want.
+### Where to look in the listing
 
-A typical case would be searching for a console but excluding listings that mention `controller`, `broken`, `read`, or `box only`.
+For each text filter (words, ignored words, regex and ignored regex) you can choose whether it checks the **title**, the **description** or **both**.
 
-It is a very effective way to reduce noise without changing the rest of the alert too much.
+**Vinted** has no description, so filters are checked against the **title** and the **brand**.
 
-## Follow users and ignore users
+## Regex (Pro only)
 
-These fields let you filter listings based on the seller.
+A **regex** is a way to search for more specific text patterns. You do not need it for normal searches, but it can help when keywords fall short: name variants, models or text formats.
 
-- If you add users to **follow users**, the alert focuses on those sellers.
-- If you add users to **ignore users**, their listings are discarded.
+- **Custom regex:** the listing must match the pattern. Example: `^(Leica|Hasselblad).*(M[0-9]).*`
+- **Regex to ignore:** discards listings that match the pattern even if they match everything else. Example: `(?i)(replica|copy|inspired)`
 
-This is useful if you already know sellers you care about or, on the contrary, want to avoid specific accounts.
+For testing, **regex101** is a useful site. Use the **Rust** flavour.
 
-## Regex
+Regex is a **Pro** feature. If you downgrade, searches with regex are paused until you edit them (see [Plans](/en/docs/guides/plans#if-you-downgrade)).
 
-A **regex** is a way to search for more specific text patterns.
+## AI filter
 
-You do not need it for normal alerts, but it can help when keywords are not precise enough.
+This field lets you give an extra instruction to Vallax's artificial intelligence.
 
-For example, it can be useful for detecting specific model variants, naming patterns, or text formats.
+The AI is a **second filter**: it is not applied to every listing. Your words, price, area and other filters are applied first and, only then, the AI reviews the listings that already matched and discards the ones that do not follow your instruction. It **never adds listings** your filters would not have found.
 
-If you want to test regex, **regex101** is a useful website. If you test there, use the **Rust** engine.
+### What it analyses
 
-## AI field
+The AI can review:
 
-This field gives Vallax AI an extra instruction.
-
-AI is **not applied to every listing**. First, the normal filters of the alert run. Only after that does AI review the listings that already matched.
-
-That is important because AI does not replace your basic filters. It works as an extra layer.
-
-### AI tokens
-
-**AI tokens** are the credits Vallax uses for its artificial intelligence tools. Currently, they are used by the AI alert filter: you describe what you want to find in a prompt, and AI checks in more detail whether each listing matches.
-
-Premium gives you **25,000 AI tokens every month**, but you do not need Premium to use AI. You can also buy tokens in the store and use them without a Premium subscription.
-
-You need a minimum token balance to activate an AI alert. If you do not have enough, **you cannot activate that AI alert** until you receive or buy more. Alerts that do not use AI do not require these tokens.
-
-### What it analyzes
-
-AI can review:
-
-- The photos you choose, up to a maximum of **10**.
+- The listing **photos**: you choose how many, from **0 to 10**. With 0 it only reads the text.
 - The **title**.
-- The **description**, when the marketplace provides it.
+- The **description**, when the platform provides it.
 - The **price**.
 - On **Vinted**, also the **brand**.
 
-Depending on the marketplace, Vallax has access to different fields. Asking AI to analyze more photos uses more tokens, so select only the images that may provide useful information.
+### What it is for
 
-### What it is useful for
+The AI is useful when you want to confirm something that keywords alone do not make clear.
 
-AI is useful when you want to confirm something that is not always obvious from keywords alone.
+Example: your search may detect `PS4`, but that does not mean the listing is a console. It could be a controller, an empty box or an accessory. In that case you can add an instruction like this:
 
-Example: your alert may detect `PS4`, but that does not guarantee the listing is actually a console. It could be a controller, an empty box, or an accessory.
+`I want a complete PlayStation 4 console, not a controller or an accessory.`
 
-In that case, you can add an instruction like this:
-
-`I want it to be a complete PlayStation 4 console, not a controller or accessory.`
-
-That way, AI uses both the text and the images to decide whether the listing is really what you want.
+The AI then uses the text and images to check whether the listing is really what you want.
 
 ### Using price with context
 
-AI can also review the price and relate it to what the listing includes. This lets you define conditions that a single minimum or maximum price cannot represent.
-
-For example:
+The AI can also relate the price to what the listing includes, something a minimum or maximum price cannot express:
 
 `Accept listings up to €40 if they include games; if they do not include games, accept only up to €20.`
 
-AI can check whether games appear in the text or photos and apply the corresponding price limit.
+### AI tokens
 
-## Recommended setup for your first alert
+Every listing the AI reviews uses **AI tokens**, whether it matches or not. The cost depends mainly on the number of photos analysed and the length of the listing.
 
-If this is your first alert, the most practical approach is:
+- Any plan, including **Free**, can use the AI filter if it has tokens.
+- You need **at least 3 tokens** to turn on AI analysis in a search.
+- If your balance reaches 0, the AI filter is turned off, but the search keeps working without it.
 
-1. Define your **keywords** properly.
-2. Use **excluded words** to remove noisy listings.
-3. Add **location** if you want listings near you.
-4. Use **AI** when you need to relate text, photos, and price or apply conditions that basic filters cannot express.
+To spend less, use specific keywords, ignored words and a price range: that way the AI only reviews listings that could really interest you.
 
-With that setup, you can already build very precise alerts without making them unnecessarily complex.
+How to get tokens (Pro, packs and the points shop) is explained in [Plans and AI tokens](/en/docs/guides/plans#ai-tokens).
+
+## Test the search before saving it
+
+With **See latest matches** Vallax checks your filter against the listings published in the **last 24 hours** and tells you:
+
+- How many matches there would have been and roughly how many notifications per day you would get.
+- Some example listings (these are already-published listings, not notifications: they will not appear in your list).
+
+If there are too many, set a maximum price or add another word. If there are none, the usual cause is a keyword, or a price, area or category that is too strict.
+
+## Share and import searches
+
+From a search's actions you can **Share search**: Vallax generates a code and copies it to the clipboard. Whoever receives it can use **Import search**, review it and save it.
+
+If the imported search uses Pro options (such as regex) and you are not on Pro, you will need to remove them to save it.
+
+## Recommendation to get started
+
+If this is your first search, the most practical approach is:
+
+1. Define your **keywords** well and add options for synonyms.
+2. Use **without these words** to remove annoying listings.
+3. Add **price** and **location** if you want to narrow it down.
+4. **Test the search** to see how many notifications you would get.
+5. Use **AI** when you need to relate text, photos and price, or apply conditions basic filters cannot express.
+
+With that you can already build quite precise searches without overcomplicating things.

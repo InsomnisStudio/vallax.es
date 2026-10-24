@@ -64,6 +64,9 @@ export default defineConfig({
       sidebar: [
         { slug: "docs/guides/start" },
         { slug: "docs/guides/first-alert" },
+        { slug: "docs/guides/plans" },
+        { slug: "docs/guides/price-check" },
+        { slug: "docs/guides/points" },
         { slug: "docs/guides/limits" },
       ],
     }),

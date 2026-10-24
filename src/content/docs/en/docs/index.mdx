@@ -1,6 +1,6 @@
 ---
 title: Welcome to Vallax
-description: Straightforward documentation to understand Vallax and build better alerts.
+description: Straightforward documentation to understand Vallax, its plans and build better searches.
 template: splash
 hero:
   title: Vallax
@@ -17,24 +17,15 @@ hero:
       icon: telegram
 ---
 
-import { Card, CardGrid } from '@astrojs/starlight/components';
+import { CardGrid, LinkCard } from '@astrojs/starlight/components';
 
 ## Start here
 
-<CardGrid stagger>
-	<Card title="What Vallax is" icon="open-book">
-		Learn what the app does, which marketplaces it supports, and why it saves so much time.
-	</Card>
-	<Card title="Your first alert" icon="add-document">
-		Learn how to use keywords, location, user filters, regex, and AI.
-	</Card>
-	<Card title="Built to stay practical" icon="pencil">
-		This documentation focuses on what matters without unnecessary technical noise.
-	</Card>
-	<Card title="Vallax channels" icon="comment">
-		Follow updates on Telegram, Instagram, and YouTube from the docs header.
-	</Card>
-	<Card title="Important limits" icon="warning">
-		Check what happens if an alert generates too many notifications or too much AI usage in a short time.
-	</Card>
+<CardGrid>
+	<LinkCard title="What Vallax is" href="/en/docs/guides/start/" description="What the app does, which platforms it supports and why it saves so much time." />
+	<LinkCard title="Your first search" href="/en/docs/guides/first-alert/" description="Keywords, options, platforms, filters, regex and AI, field by field." />
+	<LinkCard title="Plans and AI tokens" href="/en/docs/guides/plans/" description="Free, Plus and Pro: what each includes, prices, free trial and tokens." />
+	<LinkCard title="How much is it?" href="/en/docs/guides/price-check/" description="Estimate what an item sells for from the photo of a notification." />
+	<LinkCard title="Points and invitations" href="/en/docs/guides/points/" description="Invite friends and redeem points for days of Plus, Pro or tokens." />
+	<LinkCard title="Important limits" href="/en/docs/guides/limits/" description="What happens if a search generates too many notifications or is paused by your plan." />
 </CardGrid>

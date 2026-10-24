@@ -40,6 +40,8 @@ export interface Translation {
     plans: {
       name: string;
       price: string;
+      period?: string;
+      annualPrice?: string;
       description: string;
       features: string[];
       ctaLabel: string;
@@ -153,59 +155,59 @@ export const translations = {
         {
           title: "Inteligencia artificial",
           description:
-            "Analiza anuncios para ayudarte a detectar mejores oportunidades y filtrar resultados con mas criterio.",
+            "Filtra cada anuncio con una instrucción en lenguaje natural y descubre a cuánto se vende un artículo a partir de su foto.",
         },
       ],
     },
     pricing: {
       title: "Planes y precios",
-      description:
-        "Tres formas de usar Vallax: empieza gratis, desbloquea todo con Premium o cuéntanos qué necesitas a medida.",
+      description: "Empieza gratis y sube de plan cuando lo necesites. Todos los planes reciben los anuncios a la misma velocidad.",
       plans: [
         {
-          name: "Gratuito",
-          price: "0€",
-          description:
-            "Ideal si solo necesitas controlar una busqueda puntual para uso personal.",
+          name: "Gratis",
+          price: "0 €",
+          description: "Ideal para vigilar una búsqueda puntual en una sola plataforma.",
           features: [
-            "1 alerta creada",
-            "1 alerta activa",
-            "Hasta 5 palabras clave por alerta",
-            "1 plataforma por alerta",
+            "1 búsqueda activa",
+            "5 palabras clave por búsqueda",
+            "1 plataforma por búsqueda",
+            "Filtro de IA comprando tokens",
           ],
           ctaLabel: "Empieza gratis",
           ctaHref: "#download-app",
         },
         {
-          name: "Premium",
-          price: "11,99€",
-          description:
-            "Pensado para revendedores, coleccionistas o usuarios que necesitan mas capacidad, filtros avanzados y tokens de IA incluidos.",
+          name: "Plus",
+          price: "3,99 €",
+          period: "/ mes",
+          annualPrice: "o 29,99 € al año",
+          description: "Para seguir varias búsquedas en todas las plataformas con más control.",
           features: [
-            "Hasta 15 alertas creadas",
-            "15 alertas activas al mismo tiempo",
-            "Todas las plataformas disponibles por alerta",
-            "Hasta 24 palabras clave por alerta",
-            "25.000 tokens de IA al mes",
-            "Filtros avanzados: Regex y Regex inverso",
+            "5 búsquedas activas",
+            "15 palabras clave por búsqueda",
+            "Wallapop, Vinted, Milanuncios y Todocolección en cada búsqueda",
+            "Filtro de IA comprando tokens",
           ],
-          ctaLabel: "Hazte Premium",
+          ctaLabel: "Elegir Plus",
           ctaHref: "#download-app",
-          badge: "Más popular",
         },
         {
-          name: "Plan personalizado",
-          price: "A medida",
-          description:
-            "Si necesitas más capacidad, integraciones o automatizaciones concretas, lo preparamos junto a ti.",
+          name: "Pro",
+          price: "11,99 €",
+          period: "/ mes",
+          annualPrice: "o 99,99 € al año",
+          description: "Para buscar a fondo con filtros avanzados e IA incluida cada mes.",
           features: [
-            "Capacidad y automatizaciones personalizadas",
-            "Integraciones con tus herramientas",
-            "Soporte dedicado y acuerdos a medida",
+            "50 búsquedas activas",
+            "50 palabras clave por búsqueda",
+            "Todas las plataformas en cada búsqueda",
+            "25.000 tokens de IA al mes",
+            "Regex y regex a ignorar",
+            "Prueba gratis de 7 días",
           ],
-          ctaLabel: "Habla con nosotros",
-          ctaHref:
-            "mailto:vallaxdev@gmail.com?subject=Plan%20personalizado%20Vallax",
+          ctaLabel: "Probar Pro gratis",
+          ctaHref: "#download-app",
+          badge: "Más completo",
         },
       ],
     },
@@ -227,24 +229,34 @@ export const translations = {
       title: "Preguntas frecuentes",
       items: [
         {
-          question: "¿Qué hace Vallax Premium?",
+          question: "¿Qué diferencia hay entre Plus y Pro?",
           answer:
-            "Vallax Premium amplía la capacidad de alertas, habilita filtros avanzados e incluye 25.000 tokens de IA cada mes. También puedes usar la IA sin Premium comprando tokens en la tienda.",
+            "Plus te da 5 búsquedas activas, 15 palabras clave y todas las plataformas en cada búsqueda. Pro sube a 50 búsquedas y 50 palabras clave, añade regex e incluye 25.000 tokens de IA cada mes. Los dos reciben los anuncios a la misma velocidad que el plan gratuito.",
         },
         {
-          question: "¿Por qué Vallax detiene algunas alertas?",
+          question: "¿Necesito pagar para usar la IA?",
           answer:
-            "Si una alerta genera demasiados resultados en poco tiempo, puede pausarse para proteger la estabilidad del servicio. Revísala, ajusta filtros si hace falta y vuelve a activarla.",
+            "No. Cualquier plan puede usar el filtro de IA y el botón «¿Cuánto cuesta?» comprando packs de tokens o canjeándolos con puntos. Pro incluye 25.000 tokens al mes.",
         },
         {
-          question: "¿Por qué recibo anuncios que no encajan?",
+          question: "¿Puedo conseguir Plus o Pro gratis?",
           answer:
-            "Puede deberse a que el vendedor usó categorías o palabras clave que no reflejan el contenido real. Ajusta exclusiones o regex para filtrar esos casos.",
+            "Sí. Ganas 1 punto por cada amigo que use tu código y cree su primera búsqueda. Con 3 puntos canjeas 7 días de Plus, y también hay días de Pro y tokens de IA en la tienda de puntos.",
+        },
+        {
+          question: "¿Qué pasa con mis búsquedas si bajo de plan?",
+          answer:
+            "Nunca se borran. Las que no caben en tu nuevo plan se pausan y se reactivan solas si vuelves a subir. También puedes editarlas para que encajen.",
+        },
+        {
+          question: "¿Por qué Vallax detiene algunas búsquedas?",
+          answer:
+            "Si una búsqueda genera demasiados resultados en poco tiempo, puede pausarse para proteger la estabilidad del servicio. Revísala, ajusta filtros si hace falta y vuelve a activarla.",
         },
         {
           question: "¿Funciona la ubicación en todas las plataformas?",
           answer:
-            "Wallapop, Milanuncios y Todocoleccion sí respetan ubicación y categorías. Vinted no usa ese campo, por lo que seguirás recibiendo anuncios fuera de tu zona incluso si lo configuras.",
+            "Wallapop, Milanuncios y Todocolección sí respetan la ubicación. Vinted no ofrece una localización precisa, por lo que seguirás recibiendo anuncios fuera de tu zona incluso si la configuras.",
         },
       ],
     },
@@ -333,58 +345,59 @@ export const translations = {
         {
           title: "Artificial intelligence",
           description:
-            "Analyze listings to spot better opportunities and filter results with more context.",
+            "Filter every listing with a plain-language instruction and find out what an item sells for from its photo.",
         },
       ],
     },
     pricing: {
       title: "Plans & pricing",
-      description:
-        "Pick the package that fits today: start free, upgrade to Premium, or reach out for a tailored setup.",
+      description: "Start free and upgrade when you need more. Every plan gets new listings at the same speed.",
       plans: [
         {
           name: "Free",
           price: "€0",
-          description:
-            "Great for monitoring a specific search for personal use when you only need Vallax occasionally.",
+          description: "Ideal for watching a single search on one platform.",
           features: [
-            "1 alert created",
-            "1 active alert",
-            "Up to 5 keywords per alert",
-            "1 marketplace per alert",
+            "1 active search",
+            "5 keywords per search",
+            "1 platform per search",
+            "AI filter with purchased tokens",
           ],
           ctaLabel: "Start free",
           ctaHref: "#download-app",
         },
         {
-          name: "Premium",
-          price: "€11.99",
-          description:
-            "For users who need more alert capacity, advanced filters, and included AI tokens.",
+          name: "Plus",
+          price: "€3.99",
+          period: "/ month",
+          annualPrice: "or €29.99 per year",
+          description: "For following several searches across every platform with more control.",
           features: [
-            "Up to 15 alerts created",
-            "15 simultaneous active alerts",
-            "All marketplaces available per alert",
-            "Up to 24 keywords per alert",
-            "25,000 AI tokens per month",
-            "Advanced filters: Regex and reverse Regex",
+            "5 active searches",
+            "15 keywords per search",
+            "Wallapop, Vinted, Milanuncios and Todocoleccion in every search",
+            "AI filter with purchased tokens",
           ],
-          ctaLabel: "Upgrade to Premium",
+          ctaLabel: "Choose Plus",
           ctaHref: "#download-app",
-          badge: "Most popular",
         },
         {
-          name: "Custom",
-          price: "Tailored",
-          description:
-            "Need something beyond this table? Tell us what your operation requires.",
+          name: "Pro",
+          price: "€11.99",
+          period: "/ month",
+          annualPrice: "or €99.99 per year",
+          description: "For deep searching with advanced filters and AI included every month.",
           features: [
-            "Custom capacity and automations",
-            "Integrations with your preferred tools",
-            "Dedicated support and bespoke agreements",
+            "50 active searches",
+            "50 keywords per search",
+            "Every platform in every search",
+            "25,000 AI tokens per month",
+            "Regex and ignore regex",
+            "7-day free trial",
           ],
-          ctaLabel: "Talk to us",
-          ctaHref: "mailto:vallaxdev@gmail.com?subject=Vallax%20custom%20plan",
+          ctaLabel: "Try Pro free",
+          ctaHref: "#download-app",
+          badge: "Most complete",
         },
       ],
     },
@@ -406,24 +419,34 @@ export const translations = {
       title: "Frequently asked questions",
       items: [
         {
-          question: "What does Vallax Premium include?",
+          question: "What is the difference between Plus and Pro?",
           answer:
-            "Vallax Premium increases your alert capacity, unlocks advanced filters, and includes 25,000 AI tokens each month. You can also use AI without Premium by purchasing tokens in the store.",
+            "Plus gives you 5 active searches, 15 keywords and every platform in each search. Pro goes up to 50 searches and 50 keywords, adds regex and includes 25,000 AI tokens every month. Both get listings at the same speed as the free plan.",
         },
         {
-          question: "Why does Vallax pause some alerts?",
+          question: "Do I need to pay to use AI?",
           answer:
-            "If an alert produces too many matches in a short period, it may be paused to protect service stability. Review it, tighten the filters if needed and reactivate it.",
+            "No. Any plan can use the AI filter and the \"How much is it?\" button by buying token packs or redeeming them with points. Pro includes 25,000 tokens per month.",
         },
         {
-          question: "Why do I receive listings that don’t match?",
+          question: "Can I get Plus or Pro for free?",
           answer:
-            "Sellers sometimes choose categories or keywords that don’t match the item. Add exclusions or regex filters to block those cases.",
+            "Yes. You earn 1 point for every friend who uses your code and creates their first search. 3 points get you 7 days of Plus, and the points shop also has days of Pro and AI tokens.",
         },
         {
-          question: "Does location work on every marketplace?",
+          question: "What happens to my searches if I downgrade?",
           answer:
-            "Wallapop, Milanuncios and Todocoleccion honor location and categories. Vinted does not, so you may still get items outside your area even if you set one.",
+            "They are never deleted. Searches that don't fit your new plan are paused and resume automatically if you upgrade again. You can also edit them to fit.",
+        },
+        {
+          question: "Why does Vallax pause some searches?",
+          answer:
+            "If a search generates too many results in a short time, it may be paused to protect service stability. Review it, adjust filters if needed, and turn it back on.",
+        },
+        {
+          question: "Does location work on every platform?",
+          answer:
+            "Wallapop, Milanuncios and Todocoleccion respect location. Vinted does not provide a precise location, so you may still get listings outside your area.",
         },
       ],
     },
@@ -505,58 +528,59 @@ translations.fr = {
       {
         title: "Intelligence artificielle",
         description:
-          "Analyse les annonces pour identifier de meilleures opportunites et filtrer avec plus de contexte.",
+          "Filtrez chaque annonce avec une instruction en langage naturel et découvrez à quel prix se vend un article à partir de sa photo.",
       },
     ],
   },
   pricing: {
     title: "Plans et tarifs",
-    description:
-      "Trois facons d'utiliser Vallax: gratuit, Premium ou un plan personnalise.",
+    description: "Commencez gratuitement et passez à un plan supérieur quand vous en avez besoin. Tous les plans reçoivent les annonces à la même vitesse.",
     plans: [
       {
         name: "Gratuit",
         price: "0 €",
-        description:
-          "Ideal pour surveiller une recherche ponctuelle pour un usage personnel.",
+        description: "Idéal pour surveiller une recherche ponctuelle sur une seule plateforme.",
         features: [
-          "1 alerte creee",
-          "1 alerte active",
-          "Jusqu'a 5 mots-cles par alerte",
-          "1 plateforme par alerte",
+          "1 recherche active",
+          "5 mots-clés par recherche",
+          "1 plateforme par recherche",
+          "Filtre IA avec des tokens achetés",
         ],
         ctaLabel: "Commencer gratuitement",
         ctaHref: "#download-app",
       },
       {
-        name: "Premium",
-        price: "11,99 €",
-        description:
-          "Pour les utilisateurs qui ont besoin de plus de capacite, de filtres avances et de tokens IA inclus.",
+        name: "Plus",
+        price: "3,99 €",
+        period: "/ mois",
+        annualPrice: "ou 29,99 € par an",
+        description: "Pour suivre plusieurs recherches sur toutes les plateformes avec plus de contrôle.",
         features: [
-          "Jusqu'a 15 alertes creees",
-          "15 alertes actives simultanement",
-          "Toutes les plateformes disponibles par alerte",
-          "Jusqu'a 24 mots-cles par alerte",
-          "25 000 tokens IA par mois",
-          "Filtres avances: regex et regex inversee",
+          "5 recherches actives",
+          "15 mots-clés par recherche",
+          "Wallapop, Vinted, Milanuncios et Todocoleccion dans chaque recherche",
+          "Filtre IA avec des tokens achetés",
         ],
-        ctaLabel: "Passer a Premium",
+        ctaLabel: "Choisir Plus",
         ctaHref: "#download-app",
-        badge: "Le plus populaire",
       },
       {
-        name: "Sur mesure",
-        price: "Sur mesure",
-        description:
-          "Besoin de quelque chose en plus ? Dites-nous ce dont vous avez besoin.",
+        name: "Pro",
+        price: "11,99 €",
+        period: "/ mois",
+        annualPrice: "ou 99,99 € par an",
+        description: "Pour chercher à fond avec des filtres avancés et l'IA incluse chaque mois.",
         features: [
-          "Capacite et automatisations personnalisees",
-          "Integrations avec vos outils preferes",
-          "Support dedie et accords sur mesure",
+          "50 recherches actives",
+          "50 mots-clés par recherche",
+          "Toutes les plateformes dans chaque recherche",
+          "25 000 tokens IA par mois",
+          "Regex et regex à ignorer",
+          "Essai gratuit de 7 jours",
         ],
-        ctaLabel: "Parlons-en",
-        ctaHref: "mailto:vallaxdev@gmail.com?subject=Vallax%20custom%20plan",
+        ctaLabel: "Essayer Pro gratuitement",
+        ctaHref: "#download-app",
+        badge: "Le plus complet",
       },
     ],
   },
@@ -578,24 +602,34 @@ translations.fr = {
     title: "Questions frequentes",
     items: [
       {
-        question: "Que comprend Vallax Premium ?",
+        question: "Quelle est la différence entre Plus et Pro ?",
         answer:
-          "Vallax Premium augmente le nombre d'alertes, active des filtres avances et inclut 25 000 tokens IA chaque mois. Vous pouvez aussi utiliser l'IA sans Premium en achetant des tokens dans la boutique.",
+          "Plus vous donne 5 recherches actives, 15 mots-clés et toutes les plateformes dans chaque recherche. Pro passe à 50 recherches et 50 mots-clés, ajoute les regex et inclut 25 000 tokens IA chaque mois. Les deux reçoivent les annonces à la même vitesse que le plan gratuit.",
       },
       {
-        question: "Pourquoi Vallax met certaines alertes en pause ?",
+        question: "Faut-il payer pour utiliser l'IA ?",
         answer:
-          "Si une alerte genere trop de resultats en peu de temps, elle peut etre mise en pause pour proteger la stabilite du service.",
+          "Non. Tous les plans peuvent utiliser le filtre IA et le bouton « Combien ça coûte ? » en achetant des packs de tokens ou en les échangeant contre des points. Pro inclut 25 000 tokens par mois.",
       },
       {
-        question: "Pourquoi je recois des annonces non pertinentes ?",
+        question: "Puis-je obtenir Plus ou Pro gratuitement ?",
         answer:
-          "Certains vendeurs utilisent des categories ou mots-cles incorrects. Ajoutez des exclusions ou regex.",
+          "Oui. Vous gagnez 1 point pour chaque ami qui utilise votre code et crée sa première recherche. Avec 3 points, vous obtenez 7 jours de Plus, et la boutique de points propose aussi des jours de Pro et des tokens IA.",
+      },
+      {
+        question: "Que deviennent mes recherches si je change pour un plan inférieur ?",
+        answer:
+          "Elles ne sont jamais supprimées. Celles qui ne rentrent pas dans le nouveau plan sont mises en pause et se réactivent seules si vous repassez à un plan supérieur.",
+      },
+      {
+        question: "Pourquoi Vallax met certaines recherches en pause ?",
+        answer:
+          "Si une recherche génère trop de résultats en peu de temps, elle peut être mise en pause pour protéger la stabilité du service.",
       },
       {
         question: "La localisation fonctionne-t-elle partout ?",
         answer:
-          "Wallapop, Milanuncios et Todocoleccion utilisent localisation et categories. Vinted non.",
+          "Wallapop, Milanuncios et Todocoleccion respectent la localisation. Vinted ne fournit pas de localisation précise.",
       },
     ],
   },
@@ -677,58 +711,59 @@ translations.it = {
       {
         title: "Intelligenza artificiale",
         description:
-          "Analizza gli annunci per individuare occasioni migliori e filtrare i risultati con piu criterio.",
+          "Filtra ogni annuncio con un'istruzione in linguaggio naturale e scopri a quanto si vende un articolo partendo dalla sua foto.",
       },
     ],
   },
   pricing: {
     title: "Piani e prezzi",
-    description:
-      "Tre modi per usare Vallax: gratis, Premium o piano personalizzato.",
+    description: "Inizia gratis e passa a un piano superiore quando ti serve. Tutti i piani ricevono gli annunci alla stessa velocità.",
     plans: [
       {
-        name: "Gratuito",
+        name: "Gratis",
         price: "0 €",
-        description:
-          "Ideale per monitorare una ricerca specifica per uso personale.",
+        description: "Ideale per tenere d'occhio una ricerca puntuale su una sola piattaforma.",
         features: [
-          "1 avviso creato",
-          "1 avviso attivo",
-          "Fino a 5 parole chiave per avviso",
-          "1 piattaforma per avviso",
+          "1 ricerca attiva",
+          "5 parole chiave per ricerca",
+          "1 piattaforma per ricerca",
+          "Filtro IA acquistando token",
         ],
         ctaLabel: "Inizia gratis",
         ctaHref: "#download-app",
       },
       {
-        name: "Premium",
-        price: "11,99 €",
-        description:
-          "Per chi ha bisogno di piu capacita, filtri avanzati e token IA inclusi.",
+        name: "Plus",
+        price: "3,99 €",
+        period: "/ mese",
+        annualPrice: "o 29,99 € all'anno",
+        description: "Per seguire più ricerche su tutte le piattaforme con più controllo.",
         features: [
-          "Fino a 15 avvisi creati",
-          "15 avvisi attivi simultanei",
-          "Tutte le piattaforme disponibili per avviso",
-          "Fino a 24 parole chiave per avviso",
-          "25.000 token IA al mese",
-          "Filtri avanzati: regex e regex inversa",
+          "5 ricerche attive",
+          "15 parole chiave per ricerca",
+          "Wallapop, Vinted, Milanuncios e Todocoleccion in ogni ricerca",
+          "Filtro IA acquistando token",
         ],
-        ctaLabel: "Passa a Premium",
+        ctaLabel: "Scegli Plus",
         ctaHref: "#download-app",
-        badge: "Il piu popolare",
       },
       {
-        name: "Personalizzato",
-        price: "Su misura",
-        description:
-          "Serve qualcosa oltre questa tabella? Raccontaci le tue esigenze.",
+        name: "Pro",
+        price: "11,99 €",
+        period: "/ mese",
+        annualPrice: "o 99,99 € all'anno",
+        description: "Per cercare a fondo con filtri avanzati e IA inclusa ogni mese.",
         features: [
-          "Capacita e automazioni personalizzate",
-          "Integrazioni con i tuoi strumenti preferiti",
-          "Supporto dedicato e accordi su misura",
+          "50 ricerche attive",
+          "50 parole chiave per ricerca",
+          "Tutte le piattaforme in ogni ricerca",
+          "25.000 token IA al mese",
+          "Regex e regex da ignorare",
+          "Prova gratuita di 7 giorni",
         ],
-        ctaLabel: "Contattaci",
-        ctaHref: "mailto:vallaxdev@gmail.com?subject=Vallax%20custom%20plan",
+        ctaLabel: "Prova Pro gratis",
+        ctaHref: "#download-app",
+        badge: "Il più completo",
       },
     ],
   },
@@ -749,24 +784,34 @@ translations.it = {
     title: "Domande frequenti",
     items: [
       {
-        question: "Cosa include Vallax Premium?",
+        question: "Che differenza c'è tra Plus e Pro?",
         answer:
-          "Vallax Premium aumenta la capacita degli avvisi, sblocca filtri avanzati e include 25.000 token IA ogni mese. Puoi usare l'IA anche senza Premium acquistando token nel negozio.",
+          "Plus ti dà 5 ricerche attive, 15 parole chiave e tutte le piattaforme in ogni ricerca. Pro arriva a 50 ricerche e 50 parole chiave, aggiunge le regex e include 25.000 token IA ogni mese. Entrambi ricevono gli annunci alla stessa velocità del piano gratuito.",
       },
       {
-        question: "Perche Vallax mette in pausa alcuni avvisi?",
+        question: "Devo pagare per usare l'IA?",
         answer:
-          "Se un avviso genera troppi risultati in poco tempo, puo essere messo in pausa per proteggere la stabilita del servizio.",
+          "No. Qualsiasi piano può usare il filtro IA e il pulsante «Quanto costa?» acquistando pacchetti di token o riscattandoli con i punti. Pro include 25.000 token al mese.",
       },
       {
-        question: "Perche ricevo annunci non pertinenti?",
+        question: "Posso ottenere Plus o Pro gratis?",
         answer:
-          "Alcuni venditori usano categorie o parole chiave non corrette. Aggiungi esclusioni o regex.",
+          "Sì. Guadagni 1 punto per ogni amico che usa il tuo codice e crea la sua prima ricerca. Con 3 punti riscatti 7 giorni di Plus, e nel negozio punti ci sono anche giorni di Pro e token IA.",
+      },
+      {
+        question: "Cosa succede alle mie ricerche se passo a un piano inferiore?",
+        answer:
+          "Non vengono mai eliminate. Quelle che non rientrano nel nuovo piano vengono messe in pausa e si riattivano da sole se torni a un piano superiore.",
+      },
+      {
+        question: "Perché Vallax mette in pausa alcune ricerche?",
+        answer:
+          "Se una ricerca genera troppi risultati in poco tempo, può essere messa in pausa per proteggere la stabilità del servizio.",
       },
       {
         question: "La posizione funziona su tutte le piattaforme?",
         answer:
-          "Wallapop, Milanuncios e Todocoleccion supportano posizione e categorie. Vinted no.",
+          "Wallapop, Milanuncios e Todocoleccion rispettano la posizione. Vinted non fornisce una posizione precisa.",
       },
     ],
   },
@@ -848,58 +893,59 @@ translations.pl = {
       {
         title: "Sztuczna inteligencja",
         description:
-          "Analizuje ogloszenia, aby szybciej wylapywac lepsze okazje i lepiej filtrowac wyniki.",
+          "Filtruj każde ogłoszenie poleceniem w zwykłym języku i sprawdź, za ile sprzedaje się przedmiot na podstawie jego zdjęcia.",
       },
     ],
   },
   pricing: {
     title: "Plany i ceny",
-    description:
-      "Trzy sposoby korzystania z Vallax: darmowy, Premium lub plan indywidualny.",
+    description: "Zacznij za darmo i przejdź na wyższy plan, gdy będziesz potrzebować więcej. Wszystkie plany otrzymują ogłoszenia z tą samą szybkością.",
     plans: [
       {
         name: "Darmowy",
         price: "0 €",
-        description:
-          "Idealny do monitorowania pojedynczego wyszukiwania na uzytek prywatny.",
+        description: "Idealny do śledzenia jednego wyszukiwania na jednej platformie.",
         features: [
-          "1 utworzony alert",
-          "1 aktywny alert",
-          "Do 5 slow kluczowych na alert",
-          "1 platforma na alert",
+          "1 aktywne wyszukiwanie",
+          "5 słów kluczowych na wyszukiwanie",
+          "1 platforma na wyszukiwanie",
+          "Filtr AI z kupionymi tokenami",
         ],
         ctaLabel: "Zacznij za darmo",
         ctaHref: "#download-app",
       },
       {
-        name: "Premium",
-        price: "11,99 €",
-        description:
-          "Dla tych, ktorzy potrzebuja wiekszych limitow alertow, zaawansowanych filtrow i tokenow AI w pakiecie.",
+        name: "Plus",
+        price: "3,99 €",
+        period: "/ mies.",
+        annualPrice: "lub 29,99 € rocznie",
+        description: "Do śledzenia kilku wyszukiwań na wszystkich platformach z większą kontrolą.",
         features: [
-          "Do 15 utworzonych alertow",
-          "15 aktywnych alertow jednoczesnie",
-          "Wszystkie platformy dostepne dla alertu",
-          "Do 24 slow kluczowych na alert",
-          "25 000 tokenow AI miesiecznie",
-          "Zaawansowane filtry: regex i odwrotny regex",
+          "5 aktywnych wyszukiwań",
+          "15 słów kluczowych na wyszukiwanie",
+          "Wallapop, Vinted, Milanuncios i Todocoleccion w każdym wyszukiwaniu",
+          "Filtr AI z kupionymi tokenami",
         ],
-        ctaLabel: "Przejdz na Premium",
+        ctaLabel: "Wybierz Plus",
         ctaHref: "#download-app",
-        badge: "Najpopularniejszy",
       },
       {
-        name: "Indywidualny",
-        price: "Na zamowienie",
-        description:
-          "Potrzebujesz czegos wiecej niz w tabeli? Daj nam znac.",
+        name: "Pro",
+        price: "11,99 €",
+        period: "/ mies.",
+        annualPrice: "lub 99,99 € rocznie",
+        description: "Do dokładnego szukania z zaawansowanymi filtrami i AI w cenie co miesiąc.",
         features: [
-          "Indywidualna pojemnosc i automatyzacje",
-          "Integracje z Twoimi narzedziami",
-          "Dedykowane wsparcie i umowy na miare",
+          "50 aktywnych wyszukiwań",
+          "50 słów kluczowych na wyszukiwanie",
+          "Wszystkie platformy w każdym wyszukiwaniu",
+          "25 000 tokenów AI miesięcznie",
+          "Regex i regex do ignorowania",
+          "7 dni za darmo",
         ],
-        ctaLabel: "Porozmawiajmy",
-        ctaHref: "mailto:vallaxdev@gmail.com?subject=Vallax%20custom%20plan",
+        ctaLabel: "Wypróbuj Pro za darmo",
+        ctaHref: "#download-app",
+        badge: "Najpełniejszy",
       },
     ],
   },
@@ -920,24 +966,34 @@ translations.pl = {
     title: "Najczestsze pytania",
     items: [
       {
-        question: "Co obejmuje Vallax Premium?",
+        question: "Czym różni się Plus od Pro?",
         answer:
-          "Vallax Premium zwieksza limit alertow, odblokowuje zaawansowane filtry i zapewnia 25 000 tokenow AI co miesiac. Z AI mozna tez korzystac bez Premium, kupujac tokeny w sklepie.",
+          "Plus daje 5 aktywnych wyszukiwań, 15 słów kluczowych i wszystkie platformy w każdym wyszukiwaniu. Pro to 50 wyszukiwań i 50 słów kluczowych, regex oraz 25 000 tokenów AI co miesiąc. Oba plany otrzymują ogłoszenia z tą samą szybkością co plan darmowy.",
       },
       {
-        question: "Dlaczego Vallax wstrzymuje niektore alerty?",
+        question: "Czy muszę płacić, żeby korzystać z AI?",
         answer:
-          "Jesli alert generuje zbyt wiele wynikow w krotkim czasie, moze zostac wstrzymany, aby chronic stabilnosc uslugi.",
+          "Nie. Każdy plan może używać filtra AI i przycisku „Ile to kosztuje?”, kupując pakiety tokenów lub wymieniając je za punkty. Pro zawiera 25 000 tokenów miesięcznie.",
       },
       {
-        question: "Dlaczego dostaje niedopasowane ogloszenia?",
+        question: "Czy mogę dostać Plus lub Pro za darmo?",
         answer:
-          "Sprzedawcy czasem wpisuja bledne kategorie lub slowa kluczowe. Dodaj wykluczenia albo regex.",
+          "Tak. Zdobywasz 1 punkt za każdego znajomego, który użyje Twojego kodu i utworzy pierwsze wyszukiwanie. Za 3 punkty dostajesz 7 dni Plus, a w sklepie punktów są też dni Pro i tokeny AI.",
       },
       {
-        question: "Czy lokalizacja dziala na wszystkich platformach?",
+        question: "Co się stanie z moimi wyszukiwaniami po zmianie na niższy plan?",
         answer:
-          "Wallapop, Milanuncios i Todocoleccion obsluguja lokalizacje i kategorie. Vinted nie.",
+          "Nigdy nie są usuwane. Te, które nie mieszczą się w nowym planie, zostają wstrzymane i wznawiają się same, gdy wrócisz na wyższy plan.",
+      },
+      {
+        question: "Dlaczego Vallax wstrzymuje niektóre wyszukiwania?",
+        answer:
+          "Gdy wyszukiwanie generuje zbyt wiele wyników w krótkim czasie, może zostać wstrzymane dla stabilności usługi.",
+      },
+      {
+        question: "Czy lokalizacja działa wszędzie?",
+        answer:
+          "Wallapop, Milanuncios i Todocoleccion uwzględniają lokalizację. Vinted nie podaje dokładnej lokalizacji.",
       },
     ],
   },

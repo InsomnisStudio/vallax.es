@@ -1,56 +1,57 @@
 ---
-title: Limity i przerwy bezpieczenstwa
-description: Zrozum, dlaczego alert moze tymczasowo przestac wysylac powiadomienia.
+title: Limity i przerwy bezpieczeństwa
+description: Zrozum, dlaczego wyszukiwanie może tymczasowo przestać wysyłać powiadomienia.
 sidebar:
-  order: 3
+  order: 6
 ---
 
-Jest jedna wazna rzecz, o ktorej warto wiedziec, zeby uniknac niespodzianek: Vallax ma limity bezpieczenstwa, aby Twoje konto nie generowalo zbyt wielu powiadomien w bardzo krotkim czasie.
+Warto wiedzieć jedną ważną rzecz: Vallax ma limity bezpieczeństwa, które zapobiegają generowaniu przez Twoje konto zbyt wielu powiadomień w bardzo krótkim czasie.
 
-To nie jest blad. To zabezpieczenie, ktore ma utrzymac stabilnosc systemu.
+To nie błąd. To ochrona przed nietypowym zachowaniem, która utrzymuje stabilność systemu. Te limity są **takie same w każdym planie**.
 
-## Globalny limit powiadomien
+## Globalny limit powiadomień
 
-Twoje konto ma globalny limit **240 powiadomien na minute**.
+Twoje konto ma globalny limit **240 powiadomień na minutę**.
 
-To znaczy, ze wszystkie Twoje alerty lacznie, z AI lub bez AI, nie moga przekroczyc tego tempa.
+Oznacza to, że łącznie wszystkie Twoje wyszukiwania, z AI lub bez, nie mogą przekroczyć tego tempa.
 
-Jesli razem przekrocza ten limit, Vallax **tymczasowo zatrzyma wszystkie twoje alerty**.
+Jeśli razem przekroczą limit, Vallax **tymczasowo zatrzyma wszystkie Twoje wyszukiwania**. W tym czasie:
 
-W tym czasie:
+- Nawet jeśli je ponownie włączysz, **nie dostaniesz powiadomień**.
+- Musisz odczekać **1 minutę**, aż znów zaczną normalnie działać.
 
-- Nawet jesli je ponownie wlaczysz, **nie bedziesz otrzymywac powiadomien**.
-- Bedziesz musial odczekac **1 minute**, zanim znow zaczna dzialac normalnie.
+## Limit wyszukiwań z AI
 
-## Limit alertow z AI
+Wyszukiwania z AI mają surowszy limit globalny: **20 analiz na minutę**.
 
-Alerty korzystajace z AI maja ostrzejszy globalny limit: **20 analiz na minute**.
+Oznacza to, że łącznie wszystkie Twoje wyszukiwania z AI nie mogą przekroczyć tego progu.
 
-To znaczy, ze wszystkie Twoje alerty z AI lacznie nie moga przekroczyc tego progu.
+Jeśli analiza AI uruchomi się więcej niż 20 razy w ciągu minuty, Vallax **wyłączy wszystkie Twoje wyszukiwania korzystające z AI**. Wtedy:
 
-Jesli analiza AI uruchomi sie wiecej niz 20 razy w ciagu minuty we wszystkich tych alertach, Vallax **wylaczy wszystkie twoje alerty z AI**.
+- Nawet jeśli je ponownie włączysz, **nie dostaniesz powiadomień**.
+- Musisz odczekać **2 minuty**, aż znów zaczną działać.
 
-W takim przypadku:
+## Wstrzymane przez plan
 
-- Nawet jesli je ponownie wlaczysz, **nie bedziesz otrzymywac powiadomien**.
-- Bedziesz musial odczekac **2 minuty**, zanim znow zaczna dzialac.
+To coś innego niż przerwy bezpieczeństwa. Jeśli widzisz wyszukiwanie oznaczone jako **Wstrzymane przez plan**, Twój obecny plan go nie obejmuje: masz więcej aktywnych wyszukiwań, niż pozwala plan, albo korzysta ono z regex, słów kluczowych lub platform ponad limit.
+
+Możesz je edytować, żeby mieściło się w planie, albo przejść na wyższy plan. Zobacz [Zmiana na niższy plan](/pl/docs/guides/plans#zmiana-na-niższy-plan).
 
 ## Co to oznacza w praktyce
 
-Jesli alert czesto dobija do tych limitow, zwykle oznacza to, ze jest zbyt szeroki.
+Jeśli wyszukiwanie uruchamia się zbyt często, zwykle jest zbyt szerokie. Na przykład:
 
-Na przyklad:
-
-- Zbyt ogolne slowa kluczowe.
-- Za malo filtrow.
-- Wlaczone AI w alercie, ktory nadal przepuszcza zbyt wiele ogloszen.
+- Bardzo ogólne słowa kluczowe.
+- Mało filtrów.
+- AI użyte w wyszukiwaniach, które wciąż przepuszczają zbyt wiele ogłoszeń.
 
 ## Rekomendacja
 
-Jesli alert czesto sie zatrzymuje, najlepiej go doprecyzowac:
+Jeśli wyszukiwanie często się zatrzymuje, zrób je bardziej precyzyjnym:
 
-- Lepiej dopracuj **slowa kluczowe**.
-- Dodaj **slowa do wykluczenia**, aby ograniczyc szum.
-- Uzywaj **AI** tylko wtedy, gdy jest to rzeczywiscie potrzebne.
+- Doprecyzuj **słowa kluczowe**.
+- Dodaj **słowa do ignorowania** i **cenę maksymalną**, żeby usunąć szum.
+- Użyj **Zobacz ostatnie dopasowania**, żeby przed zapisaniem sprawdzić, ile powiadomień dziennie generuje.
+- Używaj **AI** tylko wtedy, gdy naprawdę jest potrzebne.
 
-Im bardziej precyzyjny jest alert, tym bardziej uzyteczne beda powiadomienia i tym mniejsze ryzyko osiagniecia tych limitow.
+Im lepiej dopracowane wyszukiwanie, tym bardziej przydatne powiadomienia i tym mniejsza szansa na osiągnięcie tych limitów.

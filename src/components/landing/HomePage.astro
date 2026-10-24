@@ -678,10 +678,8 @@ const seoSolutionLinks = solutionPages.slice(0, 3).map((page) => ({
     </div>
     <div class="grid items-stretch gap-8 md:grid-cols-3">
         {
-            t.pricing.plans.map((plan, index) => {
-                const isFeatured = index === 1;
-                const isStorePlan = index < 2;
-                const ctaHref = isStorePlan ? "#download-app" : plan.ctaHref;
+            t.pricing.plans.map((plan) => {
+                const isFeatured = Boolean(plan.badge);
                 return (
                     <div
                         class:list={[
@@ -704,13 +702,20 @@ const seoSolutionLinks = solutionPages.slice(0, 3).map((page) => ({
                                 {plan.name}
                             </h3>
                             <div class="flex items-baseline gap-1">
-                                <span class:list={[
-                                    "font-black text-white",
-                                    index === 2 ? "text-4xl" : "text-5xl",
-                                ]}>
+                                <span class="text-5xl font-black text-white">
                                     {plan.price}
                                 </span>
+                                {plan.period && (
+                                    <span class="text-sm font-semibold text-on-surface-variant">
+                                        {plan.period}
+                                    </span>
+                                )}
                             </div>
+                            {plan.annualPrice && (
+                                <p class="mt-2 text-sm text-on-surface-variant">
+                                    {plan.annualPrice}
+                                </p>
+                            )}
                         </div>
                         <p class="mb-8 text-sm leading-6 text-on-surface-variant md:text-base md:leading-7">
                             {plan.description}
@@ -742,9 +747,7 @@ const seoSolutionLinks = solutionPages.slice(0, 3).map((page) => ({
                                     ? "bg-primary text-on-primary hover:brightness-110"
                                     : "border border-white/10 bg-white/5 text-white hover:bg-white/10",
                             ]}
-                            href={ctaHref}
-                            target={plan.ctaHref.startsWith("mailto:") ? undefined : undefined}
-                            rel={plan.ctaHref.startsWith("mailto:") ? undefined : undefined}
+                            href={plan.ctaHref}
                         >
                             {plan.ctaLabel}
                         </a>

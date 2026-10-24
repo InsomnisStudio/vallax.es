@@ -1,56 +1,57 @@
 ---
 title: Limits and safety pauses
-description: Understand why an alert may temporarily stop sending notifications.
+description: Understand why a search may temporarily stop notifying you.
 sidebar:
-  order: 3
+  order: 6
 ---
 
-There is one important thing worth knowing to avoid surprises: Vallax has safety limits to prevent your account from generating too many notifications in a very short time.
+There is one important thing worth knowing: Vallax has safety limits to prevent your account from generating too many notifications in a very short time.
 
-It is not a bug. It is a protection mechanism to keep the system stable.
+It is not a bug. It is a protection to avoid abnormal behaviour and keep the system stable. These limits are **the same on every plan**.
 
 ## Global notification limit
 
 Your account has a global limit of **240 notifications per minute**.
 
-That means all your alerts combined, whether they use AI or not, cannot go beyond that rate.
+That means that, across all your searches, with or without AI, you cannot exceed that rate.
 
-If they exceed that limit together, Vallax will **temporarily stop all your alerts**.
+If together they exceed that limit, Vallax **will temporarily stop all your searches**. During that time:
 
-During that time:
+- Even if you turn them back on, **you will not receive notifications**.
+- You will have to wait **1 minute** for them to work normally again.
 
-- Even if you reactivate them, **you will not receive notifications**.
-- You will need to wait **1 minute** before they can work normally again.
+## AI search limit
 
-## Limit for AI alerts
+Searches that use AI have a stricter global limit: **20 analyses per minute**.
 
-Alerts using AI have a stricter global limit: **20 analyses per minute**.
+That means that, across all your AI searches, you cannot exceed that cap.
 
-That means all your AI alerts combined cannot go beyond that cap.
+If AI analysis fires more than 20 times in one minute across all of them, Vallax **will turn off all your searches that use AI**. In that case:
 
-If AI analysis runs more than 20 times in one minute across all of them, Vallax will **disable all your AI alerts**.
+- Even if you turn them back on, **you will not receive notifications**.
+- You will have to wait **2 minutes** for them to work again.
 
-In that case:
+## Paused by your plan
 
-- Even if you reactivate them, **you will not receive notifications**.
-- You will need to wait **2 minutes** before they work again.
+This is different from safety pauses. If you see a search marked **Paused by your plan**, your current plan does not cover it: you have more active searches than it allows, or it uses regex, keywords or platforms above its limit.
+
+You can edit it to fit or upgrade your plan. See [If you downgrade](/en/docs/guides/plans#if-you-downgrade).
 
 ## What this means in practice
 
-If an alert hits these limits too often, it usually means the alert is too broad.
+If a search triggers too often, it is usually too broad. For example:
 
-For example:
-
-- Keywords that are too generic.
-- Too few filters.
-- AI enabled on alerts that still let too many listings pass through.
+- Very generic keywords.
+- Few filters.
+- AI used on searches that still let too many listings through.
 
 ## Recommendation
 
-If an alert keeps stopping, the best approach is to make it more precise:
+If a search keeps stopping, make it more precise:
 
 - Refine your **keywords**.
-- Add **excluded words** to remove noise.
-- Use **AI** only when it is actually needed.
+- Add **ignored words** and a **maximum price** to remove noise.
+- Use **See latest matches** to check how many notifications per day it generates before saving it.
+- Use **AI** only when you really need it.
 
-The more focused an alert is, the more useful the notifications will be and the less likely you are to hit these limits.
+The more refined a search is, the more useful your notifications will be and the less likely you are to hit these limits.

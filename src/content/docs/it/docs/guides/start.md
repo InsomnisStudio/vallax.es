@@ -1,49 +1,59 @@
 ---
-title: Cos'e Vallax
-description: Capisci in pochi minuti cosa fa Vallax e perche e utile.
+title: Cos'è Vallax
+description: Scopri in pochi minuti cosa fa Vallax e a cosa serve.
 sidebar:
   order: 1
 ---
 
-**Vallax** e un'app per **iPhone e Android** che ti avvisa quando compare un nuovo annuncio che corrisponde a quello che stai cercando.
+**Vallax** è un'app per **iPhone e Android** che ti avvisa quando compare un nuovo annuncio che corrisponde a ciò che cerchi.
 
-Invece di controllare continuamente piu marketplace, crei un avviso con i tuoi filtri e Vallax monitora per te.
+Invece di controllare più piattaforme continuamente, crei una **ricerca** con i tuoi filtri e Vallax controlla per te, 24 ore su 24.
+
+> Nell'app gli avvisi si chiamano **ricerche**. In questa documentazione le due parole indicano la stessa cosa.
 
 ## Come funziona
 
-Vallax controlla i **nuovi annunci**, non quelli vecchi gia pubblicati.
+Vallax controlla gli **annunci nuovi**, non cerca tra quelli vecchi.
 
-Questo e importante: l'obiettivo non e aiutarti a navigare risultati gia presenti, ma avvisarti nel momento esatto in cui compare qualcosa di nuovo che corrisponde al tuo avviso.
+L'idea non è aiutarti a sfogliare annunci già pubblicati, ma avvisarti appena esce qualcosa che corrisponde alla tua ricerca. Se compare un annuncio valido, ricevi subito una notifica.
 
-Se compare un annuncio valido, ricevi subito una notifica.
+Tutte le notifiche restano salvate nell'app: puoi rivederle in seguito, filtrarle per piattaforma e salvare quelle che ti interessano nei **Preferiti**.
 
-## Marketplace supportati
+## Piattaforme supportate
 
-Al momento Vallax funziona con questi marketplace:
+Al momento Vallax funziona con:
 
 - Wallapop
 - Vinted
 - Milanuncios
 - Todocoleccion
 
-## Per chi e utile
+Su Vinted puoi scegliere il dominio del tuo paese dal tuo **profilo**.
 
-Vallax puo essere utile a molte persone, ma si adatta particolarmente bene a questi casi:
+## Cos'altro puoi fare
 
-- **Rivenditori** che devono arrivare prima degli altri sulle migliori opportunita.
-- **Collezionisti** che cercano oggetti specifici senza controllare piu app tutto il giorno.
-- **Acquirenti** che vogliono semplicemente trovare prezzi migliori senza perdere tempo tra scroll e ricerche ripetute.
+- **Provare una ricerca prima di salvarla.** Vallax ti mostra gli annunci delle ultime 24 ore che avrebbero corrisposto e quante notifiche al giorno riceveresti.
+- **Filtrare con l'IA.** Aggiungi un'istruzione in linguaggio naturale e l'IA controlla ogni annuncio prima di avvisarti. [Scopri di più](/it/docs/guides/first-alert#filtro-ia).
+- **Sapere a quanto si vende un articolo.** Da una notifica, il pulsante [Quanto costa?](/it/docs/guides/price-check) cerca annunci simili e ti dà un prezzo di riferimento.
+- **Condividere ricerche.** Genera un codice perché un'altra persona importi la tua ricerca, o importa la sua.
+- **Guadagnare punti invitando amici** e riscattarli in giorni di Plus o Pro. [Scopri come](/it/docs/guides/points).
 
-## Quale problema risolve
+## Piani
 
-Cercare manualmente su piu marketplace richiede tempo e obbliga a controllare il telefono in continuazione.
+Vallax ha un piano **Gratis** e due piani a pagamento, **Plus** e **Pro**. Tutti ricevono gli annunci alla stessa velocità: nessun piano viene avvisato prima di un altro. Cambiano il numero di ricerche, parole chiave e piattaforme, e la disponibilità di regex e token IA inclusi.
 
-Con Vallax prepari l'avviso una volta sola e aspetti che la notifica arrivi solo quando compare qualcosa di interessante. In questo modo riduci il rumore e non devi aggiornare le pagine continuamente.
+È tutto spiegato in [Piani e token IA](/it/docs/guides/plans).
 
-## Prossimo passo
+## Per chi è
 
-Quando hai chiaro cosa vuoi cercare, la parte importante e costruire bene l'avviso.
+Vallax può essere utile a molte persone, ma è perfetto soprattutto per:
 
-La guida seguente spiega i campi che fanno davvero la differenza:
+- **Rivenditori** che devono arrivare prima degli altri alle buone occasioni.
+- **Collezionisti** che cercano articoli specifici e non vogliono controllare più app tutto il giorno.
+- **Acquirenti** che vogliono semplicemente un prezzo migliore senza perdere tempo a scorrere e ripetere ricerche.
 
-- [Come creare il tuo primo avviso](/it/docs/guides/first-alert)
+## Passo successivo
+
+Quando sai cosa cercare, la cosa importante è configurare bene la ricerca:
+
+- [Come creare la tua prima ricerca](/it/docs/guides/first-alert)
