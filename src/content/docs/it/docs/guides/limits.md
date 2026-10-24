@@ -1,56 +1,57 @@
 ---
 title: Limiti e pause di sicurezza
-description: Capisci perche un avviso puo smettere temporaneamente di inviare notifiche.
+description: Capisci perché una ricerca può smettere temporaneamente di avvisarti.
 sidebar:
-  order: 3
+  order: 6
 ---
 
-C'e un punto importante da conoscere per evitare sorprese: Vallax applica alcuni limiti di sicurezza per impedire che il tuo account generi troppe notifiche in troppo poco tempo.
+C'è un punto importante da avere chiaro: Vallax ha alcuni limiti di sicurezza per impedire che il tuo account generi troppe notifiche in pochissimo tempo.
 
-Non e un bug. E una protezione per mantenere stabile il sistema.
+Non è un errore. È una protezione per evitare comportamenti anomali e mantenere stabile il sistema. Questi limiti sono **uguali per tutti i piani**.
 
 ## Limite globale di notifiche
 
 Il tuo account ha un limite globale di **240 notifiche al minuto**.
 
-Questo significa che, sommando tutti i tuoi avvisi, con o senza IA, non puoi superare questo ritmo.
+Significa che, tra tutte le tue ricerche, con o senza IA, non puoi superare quel ritmo.
 
-Se insieme superano questo limite, Vallax **fermera temporaneamente tutti i tuoi avvisi**.
+Se insieme superano il limite, Vallax **fermerà temporaneamente tutte le tue ricerche**. Durante quel tempo:
 
-Durante quel periodo:
+- Anche se le riattivi, **non riceverai notifiche**.
+- Dovrai aspettare **1 minuto** perché tornino a funzionare normalmente.
 
-- Anche se li riattivi, **non riceverai notifiche**.
-- Dovrai aspettare **1 minuto** prima che tornino a funzionare normalmente.
+## Limite delle ricerche con IA
 
-## Limite per gli avvisi con IA
+Le ricerche che usano l'IA hanno un limite globale più severo: **20 analisi al minuto**.
 
-Gli avvisi che usano l'IA hanno un limite globale piu rigido: **20 analisi al minuto**.
+Significa che, tra tutte le tue ricerche con IA, non puoi superare quel tetto.
 
-Questo significa che, sommando tutti i tuoi avvisi con IA, non puoi superare quel tetto.
+Se l'analisi IA scatta più di 20 volte in un minuto tra tutte, Vallax **disattiverà tutte le tue ricerche che usano l'IA**. In quel caso:
 
-Se l'analisi con IA supera 20 esecuzioni in un minuto tra tutti questi avvisi, Vallax **disattivera tutti i tuoi avvisi con IA**.
+- Anche se le riattivi, **non riceverai notifiche**.
+- Dovrai aspettare **2 minuti** perché tornino a funzionare.
 
-In quel caso:
+## In pausa per il tuo piano
 
-- Anche se li riattivi, **non riceverai notifiche**.
-- Dovrai aspettare **2 minuti** prima che tornino a funzionare.
+È diverso dalle pause di sicurezza. Se vedi una ricerca segnata come **In pausa per il tuo piano**, il tuo piano attuale non la copre: hai più ricerche attive di quante ne permetta, oppure usa regex, parole chiave o piattaforme oltre il limite.
+
+Puoi modificarla perché rientri nel piano o passare a un piano superiore. Vedi [Se passi a un piano inferiore](/it/docs/guides/plans#se-passi-a-un-piano-inferiore).
 
 ## Cosa significa in pratica
 
-Se un avviso raggiunge spesso questi limiti, di solito significa che e troppo ampio.
+Se una ricerca scatta troppo spesso, di solito è troppo ampia. Per esempio:
 
-Per esempio:
-
-- Parole chiave troppo generiche.
+- Parole chiave molto generiche.
 - Pochi filtri.
-- IA attivata su avvisi che lasciano passare ancora troppi annunci.
+- IA usata in ricerche che lasciano ancora passare troppi annunci.
 
 ## Consiglio
 
-Se un avviso si blocca spesso, la cosa migliore e renderlo piu preciso:
+Se una ricerca si ferma spesso, rendila più precisa:
 
-- Affina meglio le **parole chiave**.
-- Aggiungi **parole da escludere** per ridurre il rumore.
-- Usa l'**IA** solo quando e davvero necessaria.
+- Affina le **parole chiave**.
+- Aggiungi **parole da ignorare** e un **prezzo massimo** per togliere rumore.
+- Usa **Vedi ultime corrispondenze** per controllare quante notifiche al giorno genera prima di salvarla.
+- Usa l'**IA** solo quando serve davvero.
 
-Piu un avviso e preciso, piu utili saranno le notifiche e meno probabilita ci saranno di raggiungere questi limiti.
+Più una ricerca è precisa, più utili saranno le notifiche e meno probabile sarà raggiungere questi limiti.

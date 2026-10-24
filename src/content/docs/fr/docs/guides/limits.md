@@ -1,56 +1,57 @@
 ---
-title: Limites et pauses de securite
-description: Comprenez pourquoi une alerte peut temporairement cesser d'envoyer des notifications.
+title: Limites et pauses de sécurité
+description: Comprenez pourquoi une recherche peut cesser temporairement de vous avertir.
 sidebar:
-  order: 3
+  order: 6
 ---
 
-Il y a un point important a connaitre pour eviter les surprises : Vallax applique certaines limites de securite pour empecher votre compte de generer trop de notifications en trop peu de temps.
+Il y a un point important à bien comprendre : Vallax applique des limites de sécurité pour éviter que votre compte génère trop de notifications en très peu de temps.
 
-Ce n'est pas un bug. C'est une protection pour maintenir la stabilite du systeme.
+Ce n'est pas un bug. C'est une protection pour éviter les comportements anormaux et garder le système stable. Ces limites sont **les mêmes pour tous les plans**.
 
 ## Limite globale de notifications
 
 Votre compte a une limite globale de **240 notifications par minute**.
 
-Cela signifie que, toutes vos alertes confondues, avec ou sans IA, vous ne pouvez pas depasser ce rythme.
+Cela signifie qu'entre toutes vos recherches, avec ou sans IA, vous ne pouvez pas dépasser ce rythme.
 
-Si elles depassent ensemble cette limite, Vallax **arretera temporairement toutes vos alertes**.
+Si elles dépassent cette limite ensemble, Vallax **arrête temporairement toutes vos recherches**. Pendant ce temps :
 
-Pendant ce temps :
+- Même si vous les réactivez, **vous ne recevrez pas de notifications**.
+- Vous devrez attendre **1 minute** pour qu'elles fonctionnent à nouveau normalement.
 
-- Meme si vous les reactivez, **vous ne recevrez pas de notifications**.
-- Vous devrez attendre **1 minute** avant qu'elles refonctionnent normalement.
+## Limite des recherches avec IA
 
-## Limite des alertes avec IA
+Les recherches qui utilisent l'IA ont une limite globale plus stricte : **20 analyses par minute**.
 
-Les alertes utilisant l'IA ont une limite globale plus stricte : **20 analyses par minute**.
+Cela signifie qu'entre toutes vos recherches avec IA, vous ne pouvez pas dépasser ce plafond.
 
-Cela signifie que, toutes vos alertes avec IA confondues, vous ne pouvez pas depasser ce plafond.
+Si l'analyse IA se déclenche plus de 20 fois en une minute entre toutes, Vallax **désactive toutes vos recherches qui utilisent l'IA**. Dans ce cas :
 
-Si l'analyse par IA se declenche plus de 20 fois dans une minute sur l'ensemble de ces alertes, Vallax **desactivera toutes vos alertes avec IA**.
+- Même si vous les réactivez, **vous ne recevrez pas de notifications**.
+- Vous devrez attendre **2 minutes** pour qu'elles fonctionnent à nouveau.
 
-Dans ce cas :
+## En pause à cause de votre plan
 
-- Meme si vous les reactivez, **vous ne recevrez pas de notifications**.
-- Vous devrez attendre **2 minutes** avant qu'elles refonctionnent.
+C'est différent des pauses de sécurité. Si une recherche est marquée **En pause à cause de votre plan**, votre plan actuel ne la couvre pas : vous avez plus de recherches actives que permis, ou elle utilise des regex, des mots-clés ou des plateformes au-delà de la limite.
+
+Vous pouvez la modifier pour qu'elle rentre dans le plan ou passer à un plan supérieur. Voir [Si vous changez pour un plan inférieur](/fr/docs/guides/plans#si-vous-changez-pour-un-plan-inférieur).
 
 ## Ce que cela signifie en pratique
 
-Si une alerte atteint souvent ces limites, cela signifie generalement qu'elle est trop large.
+Si une recherche se déclenche trop souvent, elle est généralement trop large. Par exemple :
 
-Par exemple :
-
-- Des mots-cles trop generiques.
-- Trop peu de filtres.
-- De l'IA activee sur des alertes qui laissent encore passer trop d'annonces.
+- Des mots-clés très génériques.
+- Peu de filtres.
+- L'IA utilisée sur des recherches qui laissent encore passer trop d'annonces.
 
 ## Recommandation
 
-Si une alerte se bloque souvent, le mieux est de la rendre plus precise :
+Si une recherche s'arrête souvent, rendez-la plus précise :
 
-- Affinez les **mots-cles**.
-- Ajoutez des **mots a exclure** pour eliminer le bruit.
-- Utilisez l'**IA** seulement quand c'est vraiment necessaire.
+- Affinez les **mots-clés**.
+- Ajoutez des **mots à ignorer** et un **prix maximum** pour réduire le bruit.
+- Utilisez **Voir les dernières correspondances** pour vérifier combien de notifications par jour elle génère avant de l'enregistrer.
+- N'utilisez l'**IA** que quand c'est vraiment nécessaire.
 
-Plus une alerte est precise, plus les notifications seront utiles et moins vous risquez d'atteindre ces limites.
+Plus une recherche est affinée, plus les notifications sont utiles et moins vous risquez d'atteindre ces limites.

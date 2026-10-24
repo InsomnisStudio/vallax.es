@@ -1,49 +1,59 @@
 ---
 title: Qu'est-ce que Vallax
-description: Comprenez rapidement ce que fait Vallax et a quoi il sert.
+description: Comprenez en quelques minutes ce que fait Vallax et à quoi il sert.
 sidebar:
   order: 1
 ---
 
-**Vallax** est une application pour **iPhone et Android** qui vous avertit lorsqu'une nouvelle annonce correspond a ce que vous recherchez.
+**Vallax** est une application pour **iPhone et Android** qui vous avertit dès qu'une nouvelle annonce correspond à ce que vous cherchez.
 
-Au lieu de verifier plusieurs plateformes en boucle, vous creez une alerte avec vos filtres et Vallax surveille pour vous.
+Au lieu de consulter plusieurs plateformes encore et encore, vous créez une **recherche** avec vos filtres et Vallax surveille pour vous, 24 heures sur 24.
 
-## Comment ca fonctionne
+> Dans l'application, les alertes s'appellent des **recherches**. Dans cette documentation, les deux mots désignent la même chose.
 
-Vallax surveille les **nouvelles annonces**, pas les anciennes deja publiees.
+## Comment ça marche
 
-Le but n'est pas de vous aider a parcourir des resultats deja en ligne, mais de vous avertir des qu'une nouvelle annonce correspond a votre alerte.
+Vallax vérifie les **nouvelles annonces**. Il ne cherche pas parmi les anciennes.
 
-Si une annonce valide apparait, vous recevez une notification immediatement.
+L'idée n'est pas de vous aider à parcourir des annonces déjà publiées, mais de vous avertir dès que quelque chose qui correspond à votre recherche apparaît. Si une annonce valide apparaît, vous recevez une notification immédiatement.
+
+Toutes les notifications sont enregistrées dans l'application : vous pouvez les revoir plus tard, les filtrer par plateforme et garder celles qui vous intéressent dans vos **Favoris**.
 
 ## Plateformes compatibles
 
-Actuellement, Vallax fonctionne avec ces plateformes :
+Vallax fonctionne actuellement avec :
 
 - Wallapop
 - Vinted
 - Milanuncios
 - Todocoleccion
 
+Sur Vinted, vous pouvez choisir le domaine de votre pays depuis votre **profil**.
+
+## Ce que vous pouvez faire d'autre
+
+- **Tester une recherche avant de l'enregistrer.** Vallax vous montre les annonces des dernières 24 heures qui auraient correspondu et combien de notifications par jour vous recevriez.
+- **Filtrer avec l'IA.** Ajoutez une instruction en langage naturel et l'IA vérifie chaque annonce avant de vous avertir. [En savoir plus](/fr/docs/guides/first-alert#filtre-ia).
+- **Savoir à quel prix se vend un article.** Depuis une notification, le bouton [Combien ça coûte ?](/fr/docs/guides/price-check) cherche des annonces similaires et vous donne un prix de référence.
+- **Partager des recherches.** Générez un code pour qu'une autre personne importe votre recherche, ou importez la sienne.
+- **Gagner des points en invitant des amis** et les échanger contre des jours de Plus ou de Pro. [Voir comment](/fr/docs/guides/points).
+
+## Plans
+
+Vallax propose un plan **Gratuit** et deux plans payants, **Plus** et **Pro**. Tous reçoivent les annonces à la même vitesse : aucun plan n'est averti avant un autre. Ce qui change, c'est le nombre de recherches, de mots-clés et de plateformes, et l'accès aux regex et aux tokens IA inclus.
+
+Tout est expliqué dans [Plans et tokens IA](/fr/docs/guides/plans).
+
 ## Pour qui
 
-Vallax peut etre utile a beaucoup de personnes, mais il est particulierement adapte a ces cas :
+Vallax peut être utile à beaucoup de monde, mais il convient particulièrement :
 
-- **Revendeurs** qui veulent arriver avant les autres sur les bonnes opportunites.
-- **Collectionneurs** qui cherchent des objets precis sans verifier plusieurs applications toute la journee.
-- **Acheteurs** qui veulent simplement trouver un meilleur prix sans perdre du temps a faire du scroll et des recherches repetitives.
+- Aux **revendeurs** qui doivent arriver avant les autres sur les bonnes affaires.
+- Aux **collectionneurs** qui cherchent des articles précis sans vouloir surveiller plusieurs apps toute la journée.
+- Aux **acheteurs** qui veulent simplement un meilleur prix sans perdre de temps à faire défiler et répéter les recherches.
 
-## Quel probleme cela resout
+## Étape suivante
 
-Chercher manuellement sur plusieurs plateformes prend du temps et oblige a verifier constamment son telephone.
+Quand vous savez ce que vous cherchez, l'essentiel est de bien configurer la recherche :
 
-Avec Vallax, vous preparez une alerte une seule fois et vous attendez uniquement quand quelque chose d'interessant apparait. Cela reduit le bruit et evite d'actualiser les pages sans arret.
-
-## Etape suivante
-
-Une fois que vous savez ce que vous voulez suivre, le plus important est de bien construire l'alerte.
-
-Le guide suivant explique les champs qui font vraiment la difference :
-
-- [Comment creer votre premiere alerte](/fr/docs/guides/first-alert)
+- [Comment créer votre première recherche](/fr/docs/guides/first-alert)

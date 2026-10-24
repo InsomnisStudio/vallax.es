@@ -1,6 +1,6 @@
 ---
 title: Bienvenido a Vallax
-description: Documentacion sencilla para entender Vallax y crear mejores alertas.
+description: Documentación sencilla para entender Vallax, sus planes y crear mejores búsquedas.
 template: splash
 hero:
   title: Vallax
@@ -17,24 +17,15 @@ hero:
       icon: telegram
 ---
 
-import { Card, CardGrid } from '@astrojs/starlight/components';
+import { CardGrid, LinkCard } from '@astrojs/starlight/components';
 
-## Empieza por aqui
+## Empieza por aquí
 
-<CardGrid stagger>
-	<Card title="Que es Vallax" icon="open-book">
-		Descubre que hace la app, en que plataformas funciona y por que ahorra tanto tiempo.
-	</Card>
-	<Card title="Tu primera alerta" icon="add-document">
-		Aprende a usar palabras clave, localizacion, filtros de usuarios, regex e IA.
-	</Card>
-	<Card title="Hecho para ir al grano" icon="pencil">
-		Esta documentacion esta pensada para explicar lo importante sin tecnicismos innecesarios.
-	</Card>
-	<Card title="Redes de Vallax" icon="comment">
-		Sigue las novedades en Telegram, Instagram y YouTube desde la cabecera de la documentacion.
-	</Card>
-	<Card title="Limites importantes" icon="warning">
-		Consulta que pasa si una alerta genera demasiadas notificaciones o demasiado uso de IA en poco tiempo.
-	</Card>
+<CardGrid>
+	<LinkCard title="Qué es Vallax" href="/es/docs/guides/start/" description="Qué hace la app, en qué plataformas funciona y por qué ahorra tanto tiempo." />
+	<LinkCard title="Tu primera búsqueda" href="/es/docs/guides/first-alert/" description="Palabras clave, opciones, plataformas, filtros, regex e IA, campo a campo." />
+	<LinkCard title="Planes y tokens de IA" href="/es/docs/guides/plans/" description="Gratis, Plus y Pro: qué incluye cada uno, precios, prueba gratuita y tokens." />
+	<LinkCard title="¿Cuánto cuesta?" href="/es/docs/guides/price-check/" description="Calcula a cuánto se vende un artículo a partir de la foto de un aviso." />
+	<LinkCard title="Puntos e invitaciones" href="/es/docs/guides/points/" description="Invita a tus amigos y canjea los puntos por días de Plus, de Pro o tokens." />
+	<LinkCard title="Límites importantes" href="/es/docs/guides/limits/" description="Qué pasa si una búsqueda genera demasiados avisos o se pausa por tu plan." />
 </CardGrid>

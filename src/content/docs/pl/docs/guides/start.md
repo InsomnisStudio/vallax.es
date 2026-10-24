@@ -1,49 +1,59 @@
 ---
 title: Czym jest Vallax
-description: Szybko zrozum, co robi Vallax i do czego sie przydaje.
+description: W kilka minut zrozumiesz, co robi Vallax i do czego służy.
 sidebar:
   order: 1
 ---
 
-**Vallax** to aplikacja na **iPhone i Androida**, ktora powiadamia cie, gdy pojawi sie nowe ogloszenie pasujace do tego, czego szukasz.
+**Vallax** to aplikacja na **iPhone'a i Androida**, która powiadamia Cię, gdy pojawi się nowe ogłoszenie pasujące do tego, czego szukasz.
 
-Zamiast ciagle sprawdzac kilka marketplace'ow, tworzysz alert z filtrami, a Vallax monitoruje wszystko za ciebie.
+Zamiast w kółko sprawdzać kilka platform, tworzysz **wyszukiwanie** z własnymi filtrami, a Vallax pilnuje za Ciebie 24 godziny na dobę.
 
-## Jak to dziala
+> W aplikacji alerty nazywają się **wyszukiwaniami**. W tej dokumentacji oba słowa oznaczają to samo.
 
-Vallax sprawdza **nowe ogloszenia**, a nie stare oferty, ktore byly juz opublikowane.
+## Jak to działa
 
-To wazne: celem nie jest pomaganie w przegladaniu istniejacych wynikow, ale powiadomienie cie w chwili, gdy pojawi sie cos nowego pasujacego do alertu.
+Vallax sprawdza **nowe ogłoszenia**. Nie przeszukuje starych.
 
-Jesli pojawi sie poprawne ogloszenie, od razu dostajesz powiadomienie.
+Nie chodzi o przeglądanie już opublikowanych ofert, tylko o powiadomienie Cię od razu, gdy pojawi się coś, co pasuje do Twojego wyszukiwania. Gdy pojawi się pasujące ogłoszenie, natychmiast dostajesz powiadomienie.
 
-## Obslugiwane marketplace'y
+Wszystkie powiadomienia zapisują się w aplikacji, więc możesz wrócić do nich później, filtrować je według platformy i zapisywać interesujące w **Ulubionych**.
 
-Obecnie Vallax dziala z nastepujacymi platformami:
+## Obsługiwane platformy
+
+Obecnie Vallax działa z:
 
 - Wallapop
 - Vinted
 - Milanuncios
 - Todocoleccion
 
-## Dla kogo jest Vallax
+W Vinted możesz wybrać domenę swojego kraju w **profilu**.
 
-Vallax moze byc przydatny dla wielu osob, ale szczegolnie dobrze sprawdza sie w tych sytuacjach:
+## Co jeszcze możesz zrobić
 
-- **Resellerzy**, ktorzy chca docierac do okazji szybciej niz inni.
-- **Kolekcjonerzy**, ktorzy szukaja konkretnych przedmiotow bez sprawdzania wielu aplikacji przez caly dzien.
-- **Kupujacy**, ktorzy po prostu chca znalezc lepsza cene bez tracenia czasu na przewijanie i powtarzanie wyszukiwan.
+- **Przetestować wyszukiwanie przed zapisaniem.** Vallax pokaże ogłoszenia z ostatnich 24 godzin, które by pasowały, i ile powiadomień dziennie byś dostawał.
+- **Filtrować z AI.** Dodaj polecenie w zwykłym języku, a AI sprawdzi każde ogłoszenie, zanim Cię powiadomi. [Więcej](/pl/docs/guides/first-alert#filtr-ai).
+- **Sprawdzić, za ile coś się sprzedaje.** Z poziomu powiadomienia przycisk [Ile to kosztuje?](/pl/docs/guides/price-check) szuka podobnych ogłoszeń i podaje cenę orientacyjną.
+- **Udostępniać wyszukiwania.** Wygeneruj kod, aby ktoś inny mógł zaimportować Twoje wyszukiwanie, albo zaimportuj cudze.
+- **Zdobywać punkty, zapraszając znajomych**, i wymieniać je na dni Plus lub Pro. [Zobacz jak](/pl/docs/guides/points).
 
-## Jaki problem rozwiazuje
+## Plany
 
-Reczne szukanie na wielu platformach zajmuje czas i zmusza do ciaglego sprawdzania telefonu.
+Vallax ma plan **Darmowy** i dwa płatne: **Plus** i **Pro**. Wszystkie otrzymują ogłoszenia z tą samą szybkością: żaden plan nie dostaje ich wcześniej. Różnią się liczbą wyszukiwań, słów kluczowych i platform oraz dostępem do regex i tokenów AI w cenie.
 
-Z Vallax konfigurujesz alert raz i czekasz, az powiadomienie przyjdzie tylko wtedy, gdy pojawi sie cos wartego uwagi. To zmniejsza szum i eliminuje potrzebe stalego odswiezania stron.
+Wszystko opisujemy w [Plany i tokeny AI](/pl/docs/guides/plans).
 
-## Nastepny krok
+## Dla kogo
 
-Gdy juz wiesz, czego chcesz szukac, najwazniejsze jest poprawne ustawienie alertu.
+Vallax przyda się wielu osobom, ale szczególnie:
 
-Ponizszy przewodnik wyjasnia pola, ktore naprawde robia roznice:
+- **Resellerom**, którzy muszą być pierwsi przy dobrych okazjach.
+- **Kolekcjonerom** szukającym konkretnych przedmiotów, którzy nie chcą cały dzień sprawdzać kilku aplikacji.
+- **Kupującym**, którzy po prostu chcą lepszej ceny bez tracenia czasu na przewijanie i powtarzanie wyszukiwań.
 
-- [Jak utworzyc pierwszy alert](/pl/docs/guides/first-alert)
+## Następny krok
+
+Gdy wiesz już, czego szukasz, najważniejsze jest dobre skonfigurowanie wyszukiwania:
+
+- [Jak utworzyć pierwsze wyszukiwanie](/pl/docs/guides/first-alert)

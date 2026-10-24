@@ -414,9 +414,9 @@ export const solutionPages: SeoDetail[] = [
                 bullets: [
                     "Ideal para lotes, consolas, moviles y electronica.",
                     "Filtros avanzados para reducir anuncios poco utiles.",
-                    "Mas capacidad y analisis con Premium.",
+                    "Calcula a cuánto se vende un artículo y tu margen con «¿Cuánto cuesta?»; hasta 50 búsquedas con Pro.",
                 ],
-                cta: "Ver plan Premium",
+                cta: "Ver planes Plus y Pro",
             },
             en: {
                 title: "Vallax for resellers who need speed",
@@ -427,9 +427,9 @@ export const solutionPages: SeoDetail[] = [
                 bullets: [
                     "Great for bundles, consoles, phones and electronics.",
                     "Advanced filters to remove low-value listings.",
-                    "More capacity and analysis with Premium.",
+                    "See what an item sells for and your margin with \"How much is it?\"; up to 50 searches with Pro.",
                 ],
-                cta: "See Premium plan",
+                cta: "See Plus and Pro plans",
             },
             fr: {
                 title: "Vallax pour les revendeurs qui ont besoin de vitesse",
@@ -440,9 +440,9 @@ export const solutionPages: SeoDetail[] = [
                 bullets: [
                     "Pratique pour lots, consoles, telephones et electronique.",
                     "Filtres avances pour retirer les annonces peu utiles.",
-                    "Plus de capacite et d'analyse avec Premium.",
+                    "Découvrez le prix de revente et votre marge avec « Combien ça coûte ? » ; jusqu'à 50 recherches avec Pro.",
                 ],
-                cta: "Voir Premium",
+                cta: "Voir Plus et Pro",
             },
             it: {
                 title: "Vallax per rivenditori che hanno bisogno di velocita",
@@ -453,9 +453,9 @@ export const solutionPages: SeoDetail[] = [
                 bullets: [
                     "Ottimo per lotti, console, telefoni ed elettronica.",
                     "Filtri avanzati per rimuovere annunci poco utili.",
-                    "Piu capacita e analisi con Premium.",
+                    "Scopri a quanto si rivende un articolo e il tuo margine con «Quanto costa?»; fino a 50 ricerche con Pro.",
                 ],
-                cta: "Vedi Premium",
+                cta: "Vedi Plus e Pro",
             },
             pl: {
                 title: "Vallax dla resellerow, ktorzy potrzebuja szybkosci",
@@ -466,9 +466,9 @@ export const solutionPages: SeoDetail[] = [
                 bullets: [
                     "Dobre dla zestawow, konsol, telefonow i elektroniki.",
                     "Zaawansowane filtry usuwaja malo wartosciowe wyniki.",
-                    "Wieksza pojemnosc i analiza w Premium.",
+                    "Sprawdź cenę odsprzedaży i swoją marżę dzięki „Ile to kosztuje?”; do 50 wyszukiwań w Pro.",
                 ],
-                cta: "Zobacz Premium",
+                cta: "Zobacz Plus i Pro",
             },
         },
     },

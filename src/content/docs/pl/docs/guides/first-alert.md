@@ -1,160 +1,169 @@
 ---
-title: Jak utworzyc pierwszy alert
-description: Dowiedz sie, jak skonfigurowac przydatny alert bez niepotrzebnego komplikowania.
+title: Jak utworzyć pierwsze wyszukiwanie
+description: Dowiedz się, jak skonfigurować przydatne wyszukiwanie bez komplikacji.
 sidebar:
   order: 2
 ---
 
-Utworzenie alertu w Vallax jest proste, ale kilka pol warto dobrze zrozumiec, aby powiadomienia byly naprawde przydatne.
+Tworzenie wyszukiwania w Vallax jest proste, ale kilka pól warto dobrze zrozumieć, żeby powiadomienia były naprawdę przydatne.
 
-Nie musisz komplikowac wszystkiego od samego poczatku. Najwazniejsze jest zrozumienie, do czego sluzy kazde pole, i uzywanie tylko tego, czego potrzebujesz.
+Nie musisz od razu używać wszystkiego. Ważne, żeby wiedzieć, do czego służy każda część, i używać tylko tego, co potrzebne. Formularz ma tę samą kolejność.
 
-## Slowa kluczowe
+## Nazwa
 
-To najwazniejsze pole.
+Służy tylko do rozpoznania wyszukiwania na liście. Nie wpływa na wyniki.
 
-Slowa kluczowe mowia Vallax, jakiego typu ogloszenia szukasz. W ramach jednego alertu mozesz utworzyc kilka roznych opcji.
+## Słowa kluczowe („Czego szukasz?”)
 
-### Jak dzialaja opcje
+To najważniejsze pole. Mówi Vallax, jakiego ogłoszenia szukasz.
 
-Kazda opcja jest sprawdzana osobno. Jesli dopasuje sie choc jedna, ogloszenie jest uznawane za poprawne.
+Wpisuj słowa jak w wyszukiwarce. Każde słowo staje się etykietą, a **ogłoszenie musi zawierać je wszystkie, w dowolnej kolejności**.
 
-W kazdej opcji slowa wpisuje sie w tym samym polu, oddzielajac je przecinkami.
+Jeśli potrzebujesz dokładnej frazy, wpisz ją **w cudzysłowie**: `"play station 2"`.
 
-Na przyklad:
+### Opcje: alternatywy w jednym wyszukiwaniu
 
-- Opcja 1: `Nintendo, Switch`
-- Opcja 2: `PlayStation 4`
-- Opcja 3: `PS4`
+Możesz dodać kilka **opcji**. Każda opcja jest sprawdzana osobno i wystarczy, że ogłoszenie spełni **jedną** z nich.
 
-W opcji takiej jak `Nintendo, Switch` mowisz po prostu Vallaxowi: chce ogloszenia, w ktorych pojawiaja sie te dwa slowa.
+Na przykład:
 
-Jesli ogloszenie pasuje do ktorejkolwiek z tych opcji, przechodzi ten filtr.
+- Opcja 1: `nintendo switch` → ogłoszenie musi zawierać *nintendo* **i** *switch*.
+- Opcja 2: `konsola nintendo`
+- Opcja 3: `"switch oled"`
 
-### Wazne o tym, jak dziala dopasowanie tekstu
+Opcje przydają się do synonimów i różnych zapisów tego samego (`PS4`, `PlayStation 4`…).
 
-- Slowa kluczowe **nie rozrozniaja wielkich i malych liter**.
-- Dopasowanie **nie jest scisle ograniczone do calego slowa**.
+Im więcej słów w jednej opcji, tym mniej ogłoszeń będzie pasować.
 
-Na przyklad, jesli szukasz `tractor`, tekst taki jak `extractor` tez moze zostac uznany za poprawny.
+### Jak porównywany jest tekst
 
-Jesli potrzebujesz bardziej scislego zachowania, wtedy warto rozwazyc **regex**.
+- Słowa kluczowe **nie rozróżniają wielkich i małych liter**.
+- Dopasowanie **nie dotyczy wyłącznie całych słów**. Jeśli szukasz `tractor`, może pasować też `extractor`.
 
-### Gdzie sa sprawdzane
+Jeśli potrzebujesz czegoś bardziej rygorystycznego, użyj cudzysłowu albo, w Pro, **regex**.
 
-Slowa kluczowe nie sa sprawdzane identycznie na wszystkich platformach:
+### Limit słów kluczowych
 
-- Na **Wallapop**, **Milanuncios** i **Todocoleccion** sa sprawdzane w **tytule** i **opisie**.
-- Na **Vinted** nie mamy pola opisu, wiec sa sprawdzane w **tytule** i **marce**.
+Łączna liczba słów kluczowych w wyszukiwaniu zależy od planu: **5 w Darmowym, 15 w Plus i 50 w Pro**.
 
-## Lokalizacja
+## Platformy i kategorie
 
-To pole pozwala ustawic obszar i maksymalny dystans.
+Wybierz, gdzie Vallax ma szukać: Wallapop, Vinted, Milanuncios i Todocoleccion. W planie **Darmowym** możesz wybrać **1 platformę** na wyszukiwanie; w **Plus** i **Pro** wszystkie.
 
-Na przyklad mozesz ustawic ogloszenia w Alicante w promieniu 50 km.
+**Kategoria** jest opcjonalna. Każda platforma ma własne drzewo kategorii. Używaj jej tylko wtedy, gdy wyszukiwanie zwraca wyniki z innego rodzaju produktów.
 
-Ma to sens, gdy chcesz kupic cos blisko siebie, obejrzec to osobiscie albo uniknac dlugich dojazdow.
+## Cena i lokalizacja
 
-### Wazne: Vinted
+Oba pola są opcjonalne. Zostaw je puste, żeby niczego nie odrzucać.
 
-Na **Vinted** ten filtr nie dziala tak samo, poniewaz platforma nie udostepnia wystarczajaco precyzyjnych danych lokalizacyjnych do wiarygodnego filtrowania po odleglosci.
+- **Cena:** podaj maksimum albo zakres minimum–maksimum.
+- **Lokalizacja:** wybierz obszar i maksymalny promień, np. Alicante w promieniu 50 km. Przydaje się, gdy chcesz kupić blisko, obejrzeć przedmiot osobiście lub uniknąć dalekich dojazdów.
 
-Jesli wybierasz konkretny dystans, naturalnym oczekiwaniem sa pobliskie ogloszenia. Dlatego ta opcja ma ograniczona wartosc na Vinted.
+Bardzo niska cena maksymalna lub mały promień oznaczają mniej powiadomień.
 
-## Kategoria
+### Ważne: Vinted
 
-Kategoria moze pomoc zawezic wyszukiwanie, chociaz nie zawsze jest najwazniejszym polem.
+W **Vinted** lokalizacja nie jest stosowana, bo platforma nie podaje wystarczająco dokładnej lokalizacji do pracy z odległościami. Nawet jeśli ją ustawisz, dostaniesz ogłoszenia spoza swojej okolicy.
 
-Najwazniejsze jest to: **kategorie Vinted nie sa obecnie obslugiwane**. Dlatego w formularzu dla tej platformy ich nie zobaczysz.
+## Więcej filtrów
 
-To nie jest blad. Ta opcja po prostu nie jest jeszcze dostepna na Vinted.
+### Bez tych słów
 
-## Slowa do wykluczenia
+Działa odwrotnie niż słowa kluczowe: odrzuca ogłoszenia zawierające określone słowa.
 
-To pole dziala odwrotnie niz slowa kluczowe.
+Typowy przykład: szukasz konsoli, ale nie chcesz ogłoszeń ze słowami `pad`, `uszkodzona`, `na części` czy `puste pudełko`. To bardzo przydatny sposób na usunięcie szumu bez zmieniania reszty wyszukiwania.
 
-Pozwala powiedziec Vallax, aby odrzucal ogloszenia zawierajace slowa, ktorych nie chcesz.
+### Sprzedawcy
 
-Typowy przypadek to szukanie konsoli, ale bez ogloszen zawierajacych `pad`, `uszkodzona`, `czytaj` albo `sama pudelko`.
+- **Tylko od tych sprzedawców:** wyszukiwanie skupia się na tych użytkownikach.
+- **Nigdy od tych sprzedawców:** ich ogłoszenia są odrzucane.
 
-To bardzo skuteczny sposob na ograniczenie szumu bez duzych zmian w reszcie alertu.
+Przydatne, jeśli znasz już ciekawych sprzedawców albo chcesz unikać konkretnych kont. Jak znaleźć identyfikator sprzedawcy, opisuje [ten poradnik](/pl/guides/get-seller-identifier).
 
-## Obserwuj uzytkownikow i ignoruj uzytkownikow
+### Gdzie szukać w ogłoszeniu
 
-Te pola pozwalaja filtrowac ogloszenia wedlug sprzedawcy.
+Dla każdego filtra tekstowego (słowa, słowa do ignorowania, regex i regex do ignorowania) możesz wybrać, czy sprawdza **tytuł**, **opis** czy **oba**.
 
-- Jesli dodasz kogos do **obserwowanych uzytkownikow**, alert skupi sie na tych sprzedawcach.
-- Jesli dodasz kogos do **ignorowanych uzytkownikow**, jego ogloszenia beda odrzucane.
+**Vinted** nie ma opisu, więc filtry są sprawdzane w **tytule** i **marce**.
 
-To przydatne, gdy znasz juz sprzedawcow, ktorzy cie interesuja, albo przeciwnie, chcesz uniknac konkretnych kont.
+## Regex (tylko Pro)
 
-## Regex
+**Regex** pozwala szukać bardziej precyzyjnych wzorców tekstu. Nie jest potrzebny w zwykłych wyszukiwaniach, ale pomaga, gdy słowa kluczowe nie wystarczają: warianty nazw, modele czy formaty tekstu.
 
-**Regex** to sposob wyszukiwania bardziej precyzyjnych wzorcow tekstu.
+- **Własny regex:** ogłoszenie musi pasować do wzorca. Przykład: `^(Leica|Hasselblad).*(M[0-9]).*`
+- **Regex do ignorowania:** odrzuca ogłoszenia pasujące do wzorca, nawet jeśli spełniają resztę. Przykład: `(?i)(replika|kopia|inspirowan[ya])`
 
-Nie jest potrzebny w zwyklych alertach, ale moze pomoc, gdy same slowa kluczowe nie wystarczaja.
+Do testów przyda się strona **regex101**. Wybierz silnik **Rust**.
 
-Na przyklad moze sluzyc do wykrywania konkretnych wariantow modeli, schematow nazewnictwa albo formatow tekstu.
+Regex to funkcja planu **Pro**. Jeśli przejdziesz na niższy plan, wyszukiwania z regex zostaną wstrzymane, dopóki ich nie edytujesz (zobacz [Plany](/pl/docs/guides/plans#zmiana-na-niższy-plan)).
 
-Jesli chcesz testowac regex, przydatna strona jest **regex101**. Jesli tam probujesz, uzyj silnika **Rust**.
+## Filtr AI
 
-## Pole AI
+To pole pozwala dać dodatkowe polecenie sztucznej inteligencji Vallax.
 
-To pole sluzy do dodania dodatkowej instrukcji dla sztucznej inteligencji Vallax.
-
-AI **nie jest uruchamiane dla wszystkich ogloszen**. Najpierw dzialaja zwykle filtry alertu. Dopiero potem AI analizuje ogloszenia, ktore juz przeszly wstepne dopasowanie.
-
-To wazne, bo AI nie zastepuje podstawowych filtrow. Dziala jako dodatkowa warstwa.
-
-### Tokeny AI
-
-**Tokeny AI** to kredyty wykorzystywane przez Vallax do narzedzi sztucznej inteligencji. Obecnie korzysta z nich filtr AI w alertach: opisujesz w poleceniu, czego szukasz, a AI dokladniej sprawdza, czy dane ogloszenie pasuje.
-
-Premium zapewnia **25 000 tokenow AI co miesiac**, ale korzystanie z AI nie wymaga Premium. Tokeny mozna rowniez kupic w sklepie i uzywac ich bez subskrypcji Premium.
-
-Aby aktywowac alert z AI, musisz miec minimalne saldo tokenow. Jesli tokenow jest za malo, **nie bedzie mozna aktywowac alertu AI**, dopoki nie otrzymasz lub nie kupisz kolejnych. Alerty bez AI nie wymagaja tych tokenow.
+AI to **drugi filtr**: nie działa na wszystkie ogłoszenia. Najpierw działają Twoje słowa, cena, obszar i inne filtry, a dopiero potem AI sprawdza ogłoszenia, które już pasują, i odrzuca te, które nie spełniają polecenia. **Nigdy nie dodaje ogłoszeń**, których Twoje filtry by nie znalazły.
 
 ### Co analizuje
 
-AI moze analizowac:
+AI może sprawdzić:
 
-- Wybrane przez ciebie zdjecia, maksymalnie **10**.
-- **Tytul**.
-- **Opis**, jesli platforma go udostepnia.
-- **Cene**.
-- Na **Vinted** takze **marke**.
+- **Zdjęcia** ogłoszenia: sam wybierasz ile, od **0 do 10**. Przy 0 czyta tylko tekst.
+- **Tytuł**.
+- **Opis**, jeśli platforma go udostępnia.
+- **Cenę**.
+- W **Vinted** także **markę**.
 
-W zaleznosci od platformy Vallax ma dostep do roznych pol. Im wiecej zdjec zlecisz do analizy, tym wiecej tokenow zostanie zuzytych, dlatego wybieraj tylko te, ktore moga dostarczyc przydatnych informacji.
+### Do czego służy
 
-### Do czego sie przydaje
+AI przydaje się, gdy chcesz potwierdzić coś, czego same słowa kluczowe nie rozstrzygają.
 
-AI jest przydatne, gdy chcesz potwierdzic cos, czego nie da sie zawsze jednoznacznie ustalic samymi slowami kluczowymi.
+Przykład: wyszukiwanie może wykryć `PS4`, ale to nie znaczy, że ogłoszenie dotyczy konsoli. Może to być pad, puste pudełko albo akcesorium. Wtedy możesz dodać polecenie:
 
-Przyklad: twoj alert moze wykrywac `PS4`, ale to nie znaczy, ze ogloszenie dotyczy samej konsoli. Moze to byc pad, puste pudelko albo akcesorium.
+`Chcę kompletną konsolę PlayStation 4, a nie pada ani akcesorium.`
 
-W takim przypadku mozesz dodac instrukcje taka jak:
+AI użyje tekstu i zdjęć, żeby sprawdzić, czy ogłoszenie to naprawdę to, czego szukasz.
 
-`Chce, aby to byla kompletna konsola PlayStation 4, a nie pad ani akcesorium.`
+### Cena w kontekście
 
-Dzieki temu AI wykorzysta tekst i zdjecia, aby sprawdzic, czy ogloszenie rzeczywiscie odpowiada temu, czego szukasz.
+AI potrafi też powiązać cenę z zawartością ogłoszenia, czego nie wyrazi sama cena minimalna czy maksymalna:
 
-### Cena z uwzglednieniem kontekstu
+`Akceptuj ogłoszenia do 40 €, jeśli zawierają gry; jeśli nie zawierają gier, akceptuj tylko do 20 €.`
 
-AI moze rowniez sprawdzic cene i powiazac ja z zawartoscia ogloszenia. Pozwala to ustawic warunki, ktorych nie da sie wyrazic jedna cena minimalna lub maksymalna.
+### Tokeny AI
 
-Na przyklad:
+Każde ogłoszenie sprawdzone przez AI zużywa **tokeny AI**, niezależnie od tego, czy pasuje. Zużycie zależy głównie od liczby analizowanych zdjęć i długości ogłoszenia.
 
-`Akceptuj ogloszenia do 40 €, jesli zawieraja gry; bez gier akceptuj tylko oferty do 20 €.`
+- Każdy plan, także **Darmowy**, może używać filtra AI, jeśli ma tokeny.
+- Potrzebujesz **co najmniej 3 tokenów**, aby włączyć analizę AI w wyszukiwaniu.
+- Gdy saldo spadnie do 0, filtr AI się wyłącza, ale wyszukiwanie dalej działa bez niego.
 
-AI moze sprawdzic, czy gry sa widoczne w tekscie lub na zdjeciach, i zastosowac odpowiedni limit ceny.
+Żeby zużywać mniej, używaj konkretnych słów kluczowych, słów do ignorowania i zakresu cen: wtedy AI sprawdza tylko ogłoszenia, które naprawdę mogą Cię zainteresować.
 
-## Polecana konfiguracja na start
+Jak zdobyć tokeny (Pro, pakiety i sklep punktów): [Plany i tokeny AI](/pl/docs/guides/plans#tokeny-ai).
 
-Jesli to twoj pierwszy alert, najbardziej praktyczne podejscie jest takie:
+## Przetestuj wyszukiwanie przed zapisaniem
 
-1. Dobrze ustaw **slowa kluczowe**.
-2. Uzyj **slow do wykluczenia**, aby usunac szum.
-3. Dodaj **lokalizacje**, jesli chcesz ogloszenia blisko siebie.
-4. Uzywaj **AI**, gdy trzeba powiazac tekst, zdjecia i cene albo zastosowac warunki, ktorych nie da sie wyrazic podstawowymi filtrami.
+Dzięki **Zobacz ostatnie dopasowania** Vallax sprawdza filtr na ogłoszeniach z **ostatnich 24 godzin** i pokazuje:
 
-Taki zestaw pozwala juz budowac bardzo precyzyjne alerty bez niepotrzebnego komplikowania.
+- Ile byłoby dopasowań i mniej więcej ile powiadomień dziennie byś dostawał.
+- Kilka przykładowych ogłoszeń (to już opublikowane ogłoszenia, nie powiadomienia: nie pojawią się na Twojej liście).
+
+Jeśli jest ich za dużo, ustaw cenę maksymalną lub dodaj kolejne słowo. Jeśli nie ma żadnego, zwykle winne jest któreś słowo kluczowe albo zbyt restrykcyjna cena, obszar lub kategoria.
+
+## Udostępnianie i import wyszukiwań
+
+W akcjach wyszukiwania możesz wybrać **Udostępnij wyszukiwanie**: Vallax wygeneruje kod i skopiuje go do schowka. Odbiorca może użyć **Importuj wyszukiwanie**, przejrzeć je i zapisać.
+
+Jeśli importowane wyszukiwanie korzysta z opcji Pro (np. regex), a nie masz Pro, musisz je usunąć, żeby zapisać wyszukiwanie.
+
+## Rada na start
+
+Przy pierwszym wyszukiwaniu najpraktyczniej jest:
+
+1. Dobrze ustawić **słowa kluczowe** i dodać opcje dla synonimów.
+2. Użyć **bez tych słów**, żeby usunąć niechciane ogłoszenia.
+3. Dodać **cenę** i **lokalizację**, jeśli chcesz zawęzić wyniki.
+4. **Przetestować wyszukiwanie**, żeby zobaczyć, ile powiadomień byś dostawał.
+5. Użyć **AI**, gdy trzeba powiązać tekst, zdjęcia i cenę albo zastosować warunki, których nie wyrażą podstawowe filtry.
+
+Tyle wystarczy, by tworzyć bardzo precyzyjne wyszukiwania bez zbędnych komplikacji.
