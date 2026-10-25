@@ -28,7 +28,7 @@ export default defineConfig({
     sitemap(),
     starlight({
       title: "Vallax",
-      favicon: "/favicon-l.svg",
+      favicon: "/favicon.svg",
       customCss: ["./src/assets/css/starlight.css"],
       logo: {
         dark: "./src/assets/vallax-logo.svg",

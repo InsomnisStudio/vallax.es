@@ -1,11 +1,11 @@
 ---
-title: Crea alertas con ChatGPT o Claude
+title: Crea alertas con ChatGPT, Claude, Gemini o Grok
 description: Conecta tu cuenta de Vallax a tu asistente de IA y gestiona tus búsquedas hablando con él.
 sidebar:
   order: 7
 ---
 
-Puedes conectar tu cuenta de Vallax a **ChatGPT** o a **Claude** y pedirle las cosas con tus propias palabras, igual que se lo pedirías a una persona:
+Puedes conectar tu cuenta de Vallax a **ChatGPT**, **Claude**, **Gemini**, **Grok** o cualquier asistente compatible con **MCP** y pedirle las cosas con tus propias palabras, igual que se lo pedirías a una persona:
 
 - «Avísame cuando salga una Nintendo Switch Lite por menos de 90 € en Wallapop»
 - «¿A cuánto se vende de segunda mano un iPhone 13 de 128 GB?»
@@ -17,7 +17,7 @@ El asistente crea o cambia la búsqueda en tu cuenta y los avisos te siguen lleg
 ## Antes de empezar
 
 - Necesitas tener **cuenta de Vallax** (la de la app).
-- La conexión se hace desde la **web** del asistente, en el ordenador o en el navegador del móvil: [chatgpt.com](https://chatgpt.com) o [claude.ai](https://claude.ai). Una vez conectado, también funciona en sus apps.
+- La conexión se hace desde la **web** del asistente, en el ordenador o en el navegador del móvil: [chatgpt.com](https://chatgpt.com) o [claude.ai](https://claude.ai), o la del asistente que uses. Una vez conectado, también funciona en sus apps.
 - Esta es la dirección que te pedirán. Es la misma para todo el mundo:
 
 ```
@@ -26,25 +26,39 @@ https://backend.vallax.es/mcp
 
 ## Conectar con Claude
 
-1. Entra en [claude.ai](https://claude.ai) y abre **Ajustes → Conectores**.
-2. Pulsa **Añadir conector personalizado**.
-3. Escribe **Vallax** como nombre y pega la dirección de arriba.
-4. Pulsa **Añadir** y después **Conectar**.
-5. Se abrirá la página de Vallax: **inicia sesión** con el mismo Google, Apple o email que usas en la app y pulsa **Permitir**.
+1. Entra en [claude.ai](https://claude.ai) y abre **Personalizar → Conectores**.
+2. Pulsa **+ Añadir** y después **Añadir conector personalizado**.
+3. Escribe **Vallax** como nombre, pega la dirección de arriba y pulsa **Continuar**.
+4. Claude detecta solo la autenticación: déjala como está y pulsa **Continuar**.
+5. En **Autenticación**, elige **Iniciar sesión ahora** y pulsa **Añadir**.
+6. Se abrirá la página de Vallax: **inicia sesión** con el mismo Google, Apple o email que usas en la app y pulsa **Permitir**.
 
-Listo. En una conversación nueva, pídele lo que quieras sobre tus búsquedas.
+Listo. En una conversación nueva, pulsa **+ → Conectores** abajo a la izquierda y comprueba que Vallax está activado.
 
 ## Conectar con ChatGPT
 
-1. Entra en [chatgpt.com](https://chatgpt.com) y abre **Ajustes → Aplicaciones**.
-2. En **Ajustes avanzados**, activa el **modo desarrollador**. Sin él no aparece la opción de añadir aplicaciones propias.
-3. Pulsa **Crear** (o **Añadir aplicación**).
-4. Escribe **Vallax** como nombre, pega la dirección de arriba y elige **OAuth** como autenticación.
-5. Se abrirá la página de Vallax: **inicia sesión** con el mismo Google, Apple o email que usas en la app y pulsa **Permitir**.
+1. Entra en [chatgpt.com](https://chatgpt.com) y abre **Configuración → Aplicaciones**.
+2. Pulsa **Explorar catálogo**.
+3. Arriba a la derecha, pulsa **Agregar** y elige **Agregar MCP personalizado**.
+4. Rellena los datos:
+   - **Nombre:** Vallax
+   - **Descripción:** opcional, puedes dejarla vacía.
+   - **URL de conexión:** la dirección de arriba.
+   - **Autenticación:** OAuth.
+5. Acepta las condiciones y crea la aplicación.
+6. ChatGPT te pedirá **conectarla** antes de usarla. Se abrirá la página de Vallax: **inicia sesión** con el mismo Google, Apple o email que usas en la app y pulsa **Permitir**.
 
 En el chat, activa Vallax desde el botón **+** si ChatGPT no lo usa por su cuenta.
 
-> Los nombres de los menús pueden cambiar un poco según la versión y el plan que tengas en ChatGPT o Claude. Si no encuentras la opción, busca «Conectores» o «Aplicaciones» en sus ajustes. Algunas cuentas gratuitas de estos asistentes no permiten añadir conectores propios.
+> Los nombres de los menús pueden cambiar un poco según la versión y el plan que tengas. En el plan gratuito de Claude puedes añadir un conector personalizado.
+
+## Conectar con otros asistentes (Gemini, Grok…)
+
+Vallax funciona con cualquier asistente que permita añadir conectores **MCP**, no solo con ChatGPT y Claude. Los pasos son casi siempre los mismos:
+
+1. Busca en sus ajustes la opción para añadir un **conector**, **servidor MCP** o **integración**.
+2. Pega la dirección de arriba y, si te lo pide, elige **OAuth** como autenticación.
+3. Se abrirá la página de Vallax: **inicia sesión** con el mismo Google, Apple o email que usas en la app y pulsa **Permitir**.
 
 ## Qué puede hacer el asistente
 
