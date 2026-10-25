@@ -10,6 +10,7 @@ import XboxImage from "../../images/hero/xbox.jpg";
 import type { Locale, Translation } from "../../i18n";
 import { platformPages, solutionPages } from "../../data/seo-pages";
 import { featuredReviews, googlePlayUrl, reviewsUi } from "../../data/reviews";
+import { aiAssistantGuideSlug, aiAssistantUi, aiAssistantUrl } from "../../data/ai-assistant";
 
 interface Props {
     lang: Locale;
@@ -73,6 +74,8 @@ const localizedUi = {
     },
 }[lang];
 const reviewCopy = reviewsUi[lang];
+const aiCopy = aiAssistantUi[lang];
+const aiGuideHref = `/${lang}/${aiAssistantGuideSlug}/`;
 const reviewDateFormatter = new Intl.DateTimeFormat(lang, {
     day: "numeric",
     month: "long",
@@ -666,6 +669,114 @@ const seoSolutionLinks = solutionPages.slice(0, 3).map((page) => ({
         }
     </div>
 </section>
+
+<section class="mx-auto max-w-7xl px-6 py-32 md:px-16" id="ai-assistant">
+    <div class="grid items-center gap-12 lg:grid-cols-2 lg:gap-16">
+        <div>
+            <p class="text-xs font-black uppercase tracking-[0.24em] text-primary">
+                {aiCopy.eyebrow}
+            </p>
+            <h2 class="mt-4 text-4xl font-black tracking-tight text-white md:text-5xl">
+                {aiCopy.title}
+            </h2>
+            <p class="mt-5 text-lg text-on-surface-variant">
+                {aiCopy.description}
+            </p>
+
+            <ol class="mt-10 space-y-6">
+                {
+                    aiCopy.steps.map((step, index) => (
+                        <li class="flex gap-4">
+                            <span class="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-primary/10 font-black text-primary">
+                                {index + 1}
+                            </span>
+                            <div>
+                                <h3 class="font-bold text-white">{step.title}</h3>
+                                <p class="mt-1 text-sm text-on-surface-variant">
+                                    {step.description}
+                                </p>
+                            </div>
+                        </li>
+                    ))
+                }
+            </ol>
+
+            <div class="mt-8">
+                <p class="mb-2 text-xs font-bold uppercase tracking-widest text-white/50">
+                    {aiCopy.urlLabel}
+                </p>
+                <div class="flex items-center gap-2 rounded-2xl border border-white/10 bg-black/30 p-2 pl-4">
+                    <code class="min-w-0 flex-1 truncate text-sm text-white">{aiAssistantUrl}</code>
+                    <button
+                        type="button"
+                        class="ai-copy flex shrink-0 items-center gap-2 rounded-xl bg-primary px-4 py-2.5 text-sm font-bold text-on-primary transition hover:brightness-110 active:scale-95"
+                        data-url={aiAssistantUrl}
+                        data-copied={aiCopy.copied}
+                    >
+                        <span class="material-symbols-outlined text-lg" aria-hidden="true">content_copy</span>
+                        <span class="ai-copy-label">{aiCopy.copy}</span>
+                    </button>
+                </div>
+            </div>
+
+            <div class="mt-6 flex flex-col gap-3 sm:flex-row sm:items-center sm:gap-6">
+                <a
+                    href={aiGuideHref}
+                    class="inline-flex items-center gap-2 font-bold text-primary transition hover:text-secondary"
+                >
+                    {aiCopy.guide}
+                    <span class="material-symbols-outlined text-lg" aria-hidden="true">arrow_forward</span>
+                </a>
+            </div>
+            <p class="mt-4 text-sm text-white/50">{aiCopy.note}</p>
+        </div>
+
+        <div class="glass-card rounded-3xl p-6 md:p-8">
+            <div class="space-y-4">
+                <div class="flex justify-end">
+                    <p class="max-w-[85%] rounded-2xl rounded-br-md bg-white/10 px-5 py-3 text-white">
+                        {aiCopy.prompts[0]}
+                    </p>
+                </div>
+                <div class="flex gap-3">
+                    <span class="material-symbols-outlined mt-2 text-primary" aria-hidden="true">auto_awesome</span>
+                    <p class="max-w-[85%] rounded-2xl rounded-bl-md border border-primary/20 bg-primary/5 px-5 py-3 text-on-surface-variant">
+                        {aiCopy.reply}
+                    </p>
+                </div>
+            </div>
+            <div class="mt-8 border-t border-white/8 pt-6">
+                <p class="mb-3 text-xs font-bold uppercase tracking-widest text-white/50">
+                    {aiCopy.moreExamples}
+                </p>
+                <ul class="space-y-2">
+                    {
+                        aiCopy.prompts.slice(1).map((prompt) => (
+                            <li class="rounded-xl bg-white/5 px-4 py-2.5 text-sm text-white">“{prompt}”</li>
+                        ))
+                    }
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>
+
+<script>
+    for (const button of document.querySelectorAll<HTMLButtonElement>(".ai-copy")) {
+        const label = button.querySelector(".ai-copy-label");
+        const original = label?.textContent ?? "";
+        button.addEventListener("click", async () => {
+            try {
+                await navigator.clipboard.writeText(button.dataset.url ?? "");
+            } catch {
+                return;
+            }
+            if (!label) return;
+            label.textContent = button.dataset.copied ?? original;
+            setTimeout(() => (label.textContent = original), 2000);
+        });
+    }
+</script>
 
 <section class="mx-auto max-w-7xl px-6 py-32 md:px-16" id="pricing">
     <div class="mb-20 space-y-4 text-center">

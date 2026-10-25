@@ -68,6 +68,7 @@ export default defineConfig({
         { slug: "docs/guides/price-check" },
         { slug: "docs/guides/points" },
         { slug: "docs/guides/limits" },
+        { slug: "docs/guides/ai-assistant" },
       ],
     }),
   ],
