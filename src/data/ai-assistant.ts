@@ -1,6 +1,6 @@
 import type { Locale } from "../i18n";
 
-// Address of the Vallax MCP server that AI chats (ChatGPT, Claude...) connect to.
+// Address of the Vallax MCP server that AI chats (ChatGPT, Claude, Gemini, Grok... any MCP client) connect to.
 export const aiAssistantUrl = "https://backend.vallax.es/mcp";
 
 export const aiAssistantGuideSlug = "docs/guides/ai-assistant";
@@ -24,7 +24,7 @@ export const aiAssistantUi: Record<
 > = {
     es: {
         eyebrow: "Nuevo",
-        title: "Crea alertas hablando con ChatGPT o Claude",
+        title: "Crea alertas hablando con ChatGPT, Claude, Gemini o Grok",
         description:
             "Conecta tu cuenta de Vallax a tu asistente de IA y pídele lo que buscas con tus propias palabras. Él crea la alerta por ti y te llega a la app como siempre.",
         prompts: [
@@ -43,7 +43,7 @@ export const aiAssistantUi: Record<
             {
                 title: "Añádela en tu asistente",
                 description:
-                    "En ChatGPT o Claude, entra en ajustes, busca «Conectores» o «Aplicaciones» y añade uno nuevo con esa dirección.",
+                    "En ChatGPT, Claude o cualquier asistente compatible con MCP, entra en ajustes, busca «Conectores» o «Aplicaciones» y añade uno nuevo con esa dirección.",
             },
             {
                 title: "Inicia sesión con tu cuenta de Vallax",
@@ -59,7 +59,7 @@ export const aiAssistantUi: Record<
     },
     en: {
         eyebrow: "New",
-        title: "Create alerts by talking to ChatGPT or Claude",
+        title: "Create alerts by talking to ChatGPT, Claude, Gemini or Grok",
         description:
             "Connect your Vallax account to your AI assistant and ask for what you're looking for in your own words. It creates the alert for you and you get it in the app as usual.",
         prompts: [
@@ -78,7 +78,7 @@ export const aiAssistantUi: Record<
             {
                 title: "Add it to your assistant",
                 description:
-                    "In ChatGPT or Claude, open settings, look for \"Connectors\" or \"Apps\" and add a new one with that address.",
+                    "In ChatGPT, Claude or any MCP-compatible assistant, open settings, look for \"Connectors\" or \"Apps\" and add a new one with that address.",
             },
             {
                 title: "Sign in with your Vallax account",
@@ -94,7 +94,7 @@ export const aiAssistantUi: Record<
     },
     fr: {
         eyebrow: "Nouveau",
-        title: "Créez des alertes en parlant à ChatGPT ou Claude",
+        title: "Créez des alertes en parlant à ChatGPT, Claude, Gemini ou Grok",
         description:
             "Connectez votre compte Vallax à votre assistant IA et demandez-lui ce que vous cherchez avec vos propres mots. Il crée l'alerte pour vous et vous la recevez dans l'app comme d'habitude.",
         prompts: [
@@ -113,7 +113,7 @@ export const aiAssistantUi: Record<
             {
                 title: "Ajoutez-la à votre assistant",
                 description:
-                    "Dans ChatGPT ou Claude, ouvrez les paramètres, cherchez « Connecteurs » ou « Applications » et ajoutez-en un avec cette adresse.",
+                    "Dans ChatGPT, Claude ou tout assistant compatible MCP, ouvrez les paramètres, cherchez « Connecteurs » ou « Applications » et ajoutez-en un avec cette adresse.",
             },
             {
                 title: "Connectez-vous avec votre compte Vallax",
@@ -129,7 +129,7 @@ export const aiAssistantUi: Record<
     },
     it: {
         eyebrow: "Novità",
-        title: "Crea alert parlando con ChatGPT o Claude",
+        title: "Crea alert parlando con ChatGPT, Claude, Gemini o Grok",
         description:
             "Collega il tuo account Vallax al tuo assistente IA e chiedigli cosa cerchi con parole tue. Crea l'alert al posto tuo e lo ricevi nell'app come sempre.",
         prompts: [
@@ -148,7 +148,7 @@ export const aiAssistantUi: Record<
             {
                 title: "Aggiungilo al tuo assistente",
                 description:
-                    "In ChatGPT o Claude, apri le impostazioni, cerca «Connettori» o «App» e aggiungine uno nuovo con quell'indirizzo.",
+                    "In ChatGPT, Claude o qualsiasi assistente compatibile con MCP, apri le impostazioni, cerca «Connettori» o «App» e aggiungine uno nuovo con quell'indirizzo.",
             },
             {
                 title: "Accedi con il tuo account Vallax",
@@ -164,7 +164,7 @@ export const aiAssistantUi: Record<
     },
     pl: {
         eyebrow: "Nowość",
-        title: "Twórz alerty, rozmawiając z ChatGPT lub Claude",
+        title: "Twórz alerty, rozmawiając z ChatGPT, Claude, Gemini lub Grok",
         description:
             "Połącz konto Vallax ze swoim asystentem AI i powiedz mu własnymi słowami, czego szukasz. Utworzy alert za Ciebie, a powiadomienia dostaniesz w aplikacji jak zwykle.",
         prompts: [
@@ -183,7 +183,7 @@ export const aiAssistantUi: Record<
             {
                 title: "Dodaj go w swoim asystencie",
                 description:
-                    "W ChatGPT lub Claude otwórz ustawienia, znajdź „Konektory” lub „Aplikacje” i dodaj nowy z tym adresem.",
+                    "W ChatGPT, Claude lub dowolnym asystencie zgodnym z MCP otwórz ustawienia, znajdź „Konektory” lub „Aplikacje” i dodaj nowy z tym adresem.",
             },
             {
                 title: "Zaloguj się kontem Vallax",
