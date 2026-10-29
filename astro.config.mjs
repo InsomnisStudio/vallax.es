@@ -25,7 +25,10 @@ export default defineConfig({
   },
 
   integrations: [
-    sitemap(),
+    sitemap({
+      // Paid-ads landing pages are noindex.
+      filter: (page) => !/\/[a-z]{2}\/app\/$/.test(page),
+    }),
     starlight({
       title: "Vallax",
       favicon: "/favicon.svg",

@@ -15,22 +15,25 @@ import { aiAssistantGuideSlug, aiAssistantUi, aiAssistantUrl } from "../../data/
 interface Props {
     lang: Locale;
     t: Translation;
+    variant?: "home" | "ad";
 }
 
-const { lang, t } = Astro.props as Props;
+const { lang, t, variant = "home" } = Astro.props as Props;
+const isAd = variant === "ad";
+const hero = isAd ? t.adHero : t.hero;
 const androidAppHref = "https://play.google.com/store/apps/details?id=com.insomnis.vallax";
 const iosAppHref = "https://apps.apple.com/es/app/vallax/id6793169829";
 const communityHref = "https://t.me/vallax_group";
 const docsHref = `/${lang}/docs/`;
 const featureIcons = ["layers", "bolt", "tune", "auto_awesome"];
-const heroTitleWords = t.hero.title.split(" ");
+const heroTitleWords = hero.title.split(" ");
 const heroTitleLead = heroTitleWords.slice(0, -3).join(" ");
 const heroTitleAccent = heroTitleWords.slice(-3).join(" ");
 const localizedUi = {
     es: {
         appStoreOverline: "Descargalo en",
-        playStoreOverline: "Consiguelo en",
         docsCta: "Ver documentacion",
+        playStoreOverline: "Consiguelo en",
         lockDate: "Mar 1 abr",
         firstTime: "hace 2 min",
         secondTime: "hace 1 min",
@@ -38,8 +41,8 @@ const localizedUi = {
     },
     en: {
         appStoreOverline: "Download on the",
-        playStoreOverline: "Get it on",
         docsCta: "View documentation",
+        playStoreOverline: "Get it on",
         lockDate: "Tue Apr 1",
         firstTime: "2m ago",
         secondTime: "1m ago",
@@ -47,8 +50,8 @@ const localizedUi = {
     },
     fr: {
         appStoreOverline: "Telechargez sur",
-        playStoreOverline: "Disponible sur",
         docsCta: "Voir la documentation",
+        playStoreOverline: "Disponible sur",
         lockDate: "Mar 1 avr.",
         firstTime: "il y a 2 min",
         secondTime: "il y a 1 min",
@@ -56,8 +59,8 @@ const localizedUi = {
     },
     it: {
         appStoreOverline: "Scarica su",
-        playStoreOverline: "Disponibile su",
         docsCta: "Apri la documentazione",
+        playStoreOverline: "Disponibile su",
         lockDate: "Mar 1 apr",
         firstTime: "2 min fa",
         secondTime: "1 min fa",
@@ -65,8 +68,8 @@ const localizedUi = {
     },
     pl: {
         appStoreOverline: "Pobierz w",
-        playStoreOverline: "Pobierz z",
         docsCta: "Zobacz dokumentacje",
+        playStoreOverline: "Pobierz z",
         lockDate: "Wt 1 kwi",
         firstTime: "2 min temu",
         secondTime: "1 min temu",
@@ -74,6 +77,9 @@ const localizedUi = {
     },
 }[lang];
 const reviewCopy = reviewsUi[lang];
+const heroReview =
+    featuredReviews.findLast((review) => review.language === lang) ??
+    featuredReviews.find((review) => review.language === "en")!;
 const aiCopy = aiAssistantUi[lang];
 const aiGuideHref = `/${lang}/${aiAssistantGuideSlug}/`;
 const reviewDateFormatter = new Intl.DateTimeFormat(lang, {
@@ -116,13 +122,16 @@ const seoSolutionLinks = solutionPages.slice(0, 3).map((page) => ({
 
 <section
     id="download-app"
-    class="relative overflow-hidden px-6 pb-20 pt-32 md:px-16 md:pb-40 md:pt-48"
+    class:list={[
+        "relative overflow-hidden px-6 pb-20 md:px-16 md:pb-40 md:pt-48",
+        isAd ? "pt-24" : "pt-32",
+    ]}
 >
     <div
         class="hero-glow absolute left-1/2 top-0 -z-10 h-full w-full -translate-x-1/2"
     ></div>
     <div class="mx-auto grid max-w-7xl items-center gap-16 lg:grid-cols-12">
-        <div class="space-y-10 lg:col-span-7">
+        <div class:list={["lg:col-span-7", isAd ? "space-y-6 md:space-y-10" : "space-y-10"]}>
             <div
                 class="inline-flex items-center gap-3 rounded-full border border-white/10 bg-white/5 px-4 py-1.5 text-xs font-bold uppercase tracking-wide text-primary"
             >
@@ -134,21 +143,43 @@ const seoSolutionLinks = solutionPages.slice(0, 3).map((page) => ({
                         class="relative inline-flex h-2 w-2 rounded-full bg-primary"
                     ></span>
                 </span>
-                {t.hero.availability}
+                {hero.availability}
             </div>
             <h1
-                class="text-5xl font-black leading-[1.05] tracking-tight text-white md:text-7xl"
+                class:list={[
+                    "font-black leading-[1.05] tracking-tight text-white md:text-7xl",
+                    isAd ? "text-4xl sm:text-5xl" : "text-5xl",
+                ]}
             >
                 {heroTitleLead}
                 <span class="gradient-text"> {heroTitleAccent}</span>.
             </h1>
             <p
-                class="max-w-2xl text-lg leading-relaxed text-on-surface-variant md:text-xl"
+                class:list={[
+                    "max-w-2xl leading-relaxed text-on-surface-variant md:text-xl",
+                    isAd ? "text-base sm:text-lg" : "text-lg",
+                ]}
             >
-                {t.hero.description}
+                {hero.description}
             </p>
+            {isAd && (
+                <a
+                    id="hero-mobile-cta"
+                    class="mobile-store-cta flex w-full items-center justify-center gap-2 rounded-2xl bg-primary px-6 py-4 text-lg font-extrabold text-on-primary shadow-lg shadow-primary/20 transition active:scale-[0.98] sm:hidden"
+                    href={androidAppHref}
+                    data-app-store="android"
+                    target="_blank"
+                    rel="noreferrer"
+                >
+                    <span class="material-symbols-outlined" aria-hidden="true">download</span>
+                    <span>{t.adHero.primaryCta}</span>
+                </a>
+            )}
             <div
-                class="mt-6 flex flex-wrap items-center justify-center gap-x-8 gap-y-4 sm:justify-start"
+                class:list={[
+                    "mt-6 flex-wrap items-center justify-center gap-x-8 gap-y-4 sm:justify-start",
+                    isAd ? "hidden sm:flex" : "flex",
+                ]}
             >
                 <a
                     class="store-badge store-badge-ios inline-flex items-center rounded-lg border border-white/10 bg-[#161616] px-4 py-2 text-xl tracking-wider text-white transition hover:border-primary/40 hover:bg-[#1d1d1d] focus:outline-none focus-visible:ring-2 focus-visible:ring-primary"
@@ -214,15 +245,30 @@ const seoSolutionLinks = solutionPages.slice(0, 3).map((page) => ({
                     </div>
                 </a>
             </div>
-            <div class="flex flex-wrap justify-center gap-4 sm:justify-start">
-                <a
-                    class="inline-flex items-center rounded-full border border-white/15 bg-white/5 px-5 py-3 text-sm font-semibold text-white transition hover:border-white/30 hover:bg-white/10 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500"
-                    href={docsHref}
-                >
-                    <span>{localizedUi.docsCta}</span>
-                    <span class="ml-2 text-base" aria-hidden="true">→</span>
-                </a>
-            </div>
+            {isAd ? (
+                <div class="text-center sm:text-left">
+                    <a
+                        class="inline-flex flex-wrap items-center justify-center gap-x-2 gap-y-1 text-sm text-on-surface-variant transition hover:text-white sm:justify-start"
+                        href={googlePlayUrl}
+                        target="_blank"
+                        rel="noreferrer"
+                    >
+                        <span class="tracking-widest text-yellow-400" aria-label={`${heroReview.rating}/5`}>★★★★★</span>
+                        <span class="italic text-white/80">“{heroReview.body}”</span>
+                        <span>— {t.adHero.reviewSource}</span>
+                    </a>
+                </div>
+            ) : (
+                <div class="flex flex-wrap justify-center gap-4 sm:justify-start">
+                    <a
+                        class="inline-flex items-center rounded-full border border-white/15 bg-white/5 px-5 py-3 text-sm font-semibold text-white transition hover:border-white/30 hover:bg-white/10 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500"
+                        href={docsHref}
+                    >
+                        <span>{localizedUi.docsCta}</span>
+                        <span class="ml-2 text-base" aria-hidden="true">→</span>
+                    </a>
+                </div>
+            )}
         </div>
         <div class="relative mt-10 lg:col-span-5 lg:mt-0">
             <div class="relative flex min-h-[560px] w-full items-center justify-center">
@@ -975,3 +1021,58 @@ const seoSolutionLinks = solutionPages.slice(0, 3).map((page) => ({
         </div>
     </div>
 </section>
+
+{
+    isAd && (
+        <Fragment>
+            <div
+                id="sticky-store-cta"
+                class="pointer-events-none fixed inset-x-0 bottom-0 z-40 translate-y-full border-t border-white/10 bg-background/90 px-4 pb-[calc(env(safe-area-inset-bottom)+0.75rem)] pt-3 opacity-0 backdrop-blur-xl transition duration-300 sm:hidden"
+                aria-hidden="true"
+            >
+                <a
+                    class="mobile-store-cta flex w-full items-center justify-center gap-2 rounded-2xl bg-primary px-6 py-3.5 text-base font-extrabold text-on-primary active:scale-[0.98]"
+                    href={androidAppHref}
+                    data-app-store="android"
+                    target="_blank"
+                    rel="noreferrer"
+                    tabindex="-1"
+                >
+                    <span class="material-symbols-outlined" aria-hidden="true">download</span>
+                    <span>{t.adHero.primaryCta}</span>
+                </a>
+            </div>
+
+            <script is:inline define:vars={{ iosAppHref }}>
+                (() => {
+                    const ua = navigator.userAgent;
+                    const isIos =
+                        /iPhone|iPad|iPod/i.test(ua) ||
+                        (/Macintosh/i.test(ua) && navigator.maxTouchPoints > 1);
+
+                    if (isIos) {
+                        document.querySelectorAll(".mobile-store-cta").forEach((link) => {
+                            link.href = iosAppHref;
+                            link.dataset.appStore = "ios";
+                        });
+                    }
+
+                    const heroCta = document.getElementById("hero-mobile-cta");
+                    const stickyCta = document.getElementById("sticky-store-cta");
+                    if (!heroCta || !stickyCta || !("IntersectionObserver" in window)) {
+                        return;
+                    }
+
+                    new IntersectionObserver(([entry]) => {
+                        const show = !entry.isIntersecting && entry.boundingClientRect.top < 0;
+                        stickyCta.classList.toggle("translate-y-full", !show);
+                        stickyCta.classList.toggle("opacity-0", !show);
+                        stickyCta.classList.toggle("pointer-events-none", !show);
+                        stickyCta.setAttribute("aria-hidden", String(!show));
+                        stickyCta.querySelector("a")?.setAttribute("tabindex", show ? "0" : "-1");
+                    }).observe(heroCta);
+                })();
+            </script>
+        </Fragment>
+    )
+}
