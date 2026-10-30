@@ -21,8 +21,15 @@ interface Props {
 const { lang, t, variant = "home" } = Astro.props as Props;
 const isAd = variant === "ad";
 const hero = isAd ? t.adHero : t.hero;
-const androidAppHref = "https://play.google.com/store/apps/details?id=com.insomnis.vallax";
-const iosAppHref = "https://apps.apple.com/es/app/vallax/id6793169829";
+const androidStoreHref = "https://play.google.com/store/apps/details?id=com.insomnis.vallax";
+// Paid-ads landing tags Play installs so they show up as a UTM campaign in Play Console.
+const androidAppHref = isAd
+    ? `${androidStoreHref}&referrer=${encodeURIComponent("utm_source=meta&utm_medium=paid&utm_campaign=landing_app")}`
+    : androidStoreHref;
+// Paid-ads landing uses an App Store Connect campaign link to attribute iOS downloads.
+const iosAppHref = isAd
+    ? "https://apps.apple.com/app/apple-store/id6793169829?pt=129201372&ct=Instagram%20ads&mt=8"
+    : "https://apps.apple.com/es/app/vallax/id6793169829";
 const communityHref = "https://t.me/vallax_group";
 const docsHref = `/${lang}/docs/`;
 const featureIcons = ["layers", "bolt", "tune", "auto_awesome"];
