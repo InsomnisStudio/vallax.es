@@ -33,8 +33,11 @@ const androidAppHref = isAd
     ? `${androidStoreHref}&referrer=${encodeURIComponent("utm_source=meta&utm_medium=paid&utm_campaign=Instagram ads")}`
     : androidStoreHref;
 // Paid-ads landing uses an App Store Connect campaign link to attribute iOS downloads.
+// The storefront must be in the path: without it Apple falls back to the US store,
+// where Vallax isn't published, and returns a 404.
+const appStoreCountry = { es: "es", en: "gb", fr: "fr", it: "it", pl: "pl" }[lang];
 const iosAppHref = isAd
-    ? "https://apps.apple.com/app/apple-store/id6793169829?pt=129201372&ct=Instagram%20ads&mt=8"
+    ? `https://apps.apple.com/${appStoreCountry}/app/vallax/id6793169829?pt=129201372&ct=Instagram%20ads&mt=8`
     : "https://apps.apple.com/es/app/vallax/id6793169829";
 const communityHref = "https://t.me/vallax_group";
 const docsHref = `/${lang}/docs/`;
