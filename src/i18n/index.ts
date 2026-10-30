@@ -35,6 +35,7 @@ export interface Translation {
     primaryCta: string;
     availability: string;
     reviewSource: string;
+    reassurance: string;
   };
   features: {
     title: string;
@@ -140,12 +141,13 @@ export const translations = {
       },
     },
     adHero: {
-      title: "Te avisamos al instante cuando suben lo que buscas",
+      title: "Lo bueno de Wallapop y Vinted vuela. Entérate antes que nadie",
       description:
-        "Crea una búsqueda y recibe una notificación en cuanto aparezca un anuncio nuevo en Wallapop, Vinted, Milanuncios o Todocoleccion. Llega antes que nadie a las gangas.",
+        "Dinos qué buscas y cuánto quieres pagar. En cuanto alguien lo publique en Wallapop, Vinted, Milanuncios o Todocoleccion, te llega un aviso al móvil.",
       primaryCta: "Descargar gratis",
-      availability: "Avisos al instante en Wallapop y Vinted",
+      availability: "Avisos al instante de Wallapop y Vinted",
       reviewSource: "Reseña en Google Play",
+      reassurance: "Gratis · Crea tu primera búsqueda en 30 segundos",
     },
     features: {
       title: "Razones para usar Vallax",
@@ -339,12 +341,13 @@ export const translations = {
       },
     },
     adHero: {
-      title: "Get instant alerts for the deals you want",
+      title: "The good stuff on Wallapop and Vinted goes fast. Be the first to know",
       description:
-        "Create a search and get a notification as soon as a new listing appears on Wallapop, Vinted, Milanuncios or Todocoleccion. Reach the bargains before anyone else.",
+        "Tell us what you want and how much you'll pay. As soon as someone posts it on Wallapop, Vinted, Milanuncios or Todocoleccion, you get an alert on your phone.",
       primaryCta: "Download free",
       availability: "Instant alerts for Wallapop and Vinted",
       reviewSource: "Review on Google Play",
+      reassurance: "Free · Create your first search in 30 seconds",
     },
     features: {
       title: "Benefits",
@@ -530,12 +533,13 @@ translations.fr = {
     platforms: { title: "Plateformes compatibles" },
   },
   adHero: {
-    title: "Soyez alerté dès que sort ce que vous cherchez",
+    title: "Sur Vinted et Wallapop, le meilleur part vite. Soyez prévenu en premier",
     description:
-      "Créez une recherche et recevez une notification dès qu'une nouvelle annonce apparaît sur Wallapop, Vinted, Milanuncios ou Todocoleccion. Arrivez avant tout le monde sur les bonnes affaires.",
+      "Dites-nous ce que vous cherchez et votre budget. Dès que quelqu'un le publie sur Wallapop, Vinted, Milanuncios ou Todocoleccion, vous recevez une alerte sur votre téléphone.",
     primaryCta: "Télécharger gratuitement",
     availability: "Alertes instantanées pour Wallapop et Vinted",
     reviewSource: "Avis sur Google Play",
+    reassurance: "Gratuit · Créez votre première recherche en 30 secondes",
   },
   features: {
     title: "Pourquoi utiliser Vallax",
@@ -720,12 +724,13 @@ translations.it = {
     platforms: { title: "Piattaforme supportate" },
   },
   adHero: {
-    title: "Ti avvisiamo subito quando pubblicano ciò che cerchi",
+    title: "Su Wallapop e Vinted le cose migliori volano. Scoprile prima degli altri",
     description:
-      "Crea una ricerca e ricevi una notifica appena compare un nuovo annuncio su Wallapop, Vinted, Milanuncios o Todocoleccion. Arriva prima di tutti alle occasioni.",
+      "Dicci cosa cerchi e quanto vuoi spendere. Appena qualcuno lo pubblica su Wallapop, Vinted, Milanuncios o Todocoleccion, ricevi un avviso sul telefono.",
     primaryCta: "Scarica gratis",
     availability: "Avvisi istantanei per Wallapop e Vinted",
     reviewSource: "Recensione su Google Play",
+    reassurance: "Gratis · Crea la tua prima ricerca in 30 secondi",
   },
   features: {
     title: "Perche usare Vallax",
@@ -910,12 +915,13 @@ translations.pl = {
     platforms: { title: "Obslugiwane platformy" },
   },
   adHero: {
-    title: "Powiadomimy Cię, gdy pojawi się to, czego szukasz",
+    title: "Najlepsze rzeczy na Vinted znikają szybko. Dowiedz się o nich pierwszy",
     description:
-      "Utwórz wyszukiwanie i otrzymaj powiadomienie, gdy tylko pojawi się nowe ogłoszenie na Wallapop, Vinted, Milanuncios lub Todocoleccion. Zdobądź okazje przed innymi.",
+      "Powiedz nam, czego szukasz i ile chcesz zapłacić. Gdy tylko ktoś to wystawi na Vinted, Wallapop, Milanuncios lub Todocoleccion, dostaniesz powiadomienie na telefon.",
     primaryCta: "Pobierz za darmo",
     availability: "Natychmiastowe alerty z Wallapop i Vinted",
     reviewSource: "Opinia w Google Play",
+    reassurance: "Za darmo · Utwórz pierwsze wyszukiwanie w 30 sekund",
   },
   features: {
     title: "Dlaczego Vallax",
