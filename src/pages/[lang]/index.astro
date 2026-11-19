@@ -10,19 +10,57 @@ export function getStaticPaths() {
 const paramLang = Astro.params.lang;
 const locale: Locale = isLocale(paramLang) ? paramLang : "es";
 const t = translations[locale];
+const organizationId = "https://vallax.es/#organization";
 const structuredData = [
   {
     "@context": "https://schema.org",
-    "@type": "SoftwareApplication",
+    "@type": "Organization",
+    "@id": organizationId,
     name: "Vallax",
-    applicationCategory: "UtilitiesApplication",
+    url: "https://vallax.es/",
+    logo: "https://vallax.es/vallax-logo.svg",
+    email: "vallaxdev@gmail.com",
+    description: t.seo.description,
+    sameAs: [
+      "https://apps.apple.com/es/app/vallax/id6793169829",
+      googlePlayUrl,
+      "https://www.youtube.com/@vallax-app",
+      "https://t.me/vallax_group",
+      ...t.footer.socials.map((social) => social.href),
+    ],
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "@id": "https://vallax.es/#website",
+    name: "Vallax",
+    url: "https://vallax.es/",
+    inLanguage: locales,
+    publisher: { "@id": organizationId },
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "MobileApplication",
+    name: "Vallax",
+    alternateName: "Vallax: alertas de Wallapop y Vinted",
+    description: t.seo.description,
+    applicationCategory: "ShoppingApplication",
     operatingSystem: "iOS, Android",
+    inLanguage: locale,
     url: `https://vallax.es/${locale}/`,
+    publisher: { "@id": organizationId },
     downloadUrl: [
       "https://apps.apple.com/es/app/vallax/id6793169829",
-      "https://play.google.com/store/apps/details?id=com.insomnis.vallax",
+      googlePlayUrl,
     ],
-    offers: { "@type": "Offer", price: "11.99", priceCurrency: "EUR" },
+    featureList: t.features.features.map(
+      (feature) => `${feature.title}: ${feature.description}`,
+    ),
+    offers: [
+      { "@type": "Offer", name: "Gratis", price: "0", priceCurrency: "EUR" },
+      { "@type": "Offer", name: "Plus", price: "3.99", priceCurrency: "EUR" },
+      { "@type": "Offer", name: "Pro", price: "11.99", priceCurrency: "EUR" },
+    ],
     aggregateRating: {
       "@type": "AggregateRating",
       ratingValue: "4.25",

@@ -20,6 +20,9 @@ export const collections = {
       imageCreditUrl: z.string().url().optional(),
       ctaLabel: z.string(),
       ctaHref: z.string(),
+      faq: z
+        .array(z.object({ question: z.string(), answer: z.string() }))
+        .optional(),
     }),
   }),
 };

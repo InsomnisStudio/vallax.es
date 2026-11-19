@@ -29,7 +29,7 @@ const formatDate = (date: Date) =>
         year: "numeric",
         timeZone: "Europe/Madrid",
     }).format(date);
-const structuredData = [{
+const structuredData: Record<string, unknown>[] = [{
     "@context": "https://schema.org",
     "@type": "BlogPosting",
     headline: post.data.title,
@@ -41,6 +41,18 @@ const structuredData = [{
     image: new URL(post.data.image, "https://vallax.es").toString(),
     mainEntityOfPage: canonical,
 }];
+const faq = post.data.faq ?? [];
+if (faq.length > 0) {
+    structuredData.push({
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        mainEntity: faq.map((item) => ({
+            "@type": "Question",
+            name: item.question,
+            acceptedAnswer: { "@type": "Answer", text: item.answer },
+        })),
+    });
+}
 const postHref = (id: string) => `/es/blog/${id.replace(/\.md$/, "")}/`;
 ---
 
@@ -80,7 +92,20 @@ const postHref = (id: string) => `/es/blog/${id.replace(/\.md$/, "")}/`;
         </div>
 
         <div class="mx-auto grid max-w-7xl gap-14 px-6 py-16 md:px-16 md:py-24 lg:grid-cols-[minmax(0,760px)_220px] lg:justify-between">
-            <div class="blog-prose"><Content /></div>
+            <div class="blog-prose">
+                <Content />
+                {faq.length > 0 && (
+                    <>
+                        <h2>Preguntas frecuentes</h2>
+                        {faq.map((item) => (
+                            <>
+                                <h3>{item.question}</h3>
+                                <p>{item.answer}</p>
+                            </>
+                        ))}
+                    </>
+                )}
+            </div>
             <aside class="lg:sticky lg:top-28 lg:self-start">
                 <p class="text-xs font-black uppercase tracking-[0.2em] text-white/35">Pasa a la acción</p>
                 <a href={post.data.ctaHref} class="mt-5 block border-l-2 border-primary pl-5 text-lg font-black leading-7 text-white transition hover:text-primary">{post.data.ctaLabel}</a>

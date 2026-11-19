@@ -1,15 +1,41 @@
 ---
+import { translations } from "../i18n";
 
+const t = translations.es;
+const languages = [
+    { locale: "es", label: "Español" },
+    { locale: "en", label: "English" },
+    { locale: "fr", label: "Français" },
+    { locale: "it", label: "Italiano" },
+    { locale: "pl", label: "Polski" },
+];
 ---
 
-<html lang="en">
+<html lang="es">
     <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <title>{t.seo.title}</title>
+        <meta name="description" content={t.seo.description} />
+        <link rel="canonical" href="https://vallax.es/es/" />
         <style>
             html,
             body {
                 margin: 0;
                 height: 100%;
                 background: #0c1014;
+                color: #e6edf3;
+                font-family: system-ui, sans-serif;
+            }
+
+            main {
+                max-width: 40rem;
+                margin: 0 auto;
+                padding: 4rem 1.5rem;
+            }
+
+            a {
+                color: #07d9c4;
             }
         </style>
         <script>
@@ -21,5 +47,16 @@
             location.replace(`/${locale}/`);
         </script>
     </head>
-    <body></body>
+    <body>
+        <!-- Static fallback for crawlers that don't run JavaScript (ChatGPT, Perplexity...). -->
+        <main>
+            <h1>Vallax: alertas de Wallapop, Vinted, Milanuncios y Todocolección</h1>
+            <p>{t.seo.description}</p>
+            <ul>
+                {languages.map((language) => (
+                    <li><a href={`/${language.locale}/`} hreflang={language.locale}>{language.label}</a></li>
+                ))}
+            </ul>
+        </main>
+    </body>
 </html>

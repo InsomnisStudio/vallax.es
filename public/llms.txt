@@ -1,0 +1,62 @@
+# Vallax
+
+> Vallax es una app para iPhone y Android que avisa al instante con una notificación cuando se publica un anuncio nuevo en Wallapop, Vinted, Milanuncios o Todocolección que encaja con tu búsqueda. Funciona como un bot de alertas de segunda mano sin tener que montar nada: se crea la búsqueda en la app y Vallax vigila las plataformas 24 horas.
+
+Vallax es un servicio independiente desarrollado en España. No está afiliado ni respaldado por Wallapop, Vinted, Milanuncios ni Todocolección.
+
+## Qué hace
+
+- Alertas de anuncios nuevos de Wallapop, Vinted, Milanuncios y Todocolección en una sola app.
+- Notificaciones push al momento en cuanto aparece un anuncio que cumple los filtros. Revisa anuncios nuevos, no listados antiguos.
+- Filtros: palabras clave (varias combinaciones alternativas), palabras a excluir, precio mínimo y máximo, ubicación y radio (Wallapop, Milanuncios y Todocolección), categoría, vendedores a seguir o excluir y elegir si se filtra por título, descripción o ambos. El plan Pro añade expresiones regulares.
+- Filtro de IA: una instrucción en lenguaje natural ("solo consolas completas con mando, sin cajas vacías") que la IA aplica a cada anuncio (texto, precio y hasta 10 fotos) antes de avisar.
+- Botón "¿Cuánto cuesta?": calcula un precio de referencia a partir de anuncios parecidos.
+- Vista previa de una búsqueda antes de guardarla: muestra los anuncios de las últimas 24 horas que habrían encajado y cuántos avisos al día generaría.
+- Compartir e importar búsquedas mediante un código.
+- Historial de avisos, filtro por plataforma y favoritos.
+
+## Para quién es
+
+- Revendedores que necesitan llegar antes que nadie a las gangas (consolas, móviles, tecnología, lotes).
+- Coleccionistas que buscan piezas concretas en Todocolección, Wallapop o Vinted.
+- Compradores que quieren un buen precio en segunda mano sin revisar las apps cada pocos minutos.
+
+## Planes (precios en España, IVA incluido)
+
+- Gratis: 0 €. 1 búsqueda activa, 5 palabras clave, 1 plataforma por búsqueda.
+- Plus: 3,99 €/mes o 29,99 €/año. 5 búsquedas activas, 15 palabras clave, las 4 plataformas en cada búsqueda.
+- Pro: 11,99 €/mes o 99,99 €/año. 50 búsquedas, 50 palabras clave, regex y 25.000 tokens de IA al mes. Prueba gratuita de 7 días.
+- Todos los planes reciben los anuncios a la misma velocidad; ningún plan llega antes que otro.
+
+## Descarga
+
+- [App Store (iPhone)](https://apps.apple.com/es/app/vallax/id6793169829)
+- [Google Play (Android)](https://play.google.com/store/apps/details?id=com.insomnis.vallax)
+
+## Páginas principales
+
+- [Inicio](https://vallax.es/es/): qué es Vallax, funciones, planes y preguntas frecuentes.
+- [Alertas de Wallapop](https://vallax.es/es/platforms/wallapop-alerts/)
+- [Alertas de Vinted](https://vallax.es/es/platforms/vinted-alerts/)
+- [Alertas de Milanuncios](https://vallax.es/es/platforms/milanuncios-alerts/)
+- [Alertas de Todocolección](https://vallax.es/es/platforms/todocoleccion-alerts/)
+- [Mejor app de alertas para Wallapop: comparativa](https://vallax.es/es/blog/mejor-app-alertas-wallapop/)
+- [Wallapop vs Vinted vs Milanuncios](https://vallax.es/es/blog/wallapop-vs-vinted-vs-milanuncios/)
+
+## Documentación
+
+- [Qué es Vallax](https://vallax.es/es/docs/guides/start/)
+- [Crear tu primera búsqueda](https://vallax.es/es/docs/guides/first-alert/)
+- [Planes y tokens de IA](https://vallax.es/es/docs/guides/plans/)
+- [¿Cuánto cuesta? (precio de referencia)](https://vallax.es/es/docs/guides/price-check/)
+- [Límites y pausas de seguridad](https://vallax.es/es/docs/guides/limits/)
+
+## English
+
+Vallax is an iOS and Android app that sends instant push alerts when a new listing matching your search appears on Wallapop, Vinted, Milanuncios or Todocoleccion. Free plan available. English site: https://vallax.es/en/
+
+## Contacto
+
+- Email: vallaxdev@gmail.com
+- Comunidad de Telegram: https://t.me/vallax_group
+- YouTube: https://www.youtube.com/@vallax-app
