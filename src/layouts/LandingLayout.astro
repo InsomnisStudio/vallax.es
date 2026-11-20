@@ -1,5 +1,6 @@
 ---
 import "/src/assets/css/styles.css";
+import GoogleAnalytics from "../components/analytics/GoogleAnalytics.astro";
 import MetaPixel from "../components/analytics/MetaPixel.astro";
 import Logo from "../images/logo_vertical.svg";
 import { locales, type Translation, type Locale } from "../i18n";
@@ -33,7 +34,6 @@ const {
     noindex = false,
 } = Astro.props as Props;
 const site = Astro.site ?? new URL("https://vallax.es");
-const gaMeasurementId = import.meta.env.PUBLIC_GA_MEASUREMENT_ID;
 const hreflangByLocale: Record<Locale, string> = {
     es: "es-ES",
     en: "en",
@@ -145,19 +145,7 @@ const rights = footer.rights.replace(/©\s*\d{4}/, `© ${currentYear}`);
                 <script is:inline type="application/ld+json" set:html={JSON.stringify(data)} />
             ))
         }
-        {
-            gaMeasurementId && (
-                <>
-                    <script is:inline async src={`https://www.googletagmanager.com/gtag/js?id=${gaMeasurementId}`} />
-                    <script is:inline define:vars={{ gaMeasurementId }}>
-                        window.dataLayer = window.dataLayer || [];
-                        function gtag(){dataLayer.push(arguments);}
-                        gtag('js', new Date());
-                        gtag('config', gaMeasurementId);
-                    </script>
-                </>
-            )
-        }
+        <GoogleAnalytics />
         <MetaPixel />
         <link
             href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap"
