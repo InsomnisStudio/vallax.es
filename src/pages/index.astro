@@ -37,8 +37,14 @@ const languages = [
             a {
                 color: #07d9c4;
             }
+
+            /* Hide the crawler fallback for JS users so it doesn't flash before redirecting. */
+            .js main {
+                display: none;
+            }
         </style>
-        <script>
+        <script is:inline>
+            document.documentElement.classList.add("js");
             const supported = ["es", "en", "fr", "it", "pl"];
             const browser = navigator.languages?.map((l) => l.slice(0, 2)) || [
                 navigator.language.slice(0, 2),
